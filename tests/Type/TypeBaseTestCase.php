@@ -15,10 +15,7 @@ abstract class TypeBaseTestCase extends TypeTestCase
 
     private BotApi $botApi;
 
-    /**
-     * @var ApiClientInterface|MockObject
-     */
-    private MockObject $client;
+    private MockObject|ApiClientInterface $client;
 
     protected function setUp(): void
     {

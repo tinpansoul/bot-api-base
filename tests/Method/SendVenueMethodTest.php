@@ -38,7 +38,7 @@ final class SendVenueMethodTest extends MethodTestCase
             'google_place_type' => 'google_place_type',
             'google_place_id' => 'google_place_id',
             'allow_sending_without_reply' => true,
-        ], result: [], serialisedFields: ['reply_markup']);
+        ], serialisedFields: ['reply_markup']);
     }
 
     /**

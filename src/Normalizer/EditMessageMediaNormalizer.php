@@ -40,11 +40,11 @@ class EditMessageMediaNormalizer implements NormalizerInterface
             new JsonSerializableNormalizer(objectNormalizer: $this->objectNormalizer),
             $this->objectNormalizer,
         ]);
-        $topic->media = \json_encode(value: $serializer->normalize(data: $topic->media, format: null, context: ['skip_null_values' => true]));
+        $topic->media = \json_encode(value: $serializer->normalize(data: $topic->media, context: ['skip_null_values' => true]));
 
-        $topic->replyMarkup = $serializer->normalize(data: $topic->replyMarkup, format: null, context: ['skip_null_values' => true]);
+        $topic->replyMarkup = $serializer->normalize(data: $topic->replyMarkup, context: ['skip_null_values' => true]);
 
-        return $serializer->normalize(data: $topic, format: null, context: ['skip_null_values' => true]);
+        return $serializer->normalize(data: $topic, context: ['skip_null_values' => true]);
     }
 
     public function supportsNormalization(mixed $data, $format = null, array $context = []): bool

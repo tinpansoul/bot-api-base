@@ -60,7 +60,7 @@ class BotApiNormalizer implements NormalizerInterface
             $arrayDenormalizer,
         ]);
 
-        return $serializer->denormalize(data: $data, type: $type, format: null, context: [DateTimeNormalizer::FORMAT_KEY => 'U']);
+        return $serializer->denormalize(data: $data, type: $type, context: [DateTimeNormalizer::FORMAT_KEY => 'U']);
     }
 
     /**
@@ -99,7 +99,6 @@ class BotApiNormalizer implements NormalizerInterface
 
         $data = $serializer->normalize(
             data: $method,
-            format: null,
             context: [
                 'skip_null_values' => true,
                 DateTimeNormalizer::FORMAT_KEY => 'U',

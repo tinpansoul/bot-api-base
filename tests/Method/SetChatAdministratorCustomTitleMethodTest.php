@@ -17,7 +17,6 @@ final class SetChatAdministratorCustomTitleMethodTest extends MethodTestCase
             methodName: 'setChatAdministratorCustomTitle',
             request: ['chat_id' => 'chat_id', 'user_id' => 1, 'custom_title' => 'Custom title'],
             fileMap: [],
-            serializableFields: [],
             result: true
         );
 

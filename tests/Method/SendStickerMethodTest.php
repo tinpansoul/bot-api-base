@@ -57,7 +57,6 @@ final class SendStickerMethodTest extends MethodTestCase
                 'reply_to_message_id' => 1,
                 'reply_markup' => self::buildInlineMarkupArray(),
             ],
-            result: [],
             serialisedFields: ['reply_markup']
         );
     }

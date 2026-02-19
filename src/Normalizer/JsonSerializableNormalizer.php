@@ -38,7 +38,7 @@ class JsonSerializableNormalizer implements NormalizerInterface
     ): string|int|float|bool|\ArrayObject|array|null {
         $serializer = new Serializer(normalizers: [$this->objectNormalizer]);
 
-        return \json_encode(value: $serializer->normalize(data: $topic, format: null, context: ['skip_null_values' => true]));
+        return \json_encode(value: $serializer->normalize(data: $topic, context: ['skip_null_values' => true]));
     }
 
     public function supportsNormalization(mixed $data, $format = null, array $context = []): bool

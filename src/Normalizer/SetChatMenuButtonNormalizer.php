@@ -39,10 +39,10 @@ class SetChatMenuButtonNormalizer implements NormalizerInterface
         ]);
 
         $topic->menuButton = \json_encode(
-            value: $serializer->normalize(data: $topic->menuButton, format: null, context: ['skip_null_values' => true])
+            value: $serializer->normalize(data: $topic->menuButton, context: ['skip_null_values' => true])
         );
 
-        return $serializer->normalize(data: $topic, format: null, context: ['skip_null_values' => true]);
+        return $serializer->normalize(data: $topic, context: ['skip_null_values' => true]);
     }
 
     public function supportsNormalization(mixed $data, $format = null, array $context = []): bool

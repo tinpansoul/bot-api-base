@@ -22,7 +22,6 @@ final class StopPollMethodTest extends MethodTestCase
         $botApiComplete = $this->getBot(
             methodName: 'stopPoll',
             request: ['chat_id' => 'chat_id', 'message_id' => 1, 'reply_markup' => $this->buildInlineMarkupArray()],
-            result: [],
             serialisedFields: ['reply_markup']
         );
 

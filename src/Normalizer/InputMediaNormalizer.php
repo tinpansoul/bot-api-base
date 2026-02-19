@@ -42,20 +42,20 @@ class InputMediaNormalizer implements NormalizerInterface
         array $context = []
     ): string|int|float|bool|\ArrayObject|array|null {
         if ($topic->media instanceof InputFileType) {
-            $uniqid = \uniqid(prefix: '', more_entropy: true);
+            $uniqid = \uniqid(more_entropy: true);
             $this->files[$uniqid] = $topic->media;
             $topic->media = 'attach://' . $uniqid;
         }
 
         if (\property_exists(object_or_class: $topic, property: 'thumb') && $topic->thumb instanceof InputFileType) {
-            $uniqid = \uniqid(prefix: '', more_entropy: true);
+            $uniqid = \uniqid(more_entropy: true);
             $this->files[$uniqid] = $topic->thumb;
             $topic->thumb = 'attach://' . $uniqid;
         }
 
         $serializer = new Serializer(normalizers: [$this->objectNormalizer]);
 
-        return $serializer->normalize(data: $topic, format: null, context: ['skip_null_values' => true]);
+        return $serializer->normalize(data: $topic, context: ['skip_null_values' => true]);
     }
 
     public function supportsNormalization(mixed $data, $format = null, array $context = []): bool

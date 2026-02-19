@@ -35,7 +35,7 @@ class InputFileNormalizer implements NormalizerInterface
         $format = null,
         array $context = []
     ): string|int|float|bool|\ArrayObject|array|null {
-        $uniqid = \uniqid(prefix: '', more_entropy: true);
+        $uniqid = \uniqid(more_entropy: true);
 
         $this->files[$uniqid] = $topic;
 

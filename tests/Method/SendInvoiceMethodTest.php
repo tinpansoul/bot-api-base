@@ -50,7 +50,7 @@ final class SendInvoiceMethodTest extends MethodTestCase
             'reply_to_message_id' => 1,
             'allow_sending_without_reply' => true,
             'reply_markup' => self::buildInlineMarkupArray(),
-        ], result: [], serialisedFields: ['reply_markup', 'prices']);
+        ], serialisedFields: ['reply_markup', 'prices']);
     }
 
     /**

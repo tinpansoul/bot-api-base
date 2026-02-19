@@ -34,7 +34,7 @@ class ApiClient implements ApiClientInterface
     {
         $request = $this->requestFactory->createRequest(method: 'POST', uri: $this->generateUri(method: $method));
 
-        $boundary = \uniqid(prefix: '', more_entropy: true);
+        $boundary = \uniqid(more_entropy: true);
 
         $stream = $this->streamFactory->createStream(content: $this->createStreamBody(boundary: $boundary, botApiRequest: $botApiRequest));
 

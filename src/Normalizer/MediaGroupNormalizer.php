@@ -36,9 +36,9 @@ class MediaGroupNormalizer implements NormalizerInterface
         array $context = []
     ): string|int|float|bool|\ArrayObject|array|null {
         $serializer = new Serializer(normalizers: [$this->inputMediaNormalizer, $this->objectNormalizer]);
-        $topic->media = \json_encode(value: $serializer->normalize(data: $topic->media, format: null, context: ['skip_null_values' => true]));
+        $topic->media = \json_encode(value: $serializer->normalize(data: $topic->media, context: ['skip_null_values' => true]));
 
-        return $serializer->normalize(data: $topic, format: null, context: ['skip_null_values' => true]);
+        return $serializer->normalize(data: $topic, context: ['skip_null_values' => true]);
     }
 
     public function supportsNormalization(mixed $data, $format = null, array $context = []): bool

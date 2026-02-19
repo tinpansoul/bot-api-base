@@ -32,13 +32,11 @@ class AnswerInlineQueryNormalizer implements NormalizerInterface
         $topic->results = \json_encode(
             value: $serializer->normalize(
             data: $topic->results,
-            format: null,
             context: ['skip_null_values' => true, DateTimeNormalizer::FORMAT_KEY => 'U']
         ));
 
         return $serializer->normalize(
             data: $topic,
-            format: null,
             context: ['skip_null_values' => true, DateTimeNormalizer::FORMAT_KEY => 'U']
         );
     }

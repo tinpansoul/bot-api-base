@@ -18,7 +18,6 @@ final class SetChatPhotoMethodTest extends MethodTestCase
             methodName: 'setChatPhoto',
             request: ['chat_id' => 'chat_id', 'photo' => ''],
             fileMap: ['photo' => true],
-            serializableFields: [],
             result: true
         );
 

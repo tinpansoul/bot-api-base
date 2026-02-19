@@ -43,7 +43,7 @@ final class CopyMessageMethodTest extends MethodTestCase
      */
     public function testEncode(CopyMessageMethod $copyMessageMethod, array $exceptedRequest, array $serializedFields): void
     {
-        $botApiComplete = $this->getBot(methodName: 'copyMessage', request: $exceptedRequest, result: [], serialisedFields: $serializedFields);
+        $botApiComplete = $this->getBot(methodName: 'copyMessage', request: $exceptedRequest, serialisedFields: $serializedFields);
 
         $botApiComplete->copyMessage(copyMessageMethod: $copyMessageMethod);
     }

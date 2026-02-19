@@ -29,7 +29,7 @@ final class SendDiceMethodTest extends MethodTestCase
      */
     public function testEncode(SendDiceMethod $sendDiceMethod, array $data): void
     {
-        $botApiComplete = $this->getBot(methodName: 'sendDice', request: $data, result: [], serialisedFields: ['reply_markup']);
+        $botApiComplete = $this->getBot(methodName: 'sendDice', request: $data, serialisedFields: ['reply_markup']);
 
         $botApiComplete->sendDice(sendDiceMethod: $sendDiceMethod);
     }

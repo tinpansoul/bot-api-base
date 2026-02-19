@@ -74,7 +74,6 @@ final class EditMessageCaptionMethodTest extends MethodTestCase
         $this->getBot(
             methodName: 'editMessageCaption',
             request: $excepted,
-            result: [],
             serialisedFields: ['reply_markup']
         )->editMessageCaption(editMessageCaptionMethod: $editMessageCaptionMethod);
     }

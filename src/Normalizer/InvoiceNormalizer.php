@@ -35,9 +35,9 @@ class InvoiceNormalizer implements NormalizerInterface
             $this->objectNormalizer,
         ]);
 
-        $topic->prices = \json_encode(value: $serializer->normalize(data: $topic->prices, format: null, context: ['skip_null_values' => true]));
+        $topic->prices = \json_encode(value: $serializer->normalize(data: $topic->prices, context: ['skip_null_values' => true]));
 
-        return $serializer->normalize(data: $topic, format: null, context: ['skip_null_values' => true]);
+        return $serializer->normalize(data: $topic, context: ['skip_null_values' => true]);
     }
 
     public function supportsNormalization(mixed $data, $format = null, array $context = []): bool

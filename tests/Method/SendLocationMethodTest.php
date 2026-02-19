@@ -36,7 +36,7 @@ final class SendLocationMethodTest extends MethodTestCase
             'heading' => 1,
             'proximity_alert_radius' => 100,
             'allow_sending_without_reply' => true,
-        ], result: [], serialisedFields: ['reply_markup']);
+        ], serialisedFields: ['reply_markup']);
     }
 
     /**

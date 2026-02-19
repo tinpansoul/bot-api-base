@@ -20,7 +20,7 @@ final class UploadStickerFileMethodTest extends MethodTestCase
         $botApiComplete = $this->getBotWithFiles(methodName: 'uploadStickerFile', request: [
             'user_id' => 1,
             'png_sticker' => '',
-        ], fileMap: ['png_sticker' => true], serializableFields: [], result: true);
+        ], fileMap: ['png_sticker' => true], result: true);
 
         $botApiComplete->uploadStickerFile(
             uploadStickerFileMethod: UploadStickerFileMethod::create(

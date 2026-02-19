@@ -64,7 +64,6 @@ final class SetWebhookMethodTest extends MethodTestCase
             methodName: 'setWebhook',
             request: $expectedBody,
             fileMap: ['certificate' => true],
-            serializableFields: [],
             result: true
         );
 

@@ -34,7 +34,6 @@ final class SetStickerSetThumbMethodTest extends MethodTestCase
                 'thumb' => '',
             ],
             fileMap: ['thumb' => true],
-            serializableFields: [],
             result: true
         );
     }
