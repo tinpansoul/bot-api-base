@@ -7,24 +7,25 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 use TgBotApi\BotApiBase\Method\SetChatPhotoMethod;
 use TgBotApi\BotApiBase\Type\InputFileType;
 
-class SetChatPhotoMethodTest extends MethodTestCase
+final class SetChatPhotoMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBotWithFiles(
-            'setChatPhoto',
-            ['chat_id' => 'chat_id', 'photo' => ''],
-            ['photo' => true],
-            [],
-            true
+        $botApiComplete = $this->getBotWithFiles(
+            methodName: 'setChatPhoto',
+            request: ['chat_id' => 'chat_id', 'photo' => ''],
+            fileMap: ['photo' => true],
+            serializableFields: [],
+            result: true
         );
 
-        $botApi->setChatPhoto(SetChatPhotoMethod::create(
-            'chat_id',
-            InputFileType::create('/dev/null')
+        $botApiComplete->setChatPhoto(
+            setChatPhotoMethod: SetChatPhotoMethod::create(
+            chatId: 'chat_id',
+            inputFileType: InputFileType::create(path: '/dev/null')
         ));
     }
 }

@@ -6,15 +6,15 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\GetMyCommandsMethod;
 
-class GetMyCommandsMethodTest extends MethodTestCase
+final class GetMyCommandsMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('getMyCommands', []);
+        $botApiComplete = $this->getBot(methodName: 'getMyCommands', request: []);
 
-        $botApi->getMyCommands(GetMyCommandsMethod::create());
+        $botApiComplete->getMyCommands(getMyCommandsMethod: GetMyCommandsMethod::create());
     }
 }

@@ -64,14 +64,14 @@ class InlineQueryResultCachedGifType extends InlineQueryResultType implements Ha
      */
     public static function create(string $id, string $gifFileId, array $data = null): InlineQueryResultCachedGifType
     {
-        $instance = new static();
-        $instance->type = static::TYPE_GIF;
-        $instance->id = $id;
-        $instance->gifFileId = $gifFileId;
+        $static = new static();
+        $static->type = static::TYPE_GIF;
+        $static->id = $id;
+        $static->gifFileId = $gifFileId;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

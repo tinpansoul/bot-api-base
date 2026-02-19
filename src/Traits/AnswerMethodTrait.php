@@ -17,59 +17,49 @@ use TgBotApi\BotApiBase\Method\Interfaces\AnswerMethodAliasInterface;
 trait AnswerMethodTrait
 {
     /**
-     * @param AnswerMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    abstract public function answer(AnswerMethodAliasInterface $method): bool;
+    abstract public function answer(AnswerMethodAliasInterface $answerMethodAlias): bool;
 
     /**
-     * @param AnswerCallbackQueryMethod $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function answerCallbackQuery(AnswerCallbackQueryMethod $method): bool
+    public function answerCallbackQuery(AnswerCallbackQueryMethod $answerCallbackQueryMethod): bool
     {
-        return $this->answer($method);
+        return $this->answer(answerMethodAlias: $answerCallbackQueryMethod);
     }
 
     /**
-     * @param AnswerInlineQueryMethod $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function answerInlineQuery(AnswerInlineQueryMethod $method): bool
+    public function answerInlineQuery(AnswerInlineQueryMethod $answerInlineQueryMethod): bool
     {
-        return $this->answer($method);
+        return $this->answer(answerMethodAlias: $answerInlineQueryMethod);
     }
 
     /**
-     * @param AnswerPreCheckoutQueryMethod $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function answerPreCheckoutQuery(AnswerPreCheckoutQueryMethod $method): bool
+    public function answerPreCheckoutQuery(AnswerPreCheckoutQueryMethod $answerPreCheckoutQueryMethod): bool
     {
-        return $this->answer($method);
+        return $this->answer(answerMethodAlias: $answerPreCheckoutQueryMethod);
     }
 
     /**
-     * @param AnswerShippingQueryMethod $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function answerShippingQuery(AnswerShippingQueryMethod $method): bool
+    public function answerShippingQuery(AnswerShippingQueryMethod $answerShippingQueryMethod): bool
     {
-        return $this->answer($method);
+        return $this->answer(answerMethodAlias: $answerShippingQueryMethod);
     }
 }

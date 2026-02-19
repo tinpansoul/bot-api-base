@@ -6,20 +6,20 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\GetUserProfilePhotosMethod;
 
-class GetUserProfilePhotosMethodTest extends MethodTestCase
+final class GetUserProfilePhotosMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot(
-            'getUserProfilePhotos',
-            ['user_id' => 1, 'offset' => 0, 'limit' => 100],
-            (object) ['total_count' => 1, 'photos' => []]
+        $botApiComplete = $this->getBot(
+            methodName: 'getUserProfilePhotos',
+            request: ['user_id' => 1, 'offset' => 0, 'limit' => 100],
+            result: (object) ['total_count' => 1, 'photos' => []]
         );
 
-        $botApi->getUserProfilePhotos(GetUserProfilePhotosMethod::create(1, ['offset' => 0, 'limit' => 100]));
+        $botApiComplete->getUserProfilePhotos(getUserProfilePhotosMethod: GetUserProfilePhotosMethod::create(userId: 1, data: ['offset' => 0, 'limit' => 100]));
     }
 }

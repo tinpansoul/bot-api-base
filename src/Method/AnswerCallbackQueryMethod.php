@@ -19,6 +19,7 @@ use TgBotApi\BotApiBase\Method\Traits\FillFromArrayTrait;
 class AnswerCallbackQueryMethod implements AnswerMethodAliasInterface
 {
     use FillFromArrayTrait;
+
     /**
      * Unique identifier for the query to be answered.
      *
@@ -62,21 +63,19 @@ class AnswerCallbackQueryMethod implements AnswerMethodAliasInterface
     public $cacheTime;
 
     /**
-     * @param string     $callbackQueryId
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return AnswerCallbackQueryMethod
      */
     public static function create(string $callbackQueryId, array $data = null): AnswerCallbackQueryMethod
     {
-        $instance = new static();
-        $instance->callbackQueryId = $callbackQueryId;
+        $static = new static();
+        $static->callbackQueryId = $callbackQueryId;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

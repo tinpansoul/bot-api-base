@@ -18,13 +18,7 @@ class GetChatMemberMethod implements MethodInterface
     use ChatIdVariableTrait;
     use UserIdVariableTrait;
 
-    /**
-     * @param int|string $chatId
-     * @param int        $userId
-     *
-     * @return GetChatMemberMethod
-     */
-    public static function create($chatId, int $userId): GetChatMemberMethod
+    public static function create(int|string $chatId, int $userId): GetChatMemberMethod
     {
         $instance = new self();
         $instance->chatId = $chatId;

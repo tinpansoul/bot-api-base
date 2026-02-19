@@ -11,7 +11,7 @@ use TgBotApi\BotApiBase\Tests\Method\Traits\InlineKeyboardMarkupTrait;
 use TgBotApi\BotApiBase\Type\InputFileType;
 use TgBotApi\BotApiBase\Type\MessageEntityType;
 
-class SendPhotoMethodTest extends MethodTestCase
+final class SendPhotoMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
@@ -21,15 +21,15 @@ class SendPhotoMethodTest extends MethodTestCase
      */
     public function testEncode(): void
     {
-        $this->getApi()->sendPhoto($this->getMethod());
-        $this->getApi()->send($this->getMethod());
+        $this->getApi()->sendPhoto(sendPhotoMethod: $this->getMethod());
+        $this->getApi()->send(sendMethodAlias: $this->getMethod());
     }
 
     private function getApi(): BotApiComplete
     {
         return $this->getBotWithFiles(
-            'sendPhoto',
-            [
+            methodName: 'sendPhoto',
+            request: [
                 'chat_id' => 'chat_id',
                 'photo' => 'photo',
                 'caption' => 'caption',
@@ -37,11 +37,11 @@ class SendPhotoMethodTest extends MethodTestCase
                 'parse_mode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
                 'disable_notification' => true,
                 'reply_to_message_id' => 1,
-                'reply_markup' => static::buildInlineMarkupArray(),
+                'reply_markup' => self::buildInlineMarkupArray(),
                 'allow_sending_without_reply' => true,
             ],
-            ['photo' => true],
-            ['reply_markup']
+            fileMap: ['photo' => true],
+            serializableFields: ['reply_markup']
         );
     }
 
@@ -51,15 +51,15 @@ class SendPhotoMethodTest extends MethodTestCase
     private function getMethod(): SendPhotoMethod
     {
         return SendPhotoMethod::create(
-            'chat_id',
-            InputFileType::create('/dev/null'),
-            [
+            chatId: 'chat_id',
+            photo: InputFileType::create(path: '/dev/null'),
+            data: [
                 'caption' => 'caption',
                 'parseMode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
-                'captionEntities' => [MessageEntityType::create(MessageEntityType::TYPE_PRE, 0, 1)],
+                'captionEntities' => [MessageEntityType::create(type: MessageEntityType::TYPE_PRE, offset: 0, length: 1)],
                 'disableNotification' => true,
                 'replyToMessageId' => 1,
-                'replyMarkup' => static::buildInlineMarkupObject(),
+                'replyMarkup' => self::buildInlineMarkupObject(),
                 'allowSendingWithoutReply' => true,
             ]
         );

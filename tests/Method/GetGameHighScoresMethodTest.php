@@ -6,25 +6,25 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\GetGameHighScoresMethod;
 
-class GetGameHighScoresMethodTest extends MethodTestCase
+final class GetGameHighScoresMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('getGameHighScores', ['user_id' => 1, 'chat_id' => 1, 'message_id' => 1]);
+        $botApiComplete = $this->getBot(methodName: 'getGameHighScores', request: ['user_id' => 1, 'chat_id' => 1, 'message_id' => 1]);
 
-        $botApi->getGameHighScores(GetGameHighScoresMethod::create(1, 1, 1));
+        $botApiComplete->getGameHighScores(getGameHighScoresMethod: GetGameHighScoresMethod::create(userId: 1, chatId: 1, messageId: 1));
     }
 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncodeInline()
+    public function testEncodeInline(): void
     {
-        $botApi = $this->getBot('getGameHighScores', ['user_id' => 1, 'inline_message_id' => 'message_id']);
+        $botApiComplete = $this->getBot(methodName: 'getGameHighScores', request: ['user_id' => 1, 'inline_message_id' => 'message_id']);
 
-        $botApi->getGameHighScores(GetGameHighScoresMethod::createInline(1, 'message_id'));
+        $botApiComplete->getGameHighScores(getGameHighScoresMethod: GetGameHighScoresMethod::createInline(userId: 1, inlineMessageId: 'message_id'));
     }
 }

@@ -23,24 +23,20 @@ class InlineQueryResultGameType extends InlineQueryResultType
     public $gameShortName;
 
     /**
-     * @param string     $id
-     * @param string     $gameShortName
      * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return InlineQueryResultGameType
      */
     public static function create(string $id, string $gameShortName, array $data = null): InlineQueryResultGameType
     {
-        $instance = new static();
-        $instance->type = static::TYPE_GAME;
-        $instance->id = $id;
-        $instance->gameShortName = $gameShortName;
+        $static = new static();
+        $static->type = static::TYPE_GAME;
+        $static->id = $id;
+        $static->gameShortName = $gameShortName;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

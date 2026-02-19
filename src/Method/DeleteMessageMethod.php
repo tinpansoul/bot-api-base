@@ -26,18 +26,12 @@ class DeleteMessageMethod implements DeleteMethodAliasInterface
     use ChatIdVariableTrait;
     use MessageIdVariableTrait;
 
-    /**
-     * @param int|string $chatId
-     * @param int        $messageId
-     *
-     * @return DeleteMessageMethod
-     */
-    public static function create($chatId, int $messageId): DeleteMessageMethod
+    public static function create(int|string $chatId, int $messageId): DeleteMessageMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->messageId = $messageId;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->messageId = $messageId;
 
-        return $instance;
+        return $static;
     }
 }

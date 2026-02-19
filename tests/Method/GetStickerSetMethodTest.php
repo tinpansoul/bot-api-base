@@ -6,15 +6,15 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\GetStickerSetMethod;
 
-class GetStickerSetMethodTest extends MethodTestCase
+final class GetStickerSetMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('getStickerSet', ['name' => 'sicker_set_name']);
+        $botApiComplete = $this->getBot(methodName: 'getStickerSet', request: ['name' => 'sicker_set_name']);
 
-        $botApi->getStickerSet(GetStickerSetMethod::create('sicker_set_name'));
+        $botApiComplete->getStickerSet(getStickerSetMethod: GetStickerSetMethod::create(name: 'sicker_set_name'));
     }
 }

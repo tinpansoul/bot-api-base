@@ -8,14 +8,14 @@ use TgBotApi\BotApiBase\Method\AnswerShippingQueryMethod;
 use TgBotApi\BotApiBase\Type\LabeledPriceType;
 use TgBotApi\BotApiBase\Type\ShippingOption;
 
-class AnswerShippingQueryMethodTest extends MethodTestCase
+final class AnswerShippingQueryMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
     public function testEncodeSuccess(): void
     {
-        $botApi = $this->getBot('answerShippingQuery', [
+        $botApiComplete = $this->getBot(methodName: 'answerShippingQuery', request: [
             'shipping_query_id' => 'id',
             'shipping_options' => [
                 [
@@ -36,24 +36,25 @@ class AnswerShippingQueryMethodTest extends MethodTestCase
                 ],
             ],
             'ok' => true,
-        ], true);
+        ], result: true);
 
-        $method = AnswerShippingQueryMethod::createSuccess(
-            'id',
-            [
-                ShippingOption::create('id', 'title', [
-                    LabeledPriceType::create('label', 200),
-                    LabeledPriceType::create('label_2', 300),
+        $answerShippingQueryMethod = AnswerShippingQueryMethod::createSuccess(
+            shippingQueryId: 'id',
+            shippingOptions: [
+                ShippingOption::create(id: 'id', title: 'title', prices: [
+                    LabeledPriceType::create(label: 'label', amount: 200),
+                    LabeledPriceType::create(label: 'label_2', amount: 300),
                 ]),
             ]
         );
 
-        $method->addShippingOption(ShippingOption::create('id', 'title', [
-            LabeledPriceType::create('label', 200),
-            LabeledPriceType::create('label_2', 300),
+        $answerShippingQueryMethod->addShippingOption(
+            shippingOption: ShippingOption::create(id: 'id', title: 'title', prices: [
+            LabeledPriceType::create(label: 'label', amount: 200),
+            LabeledPriceType::create(label: 'label_2', amount: 300),
         ]));
 
-        $botApi->answerShippingQuery($method);
+        $botApiComplete->answerShippingQuery(answerShippingQueryMethod: $answerShippingQueryMethod);
     }
 
     /**
@@ -61,15 +62,16 @@ class AnswerShippingQueryMethodTest extends MethodTestCase
      */
     public function testEncodeFail(): void
     {
-        $botApi = $this->getBot('answerShippingQuery', [
+        $botApiComplete = $this->getBot(methodName: 'answerShippingQuery', request: [
             'shipping_query_id' => 'id',
             'ok' => false,
             'error_message' => 'message',
-        ], true);
+        ], result: true);
 
-        $botApi->answerShippingQuery(AnswerShippingQueryMethod::createFail(
-            'id',
-            'message'
+        $botApiComplete->answerShippingQuery(
+            answerShippingQueryMethod: AnswerShippingQueryMethod::createFail(
+            shippingQueryId: 'id',
+            errorMessage: 'message'
         ));
     }
 }

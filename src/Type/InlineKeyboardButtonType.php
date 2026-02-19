@@ -96,21 +96,19 @@ class InlineKeyboardButtonType
     public $webApp;
 
     /**
-     * @param string     $text
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return InlineKeyboardButtonType
      */
     public static function create(string $text, array $data = null): InlineKeyboardButtonType
     {
-        $instance = new static();
-        $instance->text = $text;
+        $static = new static();
+        $static->text = $text;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

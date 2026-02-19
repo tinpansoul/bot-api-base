@@ -6,15 +6,15 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\GetMeMethod;
 
-class GetMeMethodTest extends MethodTestCase
+final class GetMeMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('getMe', []);
+        $botApiComplete = $this->getBot(methodName: 'getMe', request: []);
 
-        $botApi->getMe(GetMeMethod::create());
+        $botApiComplete->getMe(getMeMethod: GetMeMethod::create());
     }
 }

@@ -6,15 +6,15 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\ExportChatInviteLinkMethod;
 
-class ExportChatInviteLinkMethodTest extends MethodTestCase
+final class ExportChatInviteLinkMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('exportChatInviteLink', ['chat_id' => 1], 'link');
+        $botApiComplete = $this->getBot(methodName: 'exportChatInviteLink', request: ['chat_id' => 1], result: 'link');
 
-        $botApi->exportChatInviteLink(ExportChatInviteLinkMethod::create(1));
+        $botApiComplete->exportChatInviteLink(exportChatInviteLinkMethod: ExportChatInviteLinkMethod::create(chatId: 1));
     }
 }

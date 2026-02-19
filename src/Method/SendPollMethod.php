@@ -115,19 +115,17 @@ class SendPollMethod implements SendMethodAliasInterface, PollTypeInterface, Has
      * @param string[] $options
      *
      * @throws BadArgumentException
-     *
-     * @return SendPollMethod
      */
     public static function create(string $chatId, string $question, array $options, array $data = null): self
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->question = $question;
-        $instance->options = $options;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->question = $question;
+        $static->options = $options;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

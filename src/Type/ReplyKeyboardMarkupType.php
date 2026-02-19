@@ -58,17 +58,15 @@ class ReplyKeyboardMarkupType
      * @param array|null             $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
-     * @return ReplyKeyboardMarkupType
      */
     public static function create(array $keyboard, array $data = null): ReplyKeyboardMarkupType
     {
-        $instance = new static();
-        $instance->keyboard = $keyboard;
+        $static = new static();
+        $static->keyboard = $keyboard;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

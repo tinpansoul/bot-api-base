@@ -6,12 +6,12 @@ namespace TgBotApi\BotApiBase\Tests\Type;
 
 use TgBotApi\BotApiBase\Type\UserType;
 
-class UserTypeTest extends TypeTestCase
+final class UserTypeTest extends TypeTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
         $result = [
             'id' => 1,
@@ -21,15 +21,15 @@ class UserTypeTest extends TypeTestCase
             'username' => 'test',
             'language_code' => 'en',
         ];
-        $botApi = $this->getBot($result);
+        $botApi = $this->getBot(result: $result);
 
-        $type = $botApi->call($this->getMethod(), UserType::class);
+        $type = $botApi->call(method: $this->getMethod(), type: UserType::class);
 
-        $this->assertEquals($type->id, $result['id']);
-        $this->assertEquals($type->isBot, $result['is_bot']);
-        $this->assertEquals($type->firstName, $result['first_name']);
-        $this->assertEquals($type->lastName, $result['last_name']);
-        $this->assertEquals($type->username, $result['username']);
-        $this->assertEquals($type->languageCode, $result['language_code']);
+        $this->assertEquals(expected: $type->id, actual: $result['id']);
+        $this->assertEquals(expected: $type->isBot, actual: $result['is_bot']);
+        $this->assertEquals(expected: $type->firstName, actual: $result['first_name']);
+        $this->assertEquals(expected: $type->lastName, actual: $result['last_name']);
+        $this->assertEquals(expected: $type->username, actual: $result['username']);
+        $this->assertEquals(expected: $type->languageCode, actual: $result['language_code']);
     }
 }

@@ -45,12 +45,12 @@ class InputTextMessageContentType extends InputMessageContentType implements Has
      */
     public static function create(string $messageText, array $data = null): InputTextMessageContentType
     {
-        $instance = new static();
-        $instance->messageText = $messageText;
+        $static = new static();
+        $static->messageText = $messageText;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

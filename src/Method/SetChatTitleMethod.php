@@ -23,18 +23,12 @@ class SetChatTitleMethod implements SetMethodAliasInterface
      */
     public $title;
 
-    /**
-     * @param int|string $chatId
-     * @param string     $title
-     *
-     * @return SetChatTitleMethod
-     */
-    public static function create($chatId, string $title): SetChatTitleMethod
+    public static function create(int|string $chatId, string $title): SetChatTitleMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->title = $title;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->title = $title;
 
-        return $instance;
+        return $static;
     }
 }

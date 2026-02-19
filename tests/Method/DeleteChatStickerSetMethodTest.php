@@ -6,15 +6,15 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\DeleteChatStickerSetMethod;
 
-class DeleteChatStickerSetMethodTest extends MethodTestCase
+final class DeleteChatStickerSetMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('deleteChatStickerSet', ['chat_id' => 'chat_id'], true);
+        $botApiComplete = $this->getBot(methodName: 'deleteChatStickerSet', request: ['chat_id' => 'chat_id'], result: true);
 
-        $botApi->deleteChatStickerSet(DeleteChatStickerSetMethod::create('chat_id'));
+        $botApiComplete->deleteChatStickerSet(deleteChatStickerSetMethod: DeleteChatStickerSetMethod::create(chatId: 'chat_id'));
     }
 }

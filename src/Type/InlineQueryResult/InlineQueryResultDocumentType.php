@@ -24,6 +24,7 @@ class InlineQueryResultDocumentType extends InlineQueryResultType implements Has
     use FillFromArrayTrait;
 
     public const MIME_TYPE_PDF = 'application/pdf';
+
     public const MIME_TYPE_ZIP = 'application/zip';
 
     /**
@@ -109,16 +110,16 @@ class InlineQueryResultDocumentType extends InlineQueryResultType implements Has
         string $mimeType,
         array $data = null
     ): InlineQueryResultDocumentType {
-        $instance = new static();
-        $instance->type = static::TYPE_DOCUMENT;
-        $instance->id = $id;
-        $instance->title = $title;
-        $instance->documentUrl = $documentUrl;
-        $instance->$mimeType = $mimeType;
+        $static = new static();
+        $static->type = static::TYPE_DOCUMENT;
+        $static->id = $id;
+        $static->title = $title;
+        $static->documentUrl = $documentUrl;
+        $static->$mimeType = $mimeType;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

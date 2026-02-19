@@ -11,24 +11,27 @@ use TgBotApi\BotApiBase\Type\ChatType;
 use TgBotApi\BotApiBase\Type\LocationType;
 use TgBotApi\BotApiBase\Type\MessageType;
 
-class ChatTypeTest extends TypeBaseTestCase
+final class ChatTypeTest extends TypeBaseTestCase
 {
+    /**
+     * @return array<string, array<int, string|ChatType>>
+     */
     public function provideData(): array
     {
         return [
             'full object case' => [
                 ChatType::class,
-                static::getResource('ChatType/full'),
-                static::getFullObject(),
+                self::getResource(filename: 'ChatType/full'),
+                (array)$this->getFullObject(),
             ],
         ];
     }
 
-    private static function getFullObject(): ChatType
+    private function getFullObject(): ChatType
     {
         $pinnedMessage = new MessageType();
         $pinnedMessage->messageId = 1;
-        $pinnedMessage->date = (new \DateTimeImmutable())->setTimestamp(0);
+        $pinnedMessage->date = (new \DateTimeImmutable())->setTimestamp(timestamp: 0);
         $pinnedMessage->chat = new ChatType();
         $pinnedMessage->chat->id = 9223372036854775807;
         $pinnedMessage->chat->type = ChatType::TYPE_SUPERGROUP;
@@ -55,7 +58,7 @@ class ChatTypeTest extends TypeBaseTestCase
         $chatType->inviteLink = 'invite_link';
         $chatType->pinnedMessage = $pinnedMessage;
 
-        $chatType->permissions = ChatPermissionsType::create([
+        $chatType->permissions = ChatPermissionsType::create(data: [
             'canAddWebPagePreviews' => true,
             'canChangeInfo' => true,
             'canInviteUsers' => true,

@@ -9,21 +9,21 @@ use TgBotApi\BotApiBase\Method\KickChatMemberMethod;
 /**
  * Class KickChatMemberMethodTest.
  */
-class KickChatMemberMethodTest extends MethodTestCase
+final class KickChatMemberMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @throws \Exception
      */
-    public function testEncode()
+    public function testEncode(): void
     {
         $dateTime = new \DateTimeImmutable();
-        $botApi = $this->getBot('kickChatMember', [
+        $botApiComplete = $this->getBot(methodName: 'kickChatMember', request: [
             'chat_id' => 1,
             'user_id' => 1,
-            'until_date' => $dateTime->format('U'),
-        ], true);
+            'until_date' => $dateTime->format(format: 'U'),
+        ], result: true);
 
-        $botApi->kickChatMember(KickChatMemberMethod::create(1, 1, ['untilDate' => $dateTime]));
+        $botApiComplete->kickChatMember(kickChatMemberMethod: KickChatMemberMethod::create(chatId: 1, userId: 1, data: ['untilDate' => $dateTime]));
     }
 }

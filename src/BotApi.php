@@ -28,39 +28,14 @@ class BotApi implements BotApiInterface
     use AliasMethodTrait;
     use GetMethodTrait;
 
-    /**
-     * @var string
-     */
-    private $botKey;
-
-    /**
-     * @var ApiClientInterface
-     */
-    private $apiClient;
-
-    /**
-     * @var string
-     */
-    private $endPoint;
-
-    /**
-     * @var NormalizerInterface
-     */
-    private $normalizer;
-
     public function __construct(
-        string $botKey,
-        ApiClientInterface $apiClient,
-        NormalizerInterface $normalizer,
-        string $endPoint = 'https://api.telegram.org'
+        private string $botKey,
+        private ApiClientInterface $apiClient,
+        private NormalizerInterface $normalizer,
+        private string $endPoint = 'https://api.telegram.org'
     ) {
-        $this->botKey = $botKey;
-        $this->apiClient = $apiClient;
-        $this->normalizer = $normalizer;
-        $this->endPoint = $endPoint;
-
-        $this->apiClient->setBotKey($botKey);
-        $this->apiClient->setEndpoint($endPoint);
+        $this->apiClient->setBotKey(botKey: $this->botKey);
+        $this->apiClient->setEndpoint(endPoint: $this->endPoint);
     }
 
     /**
@@ -72,29 +47,29 @@ class BotApi implements BotApiInterface
      */
     public function call(MethodInterface $method, string $type = null)
     {
-        $json = $this->apiClient->send($this->getMethodName($method), $this->normalizer->normalize($method));
+        $json = $this->apiClient->send(method: $this->getMethodName(method: $method), botApiRequest: $this->normalizer->normalize(method: $method));
 
         if (true !== $json->ok) {
-            throw new ResponseException($json->description);
+            throw new ResponseException(message: $json->description);
         }
 
-        return $type ? $this->normalizer->denormalize($json->result, $type) : $json->result;
+        return $type ? $this->normalizer->denormalize(data: $json->result, type: $type) : $json->result;
     }
 
     /**
      * @throws ResponseException
      */
-    public function exportChatInviteLink(ExportChatInviteLinkMethod $method): string
+    public function exportChatInviteLink(ExportChatInviteLinkMethod $exportChatInviteLinkMethod): string
     {
-        return $this->call($method);
+        return $this->call(method: $exportChatInviteLinkMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendChatAction(SendChatActionMethod $method): bool
+    public function sendChatAction(SendChatActionMethod $sendChatActionMethod): bool
     {
-        return $this->call($method);
+        return $this->call(method: $sendChatActionMethod);
     }
 
     /**
@@ -102,62 +77,63 @@ class BotApi implements BotApiInterface
      *
      * @return MessageType[]
      */
-    public function sendMediaGroup(SendMediaGroupMethod $method): array
+    public function sendMediaGroup(SendMediaGroupMethod $sendMediaGroupMethod): array
     {
-        return $this->call($method, MessageType::class . '[]');
+        return $this->call(method: $sendMediaGroupMethod, type: MessageType::class . '[]');
     }
 
     /**
      * @throws ResponseException
      */
-    public function logOut(LogOutMethod $method): bool
+    public function logOut(LogOutMethod $logOutMethod): bool
     {
-        return $this->call($method);
+        return $this->call(method: $logOutMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function close(CloseMethod $method): bool
+    public function close(CloseMethod $closeMethod): bool
     {
-        return $this->call($method);
+        return $this->call(method: $closeMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function copyMessage(CopyMessageMethod $method): MessageIdType
+    public function copyMessage(CopyMessageMethod $copyMessageMethod): MessageIdType
     {
-        return $this->call($method, MessageIdType::class);
+        return $this->call(method: $copyMessageMethod, type: MessageIdType::class);
     }
 
     /**
      * @throws ResponseException
      */
-    public function stopPoll(StopPollMethod $method): PollType
+    public function stopPoll(StopPollMethod $stopPollMethod): PollType
     {
-        return $this->call($method, PollType::class);
+        return $this->call(method: $stopPollMethod, type: PollType::class);
     }
 
-    public function getAbsoluteFilePath(FileType $file): string
+    public function getAbsoluteFilePath(FileType $fileType): string
     {
         return \sprintf(
             '%s/file/bot%s/%s',
             $this->endPoint,
             $this->botKey,
-            $file->filePath
+            $fileType->filePath
         );
     }
 
     /**
      * @param $method
      */
-    private function getMethodName($method): string
+    private function getMethodName(MethodInterface $method): string
     {
-        return \lcfirst(\substr(
-            \get_class($method),
-            \strrpos(\get_class($method), '\\') + 1,
-            -6
+        return \lcfirst(
+            string: \substr(
+            string: $method::class,
+            offset: \strrpos(haystack: $method::class, needle: '\\') + 1,
+            length: -6
         ));
     }
 }

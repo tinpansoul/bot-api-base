@@ -12,8 +12,11 @@ namespace TgBotApi\BotApiBase\Type;
 class ChatType
 {
     public const TYPE_PRIVATE = 'private';
+
     public const TYPE_GROUP = 'group';
+
     public const TYPE_SUPERGROUP = 'supergroup';
+
     public const TYPE_CHANNEL = 'channel';
 
     /**
@@ -97,6 +100,7 @@ class ChatType
      * @var string|null
      */
     public $description;
+
     /**
      * Optional. Chat invite link, for supergroups and channel chats. Returned only in getChat.
      *

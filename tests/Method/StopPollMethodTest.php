@@ -9,7 +9,7 @@ use TgBotApi\BotApiBase\Exception\ResponseException;
 use TgBotApi\BotApiBase\Method\StopPollMethod;
 use TgBotApi\BotApiBase\Tests\Method\Traits\InlineKeyboardMarkupTrait;
 
-class StopPollMethodTest extends MethodTestCase
+final class StopPollMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
@@ -17,19 +17,20 @@ class StopPollMethodTest extends MethodTestCase
      * @throws BadArgumentException
      * @throws ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot(
-            'stopPoll',
-            ['chat_id' => 'chat_id', 'message_id' => 1, 'reply_markup' => $this->buildInlineMarkupArray()],
-            [],
-            ['reply_markup']
+        $botApiComplete = $this->getBot(
+            methodName: 'stopPoll',
+            request: ['chat_id' => 'chat_id', 'message_id' => 1, 'reply_markup' => $this->buildInlineMarkupArray()],
+            result: [],
+            serialisedFields: ['reply_markup']
         );
 
-        $botApi->stopPoll(StopPollMethod::create(
-            'chat_id',
-            1,
-            ['replyMarkup' => $this->buildInlineMarkupObject()]
+        $botApiComplete->stopPoll(
+            stopPollMethod: StopPollMethod::create(
+            chatId: 'chat_id',
+            messageId: 1,
+            data: ['replyMarkup' => $this->buildInlineMarkupObject()]
         ));
     }
 }

@@ -9,15 +9,15 @@ use TgBotApi\BotApiBase\Method\PromoteChatMemberMethod;
 /**
  * Class PromoteChatMemberMethodTest.
  */
-class PromoteChatMemberMethodTest extends MethodTestCase
+final class PromoteChatMemberMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('promoteChatMember', [
+        $botApiComplete = $this->getBot(methodName: 'promoteChatMember', request: [
             'chat_id' => 'chat_id',
             'user_id' => 1,
             'can_change_info' => true,
@@ -29,18 +29,18 @@ class PromoteChatMemberMethodTest extends MethodTestCase
             'can_pin_messages' => true,
             'can_promote_members' => true,
             'is_anonymous' => true,
-        ], true);
+        ], result: true);
 
-        $method = PromoteChatMemberMethod::create('chat_id', 1, ['canChangeInfo' => true]);
-        $method->canPostMessages = true;
-        $method->canEditMessages = true;
-        $method->canDeleteMessages = true;
-        $method->canInviteUsers = true;
-        $method->canRestrictMembers = true;
-        $method->canPinMessages = true;
-        $method->canPromoteMembers = true;
-        $method->isAnonymous = true;
+        $promoteChatMemberMethod = PromoteChatMemberMethod::create(chatId: 'chat_id', userId: 1, data: ['canChangeInfo' => true]);
+        $promoteChatMemberMethod->canPostMessages = true;
+        $promoteChatMemberMethod->canEditMessages = true;
+        $promoteChatMemberMethod->canDeleteMessages = true;
+        $promoteChatMemberMethod->canInviteUsers = true;
+        $promoteChatMemberMethod->canRestrictMembers = true;
+        $promoteChatMemberMethod->canPinMessages = true;
+        $promoteChatMemberMethod->canPromoteMembers = true;
+        $promoteChatMemberMethod->isAnonymous = true;
 
-        $botApi->promoteChatMember($method);
+        $botApiComplete->promoteChatMember(promoteChatMemberMethod: $promoteChatMemberMethod);
     }
 }

@@ -6,25 +6,26 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\AnswerCallbackQueryMethod;
 
-class AnswerCallbackQueryMethodTest extends MethodTestCase
+final class AnswerCallbackQueryMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \Exception
      */
-    public function testEncode()
+    public function testEncode(): void
     {
         $dateTime = new \DateTimeImmutable();
 
-        $botApi = $this->getBot('answerCallbackQuery', [
+        $botApiComplete = $this->getBot(methodName: 'answerCallbackQuery', request: [
             'callback_query_id' => 'id',
             'text' => 'text of answer',
             'show_alert' => true,
             'url' => 'url',
-            'cache_time' => $dateTime->format('U'),
-        ], true);
+            'cache_time' => $dateTime->format(format: 'U'),
+        ], result: true);
 
-        $botApi->answerCallbackQuery(AnswerCallbackQueryMethod::create('id', [
+        $botApiComplete->answerCallbackQuery(
+            answerCallbackQueryMethod: AnswerCallbackQueryMethod::create(callbackQueryId: 'id', data: [
             'text' => 'text of answer',
             'showAlert' => true,
             'url' => 'url',
@@ -36,32 +37,33 @@ class AnswerCallbackQueryMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \Exception
      */
-    public function testEncodePartial()
+    public function testEncodePartial(): void
     {
-        $botApi = $this->getBot('answerCallbackQuery', [
+        $botApiComplete = $this->getBot(methodName: 'answerCallbackQuery', request: [
             'callback_query_id' => 'id',
-        ], true);
+        ], result: true);
 
-        $botApi->answerCallbackQuery(AnswerCallbackQueryMethod::create('id'));
+        $botApiComplete->answerCallbackQuery(answerCallbackQueryMethod: AnswerCallbackQueryMethod::create(callbackQueryId: 'id'));
     }
 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \Exception
      */
-    public function testEncodeFalse()
+    public function testEncodeFalse(): void
     {
         $dateTime = new \DateTimeImmutable();
 
-        $botApi = $this->getBot('answerCallbackQuery', [
+        $botApiComplete = $this->getBot(methodName: 'answerCallbackQuery', request: [
             'callback_query_id' => 'id',
             'text' => 'text of answer',
             'show_alert' => false,
             'url' => 'url',
-            'cache_time' => $dateTime->format('U'),
-        ], true);
+            'cache_time' => $dateTime->format(format: 'U'),
+        ], result: true);
 
-        $botApi->answerCallbackQuery(AnswerCallbackQueryMethod::create('id', [
+        $botApiComplete->answerCallbackQuery(
+            answerCallbackQueryMethod: AnswerCallbackQueryMethod::create(callbackQueryId: 'id', data: [
             'text' => 'text of answer',
             'showAlert' => false,
             'url' => 'url',

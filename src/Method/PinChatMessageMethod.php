@@ -29,23 +29,20 @@ class PinChatMessageMethod implements PinMethodAliasInterface
     public $disableNotification;
 
     /**
-     * @param int|string $chatId
-     * @param int        $messageId
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return PinChatMessageMethod
      */
-    public static function create($chatId, int $messageId, array $data = null): PinChatMessageMethod
+    public static function create(int|string $chatId, int $messageId, array $data = null): PinChatMessageMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->messageId = $messageId;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->messageId = $messageId;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

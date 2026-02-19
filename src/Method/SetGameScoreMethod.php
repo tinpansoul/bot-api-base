@@ -67,15 +67,10 @@ class SetGameScoreMethod implements SetMethodAliasInterface
     public $inlineMessageId;
 
     /**
-     * @param int        $userId
-     * @param int        $score
-     * @param int        $chatId
-     * @param int        $messageId
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return SetGameScoreMethod
      */
     public static function create(
         int $userId,
@@ -84,27 +79,23 @@ class SetGameScoreMethod implements SetMethodAliasInterface
         int $messageId,
         array $data = null
     ): SetGameScoreMethod {
-        $instance = new static();
-        $instance->userId = $userId;
-        $instance->score = $score;
-        $instance->chatId = $chatId;
-        $instance->messageId = $messageId;
+        $static = new static();
+        $static->userId = $userId;
+        $static->score = $score;
+        $static->chatId = $chatId;
+        $static->messageId = $messageId;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 
     /**
-     * @param int        $userId
-     * @param int        $score
-     * @param string     $inlineMessageId
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return SetGameScoreMethod
      */
     public static function createInline(
         int $userId,
@@ -112,14 +103,14 @@ class SetGameScoreMethod implements SetMethodAliasInterface
         string $inlineMessageId,
         array $data = null
     ): SetGameScoreMethod {
-        $instance = new static();
-        $instance->userId = $userId;
-        $instance->score = $score;
-        $instance->inlineMessageId = $inlineMessageId;
+        $static = new static();
+        $static->userId = $userId;
+        $static->score = $score;
+        $static->inlineMessageId = $inlineMessageId;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

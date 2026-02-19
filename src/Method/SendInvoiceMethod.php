@@ -167,13 +167,11 @@ class SendInvoiceMethod implements SendMethodAliasInterface
     public $replyMarkup;
 
     /**
-     * @param int|string         $chatId
      * @param LabeledPriceType[] $prices
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(
-        $chatId,
+        int|string $chatId,
         string $title,
         string $description,
         string $payload,
@@ -183,20 +181,20 @@ class SendInvoiceMethod implements SendMethodAliasInterface
         array $prices,
         array $data = null
     ): SendInvoiceMethod {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->title = $title;
-        $instance->description = $description;
-        $instance->payload = $payload;
-        $instance->providerToken = $providerToken;
-        $instance->startParameter = $startParameter;
-        $instance->currency = $currency;
-        $instance->prices = $prices;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->title = $title;
+        $static->description = $description;
+        $static->payload = $payload;
+        $static->providerToken = $providerToken;
+        $static->startParameter = $startParameter;
+        $static->currency = $currency;
+        $static->prices = $prices;
 
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

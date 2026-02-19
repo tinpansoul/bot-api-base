@@ -14,6 +14,7 @@ use TgBotApi\BotApiBase\Exception\BadArgumentException;
 abstract class PassportElementErrorType
 {
     const ALLOWED_TYPES = [];
+
     /**
      * Error source, must be unspecified.
      *
@@ -36,28 +37,26 @@ abstract class PassportElementErrorType
     public $message;
 
     /**
-     * @param string $source
-     * @param string $type
-     * @param string $message
-     *
      * @throws BadArgumentException
      *
      * @return mixed
      */
     protected static function createBase(string $source, string $type, string $message)
     {
-        if (!\in_array($type, static::ALLOWED_TYPES, true)) {
-            throw new BadArgumentException(\sprintf(
+        if (!\in_array(needle: $type, haystack: static::ALLOWED_TYPES, strict: true)) {
+            throw new BadArgumentException(
+                message: \sprintf(
                 'parameter "type" should be one of the options: "%s". %s provided.',
-                \implode('", "', static::ALLOWED_TYPES),
+                \implode(separator: '", "', array: static::ALLOWED_TYPES),
                 $type
             ));
         }
-        $instance = new static();
-        $instance->source = $source;
-        $instance->type = $type;
-        $instance->message = $message;
 
-        return $instance;
+        $static = new static();
+        $static->source = $source;
+        $static->type = $type;
+        $static->message = $message;
+
+        return $static;
     }
 }

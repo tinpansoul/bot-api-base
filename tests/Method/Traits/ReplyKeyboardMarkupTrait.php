@@ -10,6 +10,9 @@ trait ReplyKeyboardMarkupTrait
 {
     use KeyboardButtonTrait;
 
+    /**
+     * @return array<string, array<int, array<mixed[]>>|bool>
+     */
     public static function buildReplyMarkupArray(): array
     {
         return [
@@ -29,11 +32,11 @@ trait ReplyKeyboardMarkupTrait
     public static function buildReplyMarkupObject(): ReplyKeyboardMarkupType
     {
         return ReplyKeyboardMarkupType::create(
-            [[
+            keyboard: [[
                 static::buildReplyKeyboardButtonObject(),
                 static::buildReplyKeyboardButtonObject(),
             ]],
-            [
+            data: [
                 'resizeKeyboard' => true,
                 'oneTimeKeyboard' => true,
                 'selective' => true,

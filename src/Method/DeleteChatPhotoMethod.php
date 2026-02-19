@@ -16,16 +16,11 @@ class DeleteChatPhotoMethod implements DeleteMethodAliasInterface
 {
     use ChatIdVariableTrait;
 
-    /**
-     * @param int|string $chatId
-     *
-     * @return DeleteChatPhotoMethod
-     */
-    public static function create($chatId): DeleteChatPhotoMethod
+    public static function create(int|string $chatId): DeleteChatPhotoMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
+        $static = new static();
+        $static->chatId = $chatId;
 
-        return $instance;
+        return $static;
     }
 }

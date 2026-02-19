@@ -6,19 +6,19 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\SetChatTitleMethod;
 
-class SetChatTitleMethodTest extends MethodTestCase
+final class SetChatTitleMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot(
-            'setChatTitle',
-            ['chat_id' => 'chat_id', 'title' => 'title'],
-            true
+        $botApiComplete = $this->getBot(
+            methodName: 'setChatTitle',
+            request: ['chat_id' => 'chat_id', 'title' => 'title'],
+            result: true
         );
 
-        $botApi->setChatTitle(SetChatTitleMethod::create('chat_id', 'title'));
+        $botApiComplete->setChatTitle(setChatTitleMethod: SetChatTitleMethod::create(chatId: 'chat_id', title: 'title'));
     }
 }

@@ -15,6 +15,7 @@ use TgBotApi\BotApiBase\Type\InputFileType;
 class InputMediaVideoType extends InputMediaType
 {
     use FillFromArrayTrait;
+
     /**
      * Optional. Thumbnail of the file sent. The thumbnail should be in JPEG format and less than 200 kB in size.
      * A thumbnail‘s width and height should not exceed 90.
@@ -56,22 +57,18 @@ class InputMediaVideoType extends InputMediaType
     public $supportStreaming;
 
     /**
-     * @param string|InputFileType $media
      * @param array|null           $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
-     * @return InputMediaVideoType
      */
-    public static function create($media, array $data = null): InputMediaVideoType
+    public static function create(string|InputFileType $media, array $data = null): InputMediaVideoType
     {
-        $instance = new static();
-        $instance->media = $media;
-        $instance->type = static::TYPE_VIDEO;
+        $static = new static();
+        $static->media = $media;
+        $static->type = static::TYPE_VIDEO;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

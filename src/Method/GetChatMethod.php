@@ -16,16 +16,11 @@ class GetChatMethod implements MethodInterface
 {
     use ChatIdVariableTrait;
 
-    /**
-     * @param int|string $chatId
-     *
-     * @return GetChatMethod
-     */
-    public static function create($chatId): GetChatMethod
+    public static function create(int|string $chatId): GetChatMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
+        $static = new static();
+        $static->chatId = $chatId;
 
-        return $instance;
+        return $static;
     }
 }

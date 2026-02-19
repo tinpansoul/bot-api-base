@@ -6,21 +6,22 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\SendChatActionMethod;
 
-class SendChatActionMethodTest extends MethodTestCase
+final class SendChatActionMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('sendChatAction', [
+        $botApiComplete = $this->getBot(methodName: 'sendChatAction', request: [
             'chat_id' => 'chat_id',
             'action' => SendChatActionMethod::ACTION_FIND_LOCATION,
-        ], true);
+        ], result: true);
 
-        $botApi->sendChatAction(SendChatActionMethod::create(
-            'chat_id',
-            SendChatActionMethod::ACTION_FIND_LOCATION
+        $botApiComplete->sendChatAction(
+            sendChatActionMethod: SendChatActionMethod::create(
+            chatId: 'chat_id',
+            action: SendChatActionMethod::ACTION_FIND_LOCATION
         ));
     }
 }

@@ -35,21 +35,19 @@ class GetUserProfilePhotosMethod implements MethodInterface
     /**
      * GetUserProfilePhotosMethod constructor.
      *
-     * @param int        $userId
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return GetUserProfilePhotosMethod
      */
     public static function create(int $userId, array $data = null): GetUserProfilePhotosMethod
     {
-        $instance = new static();
-        $instance->userId = $userId;
+        $static = new static();
+        $static->userId = $userId;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

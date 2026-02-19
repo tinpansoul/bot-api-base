@@ -16,19 +16,33 @@ class MessageEntityType
     use FillFromArrayTrait;
 
     public const TYPE_MENTION = 'mention';
+
     public const TYPE_HASHTAG = 'hashtag';
+
     public const TYPE_CASH_TAG = 'cashtag';
+
     public const TYPE_BOT_COMMAND = 'bot_command';
+
     public const TYPE_URL = 'url';
+
     public const TYPE_EMAIL = 'email';
+
     public const TYPE_PHONE_NUMBER = 'phone_number';
+
     public const TYPE_BOLD = 'bold';
+
     public const TYPE_ITALIC = 'italic';
+
     public const TYPE_UNDERLINE = 'underline';
+
     public const TYPE_STRIKETHROUGH = 'strikethrough';
+
     public const TYPE_CODE = 'code';
+
     public const TYPE_PRE = 'pre';
+
     public const TYPE_TEXT_LINK = 'text_link';
+
     public const TYPE_TEXT_MENTION = 'text_mention';
 
     /**
@@ -79,15 +93,15 @@ class MessageEntityType
 
     public static function create(string $type, int $offset, int $length, array $data = null): MessageEntityType
     {
-        $instance = new static();
-        $instance->type = $type;
-        $instance->offset = $offset;
-        $instance->length = $length;
+        $static = new static();
+        $static->type = $type;
+        $static->offset = $offset;
+        $static->length = $length;
 
-        if (!empty($data)) {
-            $instance->fill($data);
+        if ($data !== null && $data !== []) {
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

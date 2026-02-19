@@ -92,15 +92,15 @@ class InlineQueryResultPhotoType extends InlineQueryResultType implements HasPar
         string $thumbUrl,
         array $data = null
     ): InlineQueryResultPhotoType {
-        $instance = new static();
-        $instance->type = static::TYPE_PHOTO;
-        $instance->id = $id;
-        $instance->photoUrl = $photoUrl;
-        $instance->thumbUrl = $thumbUrl;
+        $static = new static();
+        $static->type = static::TYPE_PHOTO;
+        $static->id = $id;
+        $static->photoUrl = $photoUrl;
+        $static->thumbUrl = $thumbUrl;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

@@ -19,8 +19,6 @@ interface NormalizerInterface
 
     /**
      * @param $method
-     *
-     * @return BotApiRequestInterface
      */
     public function normalize($method): BotApiRequestInterface;
 }

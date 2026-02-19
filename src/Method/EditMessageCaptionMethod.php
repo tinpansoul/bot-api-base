@@ -30,14 +30,14 @@ class EditMessageCaptionMethod implements HasParseModeVariableInterface, EditMet
      */
     public static function create($chatId, int $messageId, array $data = null): EditMessageCaptionMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->messageId = $messageId;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->messageId = $messageId;
         if ($data) {
-            $instance->fill($data, ['chatId', 'messageId', 'inlineMessageId']);
+            $static->fill(data: $data, forbidden: ['chatId', 'messageId', 'inlineMessageId']);
         }
 
-        return $instance;
+        return $static;
     }
 
     /**
@@ -45,12 +45,12 @@ class EditMessageCaptionMethod implements HasParseModeVariableInterface, EditMet
      */
     public static function createInline(string $inlineMessageId, array $data = null): EditMessageCaptionMethod
     {
-        $instance = new static();
-        $instance->inlineMessageId = $inlineMessageId;
+        $static = new static();
+        $static->inlineMessageId = $inlineMessageId;
         if ($data) {
-            $instance->fill($data, ['chatId', 'messageId', 'inlineMessageId']);
+            $static->fill(data: $data, forbidden: ['chatId', 'messageId', 'inlineMessageId']);
         }
 
-        return $instance;
+        return $static;
     }
 }

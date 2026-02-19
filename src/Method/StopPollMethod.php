@@ -32,21 +32,18 @@ class StopPollMethod implements MethodInterface
     public $replyMarkup;
 
     /**
-     * @param string     $chatId
-     * @param int        $messageId
      * @param array|null $data
      *
-     * @return StopPollMethod
      */
     public static function create(string $chatId, int $messageId, array $data = null): self
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->messageId = $messageId;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->messageId = $messageId;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

@@ -17,9 +17,13 @@ abstract class InputMediaType
     use CaptionEntitiesFieldTrait;
 
     public const TYPE_PHOTO = 'photo';
+
     public const TYPE_VIDEO = 'video';
+
     public const TYPE_ANIMATION = 'animation';
+
     public const TYPE_AUDIO = 'audio';
+
     public const TYPE_DOCUMENT = 'document';
 
     /**

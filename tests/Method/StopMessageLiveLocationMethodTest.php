@@ -7,7 +7,7 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 use TgBotApi\BotApiBase\Method\StopMessageLiveLocationMethod;
 use TgBotApi\BotApiBase\Tests\Method\Traits\InlineKeyboardMarkupTrait;
 
-class StopMessageLiveLocationMethodTest extends MethodTestCase
+final class StopMessageLiveLocationMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
@@ -15,15 +15,16 @@ class StopMessageLiveLocationMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('stopMessageLiveLocation', [
+        $botApiComplete = $this->getBot(methodName: 'stopMessageLiveLocation', request: [
             'chat_id' => 'chat_id',
             'message_id' => 1,
             'reply_markup' => $this->buildInlineMarkupArray(),
-        ], true, ['reply_markup']);
+        ], result: true, serialisedFields: ['reply_markup']);
 
-        $botApi->stopMessageLiveLocation(StopMessageLiveLocationMethod::create('chat_id', 1, [
+        $botApiComplete->stopMessageLiveLocation(
+            stopMessageLiveLocationMethod: StopMessageLiveLocationMethod::create(chatId: 'chat_id', messageId: 1, data: [
             'replyMarkup' => $this->buildInlineMarkupObject(),
         ]));
     }
@@ -32,14 +33,16 @@ class StopMessageLiveLocationMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncodeInline()
+    public function testEncodeInline(): void
     {
-        $botApi = $this->getBot('stopMessageLiveLocation', [
+        $botApiComplete = $this->getBot(methodName: 'stopMessageLiveLocation', request: [
             'inline_message_id' => 'message_id',
             'reply_markup' => $this->buildInlineMarkupArray(),
-        ], true, ['reply_markup']);
+        ], result: true, serialisedFields: ['reply_markup']);
 
-        $botApi->stopMessageLiveLocation(StopMessageLiveLocationMethod::createInline('message_id', [
+        $botApiComplete->stopMessageLiveLocation(
+            stopMessageLiveLocationMethod: StopMessageLiveLocationMethod::createInline(
+            inlineMessageId: 'message_id', data: [
             'replyMarkup' => $this->buildInlineMarkupObject(),
         ]));
     }

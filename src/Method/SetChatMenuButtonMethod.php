@@ -43,16 +43,14 @@ class SetChatMenuButtonMethod implements SetMethodAliasInterface
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
-     * @return SetChatMenuButtonMethod
      */
     public static function create(array $data = null): SetChatMenuButtonMethod
     {
-        $instance = new static();
+        $static = new static();
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

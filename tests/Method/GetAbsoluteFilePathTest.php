@@ -10,26 +10,27 @@ use TgBotApi\BotApiBase\BotApiComplete;
 use TgBotApi\BotApiBase\Tests\GetNormalizerTrait;
 use TgBotApi\BotApiBase\Type\FileType;
 
-class GetAbsoluteFilePathTest extends TestCase
+final class GetAbsoluteFilePathTest extends TestCase
 {
     use GetNormalizerTrait;
 
-    public function testMethod()
+    public function testMethod(): void
     {
         /** @var ApiClientInterface $stub */
-        $stub = $this->getMockBuilder(ApiClientInterface::class)->getMock();
+        $stub = $this->getMockBuilder(className: ApiClientInterface::class)->getMock();
 
-        $botApi = new BotApiComplete(
-            '000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-            $stub,
-            $this->getNormalizer(),
-            'endpoint'
+        $botApiComplete = new BotApiComplete(
+            botKey: '000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+            apiClient: $stub,
+            normalizer: $this->getNormalizer(),
+            endPoint: 'endpoint'
         );
 
-        $file = new FileType();
-        $file->filePath = 'path';
-        $absolutePath = $botApi->getAbsoluteFilePath($file);
+        $fileType = new FileType();
+        $fileType->filePath = 'path';
 
-        $this->assertEquals('endpoint/file/bot000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/path', $absolutePath);
+        $absolutePath = $botApiComplete->getAbsoluteFilePath(fileType: $fileType);
+
+        $this->assertEquals(expected: 'endpoint/file/bot000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/path', actual: $absolutePath);
     }
 }

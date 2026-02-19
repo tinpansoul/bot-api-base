@@ -13,25 +13,22 @@ abstract class TypeBaseTestCase extends TypeTestCase
 {
     use GetNormalizerTrait;
 
-    /**
-     * @var BotApi
-     */
-    private $bot;
+    private BotApi $botApi;
 
     /**
      * @var ApiClientInterface|MockObject
      */
-    private $client;
+    private MockObject $client;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
-        $this->client = $this->getMockBuilder(ApiClientInterface::class)
+        $this->client = $this->getMockBuilder(className: ApiClientInterface::class)
             ->getMock();
 
-        $this->bot = new BotApi(
-            '000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-            $this->client,
-            $this->getNormalizer()
+        $this->botApi = new BotApi(
+            botKey: '000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+            apiClient: $this->client,
+            normalizer: $this->getNormalizer()
         );
     }
 
@@ -42,22 +39,20 @@ abstract class TypeBaseTestCase extends TypeTestCase
      *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testType(string $class, string $response, $excepted): void
+    public function testType(string $class, string $response, array $excepted): void
     {
         $this->client
             ->expects(static::once())
-            ->method('send')
-            ->willReturn(\json_decode($response));
+            ->method(constraint: 'send')
+            ->willReturn(value: \json_decode(json: $response));
 
-        $type = $this->bot->call($this->getMethod(), $class);
+        $type = $this->botApi->call(method: $this->getMethod(), type: $class);
 
         if ($excepted instanceof $class) {
-            static::assertEquals($excepted, $type);
+            static::assertEquals(expected: $excepted, actual: $type);
         } else {
-            foreach (\get_object_vars($type) as $var => $value) {
-                if (null !== $var) {
-                    static::assertEquals($excepted[$var], $value);
-                }
+            foreach (\get_object_vars(object: $type) as $var => $value) {
+                static::assertEquals(expected: $excepted[$var], actual: $value);
             }
         }
     }

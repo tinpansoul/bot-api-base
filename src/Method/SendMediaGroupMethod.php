@@ -51,20 +51,18 @@ class SendMediaGroupMethod implements MethodInterface
     public $allowSendingWithoutReply;
 
     /**
-     * @param int|string                                                                                 $chatId
      * @param InputMediaPhotoType[]|InputMediaVideoType[]|InputMediaAudioType[]|InputMediaDocumentType[] $media
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create($chatId, array $media, array $data = null): SendMediaGroupMethod
+    public static function create(int|string $chatId, array $media, array $data = null): SendMediaGroupMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->media = $media;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->media = $media;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

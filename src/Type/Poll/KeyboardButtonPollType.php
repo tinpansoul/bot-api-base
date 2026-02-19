@@ -25,9 +25,9 @@ class KeyboardButtonPollType implements PollTypeInterface
 
     public static function create(string $type): KeyboardButtonPollType
     {
-        $instance = new static();
-        $instance->type = $type;
+        $static = new static();
+        $static->type = $type;
 
-        return $instance;
+        return $static;
     }
 }

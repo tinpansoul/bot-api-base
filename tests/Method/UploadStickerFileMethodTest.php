@@ -11,20 +11,21 @@ use TgBotApi\BotApiBase\Type\InputFileType;
 /**
  * Class SendStickerMethodTest.
  */
-class UploadStickerFileMethodTest extends MethodTestCase
+final class UploadStickerFileMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBotWithFiles('uploadStickerFile', [
+        $botApiComplete = $this->getBotWithFiles(methodName: 'uploadStickerFile', request: [
             'user_id' => 1,
             'png_sticker' => '',
-        ], ['png_sticker' => true], [], true);
+        ], fileMap: ['png_sticker' => true], serializableFields: [], result: true);
 
-        $botApi->uploadStickerFile(UploadStickerFileMethod::create(
-            1,
-            InputFileType::create('/dev/null')
+        $botApiComplete->uploadStickerFile(
+            uploadStickerFileMethod: UploadStickerFileMethod::create(
+            userId: 1,
+            inputFileType: InputFileType::create(path: '/dev/null')
         ));
     }
 }

@@ -29,10 +29,10 @@ class BotCommandType
 
     public static function create(string $command, string $description): BotCommandType
     {
-        $instance = new static();
-        $instance->command = $command;
-        $instance->description = $description;
+        $static = new static();
+        $static->command = $command;
+        $static->description = $description;
 
-        return $instance;
+        return $static;
     }
 }

@@ -16,16 +16,11 @@ class ExportChatInviteLinkMethod implements MethodInterface
 {
     use ChatIdVariableTrait;
 
-    /**
-     * @param int|string $chatId
-     *
-     * @return ExportChatInviteLinkMethod
-     */
-    public static function create($chatId): ExportChatInviteLinkMethod
+    public static function create(int|string $chatId): ExportChatInviteLinkMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
+        $static = new static();
+        $static->chatId = $chatId;
 
-        return $instance;
+        return $static;
     }
 }

@@ -32,216 +32,180 @@ use TgBotApi\BotApiBase\Type\MessageType;
 trait AliasMethodTrait
 {
     /**
-     * @param MethodInterface $method
      * @param string|null     $type
      *
      * @throws ResponseException
-     *
      * @return mixed
      */
     abstract public function call(MethodInterface $method, string $type = null);
 
     /**
-     * @param AddMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function add(AddMethodAliasInterface $method): bool
+    public function add(AddMethodAliasInterface $addMethodAlias): bool
     {
-        return $this->call($method);
+        return $this->call(method: $addMethodAlias);
     }
 
     /**
-     * @param AnswerMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function answer(AnswerMethodAliasInterface $method): bool
+    public function answer(AnswerMethodAliasInterface $answerMethodAlias): bool
     {
-        return $this->call($method);
+        return $this->call(method: $answerMethodAlias);
     }
 
     /**
-     * @param CreateMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function create(CreateMethodAliasInterface $method): bool
+    public function create(CreateMethodAliasInterface $createMethodAlias): bool
     {
-        return $this->call($method);
+        return $this->call(method: $createMethodAlias);
     }
 
     /**
-     * @param DeleteMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function delete(DeleteMethodAliasInterface $method): bool
+    public function delete(DeleteMethodAliasInterface $deleteMethodAlias): bool
     {
-        return $this->call($method);
+        return $this->call(method: $deleteMethodAlias);
     }
 
     /**
-     * @param EditMethodAliasInterface $method
      *
      * @throws ResponseException
-     *
      * @return MessageType | bool
      */
-    public function edit(EditMethodAliasInterface $method)
+    public function edit(EditMethodAliasInterface $editMethodAlias)
     {
-        return $this->call($method, MessageType::class . '|bool');
+        return $this->call(method: $editMethodAlias, type: MessageType::class . '|bool');
     }
 
     /**
-     * @param ForwardMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return MessageType
      */
-    public function forward(ForwardMethodAliasInterface $method): MessageType
+    public function forward(ForwardMethodAliasInterface $forwardMethodAlias): MessageType
     {
-        return $this->call($method, MessageType::class);
+        return $this->call(method: $forwardMethodAlias, type: MessageType::class);
     }
 
     /**
-     * @param KickMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function kick(KickMethodAliasInterface $method): bool
+    public function kick(KickMethodAliasInterface $kickMethodAlias): bool
     {
-        return $this->call($method);
+        return $this->call(method: $kickMethodAlias);
     }
 
     /**
-     * @param LeaveMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function leave(LeaveMethodAliasInterface $method): bool
+    public function leave(LeaveMethodAliasInterface $leaveMethodAlias): bool
     {
-        return $this->call($method);
+        return $this->call(method: $leaveMethodAlias);
     }
 
     /**
-     * @param PinMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function pin(PinMethodAliasInterface $method): bool
+    public function pin(PinMethodAliasInterface $pinMethodAlias): bool
     {
-        return $this->call($method);
+        return $this->call(method: $pinMethodAlias);
     }
 
     /**
-     * @param PromoteMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function promote(PromoteMethodAliasInterface $method): bool
+    public function promote(PromoteMethodAliasInterface $promoteMethodAlias): bool
     {
-        return $this->call($method);
+        return $this->call(method: $promoteMethodAlias);
     }
 
     /**
-     * @param RestrictMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function restrict(RestrictMethodAliasInterface $method): bool
+    public function restrict(RestrictMethodAliasInterface $restrictMethodAlias): bool
     {
-        return $this->call($method);
+        return $this->call(method: $restrictMethodAlias);
     }
 
     /**
-     * @param SendMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return MessageType
      */
-    public function send(SendMethodAliasInterface $method): MessageType
+    public function send(SendMethodAliasInterface $sendMethodAlias): MessageType
     {
-        return $this->call($method, MessageType::class);
+        return $this->call(method: $sendMethodAlias, type: MessageType::class);
     }
 
     /**
-     * @param SetMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function set(SetMethodAliasInterface $method): bool
+    public function set(SetMethodAliasInterface $setMethodAlias): bool
     {
-        return $this->call($method);
+        return $this->call(method: $setMethodAlias);
     }
 
     /**
-     * @param StopMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function stop(StopMethodAliasInterface $method): bool
+    public function stop(StopMethodAliasInterface $stopMethodAlias): bool
     {
-        return $this->call($method);
+        return $this->call(method: $stopMethodAlias);
     }
 
     /**
-     * @param UnbanMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function unban(UnbanMethodAliasInterface $method): bool
+    public function unban(UnbanMethodAliasInterface $unbanMethodAlias): bool
     {
-        return $this->call($method);
+        return $this->call(method: $unbanMethodAlias);
     }
 
     /**
-     * @param UnpinMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function unpin(UnpinMethodAliasInterface $method): bool
+    public function unpin(UnpinMethodAliasInterface $unpinMethodAlias): bool
     {
-        return $this->call($method);
+        return $this->call(method: $unpinMethodAlias);
     }
 
     /**
-     * @param UploadMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return FileType
      */
-    public function upload(UploadMethodAliasInterface $method): FileType
+    public function upload(UploadMethodAliasInterface $uploadMethodAlias): FileType
     {
-        return $this->call($method, FileType::class);
+        return $this->call(method: $uploadMethodAlias, type: FileType::class);
     }
 }

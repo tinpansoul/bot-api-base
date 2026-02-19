@@ -6,20 +6,20 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\SetChatDescriptionMethod;
 
-class SetChatDescriptionMethodTest extends MethodTestCase
+final class SetChatDescriptionMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot(
-            'setChatDescription',
-            ['chat_id' => 'chat_id', 'description' => 'description'],
-            true
+        $botApiComplete = $this->getBot(
+            methodName: 'setChatDescription',
+            request: ['chat_id' => 'chat_id', 'description' => 'description'],
+            result: true
         );
 
-        $botApi->setChatDescription(SetChatDescriptionMethod::create('chat_id', ['description' => 'description']));
+        $botApiComplete->setChatDescription(setChatDescriptionMethod: SetChatDescriptionMethod::create(chatId: 'chat_id', data: ['description' => 'description']));
     }
 }

@@ -56,21 +56,19 @@ class LoginUrlType
     public $requestWriteAccess;
 
     /**
-     * @param string     $url
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return LoginUrlType
      */
     public static function create(string $url, array $data = null): LoginUrlType
     {
-        $instance = new static();
-        $instance->url = $url;
+        $static = new static();
+        $static->url = $url;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

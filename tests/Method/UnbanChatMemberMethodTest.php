@@ -6,38 +6,42 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\UnbanChatMemberMethod;
 
-class UnbanChatMemberMethodTest extends MethodTestCase
+final class UnbanChatMemberMethodTest extends MethodTestCase
 {
     public function testCreate(): void
     {
-        $method = UnbanChatMemberMethod::create('chat_id', 1, ['onlyIfBanned' => true]);
+        $unbanChatMemberMethod = UnbanChatMemberMethod::create(chatId: 'chat_id', userId: 1, data: ['onlyIfBanned' => true]);
 
-        static::assertEquals('chat_id', $method->chatId);
-        static::assertEquals(1, $method->userId);
-        static::assertTrue($method->onlyIfBanned);
+        self::assertEquals(expected: 'chat_id', actual: $unbanChatMemberMethod->chatId);
+        self::assertEquals(expected: 1, actual: $unbanChatMemberMethod->userId);
+        self::assertTrue(condition: $unbanChatMemberMethod->onlyIfBanned);
     }
 
     /**
      * @dataProvider provideData
      *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
+     * @param array<string, string|int|bool> $expectedRequest
      */
-    public function testEncode(UnbanChatMemberMethod $method, array $expectedRequest): void
+    public function testEncode(UnbanChatMemberMethod $unbanChatMemberMethod, array $expectedRequest): void
     {
-        $botApi = $this->getBot('unbanChatMember', $expectedRequest, true);
+        $botApiComplete = $this->getBot(methodName: 'unbanChatMember', request: $expectedRequest, result: true);
 
-        $botApi->unbanChatMember($method);
+        $botApiComplete->unbanChatMember(unbanChatMemberMethod: $unbanChatMemberMethod);
     }
 
+    /**
+     * @return array<string, array<UnbanChatMemberMethod|array<string, string|int|bool>>>
+     */
     public function provideData(): array
     {
         return [
             'default case' => [
-                UnbanChatMemberMethod::create('chat_id', 1),
+                UnbanChatMemberMethod::create(chatId: 'chat_id', userId: 1),
                 ['chat_id' => 'chat_id', 'user_id' => 1],
             ],
             'onlyIf BannedCase' => [
-                UnbanChatMemberMethod::create('chat_id', 1, ['onlyIfBanned' => true]),
+                UnbanChatMemberMethod::create(chatId: 'chat_id', userId: 1, data: ['onlyIfBanned' => true]),
                 ['chat_id' => 'chat_id', 'user_id' => 1, 'only_if_banned' => true],
             ],
         ];

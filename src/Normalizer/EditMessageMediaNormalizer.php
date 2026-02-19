@@ -14,54 +14,49 @@ use TgBotApi\BotApiBase\Method\EditMessageMediaMethod;
  */
 class EditMessageMediaNormalizer implements NormalizerInterface
 {
-    /**
-     * @var InputMediaNormalizer
-     */
-    private $inputMediaNormalizer;
-    /**
-     * @var NormalizerInterface
-     */
-    private $objectNormalizer;
 
     /**
      * MediaGroupNormalizer constructor.
      */
     public function __construct(
-        InputMediaNormalizer $inputMediaNormalizer,
-        NormalizerInterface $objectNormalizer
+        private readonly InputMediaNormalizer $inputMediaNormalizer,
+        private readonly NormalizerInterface $objectNormalizer
     ) {
-        $this->inputMediaNormalizer = $inputMediaNormalizer;
-        $this->objectNormalizer = $objectNormalizer;
     }
 
     /**
      * @param EditMessageMediaMethod $topic
-     * @param null                   $format
-     *
-     * @throws ExceptionInterface
      *
      * @return array|bool|float|int|mixed|string
+     * @throws ExceptionInterface
      */
-    public function normalize($topic, $format = null, array $context = [])
-    {
-        $serializer = new Serializer([
+    public function normalize(
+        $topic,
+        $format = null,
+        array $context = []
+    ): string|int|float|bool|\ArrayObject|array|null {
+        $serializer = new Serializer(normalizers: [
             $this->inputMediaNormalizer,
-            new JsonSerializableNormalizer($this->objectNormalizer),
+            new JsonSerializableNormalizer(objectNormalizer: $this->objectNormalizer),
             $this->objectNormalizer,
         ]);
-        $topic->media = \json_encode($serializer->normalize($topic->media, null, ['skip_null_values' => true]));
+        $topic->media = \json_encode(value: $serializer->normalize(data: $topic->media, format: null, context: ['skip_null_values' => true]));
 
-        $topic->replyMarkup = $serializer->normalize($topic->replyMarkup, null, ['skip_null_values' => true]);
+        $topic->replyMarkup = $serializer->normalize(data: $topic->replyMarkup, format: null, context: ['skip_null_values' => true]);
 
-        return $serializer->normalize($topic, null, ['skip_null_values' => true]);
+        return $serializer->normalize(data: $topic, format: null, context: ['skip_null_values' => true]);
+    }
+
+    public function supportsNormalization(mixed $data, $format = null, array $context = []): bool
+    {
+        return $data instanceof EditMessageMediaMethod;
     }
 
     /**
-     * @param mixed $data
-     * @param null  $format
+     * @return array<string, bool>
      */
-    public function supportsNormalization($data, $format = null): bool
+    public function getSupportedTypes(?string $format): array
     {
-        return $data instanceof EditMessageMediaMethod;
+        return ['*' => false];
     }
 }

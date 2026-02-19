@@ -6,15 +6,15 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\GetChatMethod;
 
-class GetChatMethodTest extends MethodTestCase
+final class GetChatMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('getChat', ['chat_id' => 'chat_id']);
+        $botApiComplete = $this->getBot(methodName: 'getChat', request: ['chat_id' => 'chat_id']);
 
-        $botApi->getChat(GetChatMethod::create('chat_id'));
+        $botApiComplete->getChat(getChatMethod: GetChatMethod::create(chatId: 'chat_id'));
     }
 }

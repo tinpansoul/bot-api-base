@@ -50,20 +50,18 @@ class SendDocumentMethod implements HasParseModeVariableInterface, SendMethodAli
     public $disableContentTypeDetection;
 
     /**
-     * @param int|string           $chatId
-     * @param InputFileType|string $document
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create($chatId, $document, array $data = null): SendDocumentMethod
+    public static function create(int|string $chatId, string|InputFileType $document, array $data = null): SendDocumentMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->document = $document;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->document = $document;
         if ($data) {
-            $instance->fill($data, ['document']);
+            $static->fill(data: $data, forbidden: ['document']);
         }
 
-        return $instance;
+        return $static;
     }
 }

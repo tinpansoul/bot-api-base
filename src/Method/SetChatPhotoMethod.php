@@ -16,6 +16,7 @@ use TgBotApi\BotApiBase\Type\InputFileType;
 class SetChatPhotoMethod implements SetMethodAliasInterface
 {
     use ChatIdVariableTrait;
+
     /**
      * New chat photo, uploaded using multipart/form-data.
      *
@@ -23,18 +24,12 @@ class SetChatPhotoMethod implements SetMethodAliasInterface
      */
     public $photo;
 
-    /**
-     * @param int|string    $chatId
-     * @param InputFileType $photo
-     *
-     * @return SetChatPhotoMethod
-     */
-    public static function create($chatId, InputFileType $photo): SetChatPhotoMethod
+    public static function create(int|string $chatId, InputFileType $inputFileType): SetChatPhotoMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->photo = $photo;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->photo = $inputFileType;
 
-        return $instance;
+        return $static;
     }
 }

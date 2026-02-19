@@ -9,7 +9,7 @@ use TgBotApi\BotApiBase\Exception\ResponseException;
 use TgBotApi\BotApiBase\Method\ForwardMessageMethod;
 use TgBotApi\BotApiBase\Tests\Method\Traits\InlineKeyboardMarkupTrait;
 
-class ForwardMessageMethodTest extends MethodTestCase
+final class ForwardMessageMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
@@ -19,9 +19,9 @@ class ForwardMessageMethodTest extends MethodTestCase
      */
     public function testEncode(): void
     {
-        $botApi = $this->getBot(
-            'forwardMessage',
-            [
+        $botApiComplete = $this->getBot(
+            methodName: 'forwardMessage',
+            request: [
                 'chat_id' => 'chat_id',
                 'from_chat_id' => 'chat_id',
                 'message_id' => 1,
@@ -29,11 +29,12 @@ class ForwardMessageMethodTest extends MethodTestCase
             ]
         );
 
-        $botApi->forwardMessage(ForwardMessageMethod::create(
-            'chat_id',
-            'chat_id',
-            1,
-            ['disableNotification' => true]
+        $botApiComplete->forwardMessage(
+            forwardMessageMethod: ForwardMessageMethod::create(
+            chatId: 'chat_id',
+            fromChatId: 'chat_id',
+            messageId: 1,
+            data: ['disableNotification' => true]
         ));
     }
 }

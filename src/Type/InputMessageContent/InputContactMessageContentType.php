@@ -14,6 +14,7 @@ use TgBotApi\BotApiBase\Method\Traits\FillFromArrayTrait;
 class InputContactMessageContentType extends InputMessageContentType
 {
     use FillFromArrayTrait;
+
     /**
      * Contact's phone number.
      *
@@ -43,26 +44,22 @@ class InputContactMessageContentType extends InputMessageContentType
     public $vcard;
 
     /**
-     * @param string     $phoneNumber
-     * @param string     $firstName
      * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return InputContactMessageContentType
      */
     public static function create(
         string $phoneNumber,
         string $firstName,
         array $data = null
     ): InputContactMessageContentType {
-        $instance = new static();
-        $instance->phoneNumber = $phoneNumber;
-        $instance->firstName = $firstName;
+        $static = new static();
+        $static->phoneNumber = $phoneNumber;
+        $static->firstName = $firstName;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

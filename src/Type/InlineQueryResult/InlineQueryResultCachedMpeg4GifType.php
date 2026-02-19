@@ -63,14 +63,14 @@ class InlineQueryResultCachedMpeg4GifType extends InlineQueryResultType implemen
         string $mpeg4FileId,
         array $data = null
     ): InlineQueryResultCachedMpeg4GifType {
-        $instance = new static();
-        $instance->type = static::TYPE_MPEG4GIF;
-        $instance->id = $id;
-        $instance->mpeg4FileId = $mpeg4FileId;
+        $static = new static();
+        $static->type = static::TYPE_MPEG4GIF;
+        $static->id = $id;
+        $static->mpeg4FileId = $mpeg4FileId;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

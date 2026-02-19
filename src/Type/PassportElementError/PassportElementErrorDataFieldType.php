@@ -12,10 +12,15 @@ namespace TgBotApi\BotApiBase\Type\PassportElementError;
 class PassportElementErrorDataFieldType extends PassportElementErrorType
 {
     const TYPE_PERSONAL_DETAILS = 'personal_details';
+
     const TYPE_PASSPORT = 'passport';
+
     const TYPE_DRIVER_LICENSE = 'driver_license';
+
     const TYPE_IDENTITY_CARD = 'identity_card';
+
     const TYPE_INTERNAL_PASSPORT = 'internal_passport';
+
     const TYPE_ADDRESS = 'address';
 
     const ALLOWED_TYPES = [
@@ -42,14 +47,9 @@ class PassportElementErrorDataFieldType extends PassportElementErrorType
     public $dataHash;
 
     /**
-     * @param string $type
-     * @param string $message
-     * @param string $fieldName
-     * @param string $dataHash
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return PassportElementErrorDataFieldType
      */
     public static function create(
         string $type,
@@ -57,7 +57,7 @@ class PassportElementErrorDataFieldType extends PassportElementErrorType
         string $fieldName,
         string $dataHash
     ): PassportElementErrorDataFieldType {
-        $instance = parent::createBase('data', $type, $message);
+        $instance = parent::createBase(source: 'data', type: $type, message: $message);
         $instance->fieldName = $fieldName;
         $instance->dataHash = $dataHash;
 

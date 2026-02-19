@@ -18,71 +18,59 @@ use TgBotApi\BotApiBase\Method\Interfaces\DeleteMethodAliasInterface;
 trait DeleteMethodTrait
 {
     /**
-     * @param DeleteMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    abstract public function delete(DeleteMethodAliasInterface $method): bool;
+    abstract public function delete(DeleteMethodAliasInterface $deleteMethodAlias): bool;
 
     /**
-     * @param DeleteChatPhotoMethod $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function deleteChatPhoto(DeleteChatPhotoMethod $method): bool
+    public function deleteChatPhoto(DeleteChatPhotoMethod $deleteChatPhotoMethod): bool
     {
-        return $this->delete($method);
+        return $this->delete(deleteMethodAlias: $deleteChatPhotoMethod);
     }
 
     /**
-     * @param DeleteChatStickerSetMethod $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function deleteChatStickerSet(DeleteChatStickerSetMethod $method): bool
+    public function deleteChatStickerSet(DeleteChatStickerSetMethod $deleteChatStickerSetMethod): bool
     {
-        return $this->delete($method);
+        return $this->delete(deleteMethodAlias: $deleteChatStickerSetMethod);
     }
 
     /**
-     * @param DeleteMessageMethod $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function deleteMessage(DeleteMessageMethod $method): bool
+    public function deleteMessage(DeleteMessageMethod $deleteMessageMethod): bool
     {
-        return $this->delete($method);
+        return $this->delete(deleteMethodAlias: $deleteMessageMethod);
     }
 
     /**
-     * @param DeleteStickerFromSetMethod $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function deleteStickerFromSet(DeleteStickerFromSetMethod $method): bool
+    public function deleteStickerFromSet(DeleteStickerFromSetMethod $deleteStickerFromSetMethod): bool
     {
-        return $this->delete($method);
+        return $this->delete(deleteMethodAlias: $deleteStickerFromSetMethod);
     }
 
     /**
-     * @param DeleteWebhookMethod $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function deleteWebhook(DeleteWebhookMethod $method): bool
+    public function deleteWebhook(DeleteWebhookMethod $deleteWebhookMethod): bool
     {
-        return $this->delete($method);
+        return $this->delete(deleteMethodAlias: $deleteWebhookMethod);
     }
 }

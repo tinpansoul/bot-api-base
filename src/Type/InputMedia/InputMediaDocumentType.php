@@ -37,19 +37,17 @@ class InputMediaDocumentType extends InputMediaType
     public $disableContentTypeDetection;
 
     /**
-     * @param string|InputFileType $media
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create($media, array $data = null): InputMediaDocumentType
+    public static function create(string|InputFileType $media, array $data = null): InputMediaDocumentType
     {
-        $instance = new static();
-        $instance->media = $media;
-        $instance->type = static::TYPE_DOCUMENT;
+        $static = new static();
+        $static->media = $media;
+        $static->type = static::TYPE_DOCUMENT;
         if ($data) {
-            $instance->fill($data, ['media', 'type']);
+            $static->fill(data: $data, forbidden: ['media', 'type']);
         }
 
-        return $instance;
+        return $static;
     }
 }

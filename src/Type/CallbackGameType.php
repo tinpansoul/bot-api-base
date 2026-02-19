@@ -12,10 +12,6 @@ namespace TgBotApi\BotApiBase\Type;
 class CallbackGameType
 {
     //A placeholder, currently holds no information. Use BotFather to set up your game.
-
-    /**
-     * @return CallbackGameType
-     */
     public static function create(): CallbackGameType
     {
         return new static();

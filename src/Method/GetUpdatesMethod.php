@@ -63,16 +63,14 @@ class GetUpdatesMethod implements HasUpdateTypeVariableInterface, MethodInterfac
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
-     * @return GetUpdatesMethod
      */
     public static function create(array $data = null): GetUpdatesMethod
     {
-        $instance = new static();
+        $static = new static();
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

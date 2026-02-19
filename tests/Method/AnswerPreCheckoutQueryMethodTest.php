@@ -6,19 +6,19 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\AnswerPreCheckoutQueryMethod;
 
-class AnswerPreCheckoutQueryMethodTest extends MethodTestCase
+final class AnswerPreCheckoutQueryMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
     public function testEncodeSuccess(): void
     {
-        $botApi = $this->getBot('answerPreCheckoutQuery', [
+        $botApiComplete = $this->getBot(methodName: 'answerPreCheckoutQuery', request: [
             'pre_checkout_query_id' => 'id',
             'ok' => true,
-        ], true);
+        ], result: true);
 
-        $botApi->answerPreCheckoutQuery(AnswerPreCheckoutQueryMethod::createSuccess('id'));
+        $botApiComplete->answerPreCheckoutQuery(answerPreCheckoutQueryMethod: AnswerPreCheckoutQueryMethod::createSuccess(preCheckoutQueryId: 'id'));
     }
 
     /**
@@ -26,15 +26,16 @@ class AnswerPreCheckoutQueryMethodTest extends MethodTestCase
      */
     public function testEncodeFail(): void
     {
-        $botApi = $this->getBot('answerPreCheckoutQuery', [
+        $botApiComplete = $this->getBot(methodName: 'answerPreCheckoutQuery', request: [
             'pre_checkout_query_id' => 'id',
             'ok' => false,
             'error_message' => 'message',
-        ], true);
+        ], result: true);
 
-        $botApi->answerPreCheckoutQuery(AnswerPreCheckoutQueryMethod::createFail(
-            'id',
-            'message'
+        $botApiComplete->answerPreCheckoutQuery(
+            answerPreCheckoutQueryMethod: AnswerPreCheckoutQueryMethod::createFail(
+            preCheckoutQueryId: 'id',
+            errorMessage: 'message'
         ));
     }
 }

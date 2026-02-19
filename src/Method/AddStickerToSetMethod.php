@@ -61,7 +61,6 @@ class AddStickerToSetMethod implements AddMethodAliasInterface
     public $maskPosition;
 
     /**
-     * @param InputFileType|string $pngSticker
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
@@ -71,29 +70,27 @@ class AddStickerToSetMethod implements AddMethodAliasInterface
     public static function create(
         int $userId,
         string $name,
-        $pngSticker,
+        string|InputFileType $pngSticker,
         string $emojis,
         array $data = null
     ): AddStickerToSetMethod {
-        return static::createStatic($userId, $name, $pngSticker, $emojis, $data);
+        return static::createStatic(userId: $userId, name: $name, pngSticker: $pngSticker, emojis: $emojis, data: $data);
     }
 
     /**
-     * @param InputFileType|string $pngSticker
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function createStatic(
         int $userId,
         string $name,
-        $pngSticker,
+        string|InputFileType $pngSticker,
         string $emojis,
         array $data = null
     ): AddStickerToSetMethod {
-        $instance = static::createBase($userId, $name, $emojis, $data);
-        $instance->pngSticker = $pngSticker;
+        $addStickerToSetMethod = self::createBase(userId: $userId, name: $name, emojis: $emojis, data: $data);
+        $addStickerToSetMethod->pngSticker = $pngSticker;
 
-        return $instance;
+        return $addStickerToSetMethod;
     }
 
     /**
@@ -102,14 +99,14 @@ class AddStickerToSetMethod implements AddMethodAliasInterface
     public static function createAnimated(
         int $userId,
         string $name,
-        InputFileType $tgsSticker,
+        InputFileType $inputFileType,
         string $emojis,
         array $data = null
     ): AddStickerToSetMethod {
-        $instance = static::createBase($userId, $name, $emojis, $data);
-        $instance->tgsSticker = $tgsSticker;
+        $addStickerToSetMethod = self::createBase(userId: $userId, name: $name, emojis: $emojis, data: $data);
+        $addStickerToSetMethod->tgsSticker = $inputFileType;
 
-        return $instance;
+        return $addStickerToSetMethod;
     }
 
     /**
@@ -121,14 +118,14 @@ class AddStickerToSetMethod implements AddMethodAliasInterface
         string $emojis,
         array $data = null
     ): AddStickerToSetMethod {
-        $instance = new static();
-        $instance->userId = $userId;
-        $instance->name = $name;
-        $instance->emojis = $emojis;
+        $static = new static();
+        $static->userId = $userId;
+        $static->name = $name;
+        $static->emojis = $emojis;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

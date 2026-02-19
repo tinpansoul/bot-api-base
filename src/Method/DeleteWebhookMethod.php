@@ -28,12 +28,12 @@ class DeleteWebhookMethod implements DeleteMethodAliasInterface
      */
     public static function create(array $data = null): DeleteWebhookMethod
     {
-        $instance = new static();
+        $static = new static();
 
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

@@ -13,53 +13,43 @@ use TgBotApi\BotApiBase\Type\UpdateType;
  */
 class WebhookFetcher implements WebhookFetcherInterface
 {
-    /**
-     * @var NormalizerInterface
-     */
-    private $normalizer;
 
     /**
      * WebhookFetcher constructor.
-     *
-     * @param NormalizerInterface $normalizer
      */
-    public function __construct(NormalizerInterface $normalizer)
+    public function __construct(private readonly NormalizerInterface $normalizer)
     {
-        $this->normalizer = $normalizer;
     }
 
     /**
-     * @param RequestInterface|string $request
-     *
      * @throws BadRequestException
-     *
-     * @return UpdateType
      */
-    public function fetch($request): UpdateType
+    public function fetch(mixed $request): UpdateType
     {
-        $input = \json_decode($this->getContents($request));
+        $input = \json_decode(json: $this->getContents(request: $request));
         if (!($input instanceof \stdClass)) {
-            throw new BadRequestException('Request content must be valid JSON object.');
+            throw new BadRequestException(message: 'Request content must be valid JSON object.');
         }
 
-        return $this->normalizer->denormalize($input, UpdateType::class);
+        return $this->normalizer->denormalize(data: $input, type: UpdateType::class);
     }
 
     /**
      * @param $request
      *
      * @throws BadRequestException
-     *
-     * @return string
      */
     private function getContents($request): string
     {
         if ($request instanceof RequestInterface) {
             return $request->getBody()->getContents();
         }
-        if (\is_string($request)) {
+
+        if (\is_string(value: $request)) {
             return $request;
         }
-        throw new BadRequestException('Request must be instance of Psr\Http\Message\RequestInterface or string.');
+
+        throw new BadRequestException(
+            message: 'Request must be instance of Psr\Http\Message\RequestInterface or string.');
     }
 }

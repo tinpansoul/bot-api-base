@@ -12,16 +12,16 @@ use TgBotApi\BotApiBase\Type\MessageEntityType;
 /**
  * Class SendMessageMethodTest.
  */
-class SendPollMethodTest extends MethodTestCase
+final class SendPollMethodTest extends MethodTestCase
 {
-    public function testEncode()
+    public function testEncode(): void
     {
-        $this->getApi()->sendPoll($this->getMethod());
+        $this->getApi()->sendPoll(sendPollMethod: $this->getMethod());
     }
 
     private function getApi(): BotApiComplete
     {
-        return $this->getBot('sendPoll', [
+        return $this->getBot(methodName: 'sendPoll', request: [
             'chat_id' => 'chat_id',
             'question' => 'poll_question',
             'options' => '["q1","q2"]',
@@ -37,16 +37,16 @@ class SendPollMethodTest extends MethodTestCase
     private function getMethod(): SendPollMethod
     {
         return SendPollMethod::create(
-            'chat_id',
-            'poll_question',
-            ['q1', 'q2'],
-            [
-                'replyMarkup' => InlineKeyboardMarkupType::create([]),
+            chatId: 'chat_id',
+            question: 'poll_question',
+            options: ['q1', 'q2'],
+            data: [
+                'replyMarkup' => InlineKeyboardMarkupType::create(inlineKeyboard: []),
                 'disableNotification' => true,
                 'replyToMessageId' => 1,
                 'explanation' => 'explanation',
                 'allowSendingWithoutReply' => true,
-                'explanationEntities' => [MessageEntityType::create(MessageEntityType::TYPE_PRE, 0, 1)],
+                'explanationEntities' => [MessageEntityType::create(type: MessageEntityType::TYPE_PRE, offset: 0, length: 1)],
             ]
         );
     }

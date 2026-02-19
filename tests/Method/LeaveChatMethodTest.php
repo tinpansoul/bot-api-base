@@ -6,15 +6,15 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\LeaveChatMethod;
 
-class LeaveChatMethodTest extends MethodTestCase
+final class LeaveChatMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('leaveChat', ['chat_id' => 'chat_id'], true);
+        $botApiComplete = $this->getBot(methodName: 'leaveChat', request: ['chat_id' => 'chat_id'], result: true);
 
-        $botApi->leaveChat(LeaveChatMethod::create('chat_id'));
+        $botApiComplete->leaveChat(leaveChatMethod: LeaveChatMethod::create(chatId: 'chat_id'));
     }
 }

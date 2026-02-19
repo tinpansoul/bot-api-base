@@ -11,7 +11,7 @@ use TgBotApi\BotApiBase\Tests\Method\Traits\InlineKeyboardMarkupTrait;
 use TgBotApi\BotApiBase\Type\InputFileType;
 use TgBotApi\BotApiBase\Type\MessageEntityType;
 
-class SendAnimationMethodTest extends MethodTestCase
+final class SendAnimationMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
@@ -19,18 +19,18 @@ class SendAnimationMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $this->getApi()->sendAnimation($this->getMethod());
+        $this->getApi()->sendAnimation(sendAnimationMethod: $this->getMethod());
 
-        $this->getApi()->send($this->getMethod());
+        $this->getApi()->send(sendMethodAlias: $this->getMethod());
     }
 
     private function getApi(): BotApiComplete
     {
         return $this->getBotWithFiles(
-            'sendAnimation',
-            [
+            methodName: 'sendAnimation',
+            request: [
                 'chat_id' => 'chat_id',
                 'animation' => '',
                 'duration' => 100,
@@ -43,10 +43,10 @@ class SendAnimationMethodTest extends MethodTestCase
                 'disable_notification' => true,
                 'reply_to_message_id' => 1,
                 'allow_sending_without_reply' => true,
-                'reply_markup' => static::buildInlineMarkupArray(),
+                'reply_markup' => self::buildInlineMarkupArray(),
             ],
-            ['animation' => true, 'thumb' => true],
-            ['reply_markup']
+            fileMap: ['animation' => true, 'thumb' => true],
+            serializableFields: ['reply_markup']
         );
     }
 
@@ -56,20 +56,20 @@ class SendAnimationMethodTest extends MethodTestCase
     private function getMethod(): SendAnimationMethod
     {
         return SendAnimationMethod::create(
-            'chat_id',
-            InputFileType::create('/dev/null'),
-            [
+            chatId: 'chat_id',
+            animation: InputFileType::create(path: '/dev/null'),
+            data: [
                 'duration' => 100,
                 'width' => 100,
                 'height' => 100,
-                'thumb' => InputFileType::create('/dev/null'),
+                'thumb' => InputFileType::create(path: '/dev/null'),
                 'caption' => 'caption',
-                'captionEntities' => [MessageEntityType::create(MessageEntityType::TYPE_PRE, 0, 1)],
+                'captionEntities' => [MessageEntityType::create(type: MessageEntityType::TYPE_PRE, offset: 0, length: 1)],
                 'parseMode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
                 'disableNotification' => true,
                 'replyToMessageId' => 1,
                 'allowSendingWithoutReply' => true,
-                'replyMarkup' => static::buildInlineMarkupObject(),
+                'replyMarkup' => self::buildInlineMarkupObject(),
             ]
         );
     }

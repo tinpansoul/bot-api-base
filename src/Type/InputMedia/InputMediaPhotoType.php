@@ -17,22 +17,18 @@ class InputMediaPhotoType extends InputMediaType
     use FillFromArrayTrait;
 
     /**
-     * @param string|InputFileType $media
      * @param array|null           $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
-     * @return InputMediaPhotoType
      */
-    public static function create($media, array $data = null): InputMediaPhotoType
+    public static function create(string|InputFileType $media, array $data = null): InputMediaPhotoType
     {
-        $instance = new static();
-        $instance->media = $media;
-        $instance->type = static::TYPE_PHOTO;
+        $static = new static();
+        $static->media = $media;
+        $static->type = static::TYPE_PHOTO;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

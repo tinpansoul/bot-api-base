@@ -7,11 +7,11 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 use TgBotApi\BotApiBase\Method\SetChatPermissionsMethod;
 use TgBotApi\BotApiBase\Type\ChatPermissionsType;
 
-class SetChatPermissionsMethodTest extends MethodTestCase
+final class SetChatPermissionsMethodTest extends MethodTestCase
 {
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('setChatPermissions', [
+        $botApiComplete = $this->getBot(methodName: 'setChatPermissions', request: [
             'chat_id' => 'chat_id',
             'permissions' => [
                 'can_send_messages' => true,
@@ -22,9 +22,9 @@ class SetChatPermissionsMethodTest extends MethodTestCase
                 'can_change_info' => true,
                 'can_invite_users' => true,
                 'can_pin_messages' => true,
-            ], ], true);
+            ], ], result: true);
 
-        $permissions = ChatPermissionsType::create([
+        $chatPermissionsType = ChatPermissionsType::create(data: [
             'canAddWebPagePreviews' => true,
             'canChangeInfo' => true,
             'canInviteUsers' => true,
@@ -35,6 +35,9 @@ class SetChatPermissionsMethodTest extends MethodTestCase
             'canSendPolls' => true,
         ]);
 
-        $botApi->setChatPermissions(SetChatPermissionsMethod::create('chat_id', $permissions));
+        $botApiComplete->setChatPermissions(
+            setChatPermissionsMethod: SetChatPermissionsMethod::create(
+            chatId: 'chat_id',
+            chatPermissionsType: $chatPermissionsType));
     }
 }

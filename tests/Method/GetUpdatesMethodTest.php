@@ -6,15 +6,15 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\GetUpdatesMethod;
 
-class GetUpdatesMethodTest extends MethodTestCase
+final class GetUpdatesMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('getUpdates', [
+        $botApiComplete = $this->getBot(methodName: 'getUpdates', request: [
             'offset' => 1,
             'limit' => 10,
             'timeout' => 60,
@@ -31,7 +31,8 @@ class GetUpdatesMethodTest extends MethodTestCase
             ],
         ]);
 
-        $botApi->getUpdates(GetUpdatesMethod::create([
+        $botApiComplete->getUpdates(
+            getUpdatesMethod: GetUpdatesMethod::create(data: [
             'offset' => 1,
             'limit' => 10,
             'timeout' => 60,

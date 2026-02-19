@@ -12,6 +12,7 @@ namespace TgBotApi\BotApiBase\Type\PassportElementError;
 class PassportElementErrorReverseSideType extends PassportElementErrorType
 {
     const TYPE_DRIVER_LICENSE = 'driver_license';
+
     const TYPE_IDENTITY_CARD = 'identity_card';
 
     const ALLOWED_TYPES = [
@@ -27,20 +28,16 @@ class PassportElementErrorReverseSideType extends PassportElementErrorType
     public $fileHash;
 
     /**
-     * @param string $type
-     * @param string $message
-     * @param string $fileHash
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return PassportElementErrorReverseSideType
      */
     public static function create(
         string $type,
         string $message,
         string $fileHash
     ): PassportElementErrorReverseSideType {
-        $instance = parent::createBase('reverse_side', $type, $message);
+        $instance = parent::createBase(source: 'reverse_side', type: $type, message: $message);
         $instance->fileHash = $fileHash;
 
         return $instance;

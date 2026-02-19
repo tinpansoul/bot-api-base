@@ -15,6 +15,7 @@ use TgBotApi\BotApiBase\Type\InputFileType;
 class InputMediaAnimationType extends InputMediaType
 {
     use FillFromArrayTrait;
+
     /**
      * Optional. Thumbnail of the file sent. The thumbnail should be in JPEG format and less than 200 kB in size.
      * A thumbnail‘s width and height should not exceed 90.
@@ -49,22 +50,18 @@ class InputMediaAnimationType extends InputMediaType
     public $duration;
 
     /**
-     * @param string|InputFileType $media
      * @param array|null           $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
-     * @return InputMediaAnimationType
      */
-    public static function create($media, array $data = null): InputMediaAnimationType
+    public static function create(string|InputFileType $media, array $data = null): InputMediaAnimationType
     {
-        $instance = new static();
-        $instance->media = $media;
-        $instance->type = static::TYPE_ANIMATION;
+        $static = new static();
+        $static->media = $media;
+        $static->type = static::TYPE_ANIMATION;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

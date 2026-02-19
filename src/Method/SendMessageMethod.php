@@ -50,19 +50,17 @@ class SendMessageMethod implements HasParseModeVariableInterface, SendMethodAlia
     public $disableWebPagePreview;
 
     /**
-     * @param int|string $chatId
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create($chatId, string $text, array $data = null): SendMessageMethod
+    public static function create(int|string $chatId, string $text, array $data = null): SendMessageMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->text = $text;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->text = $text;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

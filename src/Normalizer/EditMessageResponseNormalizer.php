@@ -17,66 +17,44 @@ use TgBotApi\BotApiBase\Type\MessageType;
  */
 class EditMessageResponseNormalizer implements DenormalizerInterface
 {
-    /**
-     * @var NormalizerInterface
-     */
-    private $objectNormalizer;
-    /**
-     * @var ArrayDenormalizer
-     */
-    private $arrayDenormalizer;
-
-    /**
-     * @var DateTimeNormalizer
-     */
-    private $dateNormalizer;
 
     /**
      * UserProfilePhotosNormalizer constructor.
-     *
-     * @param NormalizerInterface $objectNormalizer
-     * @param ArrayDenormalizer   $arrayDenormalizer
-     * @param DateTimeNormalizer  $dateNormalizer
      */
     public function __construct(
-        NormalizerInterface $objectNormalizer,
-        ArrayDenormalizer $arrayDenormalizer,
-        DateTimeNormalizer $dateNormalizer
+        private readonly NormalizerInterface $objectNormalizer,
+        private readonly ArrayDenormalizer $arrayDenormalizer,
+        private readonly DateTimeNormalizer $dateTimeNormalizer
     ) {
-        $this->objectNormalizer = $objectNormalizer;
-        $this->arrayDenormalizer = $arrayDenormalizer;
-        $this->dateNormalizer = $dateNormalizer;
     }
 
     /**
-     * @param mixed  $data
-     * @param string $class
-     * @param null   $format
-     * @param array  $context
-     *
-     * @throws ExceptionInterface
      *
      * @return MessageType | bool
+     * @throws ExceptionInterface
+     *
      */
-    public function denormalize($data, $class, $format = null, array $context = [])
+    public function denormalize(mixed $data, string $class, $format = null, array $context = []): mixed
     {
-        if (\is_bool($data)) {
+        if (\is_bool(value: $data)) {
             return $data;
         }
-        $serializer = new Serializer([$this->dateNormalizer, $this->objectNormalizer, $this->arrayDenormalizer]);
 
-        return $serializer->denormalize($data, MessageType::class, $format, $context);
+        $serializer = new Serializer(normalizers: [$this->dateTimeNormalizer, $this->objectNormalizer, $this->arrayDenormalizer]);
+
+        return $serializer->denormalize(data: $data, type: MessageType::class, format: $format, context: $context);
+    }
+
+    public function supportsDenormalization(mixed $data, string $type, $format = null, array $context = []): bool
+    {
+        return MessageType::class . '|bool' === $type;
     }
 
     /**
-     * @param mixed  $data
-     * @param string $type
-     * @param null   $format
-     *
-     * @return bool
+     * @return array<string, bool>
      */
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function getSupportedTypes(?string $format): array
     {
-        return MessageType::class . '|bool' === $type;
+        return ['*' => false];
     }
 }

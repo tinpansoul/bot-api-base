@@ -39,26 +39,28 @@ class BotApiNormalizer implements NormalizerInterface
      *
      * @return object|array|bool
      */
-    public function denormalize($data, $type)
+    public function denormalize($data, $type): mixed
     {
-        $normalizer = new ObjectNormalizer(
-            null,
-            new CamelCaseToSnakeCaseNameConverter(),
-            null,
-            new PhpDocExtractor()
+        $objectNormalizer = new ObjectNormalizer(
+            classMetadataFactory: null,
+            nameConverter: new CamelCaseToSnakeCaseNameConverter(),
+            propertyAccessor: null,
+            propertyTypeExtractor: new PhpDocExtractor()
         );
-        $arrayNormalizer = new ArrayDenormalizer();
-        $dateNormalizer = new DateTimeNormalizer();
-        $serializer = new Serializer([
-            new UserProfilePhotosNormalizer($normalizer, $arrayNormalizer),
-            new EditMessageResponseNormalizer($normalizer, $arrayNormalizer, $dateNormalizer),
+        $arrayDenormalizer = new ArrayDenormalizer();
+        $dateTimeNormalizer = new DateTimeNormalizer();
+        $serializer = new Serializer(normalizers: [
+            new UserProfilePhotosNormalizer(objectNormalizer: $objectNormalizer, arrayDenormalizer: $arrayDenormalizer),
+            new EditMessageResponseNormalizer(
+                objectNormalizer: $objectNormalizer, arrayDenormalizer: $arrayDenormalizer,
+                dateTimeNormalizer: $dateTimeNormalizer),
             new DateTimeNormalizer(),
-            $dateNormalizer,
-            $normalizer,
-            $arrayNormalizer,
+            $dateTimeNormalizer,
+            $objectNormalizer,
+            $arrayDenormalizer,
         ]);
 
-        return $serializer->denormalize($data, $type, null, [DateTimeNormalizer::FORMAT_KEY => 'U']);
+        return $serializer->denormalize(data: $data, type: $type, format: null, context: [DateTimeNormalizer::FORMAT_KEY => 'U']);
     }
 
     /**
@@ -68,38 +70,42 @@ class BotApiNormalizer implements NormalizerInterface
      */
     public function normalize($method): BotApiRequestInterface
     {
-        $isLegacy = !\defined(AbstractObjectNormalizer::class . '::SKIP_NULL_VALUES');
+        $isLegacy = !\defined(constant_name: AbstractObjectNormalizer::class . '::SKIP_NULL_VALUES');
 
         $files = [];
 
-        $objectNormalizer = new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter());
+        $objectNormalizer = new ObjectNormalizer(classMetadataFactory: null, nameConverter: new CamelCaseToSnakeCaseNameConverter());
         if ($isLegacy) {
-            $objectNormalizer = new LegacyObjectNormalizerWrapper($objectNormalizer);
+            $objectNormalizer = new LegacyObjectNormalizerWrapper(normalizer: $objectNormalizer);
         }
 
-        $serializer = new Serializer([
-            new PollNormalizer($objectNormalizer),
-            new InvoiceNormalizer($objectNormalizer),
-            new SetMyCommandsNormalizer($objectNormalizer),
-            new InputFileNormalizer($files),
-            new MediaGroupNormalizer(new InputMediaNormalizer($objectNormalizer, $files), $objectNormalizer),
-            new EditMessageMediaNormalizer(new InputMediaNormalizer($objectNormalizer, $files), $objectNormalizer),
-            new JsonSerializableNormalizer($objectNormalizer),
-            new AnswerInlineQueryNormalizer($objectNormalizer),
-            new SetChatMenuButtonNormalizer($objectNormalizer),
+        $serializer = new Serializer(normalizers: [
+            new PollNormalizer(objectNormalizer: $objectNormalizer),
+            new InvoiceNormalizer(objectNormalizer: $objectNormalizer),
+            new SetMyCommandsNormalizer(objectNormalizer: $objectNormalizer),
+            new InputFileNormalizer(files: $files),
+            new MediaGroupNormalizer(
+                inputMediaNormalizer: new InputMediaNormalizer(objectNormalizer: $objectNormalizer, files: $files),
+                objectNormalizer: $objectNormalizer),
+            new EditMessageMediaNormalizer(
+                inputMediaNormalizer: new InputMediaNormalizer(objectNormalizer: $objectNormalizer, files: $files),
+                objectNormalizer: $objectNormalizer),
+            new JsonSerializableNormalizer(objectNormalizer: $objectNormalizer),
+            new AnswerInlineQueryNormalizer(objectNormalizer: $objectNormalizer),
+            new SetChatMenuButtonNormalizer(objectNormalizer: $objectNormalizer),
             new DateTimeNormalizer(),
             $objectNormalizer,
         ]);
 
         $data = $serializer->normalize(
-            $method,
-            null,
-            [
+            data: $method,
+            format: null,
+            context: [
                 'skip_null_values' => true,
                 DateTimeNormalizer::FORMAT_KEY => 'U',
             ]
         );
 
-        return new BotApiRequest($data, $files);
+        return new BotApiRequest(data: $data, files: $files);
     }
 }

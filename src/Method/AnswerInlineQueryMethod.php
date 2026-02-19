@@ -83,34 +83,27 @@ class AnswerInlineQueryMethod implements AnswerMethodAliasInterface
     public $switchPmParameter;
 
     /**
-     * @param string                  $inlineQueryId
      * @param InlineQueryResultType[] $results
      * @param array|null              $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return AnswerInlineQueryMethod
      */
     public static function create(string $inlineQueryId, array $results, array $data = null): AnswerInlineQueryMethod
     {
-        $instance = new static();
-        $instance->inlineQueryId = $inlineQueryId;
-        $instance->results = $results;
+        $static = new static();
+        $static->inlineQueryId = $inlineQueryId;
+        $static->results = $results;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 
-    /**
-     * @param InlineQueryResultType $result
-     *
-     * @return AnswerInlineQueryMethod
-     */
-    public function addResult(InlineQueryResultType $result): AnswerInlineQueryMethod
+    public function addResult(InlineQueryResultType $inlineQueryResultType): AnswerInlineQueryMethod
     {
-        $this->results[] = $result;
+        $this->results[] = $inlineQueryResultType;
 
         return $this;
     }

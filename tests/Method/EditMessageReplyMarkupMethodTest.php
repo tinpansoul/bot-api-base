@@ -7,7 +7,7 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 use TgBotApi\BotApiBase\Method\EditMessageReplyMarkupMethod;
 use TgBotApi\BotApiBase\Tests\Method\Traits\ReplyKeyboardMarkupTrait;
 
-class EditMessageReplyMarkupMethodTest extends MethodTestCase
+final class EditMessageReplyMarkupMethodTest extends MethodTestCase
 {
     use ReplyKeyboardMarkupTrait;
 
@@ -15,18 +15,18 @@ class EditMessageReplyMarkupMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
         $this->queryApi(
-            [
+            excepted: [
                 'chat_id' => 'chat_id',
                 'message_id' => 1,
                 'reply_markup' => $this->buildReplyMarkupArray(),
             ],
-            EditMessageReplyMarkupMethod::create(
-                'chat_id',
-                1,
-                [
+            editMessageReplyMarkupMethod: EditMessageReplyMarkupMethod::create(
+                chatId: 'chat_id',
+                messageId: 1,
+                data: [
                     'replyMarkup' => $this->buildReplyMarkupObject(),
                 ]
             )
@@ -37,16 +37,16 @@ class EditMessageReplyMarkupMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncodeInline()
+    public function testEncodeInline(): void
     {
         $this->queryApi(
-            [
+            excepted: [
                 'inline_message_id' => 'inline_message_id',
                 'reply_markup' => $this->buildReplyMarkupArray(),
             ],
-            EditMessageReplyMarkupMethod::createInline(
-                'inline_message_id',
-                [
+            editMessageReplyMarkupMethod: EditMessageReplyMarkupMethod::createInline(
+                inlineMessageId: 'inline_message_id',
+                data: [
                     'replyMarkup' => $this->buildReplyMarkupObject(),
                 ]
             )
@@ -54,18 +54,17 @@ class EditMessageReplyMarkupMethodTest extends MethodTestCase
     }
 
     /**
-     * @param array                        $excepted
-     * @param EditMessageReplyMarkupMethod $actual
      *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
+     * @param array<string, mixed[]>|array<string, string>|array<string, int> $excepted
      */
-    private function queryApi(array $excepted, EditMessageReplyMarkupMethod $actual)
+    private function queryApi(array $excepted, EditMessageReplyMarkupMethod $editMessageReplyMarkupMethod): void
     {
         $this->getBot(
-            'editMessageReplyMarkup',
-            $excepted,
-            true,
-            ['reply_markup']
-        )->editMessageReplyMarkup($actual);
+            methodName: 'editMessageReplyMarkup',
+            request: $excepted,
+            result: true,
+            serialisedFields: ['reply_markup']
+        )->editMessageReplyMarkup(editMessageReplyMarkupMethod: $editMessageReplyMarkupMethod);
     }
 }

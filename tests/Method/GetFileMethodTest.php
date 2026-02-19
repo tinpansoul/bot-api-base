@@ -6,15 +6,15 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\GetFileMethod;
 
-class GetFileMethodTest extends MethodTestCase
+final class GetFileMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('getFile', ['file_id' => 'file_id']);
+        $botApiComplete = $this->getBot(methodName: 'getFile', request: ['file_id' => 'file_id']);
 
-        $botApi->getFile(GetFileMethod::create('file_id'));
+        $botApiComplete->getFile(getFileMethod: GetFileMethod::create(fileId: 'file_id'));
     }
 }

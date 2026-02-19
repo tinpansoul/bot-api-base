@@ -17,46 +17,38 @@ use TgBotApi\BotApiBase\Type\UserProfilePhotosType;
  */
 class UserProfilePhotosNormalizer implements DenormalizerInterface
 {
-    /**
-     * @var NormalizerInterface
-     */
-    private $objectNormalizer;
-    /**
-     * @var ArrayDenormalizer
-     */
-    private $arrayDenormalizer;
 
     /**
      * UserProfilePhotosNormalizer constructor.
      */
-    public function __construct(NormalizerInterface $objectNormalizer, ArrayDenormalizer $arrayDenormalizer)
-    {
-        $this->objectNormalizer = $objectNormalizer;
-        $this->arrayDenormalizer = $arrayDenormalizer;
+    public function __construct(
+        private readonly NormalizerInterface $objectNormalizer,
+        private readonly ArrayDenormalizer $arrayDenormalizer
+    ) {
     }
 
     /**
-     * @param mixed  $data
-     * @param string $class
-     * @param null   $format
      *
      * @throws ExceptionInterface
      */
-    public function denormalize($data, $class, $format = null, array $context = []): UserProfilePhotosType
+    public function denormalize(mixed $data, string $class, $format = null, array $context = []): UserProfilePhotosType
     {
-        $serializer = new Serializer([$this->objectNormalizer, $this->arrayDenormalizer]);
-        $data->photos = $serializer->denormalize($data->photos, PhotoSizeType::class . '[][]');
+        $serializer = new Serializer(normalizers: [$this->objectNormalizer, $this->arrayDenormalizer]);
+        $data->photos = $serializer->denormalize(data: $data->photos, type: PhotoSizeType::class . '[][]');
 
-        return $serializer->denormalize($data, UserProfilePhotosType::class);
+        return $serializer->denormalize(data: $data, type: UserProfilePhotosType::class);
+    }
+
+    public function supportsDenormalization(mixed $data, string $type, $format = null, array $context = []): bool
+    {
+        return UserProfilePhotosType::class === $type;
     }
 
     /**
-     * @param mixed  $data
-     * @param string $type
-     * @param null   $format
+     * @return array<string, bool>
      */
-    public function supportsDenormalization($data, $type, $format = null): bool
+    public function getSupportedTypes(?string $format): array
     {
-        return UserProfilePhotosType::class === $type;
+        return ['*' => false];
     }
 }

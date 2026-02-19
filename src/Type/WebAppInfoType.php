@@ -21,17 +21,15 @@ class WebAppInfoType
     public $url;
 
     /**
-     * @param string     $url
      *
      * @throws BadArgumentException
      *
-     * @return WebAppInfoType
      */
     public static function create(string $url): WebAppInfoType
     {
-        $instance = new static();
-        $instance->url = $url;
+        $static = new static();
+        $static->url = $url;
 
-        return $instance;
+        return $static;
     }
 }

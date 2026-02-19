@@ -80,7 +80,6 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
     /**
      * CreateNewStickerSetMethod constructor.
      *
-     * @param InputFileType|string $pngSticker
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
@@ -91,17 +90,16 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
         int $userId,
         string $name,
         string $title,
-        $pngSticker,
+        string|InputFileType $pngSticker,
         string $emojis,
         array $data = null
     ): CreateNewStickerSetMethod {
-        return static::createStatic($userId, $name, $title, $pngSticker, $emojis, $data);
+        return static::createStatic(userId: $userId, name: $name, title: $title, pngSticker: $pngSticker, emojis: $emojis, data: $data);
     }
 
     /**
      * CreateNewStickerSetMethod constructor.
      *
-     * @param InputFileType|string $pngSticker
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
@@ -109,14 +107,14 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
         int $userId,
         string $name,
         string $title,
-        $pngSticker,
+        string|InputFileType $pngSticker,
         string $emojis,
         array $data = null
     ): CreateNewStickerSetMethod {
-        $instance = static::createBase($userId, $name, $title, $emojis, $data);
-        $instance->pngSticker = $pngSticker;
+        $createNewStickerSetMethod = self::createBase(userId: $userId, name: $name, title: $title, emojis: $emojis, data: $data);
+        $createNewStickerSetMethod->pngSticker = $pngSticker;
 
-        return $instance;
+        return $createNewStickerSetMethod;
     }
 
     /**
@@ -128,14 +126,14 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
         int $userId,
         string $name,
         string $title,
-        InputFileType $tgsSticker,
+        InputFileType $inputFileType,
         string $emojis,
         array $data = null
     ): CreateNewStickerSetMethod {
-        $instance = static::createBase($userId, $name, $title, $emojis, $data);
-        $instance->tgsSticker = $tgsSticker;
+        $createNewStickerSetMethod = self::createBase(userId: $userId, name: $name, title: $title, emojis: $emojis, data: $data);
+        $createNewStickerSetMethod->tgsSticker = $inputFileType;
 
-        return $instance;
+        return $createNewStickerSetMethod;
     }
 
     /**
@@ -148,16 +146,16 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
         string $emojis,
         array $data = null
     ): CreateNewStickerSetMethod {
-        $instance = new static();
-        $instance->userId = $userId;
-        $instance->name = $name;
-        $instance->title = $title;
-        $instance->emojis = $emojis;
+        $static = new static();
+        $static->userId = $userId;
+        $static->name = $name;
+        $static->title = $title;
+        $static->emojis = $emojis;
 
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

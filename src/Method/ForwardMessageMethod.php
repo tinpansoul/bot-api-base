@@ -19,6 +19,7 @@ class ForwardMessageMethod implements SendMethodAliasInterface, ForwardMethodAli
 {
     use FillFromArrayTrait;
     use ChatIdVariableTrait;
+
     /**
      * Unique identifier for the chat where the original message was sent
      * (or channel username in the format @channelusername).
@@ -42,26 +43,21 @@ class ForwardMessageMethod implements SendMethodAliasInterface, ForwardMethodAli
     public $messageId;
 
     /**
-     * @param int|string $chatId
-     * @param int|string $fromChatId
-     * @param int        $messageId
      * @param array|null $data
-     *
      * @throws BadArgumentException
      *
-     * @return ForwardMessageMethod
      */
-    public static function create($chatId, $fromChatId, int $messageId, array $data = null): self
+    public static function create(int|string $chatId, int|string $fromChatId, int $messageId, array $data = null): self
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->fromChatId = $fromChatId;
-        $instance->messageId = $messageId;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->fromChatId = $fromChatId;
+        $static->messageId = $messageId;
 
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

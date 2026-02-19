@@ -36,143 +36,143 @@ trait SendMethodTrait
      *
      * @return MessageType[]
      */
-    abstract public function sendMediaGroup(SendMediaGroupMethod $method): array;
+    abstract public function sendMediaGroup(SendMediaGroupMethod $sendMediaGroupMethod): array;
 
     /**
      * @throws ResponseException
      */
-    abstract public function send(SendMethodAliasInterface $method): MessageType;
+    abstract public function send(SendMethodAliasInterface $sendMethodAlias): MessageType;
 
     /**
      * @throws ResponseException
      */
-    abstract public function sendChatAction(SendChatActionMethod $method): bool;
+    abstract public function sendChatAction(SendChatActionMethod $sendChatActionMethod): bool;
 
     /**
      * @throws ResponseException
      */
-    public function sendPhoto(SendPhotoMethod $method): MessageType
+    public function sendPhoto(SendPhotoMethod $sendPhotoMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendPhotoMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendAudio(SendAudioMethod $method): MessageType
+    public function sendAudio(SendAudioMethod $sendAudioMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendAudioMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendDocument(SendDocumentMethod $method): MessageType
+    public function sendDocument(SendDocumentMethod $sendDocumentMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendDocumentMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendVideo(SendVideoMethod $method): MessageType
+    public function sendVideo(SendVideoMethod $sendVideoMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendVideoMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendAnimation(SendAnimationMethod $method): MessageType
+    public function sendAnimation(SendAnimationMethod $sendAnimationMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendAnimationMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendVoice(SendVoiceMethod $method): MessageType
+    public function sendVoice(SendVoiceMethod $sendVoiceMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendVoiceMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendVideoNote(SendVideoNoteMethod $method): MessageType
+    public function sendVideoNote(SendVideoNoteMethod $sendVideoNoteMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendVideoNoteMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendGame(SendGameMethod $method): MessageType
+    public function sendGame(SendGameMethod $sendGameMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendGameMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendInvoice(SendInvoiceMethod $method): MessageType
+    public function sendInvoice(SendInvoiceMethod $sendInvoiceMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendInvoiceMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendLocation(SendLocationMethod $method): MessageType
+    public function sendLocation(SendLocationMethod $sendLocationMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendLocationMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendVenue(SendVenueMethod $method): MessageType
+    public function sendVenue(SendVenueMethod $sendVenueMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendVenueMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendContact(SendContactMethod $method): MessageType
+    public function sendContact(SendContactMethod $sendContactMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendContactMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendDice(SendDiceMethod $method): MessageType
+    public function sendDice(SendDiceMethod $sendDiceMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendDiceMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendSticker(SendStickerMethod $method): MessageType
+    public function sendSticker(SendStickerMethod $sendStickerMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendStickerMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendMessage(SendMessageMethod $method): MessageType
+    public function sendMessage(SendMessageMethod $sendMessageMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendMessageMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function sendPoll(SendPollMethod $method): MessageType
+    public function sendPoll(SendPollMethod $sendPollMethod): MessageType
     {
-        return $this->send($method);
+        return $this->send(sendMethodAlias: $sendPollMethod);
     }
 }

@@ -9,13 +9,7 @@ namespace TgBotApi\BotApiBase;
  */
 interface BotApiRequestInterface
 {
-    /**
-     * @return array
-     */
     public function getData(): array;
 
-    /**
-     * @return array
-     */
     public function getFiles(): array;
 }

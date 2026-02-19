@@ -70,15 +70,15 @@ class InlineQueryResultCachedDocumentType extends InlineQueryResultType
         string $documentFileId,
         array $data = null
     ): InlineQueryResultCachedDocumentType {
-        $instance = new static();
-        $instance->type = static::TYPE_DOCUMENT;
-        $instance->id = $id;
-        $instance->title = $title;
-        $instance->documentFileId = $documentFileId;
+        $static = new static();
+        $static->type = static::TYPE_DOCUMENT;
+        $static->id = $id;
+        $static->title = $title;
+        $static->documentFileId = $documentFileId;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

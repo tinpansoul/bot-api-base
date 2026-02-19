@@ -68,28 +68,26 @@ class SendVenueMethod implements SendMethodAliasInterface
     public $foursquareType;
 
     /**
-     * @param int|string $chatId
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(
-        $chatId,
+        int|string $chatId,
         float $latitude,
         float $longitude,
         string $title,
         string $address,
         array $data = null
     ): SendVenueMethod {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->latitude = $latitude;
-        $instance->longitude = $longitude;
-        $instance->title = $title;
-        $instance->address = $address;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->latitude = $latitude;
+        $static->longitude = $longitude;
+        $static->title = $title;
+        $static->address = $address;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

@@ -14,53 +14,45 @@ use TgBotApi\BotApiBase\Method\AnswerInlineQueryMethod;
  */
 class AnswerInlineQueryNormalizer implements NormalizerInterface
 {
-    /**
-     * @var NormalizerInterface
-     */
-    private $objectNormalizer;
 
     /**
      * AnswerInlineQueryNormalizer constructor.
-     *
-     * @param NormalizerInterface $objectNormalizer
      */
-    public function __construct(NormalizerInterface $objectNormalizer)
+    public function __construct(private readonly NormalizerInterface $objectNormalizer)
     {
-        $this->objectNormalizer = $objectNormalizer;
     }
 
     /**
-     * @param mixed $topic
-     * @param null  $format
-     * @param array $context
-     *
      * @return array|bool|float|int|mixed|string
      */
-    public function normalize($topic, $format = null, array $context = [])
+    public function normalize(mixed $topic, $format = null, array $context = []): string|int|float|bool|\ArrayObject|array|null
     {
-        $serializer = new Serializer([new DateTimeNormalizer(), $this->objectNormalizer]);
+        $serializer = new Serializer(normalizers: [new DateTimeNormalizer(), $this->objectNormalizer]);
 
-        $topic->results = \json_encode($serializer->normalize(
-            $topic->results,
-            null,
-            ['skip_null_values' => true, DateTimeNormalizer::FORMAT_KEY => 'U']
+        $topic->results = \json_encode(
+            value: $serializer->normalize(
+            data: $topic->results,
+            format: null,
+            context: ['skip_null_values' => true, DateTimeNormalizer::FORMAT_KEY => 'U']
         ));
 
         return $serializer->normalize(
-            $topic,
-            null,
-            ['skip_null_values' => true, DateTimeNormalizer::FORMAT_KEY => 'U']
+            data: $topic,
+            format: null,
+            context: ['skip_null_values' => true, DateTimeNormalizer::FORMAT_KEY => 'U']
         );
     }
 
-    /**
-     * @param mixed $data
-     * @param null  $format
-     *
-     * @return bool
-     */
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization(mixed $data, $format = null, array $context = []): bool
     {
         return $data instanceof AnswerInlineQueryMethod;
+    }
+
+    /**
+     * @return array<string, bool>
+     */
+    public function getSupportedTypes(?string $format): array
+    {
+        return ['*' => false];
     }
 }

@@ -68,13 +68,13 @@ class InputLocationMessageContentType extends InputMessageContentType
         float $longitude,
         array $data = null
     ): InputLocationMessageContentType {
-        $instance = new static();
-        $instance->latitude = $latitude;
-        $instance->longitude = $longitude;
+        $static = new static();
+        $static->latitude = $latitude;
+        $static->longitude = $longitude;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

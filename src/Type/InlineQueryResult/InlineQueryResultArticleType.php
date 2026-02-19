@@ -15,6 +15,7 @@ use TgBotApi\BotApiBase\Type\InputMessageContent\InputMessageContentType;
 class InlineQueryResultArticleType extends InlineQueryResultType
 {
     use FillFromArrayTrait;
+
     /**
      * Title of the result.
      *
@@ -72,30 +73,26 @@ class InlineQueryResultArticleType extends InlineQueryResultType
     public $thumbHeight;
 
     /**
-     * @param string                  $id
-     * @param string                  $title
-     * @param InputMessageContentType $inputMessageContent
      * @param array|null              $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return InlineQueryResultArticleType
      */
     public static function create(
         string $id,
         string $title,
-        InputMessageContentType $inputMessageContent,
+        InputMessageContentType $inputMessageContentType,
         array $data = null
     ): InlineQueryResultArticleType {
-        $instance = new static();
-        $instance->type = self::TYPE_ARTICLE;
-        $instance->id = $id;
-        $instance->title = $title;
-        $instance->inputMessageContent = $inputMessageContent;
+        $static = new static();
+        $static->type = self::TYPE_ARTICLE;
+        $static->id = $id;
+        $static->title = $title;
+        $static->inputMessageContent = $inputMessageContentType;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

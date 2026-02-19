@@ -11,7 +11,7 @@ use TgBotApi\BotApiBase\Tests\Method\Traits\InlineKeyboardMarkupTrait;
 use TgBotApi\BotApiBase\Type\InputFileType;
 use TgBotApi\BotApiBase\Type\MessageEntityType;
 
-class SendAudioMethodTest extends MethodTestCase
+final class SendAudioMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
@@ -19,17 +19,17 @@ class SendAudioMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $this->getApi()->sendAudio($this->getMethod());
-        $this->getApi()->send($this->getMethod());
+        $this->getApi()->sendAudio(sendAudioMethod: $this->getMethod());
+        $this->getApi()->send(sendMethodAlias: $this->getMethod());
     }
 
     private function getApi(): BotApiComplete
     {
         return $this->getBotWithFiles(
-            'sendAudio',
-            [
+            methodName: 'sendAudio',
+            request: [
                 'chat_id' => 'chat_id',
                 'audio' => '',
                 'duration' => 100,
@@ -42,10 +42,10 @@ class SendAudioMethodTest extends MethodTestCase
                 'disable_notification' => true,
                 'reply_to_message_id' => 1,
                 'allow_sending_without_reply' => true,
-                'reply_markup' => static::buildInlineMarkupArray(),
+                'reply_markup' => self::buildInlineMarkupArray(),
             ],
-            ['audio' => true, 'thumb' => true],
-            ['reply_markup']
+            fileMap: ['audio' => true, 'thumb' => true],
+            serializableFields: ['reply_markup']
         );
     }
 
@@ -55,20 +55,20 @@ class SendAudioMethodTest extends MethodTestCase
     private function getMethod(): SendAudioMethod
     {
         return SendAudioMethod::create(
-            'chat_id',
-            InputFileType::create('/dev/null'),
-            [
+            chatId: 'chat_id',
+            audio: InputFileType::create(path: '/dev/null'),
+            data: [
                 'duration' => 100,
                 'performer' => 'performer',
                 'title' => 'title',
-                'thumb' => InputFileType::create('/dev/null'),
+                'thumb' => InputFileType::create(path: '/dev/null'),
                 'caption' => 'caption',
-                'captionEntities' => [MessageEntityType::create(MessageEntityType::TYPE_PRE, 0, 1)],
+                'captionEntities' => [MessageEntityType::create(type: MessageEntityType::TYPE_PRE, offset: 0, length: 1)],
                 'parseMode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
                 'disableNotification' => true,
                 'replyToMessageId' => 1,
                 'allowSendingWithoutReply' => true,
-                'replyMarkup' => static::buildInlineMarkupObject(),
+                'replyMarkup' => self::buildInlineMarkupObject(),
             ]
         );
     }

@@ -18,6 +18,7 @@ class SendVideoNoteMethod implements SendMethodAliasInterface
 {
     use FillFromArrayTrait;
     use SendToChatVariablesTrait;
+
     /**
      * Video note to send.
      * Pass a file_id as String to send a video note that exists on the Telegram servers (recommended)
@@ -55,23 +56,19 @@ class SendVideoNoteMethod implements SendMethodAliasInterface
     public $thumb;
 
     /**
-     * @param int|string           $chatId
-     * @param InputFileType|string $videoNote
      * @param array|null           $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
-     * @return SendVideoNoteMethod
      */
-    public static function create($chatId, $videoNote, array $data = null): SendVideoNoteMethod
+    public static function create(int|string $chatId, string|InputFileType $videoNote, array $data = null): SendVideoNoteMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->videoNote = $videoNote;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->videoNote = $videoNote;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

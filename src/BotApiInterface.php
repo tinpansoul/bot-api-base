@@ -37,145 +37,110 @@ use TgBotApi\BotApiBase\Type\WebhookInfoType;
 interface BotApiInterface extends BotApiAliasInterface
 {
     /**
-     * @param MethodInterface $method
      * @param string|null     $type
      *
      * @throws ResponseException
-     *
      * @return mixed
      */
     public function call(MethodInterface $method, string $type = null);
 
     /**
-     * @param ExportChatInviteLinkMethod $method
      *
      * @throws ResponseException
      *
-     * @return string
      */
-    public function exportChatInviteLink(ExportChatInviteLinkMethod $method): string;
+    public function exportChatInviteLink(ExportChatInviteLinkMethod $exportChatInviteLinkMethod): string;
 
     /**
-     * @param SendChatActionMethod $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function sendChatAction(SendChatActionMethod $method): bool;
+    public function sendChatAction(SendChatActionMethod $sendChatActionMethod): bool;
 
     /**
-     * @param GetUpdatesMethod $method
      *
      * @throws ResponseException
-     *
      * @return UpdateType[]
      */
-    public function getUpdates(GetUpdatesMethod $method): array;
+    public function getUpdates(GetUpdatesMethod $getUpdatesMethod): array;
 
     /**
-     * @param GetMeMethod $method
      *
      * @throws ResponseException
      *
-     * @return UserType
      */
-    public function getMe(GetMeMethod $method): UserType;
+    public function getMe(GetMeMethod $getMeMethod): UserType;
 
     /**
-     * @param GetUserProfilePhotosMethod $method
      *
      * @throws ResponseException
      *
-     * @return UserProfilePhotosType
      */
-    public function getUserProfilePhotos(GetUserProfilePhotosMethod $method): UserProfilePhotosType;
+    public function getUserProfilePhotos(GetUserProfilePhotosMethod $getUserProfilePhotosMethod): UserProfilePhotosType;
 
     /**
-     * @param GetWebhookInfoMethod $method
      *
      * @throws ResponseException
      *
-     * @return WebhookInfoType
      */
-    public function getWebhookInfo(GetWebhookInfoMethod $method): WebhookInfoType;
+    public function getWebhookInfo(GetWebhookInfoMethod $getWebhookInfoMethod): WebhookInfoType;
 
     /**
-     * @param GetChatMembersCountMethod $method
      *
      * @throws ResponseException
      *
-     * @return int
      */
-    public function getChatMembersCount(GetChatMembersCountMethod $method): int;
+    public function getChatMembersCount(GetChatMembersCountMethod $getChatMembersCountMethod): int;
 
     /**
-     * @param GetChatMethod $method
      *
      * @throws ResponseException
      *
-     * @return ChatType
      */
-    public function getChat(GetChatMethod $method): ChatType;
+    public function getChat(GetChatMethod $getChatMethod): ChatType;
 
     /**
-     * @param GetChatAdministratorsMethod $method
      *
      * @throws ResponseException
-     *
      * @return ChatMemberType[]
      */
-    public function getChatAdministrators(GetChatAdministratorsMethod $method): array;
+    public function getChatAdministrators(GetChatAdministratorsMethod $getChatAdministratorsMethod): array;
 
     /**
-     * @param GetChatMemberMethod $method
      *
      * @throws ResponseException
      *
-     * @return ChatMemberType
      */
-    public function getChatMember(GetChatMemberMethod $method): ChatMemberType;
+    public function getChatMember(GetChatMemberMethod $getChatMemberMethod): ChatMemberType;
 
     /**
-     * @param GetGameHighScoresMethod $method
      *
      * @throws ResponseException
-     *
      * @return GameHighScoreType[]
      */
-    public function getGameHighScores(GetGameHighScoresMethod $method): array;
+    public function getGameHighScores(GetGameHighScoresMethod $getGameHighScoresMethod): array;
 
     /**
-     * @param GetStickerSetMethod $method
      *
      * @throws ResponseException
      *
-     * @return StickerSetType
      */
-    public function getStickerSet(GetStickerSetMethod $method): StickerSetType;
+    public function getStickerSet(GetStickerSetMethod $getStickerSetMethod): StickerSetType;
 
     /**
-     * @param GetFileMethod $method
      *
      * @throws ResponseException
      *
-     * @return FileType
      */
-    public function getFile(GetFileMethod $method): FileType;
+    public function getFile(GetFileMethod $getFileMethod): FileType;
 
     /**
-     * @param SendMediaGroupMethod $method
      *
      * @throws ResponseException
-     *
      * @return MessageType[]
      */
-    public function sendMediaGroup(SendMediaGroupMethod $method): array;
+    public function sendMediaGroup(SendMediaGroupMethod $sendMediaGroupMethod): array;
 
-    /**
-     * @param FileType $file
-     *
-     * @return string
-     */
-    public function getAbsoluteFilePath(FileType $file): string;
+    public function getAbsoluteFilePath(FileType $fileType): string;
 }

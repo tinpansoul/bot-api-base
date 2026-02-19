@@ -9,7 +9,7 @@ use TgBotApi\BotApiBase\Method\SendGameMethod;
 use TgBotApi\BotApiBase\Tests\Method\Traits\InlineKeyboardMarkupTrait;
 use TgBotApi\BotApiBase\Tests\Method\Traits\ReplyKeyboardMarkupTrait;
 
-class SendGameMethodTest extends MethodTestCase
+final class SendGameMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
     use ReplyKeyboardMarkupTrait;
@@ -18,22 +18,22 @@ class SendGameMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $this->getApi()->sendGame($this->getMethod());
-        $this->getApi()->send($this->getMethod());
+        $this->getApi()->sendGame(sendGameMethod: $this->getMethod());
+        $this->getApi()->send(sendMethodAlias: $this->getMethod());
     }
 
     private function getApi(): BotApiComplete
     {
-        return $this->getBot('sendGame', [
+        return $this->getBot(methodName: 'sendGame', request: [
             'chat_id' => 1,
             'game_short_name' => 'game_short_name',
             'disable_notification' => true,
             'reply_to_message_id' => 1,
-            'reply_markup' => static::buildInlineMarkupArray(),
+            'reply_markup' => self::buildInlineMarkupArray(),
             'allow_sending_without_reply' => true,
-        ], [], ['reply_markup']);
+        ], result: [], serialisedFields: ['reply_markup']);
     }
 
     /**
@@ -42,12 +42,12 @@ class SendGameMethodTest extends MethodTestCase
     private function getMethod(): SendGameMethod
     {
         return SendGameMethod::create(
-            1,
-            'game_short_name',
-            [
+            chatId: 1,
+            gameShortName: 'game_short_name',
+            data: [
                 'disableNotification' => true,
                 'replyToMessageId' => 1,
-                'replyMarkup' => static::buildInlineMarkupObject(),
+                'replyMarkup' => self::buildInlineMarkupObject(),
                 'allowSendingWithoutReply' => true,
             ]
         );

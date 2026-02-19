@@ -15,23 +15,19 @@ use TgBotApi\BotApiBase\Type\FileType;
 trait UploadMethodTrait
 {
     /**
-     * @param UploadMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return FileType
      */
-    abstract public function upload(UploadMethodAliasInterface $method): FileType;
+    abstract public function upload(UploadMethodAliasInterface $uploadMethodAlias): FileType;
 
     /**
-     * @param UploadStickerFileMethod $method
      *
      * @throws ResponseException
      *
-     * @return FileType
      */
-    public function uploadStickerFile(UploadStickerFileMethod $method): FileType
+    public function uploadStickerFile(UploadStickerFileMethod $uploadStickerFileMethod): FileType
     {
-        return $this->upload($method);
+        return $this->upload(uploadMethodAlias: $uploadStickerFileMethod);
     }
 }

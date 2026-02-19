@@ -6,24 +6,25 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\DeleteWebhookMethod;
 
-class DeleteWebhookMethodTest extends MethodTestCase
+final class DeleteWebhookMethodTest extends MethodTestCase
 {
     public function testCreate(): void
     {
-        $method = DeleteWebhookMethod::create(['dropPendingUpdates' => true]);
-        static::assertTrue($method->dropPendingUpdates);
+        $deleteWebhookMethod = DeleteWebhookMethod::create(data: ['dropPendingUpdates' => true]);
+        self::assertTrue(condition: $deleteWebhookMethod->dropPendingUpdates);
     }
 
     /**
      * @dataProvider provideData
      *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
+     * @param array<string, bool> $exceptedBody
      */
-    public function testEncode(DeleteWebhookMethod $method, array $exceptedBody): void
+    public function testEncode(DeleteWebhookMethod $deleteWebhookMethod, array $exceptedBody): void
     {
-        $botApi = $this->getBot('deleteWebhook', $exceptedBody, true);
+        $botApiComplete = $this->getBot(methodName: 'deleteWebhook', request: $exceptedBody, result: true);
 
-        $botApi->deleteWebhook($method);
+        $botApiComplete->deleteWebhook(deleteWebhookMethod: $deleteWebhookMethod);
     }
 
     /**
@@ -39,7 +40,7 @@ class DeleteWebhookMethodTest extends MethodTestCase
                 [],
             ],
             'drop pending updates case' => [
-                DeleteWebhookMethod::create(['dropPendingUpdates' => true]),
+                DeleteWebhookMethod::create(data: ['dropPendingUpdates' => true]),
                 ['drop_pending_updates' => true],
             ],
         ];

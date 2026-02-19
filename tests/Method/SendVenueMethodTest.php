@@ -8,7 +8,7 @@ use TgBotApi\BotApiBase\BotApiComplete;
 use TgBotApi\BotApiBase\Method\SendVenueMethod;
 use TgBotApi\BotApiBase\Tests\Method\Traits\InlineKeyboardMarkupTrait;
 
-class SendVenueMethodTest extends MethodTestCase
+final class SendVenueMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
@@ -16,15 +16,15 @@ class SendVenueMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $this->getApi()->sendVenue($this->getMethod());
-        $this->getApi()->send($this->getMethod());
+        $this->getApi()->sendVenue(sendVenueMethod: $this->getMethod());
+        $this->getApi()->send(sendMethodAlias: $this->getMethod());
     }
 
     private function getApi(): BotApiComplete
     {
-        return $this->getBot('sendVenue', [
+        return $this->getBot(methodName: 'sendVenue', request: [
             'chat_id' => 1,
             'latitude' => 51.5287718,
             'longitude' => -0.2416802,
@@ -34,11 +34,11 @@ class SendVenueMethodTest extends MethodTestCase
             'foursquare_type' => 'arts_entertainment/default',
             'disable_notification' => true,
             'reply_to_message_id' => 1,
-            'reply_markup' => static::buildInlineMarkupArray(),
+            'reply_markup' => self::buildInlineMarkupArray(),
             'google_place_type' => 'google_place_type',
             'google_place_id' => 'google_place_id',
             'allow_sending_without_reply' => true,
-        ], [], ['reply_markup']);
+        ], result: [], serialisedFields: ['reply_markup']);
     }
 
     /**
@@ -47,17 +47,17 @@ class SendVenueMethodTest extends MethodTestCase
     private function getMethod(): SendVenueMethod
     {
         return SendVenueMethod::create(
-            1,
-            51.5287718,
-            -0.2416802,
-            'title',
-            'address',
-            [
+            chatId: 1,
+            latitude: 51.5287718,
+            longitude: -0.2416802,
+            title: 'title',
+            address: 'address',
+            data: [
                 'foursquareId' => 'id',
                 'foursquareType' => 'arts_entertainment/default',
                 'disableNotification' => true,
                 'replyToMessageId' => 1,
-                'replyMarkup' => static::buildInlineMarkupObject(),
+                'replyMarkup' => self::buildInlineMarkupObject(),
                 'googlePlaceId' => 'google_place_id',
                 'googlePlaceType' => 'google_place_type',
                 'allowSendingWithoutReply' => true,

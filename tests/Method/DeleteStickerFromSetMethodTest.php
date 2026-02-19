@@ -6,15 +6,15 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\DeleteStickerFromSetMethod;
 
-class DeleteStickerFromSetMethodTest extends MethodTestCase
+final class DeleteStickerFromSetMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('deleteStickerFromSet', ['sticker' => 'file_id'], true);
+        $botApiComplete = $this->getBot(methodName: 'deleteStickerFromSet', request: ['sticker' => 'file_id'], result: true);
 
-        $botApi->deleteStickerFromSet(DeleteStickerFromSetMethod::create('file_id'));
+        $botApiComplete->deleteStickerFromSet(deleteStickerFromSetMethod: DeleteStickerFromSetMethod::create(sticker: 'file_id'));
     }
 }

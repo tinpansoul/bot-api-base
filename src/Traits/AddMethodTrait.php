@@ -14,23 +14,19 @@ use TgBotApi\BotApiBase\Method\Interfaces\AddMethodAliasInterface;
 trait AddMethodTrait
 {
     /**
-     * @param AddMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    abstract public function add(AddMethodAliasInterface $method): bool;
+    abstract public function add(AddMethodAliasInterface $addMethodAlias): bool;
 
     /**
-     * @param AddStickerToSetMethod $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function addStickerToSet(AddStickerToSetMethod $method): bool
+    public function addStickerToSet(AddStickerToSetMethod $addStickerToSetMethod): bool
     {
-        return $this->add($method);
+        return $this->add(addMethodAlias: $addStickerToSetMethod);
     }
 }

@@ -9,7 +9,7 @@ use TgBotApi\BotApiBase\Method\Interfaces\HasParseModeVariableInterface;
 use TgBotApi\BotApiBase\Tests\Method\Traits\ReplyKeyboardMarkupTrait;
 use TgBotApi\BotApiBase\Type\MessageEntityType;
 
-class EditMessageTextMethodTest extends MethodTestCase
+final class EditMessageTextMethodTest extends MethodTestCase
 {
     use ReplyKeyboardMarkupTrait;
 
@@ -17,10 +17,10 @@ class EditMessageTextMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
         $this->queryApi(
-            [
+            excepted: [
                 'chat_id' => 'chat_id',
                 'message_id' => 1,
                 'text' => 'text',
@@ -28,17 +28,17 @@ class EditMessageTextMethodTest extends MethodTestCase
 
                 'parse_mode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
                 'disable_web_page_preview' => true,
-                'reply_markup' => static::buildReplyMarkupArray(),
+                'reply_markup' => self::buildReplyMarkupArray(),
             ],
-            EditMessageTextMethod::create(
-                'chat_id',
-                1,
-                'text',
-                [
+            editMessageTextMethod: EditMessageTextMethod::create(
+                chatId: 'chat_id',
+                messageId: 1,
+                text: 'text',
+                data: [
                     'parseMode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
                     'disableWebPagePreview' => true,
-                    'replyMarkup' => static::buildReplyMarkupObject(),
-                    'entities' => [MessageEntityType::create(MessageEntityType::TYPE_PRE, 0, 1)],
+                    'replyMarkup' => self::buildReplyMarkupObject(),
+                    'entities' => [MessageEntityType::create(type: MessageEntityType::TYPE_PRE, offset: 0, length: 1)],
                 ]
             )
         );
@@ -48,20 +48,20 @@ class EditMessageTextMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncodeInline()
+    public function testEncodeInline(): void
     {
         $this->queryApi(
-            [
+            excepted: [
                 'inline_message_id' => 'inline_message_id',
                 'text' => 'text',
                 'parse_mode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
                 'disable_web_page_preview' => true,
                 'reply_markup' => $this->buildReplyMarkupArray(),
             ],
-            EditMessageTextMethod::createInline(
-                'inline_message_id',
-                'text',
-                [
+            editMessageTextMethod: EditMessageTextMethod::createInline(
+                inlineMessageId: 'inline_message_id',
+                text: 'text',
+                data: [
                     'parseMode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
                     'disableWebPagePreview' => true,
                     'replyMarkup' => $this->buildReplyMarkupObject(),
@@ -72,14 +72,15 @@ class EditMessageTextMethodTest extends MethodTestCase
 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
+     * @param array<array<string, mixed>, mixed> $excepted
      */
-    private function queryApi(array $excepted, EditMessageTextMethod $actual)
+    private function queryApi(array $excepted, EditMessageTextMethod $editMessageTextMethod): void
     {
         $this->getBot(
-            'editMessageText',
-            $excepted,
-            true,
-            ['reply_markup']
-        )->editMessageText($actual);
+            methodName: 'editMessageText',
+            request: $excepted,
+            result: true,
+            serialisedFields: ['reply_markup']
+        )->editMessageText(editMessageTextMethod: $editMessageTextMethod);
     }
 }

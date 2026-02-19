@@ -16,7 +16,7 @@ use TgBotApi\BotApiBase\Type\InputMessageContent\InputTextMessageContentType;
  *
  * @todo add all InlineQueryTypes
  */
-class AnswerInlineQueryMethodTest extends MethodTestCase
+final class AnswerInlineQueryMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
@@ -24,11 +24,11 @@ class AnswerInlineQueryMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testInlineQueryResultArticle()
+    public function testInlineQueryResultArticle(): void
     {
-        list($exceptedMessageContent, $verifiableMessageContent) = $this->buildInputTextMessageContent();
+        [$exceptedMessageContent, $verifiableMessageContent] = $this->buildInputTextMessageContent();
         $this->runWithArguments(
-            [
+            excepted: [
                 'type' => 'article',
                 'id' => 'id',
                 'title' => 'title',
@@ -41,11 +41,11 @@ class AnswerInlineQueryMethodTest extends MethodTestCase
                 'thumb_width' => 320,
                 'thumb_height' => 320,
             ],
-            InlineQueryResultArticleType::create(
-                'id',
-                'title',
-                $verifiableMessageContent,
-                [
+            verifiable: InlineQueryResultArticleType::create(
+                id: 'id',
+                title: 'title',
+                inputMessageContentType: $verifiableMessageContent,
+                data: [
                     'replyMarkup' => $this->buildInlineKeyboardButtonObject(),
                     'url' => 'url',
                     'hideUrl' => true,
@@ -62,11 +62,11 @@ class AnswerInlineQueryMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testInlineQueryResultAudio()
+    public function testInlineQueryResultAudio(): void
     {
-        list($exceptedMessageContent, $verifiableMessageContent) = $this->buildInputTextMessageContent();
+        [$exceptedMessageContent, $verifiableMessageContent] = $this->buildInputTextMessageContent();
         $this->runWithArguments(
-            [
+            excepted: [
                 'type' => 'audio',
                 'id' => 'id',
                 'audio_url' => 'audio_url',
@@ -78,11 +78,11 @@ class AnswerInlineQueryMethodTest extends MethodTestCase
                 'reply_markup' => $this->buildInlineKeyboardButtonArray(),
                 'input_message_content' => $exceptedMessageContent,
             ],
-            InlineQueryResultAudioType::create(
-                'id',
-                'audio_url',
-                'title',
-                [
+            verifiable: InlineQueryResultAudioType::create(
+                id: 'id',
+                audioUrl: 'audio_url',
+                title: 'title',
+                data: [
                     'parseMode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
                     'performer' => 'performer',
                     'audioDuration' => 1,
@@ -96,8 +96,7 @@ class AnswerInlineQueryMethodTest extends MethodTestCase
 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
-     * @return array
+     * @return array<int, InputTextMessageContentType|array<string, bool|string>>
      */
     private function buildInputTextMessageContent(): array
     {
@@ -108,8 +107,8 @@ class AnswerInlineQueryMethodTest extends MethodTestCase
                 'disable_web_page_preview' => true,
             ],
             InputTextMessageContentType::create(
-                'InputTextMessageContentType',
-                [
+                messageText: 'InputTextMessageContentType',
+                data: [
                     'parseMode' => InputTextMessageContentType::PARSE_MODE_MARKDOWN,
                     'disableWebPagePreview' => true,
                 ]
@@ -124,28 +123,29 @@ class AnswerInlineQueryMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @throws \Exception
+     * @param array<string, mixed> $excepted
      */
-    private function runWithArguments($excepted, $verifiable)
+    private function runWithArguments(array $excepted, InlineQueryResultArticleType|InlineQueryResultAudioType $verifiable): void
     {
         $dateTime = new \DateTimeImmutable();
 
-        $botApi = $this->getBot('answerInlineQuery', [
+        $botApiComplete = $this->getBot(methodName: 'answerInlineQuery', request: [
             'inline_query_id' => 'inline_query_id',
             'results' => [
                 $excepted,
                 $excepted,
             ],
-            'cache_time' => $dateTime->format('U'),
+            'cache_time' => $dateTime->format(format: 'U'),
             'is_personal' => true,
             'next_offset' => 'next_offset',
             'switch_pm_text' => 'switch_pm_text',
             'switch_pm_parameter' => 'switch_pm_parameter',
-        ], true, ['results']);
+        ], result: true, serialisedFields: ['results']);
 
-        $answer = AnswerInlineQueryMethod::create(
-            'inline_query_id',
-            [$verifiable],
-            [
+        $answerInlineQueryMethod = AnswerInlineQueryMethod::create(
+            inlineQueryId: 'inline_query_id',
+            results: [$verifiable],
+            data: [
                 'cacheTime' => $dateTime,
                 'isPersonal' => true,
                 'nextOffset' => 'next_offset',
@@ -154,10 +154,10 @@ class AnswerInlineQueryMethodTest extends MethodTestCase
             ]
         );
 
-        $answer->addResult(
-            $verifiable
+        $answerInlineQueryMethod->addResult(
+            inlineQueryResultType: $verifiable
         );
 
-        $botApi->answerInlineQuery($answer);
+        $botApiComplete->answerInlineQuery(answerInlineQueryMethod: $answerInlineQueryMethod);
     }
 }

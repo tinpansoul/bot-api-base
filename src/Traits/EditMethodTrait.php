@@ -19,71 +19,59 @@ use TgBotApi\BotApiBase\Type\MessageType;
 trait EditMethodTrait
 {
     /**
-     * @param EditMethodAliasInterface $method
      *
      * @throws ResponseException
-     *
      * @return MessageType | bool
      */
-    abstract public function edit(EditMethodAliasInterface $method);
+    abstract public function edit(EditMethodAliasInterface $editMethodAlias);
 
     /**
-     * @param EditMessageCaptionMethod $method
      *
      * @throws ResponseException
-     *
      * @return MessageType | bool
      */
-    public function editMessageCaption(EditMessageCaptionMethod $method)
+    public function editMessageCaption(EditMessageCaptionMethod $editMessageCaptionMethod)
     {
-        return $this->edit($method);
+        return $this->edit(editMethodAlias: $editMessageCaptionMethod);
     }
 
     /**
-     * @param EditMessageLiveLocationMethod $method
      *
      * @throws ResponseException
-     *
      * @return MessageType | bool
      */
-    public function editMessageLiveLocation(EditMessageLiveLocationMethod $method)
+    public function editMessageLiveLocation(EditMessageLiveLocationMethod $editMessageLiveLocationMethod)
     {
-        return $this->edit($method);
+        return $this->edit(editMethodAlias: $editMessageLiveLocationMethod);
     }
 
     /**
-     * @param EditMessageMediaMethod $method
      *
      * @throws ResponseException
-     *
      * @return MessageType | bool
      */
-    public function editMessageMedia(EditMessageMediaMethod $method)
+    public function editMessageMedia(EditMessageMediaMethod $editMessageMediaMethod)
     {
-        return $this->edit($method);
+        return $this->edit(editMethodAlias: $editMessageMediaMethod);
     }
 
     /**
-     * @param EditMessageReplyMarkupMethod $method
      *
      * @throws ResponseException
-     *
      * @return MessageType | bool
      */
-    public function editMessageReplyMarkup(EditMessageReplyMarkupMethod $method)
+    public function editMessageReplyMarkup(EditMessageReplyMarkupMethod $editMessageReplyMarkupMethod)
     {
-        return $this->edit($method);
+        return $this->edit(editMethodAlias: $editMessageReplyMarkupMethod);
     }
 
     /**
-     * @param EditMessageTextMethod $method
      *
      * @throws ResponseException
-     *
      * @return MessageType | bool
      */
-    public function editMessageText(EditMessageTextMethod $method)
+    public function editMessageText(EditMessageTextMethod $editMessageTextMethod)
     {
-        return $this->edit($method);
+        return $this->edit(editMethodAlias: $editMessageTextMethod);
     }
 }

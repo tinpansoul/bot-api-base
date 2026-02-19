@@ -14,23 +14,19 @@ use TgBotApi\BotApiBase\Method\LeaveChatMethod;
 trait LeaveMethodTrait
 {
     /**
-     * @param LeaveMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    abstract public function leave(LeaveMethodAliasInterface $method): bool;
+    abstract public function leave(LeaveMethodAliasInterface $leaveMethodAlias): bool;
 
     /**
-     * @param LeaveChatMethod $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function leaveChat(LeaveChatMethod $method): bool
+    public function leaveChat(LeaveChatMethod $leaveChatMethod): bool
     {
-        return $this->leave($method);
+        return $this->leave(leaveMethodAlias: $leaveChatMethod);
     }
 }

@@ -27,53 +27,44 @@ class EditMessageMediaMethod implements EditMethodAliasInterface
     public $media;
 
     /**
-     * @param int|string     $chatId
-     * @param int            $messageId
-     * @param InputMediaType $media
      * @param array|null     $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return EditMessageMediaMethod
      */
     public static function create(
-        $chatId,
+        int|string $chatId,
         int $messageId,
-        InputMediaType $media,
+        InputMediaType $inputMediaType,
         array $data = null
     ): EditMessageMediaMethod {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->media = $media;
-        $instance->messageId = $messageId;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->media = $inputMediaType;
+        $static->messageId = $messageId;
         if ($data) {
-            $instance->fill($data, ['chatId', 'media', 'messageId', 'caption']);
+            $static->fill(data: $data, forbidden: ['chatId', 'media', 'messageId', 'caption']);
         }
 
-        return $instance;
+        return $static;
     }
 
     /**
-     * @param string         $inlineMessageId
-     * @param InputMediaType $media
      * @param array|null     $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return EditMessageMediaMethod
      */
     public static function createInline(
         string $inlineMessageId,
-        InputMediaType $media,
+        InputMediaType $inputMediaType,
         array $data = null
     ): EditMessageMediaMethod {
-        $instance = new static();
-        $instance->inlineMessageId = $inlineMessageId;
-        $instance->media = $media;
+        $static = new static();
+        $static->inlineMessageId = $inlineMessageId;
+        $static->media = $inputMediaType;
         if ($data) {
-            $instance->fill($data, ['chatId', 'media', 'messageId', 'caption']);
+            $static->fill(data: $data, forbidden: ['chatId', 'media', 'messageId', 'caption']);
         }
 
-        return $instance;
+        return $static;
     }
 }

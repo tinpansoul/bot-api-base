@@ -71,23 +71,19 @@ class SendVideoMethod implements HasParseModeVariableInterface, SendMethodAliasI
     public $supportStreaming;
 
     /**
-     * @param int|string           $chatId
-     * @param InputFileType|string $video
      * @param array|null           $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
-     * @return SendVideoMethod
      */
-    public static function create($chatId, $video, array $data = null): SendVideoMethod
+    public static function create(int|string $chatId, string|InputFileType $video, array $data = null): SendVideoMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->video = $video;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->video = $video;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

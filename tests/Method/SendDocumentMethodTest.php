@@ -11,67 +11,69 @@ use TgBotApi\BotApiBase\Tests\Method\Traits\InlineKeyboardMarkupTrait;
 use TgBotApi\BotApiBase\Type\InputFileType;
 use TgBotApi\BotApiBase\Type\MessageEntityType;
 
-class SendDocumentMethodTest extends MethodTestCase
+final class SendDocumentMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
     public function testCreate(): void
     {
-        $document = SendDocumentMethod::create(
-            'chat_id',
-            InputFileType::create('/dev/null'),
-            [
-                'thumb' => InputFileType::create('/dev/null'),
+        $sendDocumentMethod = SendDocumentMethod::create(
+            chatId: 'chat_id',
+            document: InputFileType::create(path: '/dev/null'),
+            data: [
+                'thumb' => InputFileType::create(path: '/dev/null'),
                 'caption' => 'caption',
                 'parseMode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN_V2,
                 'disableNotification' => true,
                 'replyToMessageId' => 1,
-                'replyMarkup' => static::buildInlineMarkupObject(),
+                'replyMarkup' => self::buildInlineMarkupObject(),
                 'disableContentTypeDetection' => true,
             ]
         );
 
-        static::assertEquals('chat_id', $document->chatId);
-        static::assertEquals(InputFileType::create('/dev/null'), $document->document);
-        static::assertEquals(InputFileType::create('/dev/null'), $document->thumb);
-        static::assertEquals('caption', $document->caption);
-        static::assertEquals('MarkdownV2', $document->parseMode);
-        static::assertTrue($document->disableNotification);
-        static::assertEquals(1, $document->replyToMessageId);
-        static::assertEquals(static::buildInlineMarkupObject(), $document->replyMarkup);
-        static::assertTrue($document->disableContentTypeDetection);
+        self::assertEquals(expected: 'chat_id', actual: $sendDocumentMethod->chatId);
+        self::assertEquals(expected: InputFileType::create(path: '/dev/null'), actual: $sendDocumentMethod->document);
+        self::assertEquals(expected: InputFileType::create(path: '/dev/null'), actual: $sendDocumentMethod->thumb);
+        self::assertEquals(expected: 'caption', actual: $sendDocumentMethod->caption);
+        self::assertEquals(expected: 'MarkdownV2', actual: $sendDocumentMethod->parseMode);
+        self::assertTrue(condition: $sendDocumentMethod->disableNotification);
+        self::assertEquals(expected: 1, actual: $sendDocumentMethod->replyToMessageId);
+        self::assertEquals(expected: self::buildInlineMarkupObject(), actual: $sendDocumentMethod->replyMarkup);
+        self::assertTrue(condition: $sendDocumentMethod->disableContentTypeDetection);
     }
 
     /**
      * @dataProvider provideData
      *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
+     * @param array<string, mixed[]|string|bool|int> $request
      */
-    public function testEncode(SendDocumentMethod $method, array $request): void
+    public function testEncode(SendDocumentMethod $sendDocumentMethod, array $request): void
     {
-        $this->getApi($request)->sendDocument($method);
-        $this->getApi($request)->send($method);
+        $this->getApi(request: $request)->sendDocument(sendDocumentMethod: $sendDocumentMethod);
+        $this->getApi(request: $request)->send(sendMethodAlias: $sendDocumentMethod);
     }
 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
+     * @return array<string, array<SendDocumentMethod|array<string, mixed[]|bool|int|string>>>
      */
     public function provideData(): array
     {
         return [
             'default case' => [
                 SendDocumentMethod::create(
-                    'chat_id',
-                    InputFileType::create('/dev/null'),
-                    [
-                        'thumb' => InputFileType::create('/dev/null'),
+                    chatId: 'chat_id',
+                    document: InputFileType::create(path: '/dev/null'),
+                    data: [
+                        'thumb' => InputFileType::create(path: '/dev/null'),
                         'caption' => 'caption',
-                        'captionEntities' => [MessageEntityType::create(MessageEntityType::TYPE_PRE, 0, 1)],
+                        'captionEntities' => [MessageEntityType::create(type: MessageEntityType::TYPE_PRE, offset: 0, length: 1)],
                         'parseMode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
                         'disableNotification' => true,
                         'replyToMessageId' => 1,
                         'allowSendingWithoutReply' => true,
-                        'replyMarkup' => static::buildInlineMarkupObject(),
+                        'replyMarkup' => self::buildInlineMarkupObject(),
                     ]
                 ),
                 [
@@ -84,22 +86,22 @@ class SendDocumentMethodTest extends MethodTestCase
                     'disable_notification' => true,
                     'reply_to_message_id' => 1,
                     'allow_sending_without_reply' => true,
-                    'reply_markup' => static::buildInlineMarkupArray(),
+                    'reply_markup' => self::buildInlineMarkupArray(),
                 ],
             ],
             'Disable Content Type Detection case' => [
                 SendDocumentMethod::create(
-                    'chat_id',
-                    InputFileType::create('/dev/null'),
-                    [
-                        'thumb' => InputFileType::create('/dev/null'),
+                    chatId: 'chat_id',
+                    document: InputFileType::create(path: '/dev/null'),
+                    data: [
+                        'thumb' => InputFileType::create(path: '/dev/null'),
 
                         'caption' => 'caption',
                         'parseMode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
 
                         'disableNotification' => true,
                         'replyToMessageId' => 1,
-                        'replyMarkup' => static::buildInlineMarkupObject(),
+                        'replyMarkup' => self::buildInlineMarkupObject(),
                         'disableContentTypeDetection' => true,
                     ]
                 ),
@@ -113,20 +115,23 @@ class SendDocumentMethodTest extends MethodTestCase
 
                     'disable_notification' => true,
                     'reply_to_message_id' => 1,
-                    'reply_markup' => static::buildInlineMarkupArray(),
+                    'reply_markup' => self::buildInlineMarkupArray(),
                     'disable_content_type_detection' => true,
                 ],
             ],
         ];
     }
 
+    /**
+     * @param array<string, mixed[]|bool|int|string> $request
+     */
     private function getApi(array $request): BotApiComplete
     {
         return $this->getBotWithFiles(
-            'sendDocument',
-            $request,
-            ['document' => true, 'thumb' => true],
-            ['reply_markup']
+            methodName: 'sendDocument',
+            request: $request,
+            fileMap: ['document' => true, 'thumb' => true],
+            serializableFields: ['reply_markup']
         );
     }
 }

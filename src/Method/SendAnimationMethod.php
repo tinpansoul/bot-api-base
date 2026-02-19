@@ -21,6 +21,7 @@ class SendAnimationMethod implements HasParseModeVariableInterface, SendMethodAl
     use FillFromArrayTrait;
     use SendToChatVariablesTrait;
     use CaptionVariablesTrait;
+
     /**
      * Animation to send.
      * Pass a file_id as String to send an animation that exists on the Telegram servers (recommended),
@@ -64,23 +65,19 @@ class SendAnimationMethod implements HasParseModeVariableInterface, SendMethodAl
     public $thumb;
 
     /**
-     * @param int|string           $chatId
-     * @param InputFileType|string $animation
      * @param array|null           $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
-     * @return SendAnimationMethod
      */
-    public static function create($chatId, $animation, array $data = null): SendAnimationMethod
+    public static function create(int|string $chatId, string|InputFileType $animation, array $data = null): SendAnimationMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->animation = $animation;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->animation = $animation;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

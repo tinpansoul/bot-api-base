@@ -20,14 +20,14 @@ abstract class TypeTestCase extends \PHPUnit\Framework\TestCase
      */
     public function getBotFromJson(string $json)
     {
-        $stub = $this->getMockBuilder(ApiClientInterface::class)
+        $stub = $this->getMockBuilder(className: ApiClientInterface::class)
             ->getMock();
 
         $stub->expects($this->once())
-            ->method('send')
-            ->willReturn(\json_decode($json, false));
+            ->method(constraint: 'send')
+            ->willReturn(value: \json_decode(json: $json, associative: false));
 
-        return new BotApi('000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', $stub, $this->getNormalizer());
+        return new BotApi(botKey: '000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', apiClient: $stub, normalizer: $this->getNormalizer());
     }
 
     /**
@@ -35,7 +35,7 @@ abstract class TypeTestCase extends \PHPUnit\Framework\TestCase
      */
     public function getFetchedResult(string $json): UpdateType
     {
-        return (new WebhookFetcher($this->getNormalizer()))->fetch($json);
+        return (new WebhookFetcher(normalizer: $this->getNormalizer()))->fetch(request: $json);
     }
 
     /**
@@ -43,24 +43,24 @@ abstract class TypeTestCase extends \PHPUnit\Framework\TestCase
      */
     protected function getBot($result): BotApi
     {
-        $stub = $this->getMockBuilder(ApiClientInterface::class)
+        $stub = $this->getMockBuilder(className: ApiClientInterface::class)
             ->getMock();
 
         $stub->expects($this->once())
-            ->method('send')
-            ->willReturn((object) (['ok' => true, 'result' => $result]));
+            ->method(constraint: 'send')
+            ->willReturn(value: (object) (['ok' => true, 'result' => $result]));
 
         /* @var ApiClientInterface $stub */
-        return new BotApi('000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', $stub, $this->getNormalizer());
+        return new BotApi(botKey: '000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', apiClient: $stub, normalizer: $this->getNormalizer());
     }
 
     protected function getMethod(): MethodInterface
     {
-        return $this->getMockBuilder(MethodInterface::class)->getMock();
+        return $this->getMockBuilder(className: MethodInterface::class)->getMock();
     }
 
     protected static function getResource($filename): string
     {
-        return \file_get_contents(\sprintf('%s/resources/%s.json', __DIR__, $filename));
+        return \file_get_contents(filename: \sprintf('%s/resources/%s.json', __DIR__, $filename));
     }
 }

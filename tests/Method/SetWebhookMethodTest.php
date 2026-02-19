@@ -7,14 +7,14 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 use TgBotApi\BotApiBase\Method\SetWebhookMethod;
 use TgBotApi\BotApiBase\Type\InputFileType;
 
-class SetWebhookMethodTest extends MethodTestCase
+final class SetWebhookMethodTest extends MethodTestCase
 {
     public function testCreate(): void
     {
-        $method = SetWebhookMethod::create(
-            'https://url',
-            [
-                'certificate' => InputFileType::create('/dev/null'),
+        $setWebhookMethod = SetWebhookMethod::create(
+            url: 'https://url',
+            data: [
+                'certificate' => InputFileType::create(path: '/dev/null'),
                 'maxConnections' => 100,
                 'ipAddress' => '0.0.0.0',
                 'allowedUpdates' => [
@@ -32,11 +32,11 @@ class SetWebhookMethodTest extends MethodTestCase
             ]
         );
 
-        static::assertEquals('https://url', $method->url);
-        static::assertEquals(InputFileType::create('/dev/null'), $method->certificate);
-        static::assertEquals(100, $method->maxConnections);
-        static::assertEquals('0.0.0.0', $method->ipAddress);
-        static::assertEqualsCanonicalizing([
+        self::assertEquals(expected: 'https://url', actual: $setWebhookMethod->url);
+        self::assertEquals(expected: InputFileType::create(path: '/dev/null'), actual: $setWebhookMethod->certificate);
+        self::assertEquals(expected: 100, actual: $setWebhookMethod->maxConnections);
+        self::assertEquals(expected: '0.0.0.0', actual: $setWebhookMethod->ipAddress);
+        self::assertEqualsCanonicalizing(expected: [
             'message',
             'edited_message',
             'channel_post',
@@ -46,8 +46,8 @@ class SetWebhookMethodTest extends MethodTestCase
             'callback_query',
             'shipping_query',
             'pre_checkout_query',
-        ], $method->allowedUpdates);
-        static::assertTrue($method->dropPendingUpdates);
+        ], actual: $setWebhookMethod->allowedUpdates);
+        self::assertTrue(condition: $setWebhookMethod->dropPendingUpdates);
     }
 
     /**
@@ -56,18 +56,19 @@ class SetWebhookMethodTest extends MethodTestCase
      * @param $expectedBody
      *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
+     * @param array<string, string[]|string|int|bool> $expectedBody
      */
-    public function testEncode(SetWebhookMethod $method, $expectedBody): void
+    public function testEncode(SetWebhookMethod $setWebhookMethod, array $expectedBody): void
     {
-        $botApi = $this->getBotWithFiles(
-            'setWebhook',
-            $expectedBody,
-            ['certificate' => true],
-            [],
-            true
+        $botApiComplete = $this->getBotWithFiles(
+            methodName: 'setWebhook',
+            request: $expectedBody,
+            fileMap: ['certificate' => true],
+            serializableFields: [],
+            result: true
         );
 
-        $botApi->setWebhook($method);
+        $botApiComplete->setWebhook(setWebhookMethod: $setWebhookMethod);
     }
 
     /**
@@ -75,14 +76,14 @@ class SetWebhookMethodTest extends MethodTestCase
      *
      * @return array[]
      */
-    public function provideData()
+    public function provideData(): array
     {
         return [
             'default case' => [
                 SetWebhookMethod::create(
-                    'https://url',
-                    [
-                        'certificate' => InputFileType::create('/dev/null'),
+                    url: 'https://url',
+                    data: [
+                        'certificate' => InputFileType::create(path: '/dev/null'),
                         'maxConnections' => 100,
                         'allowedUpdates' => [
                             SetWebhookMethod::TYPE_SHIPPING_QUERY,
@@ -116,9 +117,9 @@ class SetWebhookMethodTest extends MethodTestCase
             ],
             'drop updates case' => [
                 SetWebhookMethod::create(
-                    'https://url',
-                    [
-                        'certificate' => InputFileType::create('/dev/null'),
+                    url: 'https://url',
+                    data: [
+                        'certificate' => InputFileType::create(path: '/dev/null'),
                         'maxConnections' => 100,
                         'allowedUpdates' => [
                             SetWebhookMethod::TYPE_SHIPPING_QUERY,
@@ -154,9 +155,9 @@ class SetWebhookMethodTest extends MethodTestCase
             ],
             'with local ip case' => [
                 SetWebhookMethod::create(
-                    'https://url',
-                    [
-                        'certificate' => InputFileType::create('/dev/null'),
+                    url: 'https://url',
+                    data: [
+                        'certificate' => InputFileType::create(path: '/dev/null'),
                         'maxConnections' => 100,
                         'ipAddress' => '0.0.0.0',
                         'allowedUpdates' => [

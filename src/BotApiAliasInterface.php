@@ -33,46 +33,46 @@ use TgBotApi\BotApiBase\Type\MessageType;
  */
 interface BotApiAliasInterface
 {
-    public function send(SendMethodAliasInterface $method): MessageType;
+    public function send(SendMethodAliasInterface $sendMethodAlias): MessageType;
 
-    public function create(CreateMethodAliasInterface $method): bool;
+    public function create(CreateMethodAliasInterface $createMethodAlias): bool;
 
-    public function add(AddMethodAliasInterface $method): bool;
+    public function add(AddMethodAliasInterface $addMethodAlias): bool;
 
-    public function answer(AnswerMethodAliasInterface $method): bool;
+    public function answer(AnswerMethodAliasInterface $answerMethodAlias): bool;
 
-    public function delete(DeleteMethodAliasInterface $method): bool;
+    public function delete(DeleteMethodAliasInterface $deleteMethodAlias): bool;
 
     /**
      * @return MessageType | bool
      */
-    public function edit(EditMethodAliasInterface $method);
+    public function edit(EditMethodAliasInterface $editMethodAlias);
 
-    public function forward(ForwardMethodAliasInterface $method): MessageType;
+    public function forward(ForwardMethodAliasInterface $forwardMethodAlias): MessageType;
 
-    public function kick(KickMethodAliasInterface $method): bool;
+    public function kick(KickMethodAliasInterface $kickMethodAlias): bool;
 
-    public function leave(LeaveMethodAliasInterface $method): bool;
+    public function leave(LeaveMethodAliasInterface $leaveMethodAlias): bool;
 
-    public function pin(PinMethodAliasInterface $method): bool;
+    public function pin(PinMethodAliasInterface $pinMethodAlias): bool;
 
-    public function promote(PromoteMethodAliasInterface $method): bool;
+    public function promote(PromoteMethodAliasInterface $promoteMethodAlias): bool;
 
-    public function restrict(RestrictMethodAliasInterface $method): bool;
+    public function restrict(RestrictMethodAliasInterface $restrictMethodAlias): bool;
 
-    public function set(SetMethodAliasInterface $method): bool;
+    public function set(SetMethodAliasInterface $setMethodAlias): bool;
 
-    public function stop(StopMethodAliasInterface $method): bool;
+    public function stop(StopMethodAliasInterface $stopMethodAlias): bool;
 
-    public function unban(UnbanMethodAliasInterface $method): bool;
+    public function unban(UnbanMethodAliasInterface $unbanMethodAlias): bool;
 
-    public function unpin(UnpinMethodAliasInterface $method): bool;
+    public function unpin(UnpinMethodAliasInterface $unpinMethodAlias): bool;
 
-    public function upload(UploadMethodAliasInterface $method): FileType;
+    public function upload(UploadMethodAliasInterface $uploadMethodAlias): FileType;
 
-    public function logOut(LogOutMethod $method): bool;
+    public function logOut(LogOutMethod $logOutMethod): bool;
 
-    public function close(CloseMethod $method): bool;
+    public function close(CloseMethod $closeMethod): bool;
 
-    public function copyMessage(CopyMessageMethod $method): MessageIdType;
+    public function copyMessage(CopyMessageMethod $copyMessageMethod): MessageIdType;
 }

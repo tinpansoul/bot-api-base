@@ -15,7 +15,7 @@ class InputFileNormalizer implements NormalizerInterface
     /**
      * @var
      */
-    private $files;
+    private ?array $files = null;
 
     /**
      * InputFileNormalizer constructor.
@@ -28,29 +28,30 @@ class InputFileNormalizer implements NormalizerInterface
     }
 
     /**
-     * @param mixed $topic
-     * @param null  $format
-     * @param array $context
-     *
      * @return array|bool|float|int|string
      */
-    public function normalize($topic, $format = null, array $context = [])
-    {
-        $uniqid = \uniqid('', true);
+    public function normalize(
+        mixed $topic,
+        $format = null,
+        array $context = []
+    ): string|int|float|bool|\ArrayObject|array|null {
+        $uniqid = \uniqid(prefix: '', more_entropy: true);
 
         $this->files[$uniqid] = $topic;
 
         return 'attach://' . $uniqid;
     }
 
-    /**
-     * @param mixed $data
-     * @param null  $format
-     *
-     * @return bool
-     */
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization(mixed $data, $format = null, array $context = []): bool
     {
         return $data instanceof InputFileType;
+    }
+
+    /**
+     * @return array<string, bool>
+     */
+    public function getSupportedTypes(?string $format): array
+    {
+        return ['*' => false];
     }
 }

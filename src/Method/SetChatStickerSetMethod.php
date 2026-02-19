@@ -23,18 +23,12 @@ class SetChatStickerSetMethod implements SetMethodAliasInterface
      */
     public $stickerSetName;
 
-    /**
-     * @param int|string $chatId
-     * @param string     $stickerSetName
-     *
-     * @return SetChatStickerSetMethod
-     */
-    public static function create($chatId, string $stickerSetName): SetChatStickerSetMethod
+    public static function create(int|string $chatId, string $stickerSetName): SetChatStickerSetMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->stickerSetName = $stickerSetName;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->stickerSetName = $stickerSetName;
 
-        return $instance;
+        return $static;
     }
 }

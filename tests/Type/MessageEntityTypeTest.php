@@ -7,31 +7,34 @@ namespace TgBotApi\BotApiBase\Tests\Type;
 use TgBotApi\BotApiBase\Type\MessageEntityType;
 use TgBotApi\BotApiBase\Type\UserType;
 
-class MessageEntityTypeTest extends TypeBaseTestCase
+final class MessageEntityTypeTest extends TypeBaseTestCase
 {
     public function testCreate(): void
     {
-        $type = MessageEntityType::create(MessageEntityType::TYPE_PRE, 1, 5, [
+        $messageEntityType = MessageEntityType::create(type: MessageEntityType::TYPE_PRE, offset: 1, length: 5, data: [
             'url' => 'url',
             'user' => new UserType(),
             'language' => 'json',
         ]);
 
-        static::assertEquals('pre', $type->type);
-        static::assertEquals(1, $type->offset);
-        static::assertEquals(5, $type->length);
-        static::assertEquals('url', $type->url);
-        static::assertEquals(new UserType(), $type->user);
-        static::assertEquals('json', $type->language);
+        self::assertEquals(expected: 'pre', actual: $messageEntityType->type);
+        self::assertEquals(expected: 1, actual: $messageEntityType->offset);
+        self::assertEquals(expected: 5, actual: $messageEntityType->length);
+        self::assertEquals(expected: 'url', actual: $messageEntityType->url);
+        self::assertEquals(expected: new UserType(), actual: $messageEntityType->user);
+        self::assertEquals(expected: 'json', actual: $messageEntityType->language);
     }
 
+    /**
+     * @return array<string, array<int, string|MessageEntityType>>
+     */
     public function provideData(): array
     {
         return [
             'all fields case' => [
                 MessageEntityType::class,
-                static::getResource('MessageEntityTypeTest/all-fields'),
-                MessageEntityType::create(MessageEntityType::TYPE_PRE, 1, 5, [
+                self::getResource(filename: 'MessageEntityTypeTest/all-fields'),
+                (array) MessageEntityType::create(type: MessageEntityType::TYPE_PRE, offset: 1, length: 5, data: [
                     'url' => 'url',
                     'user' => new UserType(),
                     'language' => 'json',

@@ -20,16 +20,11 @@ class GetStickerSetMethod implements MethodInterface
      */
     public $name;
 
-    /**
-     * @param string $name
-     *
-     * @return GetStickerSetMethod
-     */
     public static function create(string $name): GetStickerSetMethod
     {
-        $instance = new static();
-        $instance->name = $name;
+        $static = new static();
+        $static->name = $name;
 
-        return $instance;
+        return $static;
     }
 }

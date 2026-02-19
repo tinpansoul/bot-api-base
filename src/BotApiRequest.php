@@ -9,39 +9,19 @@ namespace TgBotApi\BotApiBase;
  */
 class BotApiRequest implements BotApiRequestInterface
 {
-    /**
-     * @var array
-     */
-    private $data;
-
-    /**
-     * @var array
-     */
-    private $files;
 
     /**
      * BotApiRequest constructor.
-     *
-     * @param array $data
-     * @param array $files
      */
-    public function __construct(array $data, array $files)
+    public function __construct(private readonly array $data, private readonly array $files)
     {
-        $this->data = $data;
-        $this->files = $files;
     }
 
-    /**
-     * @return array
-     */
     public function getData(): array
     {
         return $this->data;
     }
 
-    /**
-     * @return array
-     */
     public function getFiles(): array
     {
         return $this->files;

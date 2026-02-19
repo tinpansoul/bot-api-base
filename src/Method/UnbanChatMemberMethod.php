@@ -28,20 +28,18 @@ class UnbanChatMemberMethod implements UnbanMethodAliasInterface
     public $onlyIfBanned;
 
     /**
-     * @param int|string $chatId
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create($chatId, int $userId, array $data = null): UnbanChatMemberMethod
+    public static function create(int|string $chatId, int $userId, array $data = null): UnbanChatMemberMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->userId = $userId;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->userId = $userId;
 
-        if (!empty($data)) {
-            $instance->fill($data, ['chatId', 'userId']);
+        if ($data !== null && $data !== []) {
+            $static->fill(data: $data, forbidden: ['chatId', 'userId']);
         }
 
-        return $instance;
+        return $static;
     }
 }

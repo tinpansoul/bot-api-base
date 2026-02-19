@@ -19,42 +19,37 @@ class StopMessageLiveLocationMethod implements StopMethodAliasInterface
     use EditMessageVariablesTrait;
 
     /**
-     * @param int|string $chatId
-     * @param int        $messageId
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return StopMessageLiveLocationMethod
      */
-    public static function create($chatId, int $messageId, array $data = null): StopMessageLiveLocationMethod
+    public static function create(int|string $chatId, int $messageId, array $data = null): StopMessageLiveLocationMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->messageId = $messageId;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->messageId = $messageId;
         if ($data) {
-            $instance->fill($data, ['messageId', 'chatId', 'inlineMessageId']);
+            $static->fill(data: $data, forbidden: ['messageId', 'chatId', 'inlineMessageId']);
         }
 
-        return $instance;
+        return $static;
     }
 
     /**
-     * @param string     $inlineMessageId
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return StopMessageLiveLocationMethod
      */
     public static function createInline(string $inlineMessageId, array $data = null): StopMessageLiveLocationMethod
     {
-        $instance = new static();
-        $instance->inlineMessageId = $inlineMessageId;
+        $static = new static();
+        $static->inlineMessageId = $inlineMessageId;
         if ($data) {
-            $instance->fill($data, ['messageId', 'chatId', 'inlineMessageId']);
+            $static->fill(data: $data, forbidden: ['messageId', 'chatId', 'inlineMessageId']);
         }
 
-        return $instance;
+        return $static;
     }
 }

@@ -77,37 +77,31 @@ class RestrictChatMemberMethod implements RestrictMethodAliasInterface
 
     /**
      * @param            $chatId
-     * @param int        $userId
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return RestrictChatMemberMethod
      *
      * @deprecated
      * @see https://core.telegram.org/bots/api#july-29-2019
      */
     public static function createOld($chatId, int $userId, array $data = null): RestrictChatMemberMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->userId = $userId;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->userId = $userId;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 
     /**
      * @param                     $chatId
-     * @param int                 $userId
-     * @param ChatPermissionsType $chatPermissionsType
      * @param array|null          $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return RestrictChatMemberMethod
      */
     public static function create(
         $chatId,
@@ -115,14 +109,14 @@ class RestrictChatMemberMethod implements RestrictMethodAliasInterface
         ChatPermissionsType $chatPermissionsType,
         array $data = null
     ): RestrictChatMemberMethod {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->userId = $userId;
-        $instance->permissions = $chatPermissionsType;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->userId = $userId;
+        $static->permissions = $chatPermissionsType;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

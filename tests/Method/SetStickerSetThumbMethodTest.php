@@ -9,7 +9,7 @@ use TgBotApi\BotApiBase\Method\SetStickerSetThumbMethod;
 use TgBotApi\BotApiBase\Tests\Method\Traits\InlineKeyboardMarkupTrait;
 use TgBotApi\BotApiBase\Type\InputFileType;
 
-class SetStickerSetThumbMethodTest extends MethodTestCase
+final class SetStickerSetThumbMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
@@ -17,34 +17,34 @@ class SetStickerSetThumbMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $this->getApi()->setStickerSetThumb($this->getMethod());
-        $this->getApi()->set($this->getMethod());
+        $this->getApi()->setStickerSetThumb(setStickerSetThumbMethod: $this->getMethod());
+        $this->getApi()->set(setMethodAlias: $this->getMethod());
     }
 
     private function getApi(): BotApiComplete
     {
         return $this->getBotWithFiles(
-            'setStickerSetThumb',
-            [
+            methodName: 'setStickerSetThumb',
+            request: [
                 'name' => 'stickerSetName',
                 'user_id' => 1,
 
                 'thumb' => '',
             ],
-            ['thumb' => true],
-            [],
-            true
+            fileMap: ['thumb' => true],
+            serializableFields: [],
+            result: true
         );
     }
 
     private function getMethod(): SetStickerSetThumbMethod
     {
         return SetStickerSetThumbMethod::create(
-            'stickerSetName',
-            1,
-            InputFileType::create('/dev/null')
+            name: 'stickerSetName',
+            userId: 1,
+            thumb: InputFileType::create(path: '/dev/null')
         );
     }
 }

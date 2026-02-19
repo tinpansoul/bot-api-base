@@ -20,14 +20,11 @@ class UnpinAllChatMessagesMethod implements UnpinMethodAliasInterface
 {
     use ChatIdVariableTrait;
 
-    /**
-     * @param int|string $chatId
-     */
-    public static function create($chatId): UnpinAllChatMessagesMethod
+    public static function create(int|string $chatId): UnpinAllChatMessagesMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
+        $static = new static();
+        $static->chatId = $chatId;
 
-        return $instance;
+        return $static;
     }
 }

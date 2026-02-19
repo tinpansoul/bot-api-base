@@ -71,15 +71,15 @@ class InlineQueryResultVoiceType extends InlineQueryResultType implements HasPar
         string $title,
         array $data = null
     ): InlineQueryResultVoiceType {
-        $instance = new static();
-        $instance->type = static::TYPE_VOICE;
-        $instance->id = $id;
-        $instance->voiceUrl = $voiceUrl;
-        $instance->title = $title;
+        $static = new static();
+        $static->type = static::TYPE_VOICE;
+        $static->id = $id;
+        $static->voiceUrl = $voiceUrl;
+        $static->title = $title;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

@@ -17,21 +17,21 @@ trait UnpinMethodTrait
     /**
      * @throws ResponseException
      */
-    abstract public function unpin(UnpinMethodAliasInterface $method): bool;
+    abstract public function unpin(UnpinMethodAliasInterface $unpinMethodAlias): bool;
 
     /**
      * @throws ResponseException
      */
-    public function unpinChatMessage(UnpinChatMessageMethod $method): bool
+    public function unpinChatMessage(UnpinChatMessageMethod $unpinChatMessageMethod): bool
     {
-        return $this->unpin($method);
+        return $this->unpin(unpinMethodAlias: $unpinChatMessageMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function unpinAllChatMessages(UnpinAllChatMessagesMethod $method): bool
+    public function unpinAllChatMessages(UnpinAllChatMessagesMethod $unpinAllChatMessagesMethod): bool
     {
-        return $this->unpin($method);
+        return $this->unpin(unpinMethodAlias: $unpinAllChatMessagesMethod);
     }
 }

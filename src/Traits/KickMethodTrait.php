@@ -11,23 +11,19 @@ use TgBotApi\BotApiBase\Method\KickChatMemberMethod;
 trait KickMethodTrait
 {
     /**
-     * @param KickMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    abstract public function kick(KickMethodAliasInterface $method): bool;
+    abstract public function kick(KickMethodAliasInterface $kickMethodAlias): bool;
 
     /**
-     * @param KickChatMemberMethod $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function kickChatMember(KickChatMemberMethod $method): bool
+    public function kickChatMember(KickChatMemberMethod $kickChatMemberMethod): bool
     {
-        return $this->kick($method);
+        return $this->kick(kickMethodAlias: $kickChatMemberMethod);
     }
 }

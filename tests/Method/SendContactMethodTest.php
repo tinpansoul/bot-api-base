@@ -8,7 +8,7 @@ use TgBotApi\BotApiBase\BotApiComplete;
 use TgBotApi\BotApiBase\Method\SendContactMethod;
 use TgBotApi\BotApiBase\Tests\Method\Traits\InlineKeyboardMarkupTrait;
 
-class SendContactMethodTest extends MethodTestCase
+final class SendContactMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
@@ -16,15 +16,15 @@ class SendContactMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $this->getApi()->sendContact($this->getMethod());
-        $this->getApi()->send($this->getMethod());
+        $this->getApi()->sendContact(sendContactMethod: $this->getMethod());
+        $this->getApi()->send(sendMethodAlias: $this->getMethod());
     }
 
     private function getApi(): BotApiComplete
     {
-        return $this->getBot('sendContact', [
+        return $this->getBot(methodName: 'sendContact', request: [
             'chat_id' => 'chat_id',
             'phone_number' => '+00000000000',
             'first_name' => 'first_name',
@@ -34,7 +34,7 @@ class SendContactMethodTest extends MethodTestCase
             'reply_to_message_id' => 1,
             'allow_sending_without_reply' => true,
             'reply_markup' => $this->buildInlineMarkupArray(),
-        ], [], ['reply_markup']);
+        ], result: [], serialisedFields: ['reply_markup']);
     }
 
     /**
@@ -43,10 +43,10 @@ class SendContactMethodTest extends MethodTestCase
     private function getMethod(): SendContactMethod
     {
         return SendContactMethod::create(
-            'chat_id',
-            '+00000000000',
-            'first_name',
-            [
+            chatId: 'chat_id',
+            phoneNumber: '+00000000000',
+            firstName: 'first_name',
+            data: [
                 'lastName' => 'last_name',
                 'vcard' => 'vcard_data',
                 'disableNotification' => true,

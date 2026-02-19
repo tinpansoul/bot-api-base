@@ -21,16 +21,11 @@ class InlineKeyboardMarkupType
      */
     public $inlineKeyboard;
 
-    /**
-     * @param array $inlineKeyboard
-     *
-     * @return InlineKeyboardMarkupType
-     */
     public static function create(array $inlineKeyboard): InlineKeyboardMarkupType
     {
-        $instance = new static();
-        $instance->inlineKeyboard = $inlineKeyboard;
+        $static = new static();
+        $static->inlineKeyboard = $inlineKeyboard;
 
-        return $instance;
+        return $static;
     }
 }

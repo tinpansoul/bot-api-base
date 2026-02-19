@@ -47,15 +47,15 @@ class SetStickerSetThumbMethod implements SetMethodAliasInterface
     public $thumb;
 
     /**
-     * @param InputFileType|string|null $thumb
+     * @param string|InputFileType|null $thumb
      */
-    public static function create(string $name, int $userId, $thumb = null): SetStickerSetThumbMethod
+    public static function create(string $name, int $userId, string|InputFileType $thumb = null): SetStickerSetThumbMethod
     {
-        $instance = new static();
-        $instance->name = $name;
-        $instance->userId = $userId;
-        $instance->thumb = $thumb;
+        $static = new static();
+        $static->name = $name;
+        $static->userId = $userId;
+        $static->thumb = $thumb;
 
-        return $instance;
+        return $static;
     }
 }

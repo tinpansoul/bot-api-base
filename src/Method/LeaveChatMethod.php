@@ -16,16 +16,11 @@ class LeaveChatMethod implements LeaveMethodAliasInterface
 {
     use ChatIdVariableTrait;
 
-    /**
-     * @param int|string $chatId
-     *
-     * @return LeaveChatMethod
-     */
-    public static function create($chatId): LeaveChatMethod
+    public static function create(int|string $chatId): LeaveChatMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
+        $static = new static();
+        $static->chatId = $chatId;
 
-        return $instance;
+        return $static;
     }
 }

@@ -7,16 +7,16 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 use TgBotApi\BotApiBase\Method\SetMyCommandsMethod;
 use TgBotApi\BotApiBase\Type\BotCommandType;
 
-class SetMyCommandsMethodTest extends MethodTestCase
+final class SetMyCommandsMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot(
-            'setMyCommands',
-            [
+        $botApiComplete = $this->getBot(
+            methodName: 'setMyCommands',
+            request: [
                 'commands' => [
                    [
                        'command' => '$command',
@@ -28,13 +28,14 @@ class SetMyCommandsMethodTest extends MethodTestCase
                     ],
                 ],
             ],
-            true,
-            ['commands']
+            result: true,
+            serialisedFields: ['commands']
         );
 
-        $botApi->setMyCommands(SetMyCommandsMethod::create([
-            BotCommandType::create('$command', '$description'),
-            BotCommandType::create('start', 'start command description'),
+        $botApiComplete->setMyCommands(
+            setMyCommandsMethod: SetMyCommandsMethod::create(commands: [
+            BotCommandType::create(command: '$command', description: '$description'),
+            BotCommandType::create(command: 'start', description: 'start command description'),
         ]));
     }
 }

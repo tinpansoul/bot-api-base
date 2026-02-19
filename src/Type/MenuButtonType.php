@@ -17,7 +17,9 @@ class MenuButtonType
     use FillFromArrayTrait;
 
     public const TYPE_COMMANDS = 'commands';
+
     public const TYPE_WEB_APP = 'web_app';
+
     public const TYPE_DEFAULT = 'default';
 
     /**
@@ -42,21 +44,19 @@ class MenuButtonType
     public $webApp;
 
     /**
-     * @param string     $type
      * @param array|null $data
      *
      * @throws BadArgumentException
      *
-     * @return MenuButtonType
      */
     public static function create(string $type, array $data = null): MenuButtonType
     {
-        $instance = new static();
-        $instance->type = $type;
+        $static = new static();
+        $static->type = $type;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

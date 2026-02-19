@@ -15,64 +15,37 @@ use TgBotApi\BotApiBase\Type\InputFileType;
  */
 class ApiClient implements ApiClientInterface
 {
-    /**
-     * @var ClientInterface
-     */
-    private $client;
+    private ?string $botKey = null;
 
-    /**
-     * @var string
-     */
-    private $botKey;
-
-    /**
-     * @var string
-     */
-    private $endPoint;
-
-    /**
-     * @var StreamFactoryInterface
-     */
-    private $streamFactory;
-
-    /**
-     * @var RequestFactoryInterface
-     */
-    private $requestFactory;
+    private ?string $endPoint = null;
 
     /**
      * ApiApiClient constructor.
      */
     public function __construct(
-        RequestFactoryInterface $requestFactory,
-        StreamFactoryInterface $streamFactory,
-        ClientInterface $client
-    ) {
-        $this->streamFactory = $streamFactory;
-        $this->requestFactory = $requestFactory;
-        $this->client = $client;
+        private readonly RequestFactoryInterface $requestFactory, private readonly StreamFactoryInterface $streamFactory, private readonly ClientInterface $client)
+    {
     }
 
     /**
      * @throws ClientExceptionInterface
-     *
-     * @return mixed
      */
-    public function send(string $method, BotApiRequestInterface $apiRequest)
+    public function send(string $method, BotApiRequestInterface $botApiRequest): mixed
     {
-        $request = $this->requestFactory->createRequest('POST', $this->generateUri($method));
+        $request = $this->requestFactory->createRequest(method: 'POST', uri: $this->generateUri(method: $method));
 
-        $boundary = \uniqid('', true);
+        $boundary = \uniqid(prefix: '', more_entropy: true);
 
-        $stream = $this->streamFactory->createStream($this->createStreamBody($boundary, $apiRequest));
+        $stream = $this->streamFactory->createStream(content: $this->createStreamBody(boundary: $boundary, botApiRequest: $botApiRequest));
 
-        $response = $this->client->sendRequest($request
-            ->withHeader('Content-Type', 'multipart/form-data; boundary="' . $boundary . '"')
-            ->withBody($stream));
+        $response = $this->client->sendRequest(
+            request: $request
+            ->withHeader(name: 'Content-Type', value: 'multipart/form-data; boundary="' . $boundary . '"')
+            ->withBody(body: $stream));
 
         $content = $response->getBody()->getContents();
 
-        return \json_decode($content, false);
+        return \json_decode(json: $content, associative: false);
     }
 
     public function setBotKey(string $botKey): void
@@ -95,43 +68,39 @@ class ApiClient implements ApiClientInterface
         );
     }
 
-    /**
-     * @param mixed $boundary
-     */
-    protected function createStreamBody($boundary, BotApiRequestInterface $request): string
+    protected function createStreamBody(mixed $boundary, BotApiRequestInterface $botApiRequest): string
     {
         $stream = '';
-        foreach ($request->getData() as $name => $value) {
+        foreach ($botApiRequest->getData() as $name => $value) {
             // todo [GreenPlugin] fix type cast and replace it to normalizer
-            $stream .= $this->createDataStream($boundary, $name, (string) $value);
+            $stream .= $this->createDataStream(boundary: $boundary, name: $name, value: (string) $value);
         }
 
-        foreach ($request->getFiles() as $name => $file) {
-            $stream .= $this->createFileStream($boundary, $name, $file);
+        foreach ($botApiRequest->getFiles() as $name => $file) {
+            $stream .= $this->createFileStream(boundary: $boundary, name: $name, inputFileType: $file);
         }
 
-        return '' !== $stream ? $stream . "--$boundary--\r\n" : '';
+        return '' !== $stream ? $stream . "--{$boundary}--\r\n" : '';
     }
 
     /**
      * @param $boundary
      * @param $name
      */
-    protected function createFileStream($boundary, $name, InputFileType $file): string
+    protected function createFileStream($boundary, $name, InputFileType $inputFileType): string
     {
         $headers = \sprintf(
             "Content-Disposition: form-data; name=\"%s\"; filename=\"%s\"\r\n",
             $name,
-            $file->getBasename()
+            $inputFileType->getBasename()
         );
-        $headers .= \sprintf("Content-Length: %s\r\n", (string) $file->getSize());
-        $headers .= \sprintf("Content-Type: %s\r\n", \mime_content_type($file->getRealPath()));
+        $headers .= \sprintf("Content-Length: %s\r\n", (string) $inputFileType->getSize());
+        $headers .= \sprintf("Content-Type: %s\r\n", \mime_content_type(filename: $inputFileType->getRealPath()));
 
-        $streams = "--$boundary\r\n$headers\r\n";
-        $streams .= \file_get_contents($file->getRealPath());
-        $streams .= "\r\n";
+        $streams = "--{$boundary}\r\n{$headers}\r\n";
+        $streams .= \file_get_contents(filename: $inputFileType->getRealPath());
 
-        return $streams;
+        return $streams . "\r\n";
     }
 
     /**
@@ -142,8 +111,8 @@ class ApiClient implements ApiClientInterface
     protected function createDataStream(string $boundary, string $name, string $value): string
     {
         $headers = \sprintf("Content-Disposition: form-data; name=\"%s\"\r\n", $name);
-        $headers .= \sprintf("Content-Length: %s\r\n", (string) \strlen($value));
+        $headers .= \sprintf("Content-Length: %s\r\n", (string) \strlen(string: $value));
 
-        return "--$boundary\r\n$headers\r\n$value\r\n";
+        return "--{$boundary}\r\n{$headers}\r\n{$value}\r\n";
     }
 }

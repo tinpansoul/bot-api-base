@@ -6,37 +6,41 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\UnpinChatMessageMethod;
 
-class UnpinChatMessageMethodTest extends MethodTestCase
+final class UnpinChatMessageMethodTest extends MethodTestCase
 {
     public function testCreate(): void
     {
-        $method = UnpinChatMessageMethod::create('chat_id', ['messageId' => 1]);
+        $unpinChatMessageMethod = UnpinChatMessageMethod::create(chatId: 'chat_id', data: ['messageId' => 1]);
 
-        static::assertEquals('chat_id', $method->chatId);
-        static::assertEquals(1, $method->messageId);
+        self::assertEquals(expected: 'chat_id', actual: $unpinChatMessageMethod->chatId);
+        self::assertEquals(expected: 1, actual: $unpinChatMessageMethod->messageId);
     }
 
     /**
      * @dataProvider provideData
      *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
+     * @param array<string, string|int> $exceptedRequest
      */
-    public function testEncode(UnpinChatMessageMethod $method, array $exceptedRequest)
+    public function testEncode(UnpinChatMessageMethod $unpinChatMessageMethod, array $exceptedRequest): void
     {
-        $botApi = $this->getBot('unpinChatMessage', $exceptedRequest, true);
+        $botApiComplete = $this->getBot(methodName: 'unpinChatMessage', request: $exceptedRequest, result: true);
 
-        $botApi->unpinChatMessage($method);
+        $botApiComplete->unpinChatMessage(unpinChatMessageMethod: $unpinChatMessageMethod);
     }
 
-    public function provideData()
+    /**
+     * @return array<string, array<UnpinChatMessageMethod|array<string, string|int>>>
+     */
+    public function provideData(): array
     {
         return [
             'default case' => [
-                UnpinChatMessageMethod::create('chat_id'),
+                UnpinChatMessageMethod::create(chatId: 'chat_id'),
                 ['chat_id' => 'chat_id'],
             ],
             'with message id case' => [
-                UnpinChatMessageMethod::create('chat_id', ['messageId' => 1]),
+                UnpinChatMessageMethod::create(chatId: 'chat_id', data: ['messageId' => 1]),
                 ['chat_id' => 'chat_id', 'message_id' => 1],
             ],
         ];

@@ -7,27 +7,28 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 use TgBotApi\BotApiBase\Method\RestrictChatMemberMethod;
 use TgBotApi\BotApiBase\Type\ChatPermissionsType;
 
-class RestrictChatMemberMethodTest extends MethodTestCase
+final class RestrictChatMemberMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @throws \Exception
      */
-    public function testEncodeOld()
+    public function testEncodeOld(): void
     {
         $dateTime = new \DateTimeImmutable();
-        $botApi = $this->getBot('restrictChatMember', [
+        $botApiComplete = $this->getBot(methodName: 'restrictChatMember', request: [
             'chat_id' => 'chat_id',
             'user_id' => 1,
-            'until_date' => $dateTime->format('U'),
+            'until_date' => $dateTime->format(format: 'U'),
             'can_send_messages' => true,
             'can_send_media_messages' => true,
             'can_send_other_messages' => true,
             'can_add_web_page_previews' => true,
-        ], true);
+        ], result: true);
 
-        $botApi->restrictChatMember(RestrictChatMemberMethod::createOld('chat_id', 1, [
+        $botApiComplete->restrictChatMember(
+            restrictChatMemberMethod: RestrictChatMemberMethod::createOld(chatId: 'chat_id', userId: 1, data: [
             'untilDate' => $dateTime,
             'canSendMessages' => true,
             'canSendMediaMessages' => true,
@@ -36,13 +37,13 @@ class RestrictChatMemberMethodTest extends MethodTestCase
         ]));
     }
 
-    public function testEncode()
+    public function testEncode(): void
     {
         $dateTime = new \DateTimeImmutable();
-        $botApi = $this->getBot('restrictChatMember', [
+        $botApiComplete = $this->getBot(methodName: 'restrictChatMember', request: [
             'chat_id' => 'chat_id',
             'user_id' => 1,
-            'until_date' => $dateTime->format('U'),
+            'until_date' => $dateTime->format(format: 'U'),
             'permissions' => [
                 'can_send_messages' => true,
                 'can_send_media_messages' => true,
@@ -52,9 +53,9 @@ class RestrictChatMemberMethodTest extends MethodTestCase
                 'can_change_info' => true,
                 'can_invite_users' => true,
                 'can_pin_messages' => true,
-            ], ], true);
+            ], ], result: true);
 
-        $permissions = ChatPermissionsType::create([
+        $chatPermissionsType = ChatPermissionsType::create(data: [
             'canAddWebPagePreviews' => true,
             'canChangeInfo' => true,
             'canInviteUsers' => true,
@@ -65,7 +66,11 @@ class RestrictChatMemberMethodTest extends MethodTestCase
             'canSendPolls' => true,
         ]);
 
-        $botApi->restrictChatMember(RestrictChatMemberMethod::create('chat_id', 1, $permissions, [
+        $botApiComplete->restrictChatMember(
+            restrictChatMemberMethod: RestrictChatMemberMethod::create(
+            chatId: 'chat_id',
+            userId: 1,
+            chatPermissionsType: $chatPermissionsType, data: [
             'untilDate' => $dateTime,
         ]));
     }

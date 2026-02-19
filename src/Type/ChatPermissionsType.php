@@ -22,6 +22,7 @@ class ChatPermissionsType
      * @var bool
      */
     public $canSendMessages;
+
     /**
      * Optional. True, if the user is allowed to send
      * audios, documents, photos, videos, video notes and voice notes, implies can_send_messages.
@@ -77,16 +78,14 @@ class ChatPermissionsType
 
     /**
      * @param array|null $data
-     *
-     * @return ChatPermissionsType
      */
     public static function create(array $data = null): ChatPermissionsType
     {
-        $instance = new static();
+        $static = new static();
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

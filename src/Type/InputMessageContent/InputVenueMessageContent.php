@@ -70,15 +70,15 @@ class InputVenueMessageContent extends InputMessageContentType
         string $address,
         array $data = null
     ): InputVenueMessageContent {
-        $instance = new static();
-        $instance->latitude = $latitude;
-        $instance->longitude = $longitude;
-        $instance->title = $title;
-        $instance->address = $address;
+        $static = new static();
+        $static->latitude = $latitude;
+        $static->longitude = $longitude;
+        $static->title = $title;
+        $static->address = $address;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

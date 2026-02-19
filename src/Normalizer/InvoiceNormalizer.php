@@ -11,45 +11,45 @@ use TgBotApi\BotApiBase\Method\SendInvoiceMethod;
 
 class InvoiceNormalizer implements NormalizerInterface
 {
-    /**
-     * @var NormalizerInterface
-     */
-    private $objectNormalizer;
 
     /**
      * JsonSerializableNormalizer constructor.
      */
-    public function __construct(NormalizerInterface $objectNormalizer)
+    public function __construct(private readonly NormalizerInterface $objectNormalizer)
     {
-        $this->objectNormalizer = $objectNormalizer;
     }
 
     /**
      * @param SendInvoiceMethod $topic
-     * @param null              $format
-     *
-     * @throws ExceptionInterface
      *
      * @return array|bool|false|float|int|string
+     * @throws ExceptionInterface
      */
-    public function normalize($topic, $format = null, array $context = [])
-    {
-        $serializer = new Serializer([
-            new JsonSerializableNormalizer($this->objectNormalizer),
+    public function normalize(
+        $topic,
+        $format = null,
+        array $context = []
+    ): string|int|float|bool|\ArrayObject|array|null {
+        $serializer = new Serializer(normalizers: [
+            new JsonSerializableNormalizer(objectNormalizer: $this->objectNormalizer),
             $this->objectNormalizer,
         ]);
 
-        $topic->prices = \json_encode($serializer->normalize($topic->prices, null, ['skip_null_values' => true]));
+        $topic->prices = \json_encode(value: $serializer->normalize(data: $topic->prices, format: null, context: ['skip_null_values' => true]));
 
-        return $serializer->normalize($topic, null, ['skip_null_values' => true]);
+        return $serializer->normalize(data: $topic, format: null, context: ['skip_null_values' => true]);
+    }
+
+    public function supportsNormalization(mixed $data, $format = null, array $context = []): bool
+    {
+        return $data instanceof SendInvoiceMethod;
     }
 
     /**
-     * @param mixed $data
-     * @param null  $format
+     * @return array<string, bool>
      */
-    public function supportsNormalization($data, $format = null): bool
+    public function getSupportedTypes(?string $format): array
     {
-        return $data instanceof SendInvoiceMethod;
+        return ['*' => false];
     }
 }

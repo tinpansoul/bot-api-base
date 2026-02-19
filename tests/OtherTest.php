@@ -11,23 +11,23 @@ use TgBotApi\BotApiBase\Method\SetChatDescriptionMethod;
 /**
  * Class OtherTest.
  */
-class OtherTest extends TestCase
+final class OtherTest extends TestCase
 {
     /**
      * @throws BadArgumentException
      */
-    public function testFillFromArrayTraitWrongValue()
+    public function testFillFromArrayTraitWrongValue(): void
     {
-        $this->expectException(BadArgumentException::class);
-        SetChatDescriptionMethod::create('chat_id', ['wrongField' => 'wrongValue']);
+        $this->expectException(exception: BadArgumentException::class);
+        SetChatDescriptionMethod::create(chatId: 'chat_id', data: ['wrongField' => 'wrongValue']);
     }
 
     /**
      * @throws BadArgumentException
      */
-    public function testFillFromArrayTraitForbiddenValue()
+    public function testFillFromArrayTraitForbiddenValue(): void
     {
-        $this->expectException(BadArgumentException::class);
-        SetChatDescriptionMethod::create('chat_id', ['chatId' => 'forbidden']);
+        $this->expectException(exception: BadArgumentException::class);
+        SetChatDescriptionMethod::create(chatId: 'chat_id', data: ['chatId' => 'forbidden']);
     }
 }

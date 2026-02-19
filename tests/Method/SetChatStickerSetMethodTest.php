@@ -6,19 +6,19 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\SetChatStickerSetMethod;
 
-class SetChatStickerSetMethodTest extends MethodTestCase
+final class SetChatStickerSetMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot(
-            'setChatStickerSet',
-            ['chat_id' => 'chat_id', 'sticker_set_name' => 'sticker_set_name'],
-            true
+        $botApiComplete = $this->getBot(
+            methodName: 'setChatStickerSet',
+            request: ['chat_id' => 'chat_id', 'sticker_set_name' => 'sticker_set_name'],
+            result: true
         );
 
-        $botApi->setChatStickerSet(SetChatStickerSetMethod::create('chat_id', 'sticker_set_name'));
+        $botApiComplete->setChatStickerSet(setChatStickerSetMethod: SetChatStickerSetMethod::create(chatId: 'chat_id', stickerSetName: 'sticker_set_name'));
     }
 }

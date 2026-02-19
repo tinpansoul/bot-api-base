@@ -10,27 +10,29 @@ use TgBotApi\BotApiBase\BotApiComplete;
 use TgBotApi\BotApiBase\Exception\ResponseException;
 use TgBotApi\BotApiBase\Method\GetMeMethod;
 
-class BotApiCompleteTest extends TestCase
+final class BotApiCompleteTest extends TestCase
 {
     use GetNormalizerTrait;
 
     /**
-     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
+     * @throws ResponseException
      */
-    public function testException()
+    public function testException(): void
     {
-        $stub = $this->getMockBuilder(ApiClientInterface::class)
+        $stub = $this->getMockBuilder(className: ApiClientInterface::class)
             ->getMock();
 
         $stub->expects($this->once())
-            ->method('send')
-            ->willReturn((object) (['ok' => false, 'description' => 'Exception']));
+            ->method(constraint: 'send')
+            ->willReturn(value: (object) (['ok' => false, 'description' => 'Exception']));
 
         /* @var ApiClientInterface $stub */
-        $bot = new BotApiComplete('000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', $stub, $this->getNormalizer());
+        $botApiComplete = new BotApiComplete(
+            botKey: '000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
+            apiClient: $stub, normalizer: $this->getNormalizer());
 
-        $this->expectException(ResponseException::class);
+        $this->expectException(exception: ResponseException::class);
 
-        $bot->call(GetMeMethod::create());
+        $botApiComplete->call(method: GetMeMethod::create());
     }
 }

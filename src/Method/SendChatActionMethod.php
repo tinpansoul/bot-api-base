@@ -32,18 +32,12 @@ class SendChatActionMethod implements HasActionVariableInterface, MethodInterfac
      */
     public $action;
 
-    /**
-     * @param int|string $chatId
-     * @param string     $action
-     *
-     * @return SendChatActionMethod
-     */
-    public static function create($chatId, string $action): SendChatActionMethod
+    public static function create(int|string $chatId, string $action): SendChatActionMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->action = $action;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->action = $action;
 
-        return $instance;
+        return $static;
     }
 }

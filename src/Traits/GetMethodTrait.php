@@ -47,17 +47,17 @@ trait GetMethodTrait
      *
      * @return UpdateType[]
      */
-    public function getUpdates(GetUpdatesMethod $method): array
+    public function getUpdates(GetUpdatesMethod $getUpdatesMethod): array
     {
-        return $this->call($method, UpdateType::class . '[]');
+        return $this->call(method: $getUpdatesMethod, type: UpdateType::class . '[]');
     }
 
     /**
      * @throws ResponseException
      */
-    public function getMe(GetMeMethod $method): UserType
+    public function getMe(GetMeMethod $getMeMethod): UserType
     {
-        return $this->call($method, UserType::class);
+        return $this->call(method: $getMeMethod, type: UserType::class);
     }
 
     /**
@@ -65,41 +65,41 @@ trait GetMethodTrait
      *
      * @return BotCommandType[]
      */
-    public function getMyCommands(GetMyCommandsMethod $method): array
+    public function getMyCommands(GetMyCommandsMethod $getMyCommandsMethod): array
     {
-        return $this->call($method, BotCommandType::class . '[]');
+        return $this->call(method: $getMyCommandsMethod, type: BotCommandType::class . '[]');
     }
 
     /**
      * @throws ResponseException
      */
-    public function getUserProfilePhotos(GetUserProfilePhotosMethod $method): UserProfilePhotosType
+    public function getUserProfilePhotos(GetUserProfilePhotosMethod $getUserProfilePhotosMethod): UserProfilePhotosType
     {
-        return $this->call($method, UserProfilePhotosType::class);
+        return $this->call(method: $getUserProfilePhotosMethod, type: UserProfilePhotosType::class);
     }
 
     /**
      * @throws ResponseException
      */
-    public function getWebhookInfo(GetWebhookInfoMethod $method): WebhookInfoType
+    public function getWebhookInfo(GetWebhookInfoMethod $getWebhookInfoMethod): WebhookInfoType
     {
-        return $this->call($method, WebhookInfoType::class);
+        return $this->call(method: $getWebhookInfoMethod, type: WebhookInfoType::class);
     }
 
     /**
      * @throws ResponseException
      */
-    public function getChatMembersCount(GetChatMembersCountMethod $method): int
+    public function getChatMembersCount(GetChatMembersCountMethod $getChatMembersCountMethod): int
     {
-        return $this->call($method);
+        return $this->call(method: $getChatMembersCountMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function getChat(GetChatMethod $method): ChatType
+    public function getChat(GetChatMethod $getChatMethod): ChatType
     {
-        return $this->call($method, ChatType::class);
+        return $this->call(method: $getChatMethod, type: ChatType::class);
     }
 
     /**
@@ -107,25 +107,25 @@ trait GetMethodTrait
      *
      * @return ChatMemberType[]
      */
-    public function getChatAdministrators(GetChatAdministratorsMethod $method): array
+    public function getChatAdministrators(GetChatAdministratorsMethod $getChatAdministratorsMethod): array
     {
-        return $this->call($method, ChatMemberType::class . '[]');
+        return $this->call(method: $getChatAdministratorsMethod, type: ChatMemberType::class . '[]');
     }
 
     /**
      * @throws ResponseException
      */
-    public function getChatMember(GetChatMemberMethod $method): ChatMemberType
+    public function getChatMember(GetChatMemberMethod $getChatMemberMethod): ChatMemberType
     {
-        return $this->call($method, ChatMemberType::class);
+        return $this->call(method: $getChatMemberMethod, type: ChatMemberType::class);
     }
 
     /**
      * @throws ResponseException
      */
-    public function getChatMenuButton(GetChatMenuButtonMethod $method): MenuButtonType
+    public function getChatMenuButton(GetChatMenuButtonMethod $getChatMenuButtonMethod): MenuButtonType
     {
-        return $this->call($method, MenuButtonType::class);
+        return $this->call(method: $getChatMenuButtonMethod, type: MenuButtonType::class);
     }
 
     /**
@@ -133,24 +133,24 @@ trait GetMethodTrait
      *
      * @return GameHighScoreType[]
      */
-    public function getGameHighScores(GetGameHighScoresMethod $method): array
+    public function getGameHighScores(GetGameHighScoresMethod $getGameHighScoresMethod): array
     {
-        return $this->call($method, GameHighScoreType::class . '[]');
+        return $this->call(method: $getGameHighScoresMethod, type: GameHighScoreType::class . '[]');
     }
 
     /**
      * @throws ResponseException
      */
-    public function getStickerSet(GetStickerSetMethod $method): StickerSetType
+    public function getStickerSet(GetStickerSetMethod $getStickerSetMethod): StickerSetType
     {
-        return $this->call($method, StickerSetType::class);
+        return $this->call(method: $getStickerSetMethod, type: StickerSetType::class);
     }
 
     /**
      * @throws ResponseException
      */
-    public function getFile(GetFileMethod $method): FileType
+    public function getFile(GetFileMethod $getFileMethod): FileType
     {
-        return $this->call($method, FileType::class);
+        return $this->call(method: $getFileMethod, type: FileType::class);
     }
 }

@@ -53,14 +53,14 @@ class InlineQueryResultCachedAudioType extends InlineQueryResultType implements 
      */
     public static function create(string $id, string $audioFileId, array $data = null): InlineQueryResultCachedAudioType
     {
-        $instance = new static();
-        $instance->type = self::TYPE_AUDIO;
-        $instance->id = $id;
-        $instance->audioFileId = $audioFileId;
+        $static = new static();
+        $static->type = self::TYPE_AUDIO;
+        $static->id = $id;
+        $static->audioFileId = $audioFileId;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

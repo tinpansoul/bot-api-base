@@ -76,14 +76,10 @@ class InlineQueryResultContactType extends InlineQueryResultType
     public $thumbHeight;
 
     /**
-     * @param string     $id
-     * @param string     $phoneNumber
-     * @param string     $firstName
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return InlineQueryResultContactType
      */
     public static function create(
         string $id,
@@ -91,15 +87,15 @@ class InlineQueryResultContactType extends InlineQueryResultType
         string $firstName,
         array $data = null
     ): InlineQueryResultContactType {
-        $instance = new static();
-        $instance->type = static::TYPE_CONTACT;
-        $instance->id = $id;
-        $instance->phoneNumber = $phoneNumber;
-        $instance->$firstName = $firstName;
+        $static = new static();
+        $static->type = static::TYPE_CONTACT;
+        $static->id = $id;
+        $static->phoneNumber = $phoneNumber;
+        $static->$firstName = $firstName;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

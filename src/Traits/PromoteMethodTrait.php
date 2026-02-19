@@ -14,23 +14,19 @@ use TgBotApi\BotApiBase\Method\PromoteChatMemberMethod;
 trait PromoteMethodTrait
 {
     /**
-     * @param PromoteMethodAliasInterface $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    abstract public function promote(PromoteMethodAliasInterface $method): bool;
+    abstract public function promote(PromoteMethodAliasInterface $promoteMethodAlias): bool;
 
     /**
-     * @param PromoteChatMemberMethod $method
      *
      * @throws ResponseException
      *
-     * @return bool
      */
-    public function promoteChatMember(PromoteChatMemberMethod $method): bool
+    public function promoteChatMember(PromoteChatMemberMethod $promoteChatMemberMethod): bool
     {
-        return $this->promote($method);
+        return $this->promote(promoteMethodAlias: $promoteChatMemberMethod);
     }
 }

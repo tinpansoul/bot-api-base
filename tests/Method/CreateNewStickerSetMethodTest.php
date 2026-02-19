@@ -8,17 +8,17 @@ use TgBotApi\BotApiBase\Method\CreateNewStickerSetMethod;
 use TgBotApi\BotApiBase\Type\InputFileType;
 use TgBotApi\BotApiBase\Type\MaskPositionType;
 
-class CreateNewStickerSetMethodTest extends MethodTestCase
+final class CreateNewStickerSetMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBotWithFiles(
-            'createNewStickerSet',
-            [
+        $botApiComplete = $this->getBotWithFiles(
+            methodName: 'createNewStickerSet',
+            request: [
                 'user_id' => 1,
                 'name' => 'sticker_set_name',
                 'title' => 'title',
@@ -27,20 +27,23 @@ class CreateNewStickerSetMethodTest extends MethodTestCase
                 'contains_masks' => true,
                 'mask_position' => ['point' => 'forehead', 'x_shift' => 1.0, 'y_shift' => 1.0, 'scale' => 1],
             ],
-            ['png_sticker' => true],
-            ['mask_position'],
-            true
+            fileMap: ['png_sticker' => true],
+            serializableFields: ['mask_position'],
+            result: true
         );
 
-        $botApi->createNewStickerSet(CreateNewStickerSetMethod::create(
-            1,
-            'sticker_set_name',
-            'title',
-            InputFileType::create('/dev/null'),
-            '😀',
-            [
+        $botApiComplete->createNewStickerSet(
+            createNewStickerSetMethod: CreateNewStickerSetMethod::create(
+            userId: 1,
+            name: 'sticker_set_name',
+            title: 'title',
+            pngSticker: InputFileType::create(path: '/dev/null'),
+            emojis: '😀',
+            data: [
                 'containsMasks' => true,
-                'maskPosition' => MaskPositionType::create(MaskPositionType::MASK_POINT_FOREHEAD, 1, 1, 1),
+                'maskPosition' => MaskPositionType::create(
+                    point: MaskPositionType::MASK_POINT_FOREHEAD,
+                    xShift: 1, yShift: 1, scale: 1),
             ]
         ));
     }
@@ -49,11 +52,11 @@ class CreateNewStickerSetMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public function testEncodeAnimated()
+    public function testEncodeAnimated(): void
     {
-        $botApi = $this->getBotWithFiles(
-            'createNewStickerSet',
-            [
+        $botApiComplete = $this->getBotWithFiles(
+            methodName: 'createNewStickerSet',
+            request: [
                 'user_id' => 1,
                 'name' => 'sticker_set_name',
                 'title' => 'title',
@@ -62,20 +65,23 @@ class CreateNewStickerSetMethodTest extends MethodTestCase
                 'contains_masks' => true,
                 'mask_position' => ['point' => 'forehead', 'x_shift' => 1.0, 'y_shift' => 1.0, 'scale' => 1],
             ],
-            ['tgs_sticker' => true],
-            ['mask_position'],
-            true
+            fileMap: ['tgs_sticker' => true],
+            serializableFields: ['mask_position'],
+            result: true
         );
 
-        $botApi->createNewStickerSet(CreateNewStickerSetMethod::createAnimated(
-            1,
-            'sticker_set_name',
-            'title',
-            InputFileType::create('/dev/null'),
-            '😀',
-            [
+        $botApiComplete->createNewStickerSet(
+            createNewStickerSetMethod: CreateNewStickerSetMethod::createAnimated(
+            userId: 1,
+            name: 'sticker_set_name',
+            title: 'title',
+            inputFileType: InputFileType::create(path: '/dev/null'),
+            emojis: '😀',
+            data: [
                 'containsMasks' => true,
-                'maskPosition' => MaskPositionType::create(MaskPositionType::MASK_POINT_FOREHEAD, 1, 1, 1),
+                'maskPosition' => MaskPositionType::create(
+                    point: MaskPositionType::MASK_POINT_FOREHEAD,
+                    xShift: 1, yShift: 1, scale: 1),
             ]
         ));
     }

@@ -9,7 +9,7 @@ use TgBotApi\BotApiBase\Method\SendInvoiceMethod;
 use TgBotApi\BotApiBase\Tests\Method\Traits\InlineKeyboardMarkupTrait;
 use TgBotApi\BotApiBase\Type\LabeledPriceType;
 
-class SendInvoiceMethodTest extends MethodTestCase
+final class SendInvoiceMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
@@ -17,15 +17,15 @@ class SendInvoiceMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $this->getApi()->sendInvoice($this->getMethod());
-        $this->getApi()->send($this->getMethod());
+        $this->getApi()->sendInvoice(sendInvoiceMethod: $this->getMethod());
+        $this->getApi()->send(sendMethodAlias: $this->getMethod());
     }
 
     private function getApi(): BotApiComplete
     {
-        return $this->getBot('sendInvoice', [
+        return $this->getBot(methodName: 'sendInvoice', request: [
             'chat_id' => 1,
             'title' => 'title',
             'description' => 'description',
@@ -49,8 +49,8 @@ class SendInvoiceMethodTest extends MethodTestCase
             'disable_notification' => true,
             'reply_to_message_id' => 1,
             'allow_sending_without_reply' => true,
-            'reply_markup' => static::buildInlineMarkupArray(),
-        ], [], ['reply_markup', 'prices']);
+            'reply_markup' => self::buildInlineMarkupArray(),
+        ], result: [], serialisedFields: ['reply_markup', 'prices']);
     }
 
     /**
@@ -59,15 +59,15 @@ class SendInvoiceMethodTest extends MethodTestCase
     private function getMethod(): SendInvoiceMethod
     {
         return SendInvoiceMethod::create(
-            1,
-            'title',
-            'description',
-            'payload',
-            'provider_token',
-            'start_parameter',
-            'USD',
-            [LabeledPriceType::create('label', 100)],
-            [
+            chatId: 1,
+            title: 'title',
+            description: 'description',
+            payload: 'payload',
+            providerToken: 'provider_token',
+            startParameter: 'start_parameter',
+            currency: 'USD',
+            prices: [LabeledPriceType::create(label: 'label', amount: 100)],
+            data: [
                 'providerData' => '{}',
                 'photoUrl' => 'http://url',
                 'photoSize' => 100,
@@ -83,7 +83,7 @@ class SendInvoiceMethodTest extends MethodTestCase
                 'disableNotification' => true,
                 'replyToMessageId' => 1,
                 'allowSendingWithoutReply' => true,
-                'replyMarkup' => static::buildInlineMarkupObject(),
+                'replyMarkup' => self::buildInlineMarkupObject(),
             ]
         );
     }

@@ -26,6 +26,7 @@ class InlineQueryResultVideoType extends InlineQueryResultType implements HasPar
     use FillFromArrayTrait;
 
     public const MIME_TYPE_TEXT = 'text/html';
+
     public const MIME_TYPE_VIDEO = 'video/mp4';
 
     /**
@@ -119,17 +120,17 @@ class InlineQueryResultVideoType extends InlineQueryResultType implements HasPar
         string $title,
         array $data = null
     ): InlineQueryResultVideoType {
-        $instance = new static();
-        $instance->type = static::TYPE_VIDEO;
-        $instance->id = $id;
-        $instance->video = $video;
-        $instance->mimeType = $mimeType;
-        $instance->thumbUrl = $thumbUrl;
-        $instance->title = $title;
+        $static = new static();
+        $static->type = static::TYPE_VIDEO;
+        $static->id = $id;
+        $static->video = $video;
+        $static->mimeType = $mimeType;
+        $static->thumbUrl = $thumbUrl;
+        $static->title = $title;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

@@ -27,101 +27,101 @@ trait SetMethodTrait
     /**
      * @throws ResponseException
      */
-    abstract public function set(SetMethodAliasInterface $method): bool;
+    abstract public function set(SetMethodAliasInterface $setMethodAlias): bool;
 
     /**
      * @throws ResponseException
      */
-    public function setChatDescription(SetChatDescriptionMethod $method): bool
+    public function setChatDescription(SetChatDescriptionMethod $setChatDescriptionMethod): bool
     {
-        return $this->set($method);
+        return $this->set(setMethodAlias: $setChatDescriptionMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function setChatPhoto(SetChatPhotoMethod $method): bool
+    public function setChatPhoto(SetChatPhotoMethod $setChatPhotoMethod): bool
     {
-        return $this->set($method);
+        return $this->set(setMethodAlias: $setChatPhotoMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function setChatAdministratorCustomTitle(SetChatAdministratorCustomTitleMethod $method): bool
+    public function setChatAdministratorCustomTitle(SetChatAdministratorCustomTitleMethod $setChatAdministratorCustomTitleMethod): bool
     {
-        return $this->set($method);
+        return $this->set(setMethodAlias: $setChatAdministratorCustomTitleMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function setChatStickerSet(SetChatStickerSetMethod $method): bool
+    public function setChatStickerSet(SetChatStickerSetMethod $setChatStickerSetMethod): bool
     {
-        return $this->set($method);
+        return $this->set(setMethodAlias: $setChatStickerSetMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function setChatTitle(SetChatTitleMethod $method): bool
+    public function setChatTitle(SetChatTitleMethod $setChatTitleMethod): bool
     {
-        return $this->set($method);
+        return $this->set(setMethodAlias: $setChatTitleMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function setMyCommands(SetMyCommandsMethod $method): bool
+    public function setMyCommands(SetMyCommandsMethod $setMyCommandsMethod): bool
     {
-        return $this->set($method);
+        return $this->set(setMethodAlias: $setMyCommandsMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function setGameScore(SetGameScoreMethod $method): bool
+    public function setGameScore(SetGameScoreMethod $setGameScoreMethod): bool
     {
-        return $this->set($method);
+        return $this->set(setMethodAlias: $setGameScoreMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function setStickerPositionInSet(SetStickerPositionInSetMethod $method): bool
+    public function setStickerPositionInSet(SetStickerPositionInSetMethod $setStickerPositionInSetMethod): bool
     {
-        return $this->set($method);
+        return $this->set(setMethodAlias: $setStickerPositionInSetMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function setStickerSetThumb(SetStickerSetThumbMethod $method): bool
+    public function setStickerSetThumb(SetStickerSetThumbMethod $setStickerSetThumbMethod): bool
     {
-        return $this->set($method);
+        return $this->set(setMethodAlias: $setStickerSetThumbMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function setWebhook(SetWebhookMethod $method): bool
+    public function setWebhook(SetWebhookMethod $setWebhookMethod): bool
     {
-        return $this->set($method);
+        return $this->set(setMethodAlias: $setWebhookMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function setPassportDataErrors(SetPassportDataErrorsMethod $method): bool
+    public function setPassportDataErrors(SetPassportDataErrorsMethod $setPassportDataErrorsMethod): bool
     {
-        return $this->set($method);
+        return $this->set(setMethodAlias: $setPassportDataErrorsMethod);
     }
 
     /**
      * @throws ResponseException
      */
-    public function setChatPermissions(SetChatPermissionsMethod $method): bool
+    public function setChatPermissions(SetChatPermissionsMethod $setChatPermissionsMethod): bool
     {
-        return $this->set($method);
+        return $this->set(setMethodAlias: $setChatPermissionsMethod);
     }
 }

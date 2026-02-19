@@ -50,22 +50,18 @@ class InputMediaAudioType extends InputMediaType
     public $title;
 
     /**
-     * @param string|InputFileType $media
      * @param array|null           $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
-     * @return InputMediaAudioType
      */
-    public static function create($media, array $data = null): InputMediaAudioType
+    public static function create(string|InputFileType $media, array $data = null): InputMediaAudioType
     {
-        $instance = new static();
-        $instance->media = $media;
-        $instance->type = static::TYPE_AUDIO;
+        $static = new static();
+        $static->media = $media;
+        $static->type = static::TYPE_AUDIO;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

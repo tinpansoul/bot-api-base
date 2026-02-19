@@ -12,8 +12,6 @@ use TgBotApi\BotApiBase\Exception\BadArgumentException;
 trait FillFromArrayTrait
 {
     /**
-     * @param array $data
-     * @param array $forbidden
      *
      * @throws BadArgumentException
      */
@@ -22,14 +20,16 @@ trait FillFromArrayTrait
         foreach ($forbidden as $item) {
             if (isset($data[$item])) {
                 throw new BadArgumentException(
-                    \sprintf('Argument %s is forbidden in %s constructor', $item, static::class)
+                    message: \sprintf('Argument %s is forbidden in %s constructor', $item, static::class)
                 );
             }
         }
+
         foreach ($data as $key => $value) {
-            if (!\property_exists($this, $key)) {
-                throw new BadArgumentException(\sprintf('Argument %s not found in %s', $key, static::class));
+            if (!\property_exists(object_or_class: $this, property: $key)) {
+                throw new BadArgumentException(message: \sprintf('Argument %s not found in %s', $key, static::class));
             }
+
             $this->{$key} = $value;
         }
     }

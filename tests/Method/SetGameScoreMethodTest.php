@@ -6,17 +6,17 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\SetGameScoreMethod;
 
-class SetGameScoreMethodTest extends MethodTestCase
+final class SetGameScoreMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot(
-            'setGameScore',
-            [
+        $botApiComplete = $this->getBot(
+            methodName: 'setGameScore',
+            request: [
                 'chat_id' => 1,
                 'user_id' => 1,
                 'score' => 100,
@@ -24,15 +24,16 @@ class SetGameScoreMethodTest extends MethodTestCase
                 'force' => true,
                 'disable_edit_message' => true,
             ],
-            true
+            result: true
         );
 
-        $botApi->setGameScore(SetGameScoreMethod::create(
-            1,
-            100,
-            1,
-            1,
-            [
+        $botApiComplete->setGameScore(
+            setGameScoreMethod: SetGameScoreMethod::create(
+            userId: 1,
+            score: 100,
+            chatId: 1,
+            messageId: 1,
+            data: [
                 'force' => true,
                 'disableEditMessage' => true,
             ]
@@ -43,25 +44,26 @@ class SetGameScoreMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncodeInline()
+    public function testEncodeInline(): void
     {
-        $botApi = $this->getBot(
-            'setGameScore',
-            [
+        $botApiComplete = $this->getBot(
+            methodName: 'setGameScore',
+            request: [
                 'user_id' => 1,
                 'score' => 100,
                 'inline_message_id' => 'id',
                 'force' => true,
                 'disable_edit_message' => true,
             ],
-            true
+            result: true
         );
 
-        $botApi->setGameScore(SetGameScoreMethod::createInline(
-            1,
-            100,
-            'id',
-            [
+        $botApiComplete->setGameScore(
+            setGameScoreMethod: SetGameScoreMethod::createInline(
+            userId: 1,
+            score: 100,
+            inlineMessageId: 'id',
+            data: [
                 'force' => true,
                 'disableEditMessage' => true,
             ]

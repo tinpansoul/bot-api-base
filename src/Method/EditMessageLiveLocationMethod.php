@@ -57,27 +57,25 @@ class EditMessageLiveLocationMethod implements EditMethodAliasInterface
     public $proximityAlertRadius;
 
     /**
-     * @param int|string $chatId
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(
-        $chatId,
+        int|string $chatId,
         int $messageId,
         float $latitude,
         float $longitude,
         array $data = null
     ): EditMessageLiveLocationMethod {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->messageId = $messageId;
-        $instance->latitude = $latitude;
-        $instance->longitude = $longitude;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->messageId = $messageId;
+        $static->latitude = $latitude;
+        $static->longitude = $longitude;
         if ($data) {
-            $instance->fill($data, ['chatId', 'messageId', 'latitude', 'longitude', 'inlineMessageId']);
+            $static->fill(data: $data, forbidden: ['chatId', 'messageId', 'latitude', 'longitude', 'inlineMessageId']);
         }
 
-        return $instance;
+        return $static;
     }
 
     /**
@@ -89,14 +87,14 @@ class EditMessageLiveLocationMethod implements EditMethodAliasInterface
         float $longitude,
         array $data = null
     ): EditMessageLiveLocationMethod {
-        $instance = new static();
-        $instance->latitude = $latitude;
-        $instance->longitude = $longitude;
-        $instance->inlineMessageId = $inlineMessageId;
+        $static = new static();
+        $static->latitude = $latitude;
+        $static->longitude = $longitude;
+        $static->inlineMessageId = $inlineMessageId;
         if ($data) {
-            $instance->fill($data, ['chatId', 'latitude', 'longitude', 'inlineMessageId']);
+            $static->fill(data: $data, forbidden: ['chatId', 'latitude', 'longitude', 'inlineMessageId']);
         }
 
-        return $instance;
+        return $static;
     }
 }

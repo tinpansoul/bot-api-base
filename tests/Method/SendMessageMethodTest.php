@@ -13,21 +13,21 @@ use TgBotApi\BotApiBase\Type\MessageEntityType;
 /**
  * Class SendMessageMethodTest.
  */
-class SendMessageMethodTest extends MethodTestCase
+final class SendMessageMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $this->getApi()->sendMessage($this->getMethod());
-        $this->getApi()->send($this->getMethod());
+        $this->getApi()->sendMessage(sendMessageMethod: $this->getMethod());
+        $this->getApi()->send(sendMethodAlias: $this->getMethod());
     }
 
     private function getApi(): BotApiComplete
     {
-        return $this->getBot('sendMessage', [
+        return $this->getBot(methodName: 'sendMessage', request: [
             'text' => 'test',
             'parse_mode' => 'HTML',
             'chat_id' => '1',
@@ -45,14 +45,14 @@ class SendMessageMethodTest extends MethodTestCase
      */
     private function getMethod(): SendMessageMethod
     {
-        return SendMessageMethod::create('1', 'test', [
+        return SendMessageMethod::create(chatId: '1', text: 'test', data: [
             'parseMode' => HasParseModeVariableInterface::PARSE_MODE_HTML,
             'disableWebPagePreview' => true,
             'disableNotification' => true,
             'replyToMessageId' => 1,
-            'replyMarkup' => InlineKeyboardMarkupType::create([]),
+            'replyMarkup' => InlineKeyboardMarkupType::create(inlineKeyboard: []),
             'allowSendingWithoutReply' => true,
-            'entities' => [MessageEntityType::create(MessageEntityType::TYPE_PRE, 0, 1)],
+            'entities' => [MessageEntityType::create(type: MessageEntityType::TYPE_PRE, offset: 0, length: 1)],
         ]);
     }
 }

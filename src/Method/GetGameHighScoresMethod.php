@@ -49,35 +49,22 @@ class GetGameHighScoresMethod implements MethodInterface
      */
     public $inlineMessageId;
 
-    /**
-     * @param int $userId
-     * @param int $chatId
-     * @param int $messageId
-     *
-     * @return GetGameHighScoresMethod
-     */
     public static function create(int $userId, int $chatId, int $messageId): GetGameHighScoresMethod
     {
-        $instance = new static();
-        $instance->userId = $userId;
-        $instance->chatId = $chatId;
-        $instance->messageId = $messageId;
+        $static = new static();
+        $static->userId = $userId;
+        $static->chatId = $chatId;
+        $static->messageId = $messageId;
 
-        return $instance;
+        return $static;
     }
 
-    /**
-     * @param int    $userId
-     * @param string $inlineMessageId
-     *
-     * @return GetGameHighScoresMethod
-     */
     public static function createInline(int $userId, string $inlineMessageId): GetGameHighScoresMethod
     {
-        $instance = new static();
-        $instance->userId = $userId;
-        $instance->inlineMessageId = $inlineMessageId;
+        $static = new static();
+        $static->userId = $userId;
+        $static->inlineMessageId = $inlineMessageId;
 
-        return $instance;
+        return $static;
     }
 }

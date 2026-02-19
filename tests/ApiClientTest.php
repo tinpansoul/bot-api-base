@@ -21,109 +21,94 @@ use TgBotApi\BotApiBase\Type\InputFileType;
  *
  * @todo write real test instead this
  */
-class ApiClientTest extends TestCase
+final class ApiClientTest extends TestCase
 {
-    public function testApi()
+    public function testApi(): void
     {
-        $client = $this->getApiClient();
-        $this->assertInstanceOf(ApiClientInterface::class, $client);
-        $client->send('getMe', new BotApiRequest(['name' => 'value'], [new InputFileType('/dev/null')]));
+        $apiClient = $this->getApiClient();
+        $this->assertInstanceOf(expected: ApiClientInterface::class, actual: $apiClient);
+        $apiClient->send(method: 'getMe', botApiRequest: new BotApiRequest(data: ['name' => 'value'], files: [new InputFileType(filename: '/dev/null')]));
     }
 
-    /**
-     * @return RequestFactoryInterface
-     */
     public function getRequestFactory(): RequestFactoryInterface
     {
-        $requestFactory = $this->getMockBuilder(RequestFactoryInterface::class)
+        $requestFactory = $this->getMockBuilder(className: RequestFactoryInterface::class)
             ->getMock();
 
         $requestFactory->expects($this->once())
-            ->method('createRequest')
-            ->willReturn(($this->createRequest()));
+            ->method(constraint: 'createRequest')
+            ->willReturn(value: ($this->createRequest()));
 
         /* @var RequestFactoryInterface $requestFactory */
         return $requestFactory;
     }
 
-    /**
-     * @return StreamFactoryInterface
-     */
     public function getStreamFactory(): StreamFactoryInterface
     {
-        $streamFactory = $this->getMockBuilder(StreamFactoryInterface::class)
+        $streamFactory = $this->getMockBuilder(className: StreamFactoryInterface::class)
             ->getMock();
 
-        $stream = $this->getMockBuilder(StreamInterface::class)
+        $stream = $this->getMockBuilder(className: StreamInterface::class)
             ->getMock();
 
         $streamFactory->expects($this->once())
-            ->method('createStream')
-            ->willReturn($stream);
+            ->method(constraint: 'createStream')
+            ->willReturn(value: $stream);
 
         /* @var StreamFactoryInterface $streamFactory */
         return $streamFactory;
     }
 
-    /**
-     * @return ClientInterface
-     */
     public function getClient(): ClientInterface
     {
-        $client = $this->getMockBuilder(ClientInterface::class)
+        $client = $this->getMockBuilder(className: ClientInterface::class)
             ->getMock();
 
-        $response = $this->getMockBuilder(ResponseInterface::class)
+        $response = $this->getMockBuilder(className: ResponseInterface::class)
             ->getMock();
 
-        $stream = $this->getMockBuilder(StreamInterface::class)
+        $stream = $this->getMockBuilder(className: StreamInterface::class)
             ->getMock();
 
         $stream->expects($this->once())
-            ->method('getContents')
-            ->willReturn('{}');
+            ->method(constraint: 'getContents')
+            ->willReturn(value: '{}');
 
         $response->expects($this->once())
-            ->method('getBody')
-            ->willReturn($stream);
+            ->method(constraint: 'getBody')
+            ->willReturn(value: $stream);
 
         $client->expects($this->once())
-            ->method('sendRequest')
-            ->willReturn($response);
+            ->method(constraint: 'sendRequest')
+            ->willReturn(value: $response);
 
         /* @var ClientInterface $client */
         return $client;
     }
 
-    /**
-     * @return RequestInterface
-     */
     public function createRequest(): RequestInterface
     {
-        $request = $this->getMockBuilder(RequestInterface::class)
+        $request = $this->getMockBuilder(className: RequestInterface::class)
             ->getMock();
 
         $request->expects($this->once())
-            ->method('withBody')
-            ->willReturn($request);
+            ->method(constraint: 'withBody')
+            ->willReturn(value: $request);
 
         $request->expects($this->once())
-            ->method('withHeader')
-            ->willReturn($request);
+            ->method(constraint: 'withHeader')
+            ->willReturn(value: $request);
 
         /* @var RequestInterface $request */
         return $request;
     }
 
-    /**
-     * @return ApiClientInterface
-     */
     private function getApiClient(): ApiClientInterface
     {
-        $client = new ApiClient($this->getRequestFactory(), $this->getStreamFactory(), $this->getClient());
-        $client->setBotKey('key');
-        $client->setEndpoint('endpoint');
+        $apiClient = new ApiClient(requestFactory: $this->getRequestFactory(), streamFactory: $this->getStreamFactory(), client: $this->getClient());
+        $apiClient->setBotKey(botKey: 'key');
+        $apiClient->setEndpoint(endPoint: 'endpoint');
 
-        return $client;
+        return $apiClient;
     }
 }

@@ -6,15 +6,15 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\CloseMethod;
 
-class CloseMethodTest extends MethodTestCase
+final class CloseMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('close', [], true);
+        $botApiComplete = $this->getBot(methodName: 'close', request: [], result: true);
 
-        $botApi->close(CloseMethod::create());
+        $botApiComplete->close(closeMethod: CloseMethod::create());
     }
 }

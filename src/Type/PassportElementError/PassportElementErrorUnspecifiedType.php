@@ -28,6 +28,7 @@ class PassportElementErrorUnspecifiedType extends PassportElementErrorType imple
         self::TYPE_PHONE_NUMBER,
         self::TYPE_EMAIL,
     ];
+
     /**
      * Base64-encoded element hash.
      *
@@ -36,20 +37,16 @@ class PassportElementErrorUnspecifiedType extends PassportElementErrorType imple
     public $elementHash;
 
     /**
-     * @param string $type
-     * @param string $message
-     * @param string $elementHash
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return PassportElementErrorUnspecifiedType
      */
     public static function create(
         string $type,
         string $message,
         string $elementHash
     ): PassportElementErrorUnspecifiedType {
-        $instance = parent::createBase('unspecified', $type, $message);
+        $instance = parent::createBase(source: 'unspecified', type: $type, message: $message);
         $instance->elementHash = $elementHash;
 
         return $instance;

@@ -20,6 +20,7 @@ class SendAudioMethod implements SendMethodAliasInterface
     use FillFromArrayTrait;
     use SendToChatVariablesTrait;
     use CaptionVariablesTrait;
+
     /**
      * Audio file to send.
      * Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended),
@@ -63,23 +64,19 @@ class SendAudioMethod implements SendMethodAliasInterface
     public $thumb;
 
     /**
-     * @param int|string           $chatId
-     * @param InputFileType|string $audio
      * @param array|null           $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
-     * @return SendAudioMethod
      */
-    public static function create($chatId, $audio, array $data = null): SendAudioMethod
+    public static function create(int|string $chatId, string|InputFileType $audio, array $data = null): SendAudioMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->audio = $audio;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->audio = $audio;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

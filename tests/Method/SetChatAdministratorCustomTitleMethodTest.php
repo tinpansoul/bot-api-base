@@ -6,25 +6,26 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\SetChatAdministratorCustomTitleMethod;
 
-class SetChatAdministratorCustomTitleMethodTest extends MethodTestCase
+final class SetChatAdministratorCustomTitleMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBotWithFiles(
-            'setChatAdministratorCustomTitle',
-            ['chat_id' => 'chat_id', 'user_id' => 1, 'custom_title' => 'Custom title'],
-            [],
-            [],
-            true
+        $botApiComplete = $this->getBotWithFiles(
+            methodName: 'setChatAdministratorCustomTitle',
+            request: ['chat_id' => 'chat_id', 'user_id' => 1, 'custom_title' => 'Custom title'],
+            fileMap: [],
+            serializableFields: [],
+            result: true
         );
 
-        $botApi->setChatAdministratorCustomTitle(SetChatAdministratorCustomTitleMethod::create(
-            'chat_id',
-            1,
-            'Custom title'
+        $botApiComplete->setChatAdministratorCustomTitle(
+            setChatAdministratorCustomTitleMethod: SetChatAdministratorCustomTitleMethod::create(
+            chatId: 'chat_id',
+            userId: 1,
+            title: 'Custom title'
         ));
     }
 }

@@ -10,6 +10,9 @@ trait InlineKeyboardMarkupTrait
 {
     use InlineButtonTrait;
 
+    /**
+     * @return array<string, array<int, array<int, mixed[]>>>
+     */
     public static function buildInlineMarkupArray(): array
     {
         return ['inline_keyboard' => [[
@@ -23,7 +26,7 @@ trait InlineKeyboardMarkupTrait
      */
     public static function buildInlineMarkupObject(): InlineKeyboardMarkupType
     {
-        return InlineKeyboardMarkupType::create([[
+        return InlineKeyboardMarkupType::create(inlineKeyboard: [[
             static::buildInlineKeyboardButtonObject(),
             static::buildInlineKeyboardButtonObject(),
         ]]);

@@ -12,9 +12,13 @@ namespace TgBotApi\BotApiBase\Type\PassportElementError;
 class PassportElementErrorFileType extends PassportElementErrorType
 {
     const TYPE_UTILITY_BILL = 'utility_bill';
+
     const TYPE_BANK_STATEMENT = 'bank_statement';
+
     const TYPE_RENTAL_AGREEMENT = 'rental_agreement';
+
     const TYPE_PASSPORT_REGISTRATION = 'passport_registration';
+
     const TYPE_TEMPORARY_REGISTRATION = 'temporary_registration';
 
     const ALLOWED_TYPES = [
@@ -33,20 +37,16 @@ class PassportElementErrorFileType extends PassportElementErrorType
     public $fileHash;
 
     /**
-     * @param string $type
-     * @param string $message
-     * @param string $fileHash
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return PassportElementErrorFileType
      */
     public static function create(
         string $type,
         string $message,
         string $fileHash
     ): PassportElementErrorFileType {
-        $instance = parent::createBase('file', $type, $message);
+        $instance = parent::createBase(source: 'file', type: $type, message: $message);
         $instance->fileHash = $fileHash;
 
         return $instance;

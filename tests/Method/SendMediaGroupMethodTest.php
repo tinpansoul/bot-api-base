@@ -12,7 +12,7 @@ use TgBotApi\BotApiBase\Type\InputFileType;
 use TgBotApi\BotApiBase\Type\InputMedia\InputMediaPhotoType;
 use TgBotApi\BotApiBase\Type\InputMedia\InputMediaVideoType;
 
-class SendMediaGroupMethodTest extends MethodTestCase
+final class SendMediaGroupMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
@@ -20,16 +20,16 @@ class SendMediaGroupMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $this->getApi()->sendMediaGroup($this->getMethod());
+        $this->getApi()->sendMediaGroup(sendMediaGroupMethod: $this->getMethod());
     }
 
     private function getApi(): BotApiComplete
     {
         return $this->getBotWithFiles(
-            'sendMediaGroup',
-            [
+            methodName: 'sendMediaGroup',
+            request: [
                 'chat_id' => 'chat_id',
                 'media' => [
                     [
@@ -55,11 +55,11 @@ class SendMediaGroupMethodTest extends MethodTestCase
                 'reply_to_message_id' => 1,
                 'allow_sending_without_reply' => true,
             ],
-            ['media' => [
+            fileMap: ['media' => [
                 ['media' => true],
                 ['media' => true, 'thumb' => true],
             ]],
-            ['media']
+            serializableFields: ['media']
         );
     }
 
@@ -69,14 +69,14 @@ class SendMediaGroupMethodTest extends MethodTestCase
     private function getMethod(): SendMediaGroupMethod
     {
         return SendMediaGroupMethod::create(
-            'chat_id',
-            [
-                InputMediaPhotoType::create(InputFileType::create('/dev/null'), [
+            chatId: 'chat_id',
+            media: [
+                InputMediaPhotoType::create(media: InputFileType::create(path: '/dev/null'), data: [
                     'caption' => 'InputMediaPhotoType',
                     'parseMode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
                 ]),
-                InputMediaVideoType::create(InputFileType::create('/dev/null'), [
-                    'thumb' => InputFileType::create('/dev/null'),
+                InputMediaVideoType::create(media: InputFileType::create(path: '/dev/null'), data: [
+                    'thumb' => InputFileType::create(path: '/dev/null'),
                     'width' => 100,
                     'height' => 100,
                     'duration' => 100,
@@ -85,7 +85,7 @@ class SendMediaGroupMethodTest extends MethodTestCase
                     'parseMode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
                 ]),
             ],
-            [
+            data: [
                 'disableNotification' => true,
                 'replyToMessageId' => 1,
                 'allowSendingWithoutReply' => true,

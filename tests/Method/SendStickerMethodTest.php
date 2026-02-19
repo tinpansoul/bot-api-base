@@ -12,7 +12,7 @@ use TgBotApi\BotApiBase\Type\InputFileType;
 /**
  * Class SendStickerMethodTest.
  */
-class SendStickerMethodTest extends MethodTestCase
+final class SendStickerMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
@@ -20,45 +20,45 @@ class SendStickerMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $this->getApi()->sendSticker($this->getMethod());
-        $this->getApi()->send($this->getMethod());
+        $this->getApi()->sendSticker(sendStickerMethod: $this->getMethod());
+        $this->getApi()->send(sendMethodAlias: $this->getMethod());
 
-        $this->getApiWithStringFileId()->sendSticker($this->getMethodWithStringFileId());
-        $this->getApiWithStringFileId()->send($this->getMethodWithStringFileId());
+        $this->getApiWithStringFileId()->sendSticker(sendStickerMethod: $this->getMethodWithStringFileId());
+        $this->getApiWithStringFileId()->send(sendMethodAlias: $this->getMethodWithStringFileId());
     }
 
     private function getApi(): BotApiComplete
     {
         return $this->getBotWithFiles(
-            'sendSticker',
-            [
+            methodName: 'sendSticker',
+            request: [
                 'chat_id' => 'chat_id',
                 'sticker' => '',
                 'disable_notification' => true,
                 'reply_to_message_id' => 1,
-                'reply_markup' => static::buildInlineMarkupArray(),
+                'reply_markup' => self::buildInlineMarkupArray(),
                 'allow_sending_without_reply' => true,
             ],
-            ['sticker' => true],
-            ['reply_markup']
+            fileMap: ['sticker' => true],
+            serializableFields: ['reply_markup']
         );
     }
 
     private function getApiWithStringFileId(): BotApiComplete
     {
         return $this->getBot(
-            'sendSticker',
-            [
+            methodName: 'sendSticker',
+            request: [
                 'chat_id' => 'chat_id',
                 'sticker' => 'file_id',
                 'disable_notification' => true,
                 'reply_to_message_id' => 1,
-                'reply_markup' => static::buildInlineMarkupArray(),
+                'reply_markup' => self::buildInlineMarkupArray(),
             ],
-            [],
-            ['reply_markup']
+            result: [],
+            serialisedFields: ['reply_markup']
         );
     }
 
@@ -68,12 +68,12 @@ class SendStickerMethodTest extends MethodTestCase
     private function getMethod(): SendStickerMethod
     {
         return SendStickerMethod::create(
-            'chat_id',
-            InputFileType::create('/dev/null'),
-            [
+            chatId: 'chat_id',
+            sticker: InputFileType::create(path: '/dev/null'),
+            data: [
                 'disableNotification' => true,
                 'replyToMessageId' => 1,
-                'replyMarkup' => static::buildInlineMarkupObject(),
+                'replyMarkup' => self::buildInlineMarkupObject(),
                 'allowSendingWithoutReply' => true,
             ]
         );
@@ -85,12 +85,12 @@ class SendStickerMethodTest extends MethodTestCase
     private function getMethodWithStringFileId(): SendStickerMethod
     {
         return SendStickerMethod::create(
-            'chat_id',
-            'file_id',
-            [
+            chatId: 'chat_id',
+            sticker: 'file_id',
+            data: [
                 'disableNotification' => true,
                 'replyToMessageId' => 1,
-                'replyMarkup' => static::buildInlineMarkupObject(),
+                'replyMarkup' => self::buildInlineMarkupObject(),
             ]
         );
     }

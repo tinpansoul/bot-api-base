@@ -15,11 +15,8 @@ interface WebhookFetcherInterface
 {
     /**
      * @param RequestInterface|string
-     * @param mixed $request
      *
      * @throws BadRequestException
-     *
-     * @return UpdateType
      */
-    public function fetch($request): UpdateType;
+    public function fetch(mixed $request): UpdateType;
 }

@@ -64,20 +64,18 @@ class SendLocationMethod implements SendMethodAliasInterface
     public $proximityAlertRadius;
 
     /**
-     * @param int|string $chatId
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create($chatId, float $latitude, float $longitude, array $data = null): SendLocationMethod
+    public static function create(int|string $chatId, float $latitude, float $longitude, array $data = null): SendLocationMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->latitude = $latitude;
-        $instance->longitude = $longitude;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->latitude = $latitude;
+        $static->longitude = $longitude;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

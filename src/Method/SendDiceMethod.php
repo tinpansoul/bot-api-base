@@ -26,9 +26,13 @@ class SendDiceMethod implements SendMethodAliasInterface
     use FillFromArrayTrait;
 
     public const EMOJI_DICE = '🎲';
+
     public const EMOJI_DARTS = '🎯';
+
     public const EMOJI_BASKETBALL = '🏀';
+
     public const EMOJI_FOOTBALL = '⚽';
+
     public const EMOJI_SLOT_MACHINE = '🎰';
 
     /**
@@ -42,20 +46,18 @@ class SendDiceMethod implements SendMethodAliasInterface
     public $emoji;
 
     /**
-     * @param int|string $chatId
-     *
      * @throws BadArgumentException
      */
-    public static function create($chatId, array $data = null): SendDiceMethod
+    public static function create(int|string $chatId, array $data = null): SendDiceMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
+        $static = new static();
+        $static->chatId = $chatId;
 
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 
     /**
@@ -63,12 +65,12 @@ class SendDiceMethod implements SendMethodAliasInterface
      *
      * @throws BadArgumentException
      */
-    public static function createWithDice($chatId, array $data = null): SendDiceMethod
+    public static function createWithDice(int|string $chatId, array $data = null): SendDiceMethod
     {
-        $instance = static::create($chatId, $data);
-        $instance->emoji = static::EMOJI_DICE;
+        $sendDiceMethod = static::create(chatId: $chatId, data: $data);
+        $sendDiceMethod->emoji = static::EMOJI_DICE;
 
-        return $instance;
+        return $sendDiceMethod;
     }
 
     /**
@@ -76,12 +78,12 @@ class SendDiceMethod implements SendMethodAliasInterface
      *
      * @throws BadArgumentException
      */
-    public static function createWithDarts($chatId, array $data = null): SendDiceMethod
+    public static function createWithDarts(int|string $chatId, array $data = null): SendDiceMethod
     {
-        $instance = static::create($chatId, $data);
-        $instance->emoji = self::EMOJI_DARTS;
+        $sendDiceMethod = static::create(chatId: $chatId, data: $data);
+        $sendDiceMethod->emoji = self::EMOJI_DARTS;
 
-        return $instance;
+        return $sendDiceMethod;
     }
 
     /**
@@ -89,12 +91,12 @@ class SendDiceMethod implements SendMethodAliasInterface
      *
      * @throws BadArgumentException
      */
-    public static function createWithBasketball($chatId, array $data = null): SendDiceMethod
+    public static function createWithBasketball(int|string $chatId, array $data = null): SendDiceMethod
     {
-        $instance = static::create($chatId, $data);
-        $instance->emoji = self::EMOJI_BASKETBALL;
+        $sendDiceMethod = static::create(chatId: $chatId, data: $data);
+        $sendDiceMethod->emoji = self::EMOJI_BASKETBALL;
 
-        return $instance;
+        return $sendDiceMethod;
     }
 
     /**
@@ -102,12 +104,12 @@ class SendDiceMethod implements SendMethodAliasInterface
      *
      * @throws BadArgumentException
      */
-    public static function createWithFootBall($chatId, array $data = null): SendDiceMethod
+    public static function createWithFootBall(int|string $chatId, array $data = null): SendDiceMethod
     {
-        $instance = static::create($chatId, $data);
-        $instance->emoji = self::EMOJI_FOOTBALL;
+        $sendDiceMethod = static::create(chatId: $chatId, data: $data);
+        $sendDiceMethod->emoji = self::EMOJI_FOOTBALL;
 
-        return $instance;
+        return $sendDiceMethod;
     }
 
     /**
@@ -115,11 +117,11 @@ class SendDiceMethod implements SendMethodAliasInterface
      *
      * @throws BadArgumentException
      */
-    public static function createWithSlotMachine($chatId, array $data = null): SendDiceMethod
+    public static function createWithSlotMachine(int|string $chatId, array $data = null): SendDiceMethod
     {
-        $instance = static::create($chatId, $data);
-        $instance->emoji = self::EMOJI_SLOT_MACHINE;
+        $sendDiceMethod = static::create(chatId: $chatId, data: $data);
+        $sendDiceMethod->emoji = self::EMOJI_SLOT_MACHINE;
 
-        return $instance;
+        return $sendDiceMethod;
     }
 }

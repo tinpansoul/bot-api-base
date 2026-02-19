@@ -73,15 +73,15 @@ class InlineQueryResultCachedVideoType extends InlineQueryResultType implements 
         string $title,
         array $data = null
     ): InlineQueryResultCachedVideoType {
-        $instance = new static();
-        $instance->type = static::TYPE_VIDEO;
-        $instance->id = $id;
-        $instance->videoFileId = $videoFileId;
-        $instance->title = $title;
+        $static = new static();
+        $static->type = static::TYPE_VIDEO;
+        $static->id = $id;
+        $static->videoFileId = $videoFileId;
+        $static->title = $title;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

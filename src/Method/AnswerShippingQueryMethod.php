@@ -46,42 +46,27 @@ class AnswerShippingQueryMethod implements AnswerMethodAliasInterface
      */
     public $errorMessage;
 
-    /**
-     * @param string $shippingQueryId
-     * @param array  $shippingOptions
-     *
-     * @return AnswerShippingQueryMethod
-     */
     public static function createSuccess(string $shippingQueryId, array $shippingOptions): AnswerShippingQueryMethod
     {
-        $instance = new static();
-        $instance->shippingQueryId = $shippingQueryId;
-        $instance->ok = true;
-        $instance->shippingOptions = $shippingOptions;
+        $static = new static();
+        $static->shippingQueryId = $shippingQueryId;
+        $static->ok = true;
+        $static->shippingOptions = $shippingOptions;
 
-        return $instance;
+        return $static;
     }
 
-    /**
-     * @param string $shippingQueryId
-     * @param string $errorMessage
-     *
-     * @return AnswerShippingQueryMethod
-     */
     public static function createFail(string $shippingQueryId, string $errorMessage): AnswerShippingQueryMethod
     {
-        $instance = new static();
-        $instance->shippingQueryId = $shippingQueryId;
-        $instance->ok = false;
-        $instance->errorMessage = $errorMessage;
+        $static = new static();
+        $static->shippingQueryId = $shippingQueryId;
+        $static->ok = false;
+        $static->errorMessage = $errorMessage;
 
-        return $instance;
+        return $static;
     }
 
-    /**
-     * @param ShippingOption $shippingOption
-     */
-    public function addShippingOption(ShippingOption $shippingOption)
+    public function addShippingOption(ShippingOption $shippingOption): void
     {
         $this->shippingOptions[] = $shippingOption;
     }

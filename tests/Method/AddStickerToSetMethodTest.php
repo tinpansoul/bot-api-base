@@ -8,35 +8,38 @@ use TgBotApi\BotApiBase\Method\AddStickerToSetMethod;
 use TgBotApi\BotApiBase\Type\InputFileType;
 use TgBotApi\BotApiBase\Type\MaskPositionType;
 
-class AddStickerToSetMethodTest extends MethodTestCase
+final class AddStickerToSetMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBotWithFiles(
-            'addStickerToSet',
-            [
+        $botApiComplete = $this->getBotWithFiles(
+            methodName: 'addStickerToSet',
+            request: [
                 'user_id' => 1,
                 'name' => 'name',
                 'png_sticker' => '',
                 'emojis' => '😀',
                 'mask_position' => ['point' => 'forehead', 'x_shift' => 1.0, 'y_shift' => 1.0, 'scale' => 1],
             ],
-            ['png_sticker' => true],
-            ['mask_position'],
-            true
+            fileMap: ['png_sticker' => true],
+            serializableFields: ['mask_position'],
+            result: true
         );
 
-        $botApi->addStickerToSet(AddStickerToSetMethod::create(
-            1,
-            'name',
-            InputFileType::create('/dev/null'),
-            '😀',
-            [
-                'maskPosition' => MaskPositionType::create(MaskPositionType::MASK_POINT_FOREHEAD, 1, 1, 1),
+        $botApiComplete->addStickerToSet(
+            addStickerToSetMethod: AddStickerToSetMethod::create(
+            userId: 1,
+            name: 'name',
+            pngSticker: InputFileType::create(path: '/dev/null'),
+            emojis: '😀',
+            data: [
+                'maskPosition' => MaskPositionType::create(
+                    point: MaskPositionType::MASK_POINT_FOREHEAD,
+                    xShift: 1, yShift: 1, scale: 1),
             ]
         ));
     }
@@ -45,29 +48,32 @@ class AddStickerToSetMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncodeAnimated()
+    public function testEncodeAnimated(): void
     {
-        $botApi = $this->getBotWithFiles(
-            'addStickerToSet',
-            [
+        $botApiComplete = $this->getBotWithFiles(
+            methodName: 'addStickerToSet',
+            request: [
                 'user_id' => 1,
                 'name' => 'name',
                 'tgs_sticker' => '',
                 'emojis' => '😀',
                 'mask_position' => ['point' => 'forehead', 'x_shift' => 1.0, 'y_shift' => 1.0, 'scale' => 1],
             ],
-            ['tgs_sticker' => true],
-            ['mask_position'],
-            true
+            fileMap: ['tgs_sticker' => true],
+            serializableFields: ['mask_position'],
+            result: true
         );
 
-        $botApi->addStickerToSet(AddStickerToSetMethod::createAnimated(
-            1,
-            'name',
-            InputFileType::create('/dev/null'),
-            '😀',
-            [
-                'maskPosition' => MaskPositionType::create(MaskPositionType::MASK_POINT_FOREHEAD, 1, 1, 1),
+        $botApiComplete->addStickerToSet(
+            addStickerToSetMethod: AddStickerToSetMethod::createAnimated(
+            userId: 1,
+            name: 'name',
+            inputFileType: InputFileType::create(path: '/dev/null'),
+            emojis: '😀',
+            data: [
+                'maskPosition' => MaskPositionType::create(
+                    point: MaskPositionType::MASK_POINT_FOREHEAD,
+                    xShift: 1, yShift: 1, scale: 1),
             ]
         ));
     }

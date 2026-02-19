@@ -39,23 +39,19 @@ class SendVoiceMethod implements HasParseModeVariableInterface, SendMethodAliasI
     public $duration;
 
     /**
-     * @param int|string           $chatId
-     * @param InputFileType|string $voice
      * @param array|null           $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
-     * @return SendVoiceMethod
      */
-    public static function create($chatId, $voice, array $data = null): SendVoiceMethod
+    public static function create(int|string $chatId, string|InputFileType $voice, array $data = null): SendVoiceMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->voice = $voice;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->voice = $voice;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

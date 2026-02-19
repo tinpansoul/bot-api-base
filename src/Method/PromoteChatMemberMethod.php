@@ -93,13 +93,13 @@ class PromoteChatMemberMethod implements PromoteMethodAliasInterface
      */
     public static function create($chatId, $userId, array $data = null): PromoteChatMemberMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->userId = $userId;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->userId = $userId;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

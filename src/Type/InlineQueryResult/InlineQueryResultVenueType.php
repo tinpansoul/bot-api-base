@@ -103,17 +103,17 @@ class InlineQueryResultVenueType extends InlineQueryResultType
         string $address,
         array $data = null
     ): InlineQueryResultVenueType {
-        $instance = new static();
-        $instance->type = static::TYPE_VENUE;
-        $instance->id = $id;
-        $instance->latitude = $latitude;
-        $instance->longitude = $longitude;
-        $instance->title = $title;
-        $instance->address = $address;
+        $static = new static();
+        $static->type = static::TYPE_VENUE;
+        $static->id = $id;
+        $static->latitude = $latitude;
+        $static->longitude = $longitude;
+        $static->title = $title;
+        $static->address = $address;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

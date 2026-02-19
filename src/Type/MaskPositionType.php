@@ -12,8 +12,11 @@ namespace TgBotApi\BotApiBase\Type;
 class MaskPositionType
 {
     const MASK_POINT_FOREHEAD = 'forehead';
+
     const MASK_POINT_EYES = 'eyes';
+
     const MASK_POINT_MOUTH = 'mouth';
+
     const MASK_POINT_CHIN = 'chin';
 
     /**
@@ -46,22 +49,14 @@ class MaskPositionType
      */
     public $scale;
 
-    /**
-     * @param string $point
-     * @param float  $xShift
-     * @param float  $yShift
-     * @param float  $scale
-     *
-     * @return MaskPositionType
-     */
     public static function create(string $point, float $xShift, float $yShift, float $scale): MaskPositionType
     {
-        $instance = new static();
-        $instance->point = $point;
-        $instance->xShift = $xShift;
-        $instance->yShift = $yShift;
-        $instance->scale = $scale;
+        $static = new static();
+        $static->point = $point;
+        $static->xShift = $xShift;
+        $static->yShift = $yShift;
+        $static->scale = $scale;
 
-        return $instance;
+        return $static;
     }
 }

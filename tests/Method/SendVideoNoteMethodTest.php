@@ -9,7 +9,7 @@ use TgBotApi\BotApiBase\Method\SendVideoNoteMethod;
 use TgBotApi\BotApiBase\Tests\Method\Traits\InlineKeyboardMarkupTrait;
 use TgBotApi\BotApiBase\Type\InputFileType;
 
-class SendVideoNoteMethodTest extends MethodTestCase
+final class SendVideoNoteMethodTest extends MethodTestCase
 {
     use InlineKeyboardMarkupTrait;
 
@@ -17,28 +17,28 @@ class SendVideoNoteMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $this->getApi()->sendVideoNote($this->getMethod());
-        $this->getApi()->send($this->getMethod());
+        $this->getApi()->sendVideoNote(sendVideoNoteMethod: $this->getMethod());
+        $this->getApi()->send(sendMethodAlias: $this->getMethod());
     }
 
     private function getApi(): BotApiComplete
     {
         return $this->getBotWithFiles(
-            'sendVideoNote',
-            [
+            methodName: 'sendVideoNote',
+            request: [
                 'chat_id' => 'chat_id',
                 'video_note' => '',
                 'duration' => 100,
                 'thumb' => '',
                 'disable_notification' => true,
                 'reply_to_message_id' => 1,
-                'reply_markup' => static::buildInlineMarkupArray(),
+                'reply_markup' => self::buildInlineMarkupArray(),
                 'allow_sending_without_reply' => true,
             ],
-            ['video_note' => true, 'thumb' => true],
-            ['reply_markup']
+            fileMap: ['video_note' => true, 'thumb' => true],
+            serializableFields: ['reply_markup']
         );
     }
 
@@ -48,14 +48,14 @@ class SendVideoNoteMethodTest extends MethodTestCase
     private function getMethod(): SendVideoNoteMethod
     {
         return SendVideoNoteMethod::create(
-            'chat_id',
-            InputFileType::create('/dev/null'),
-            [
+            chatId: 'chat_id',
+            videoNote: InputFileType::create(path: '/dev/null'),
+            data: [
                 'duration' => 100,
-                'thumb' => InputFileType::create('/dev/null'),
+                'thumb' => InputFileType::create(path: '/dev/null'),
                 'disableNotification' => true,
                 'replyToMessageId' => 1,
-                'replyMarkup' => static::buildInlineMarkupObject(),
+                'replyMarkup' => self::buildInlineMarkupObject(),
                 'allowSendingWithoutReply' => true,
             ]
         );

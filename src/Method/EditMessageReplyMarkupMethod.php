@@ -19,33 +19,28 @@ class EditMessageReplyMarkupMethod implements EditMethodAliasInterface
     use EditMessageVariablesTrait;
 
     /**
-     * @param int|string $chatId
-     * @param int        $messageId
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return EditMessageReplyMarkupMethod
      */
-    public static function create($chatId, int $messageId, array $data = null): EditMessageReplyMarkupMethod
+    public static function create(int|string $chatId, int $messageId, array $data = null): EditMessageReplyMarkupMethod
     {
         $instance = new self();
         $instance->chatId = $chatId;
         $instance->messageId = $messageId;
         if ($data) {
-            $instance->fill($data, ['chatId', 'messageId', 'inlineMessageId']);
+            $instance->fill(data: $data, forbidden: ['chatId', 'messageId', 'inlineMessageId']);
         }
 
         return $instance;
     }
 
     /**
-     * @param string     $inlineMessageId
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return EditMessageReplyMarkupMethod
      */
     public static function createInline(
         string $inlineMessageId,
@@ -54,7 +49,7 @@ class EditMessageReplyMarkupMethod implements EditMethodAliasInterface
         $instance = new self();
         $instance->inlineMessageId = $inlineMessageId;
         if ($data) {
-            $instance->fill($data, ['chatId', 'messageId', 'inlineMessageId']);
+            $instance->fill(data: $data, forbidden: ['chatId', 'messageId', 'inlineMessageId']);
         }
 
         return $instance;

@@ -6,15 +6,15 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\DeleteChatPhotoMethod;
 
-class DeleteChatPhotoMethodTest extends MethodTestCase
+final class DeleteChatPhotoMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('deleteChatPhoto', ['chat_id' => 'chat_id'], true);
+        $botApiComplete = $this->getBot(methodName: 'deleteChatPhoto', request: ['chat_id' => 'chat_id'], result: true);
 
-        $botApi->deleteChatPhoto(DeleteChatPhotoMethod::create('chat_id'));
+        $botApiComplete->deleteChatPhoto(deleteChatPhotoMethod: DeleteChatPhotoMethod::create(chatId: 'chat_id'));
     }
 }

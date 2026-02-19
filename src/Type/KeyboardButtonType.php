@@ -64,12 +64,12 @@ class KeyboardButtonType
      */
     public static function create(string $text, array $data = null): KeyboardButtonType
     {
-        $instance = new static();
-        $instance->text = $text;
+        $static = new static();
+        $static->text = $text;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

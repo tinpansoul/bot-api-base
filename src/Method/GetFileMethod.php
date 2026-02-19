@@ -30,16 +30,11 @@ class GetFileMethod implements MethodInterface
      */
     public $fileId;
 
-    /**
-     * @param string $fileId
-     *
-     * @return GetFileMethod
-     */
     public static function create(string $fileId): GetFileMethod
     {
-        $instance = new static();
-        $instance->fileId = $fileId;
+        $static = new static();
+        $static->fileId = $fileId;
 
-        return $instance;
+        return $static;
     }
 }

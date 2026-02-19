@@ -6,52 +6,55 @@ namespace TgBotApi\BotApiBase\Tests\Type;
 
 use TgBotApi\BotApiBase\Type\InputMessageContent\InputLocationMessageContentType;
 
-class InputLocationMessageContentTypeTest extends TypeBaseTestCase
+final class InputLocationMessageContentTypeTest extends TypeBaseTestCase
 {
     public function testCreate(): void
     {
-        $type = InputLocationMessageContentType::create(1.3, 1.3, [
+        $inputLocationMessageContentType = InputLocationMessageContentType::create(latitude: 1.3, longitude: 1.3, data: [
             'horizontalAccuracy' => 200.5,
             'livePeriod' => 20,
             'heading' => 30,
             'proximityAlertRadius' => 40,
         ]);
 
-        static::assertEquals(200.5, $type->horizontalAccuracy);
-        static::assertEquals(20, $type->livePeriod);
-        static::assertEquals(30, $type->heading);
-        static::assertEquals(40, $type->proximityAlertRadius);
-        static::assertEquals(1.3, $type->latitude);
-        static::assertEquals(1.3, $type->longitude);
+        self::assertEquals(expected: 200.5, actual: $inputLocationMessageContentType->horizontalAccuracy);
+        self::assertEquals(expected: 20, actual: $inputLocationMessageContentType->livePeriod);
+        self::assertEquals(expected: 30, actual: $inputLocationMessageContentType->heading);
+        self::assertEquals(expected: 40, actual: $inputLocationMessageContentType->proximityAlertRadius);
+        self::assertEquals(expected: 1.3, actual: $inputLocationMessageContentType->latitude);
+        self::assertEquals(expected: 1.3, actual: $inputLocationMessageContentType->longitude);
     }
 
+    /**
+     * @return array<string, array<int, string|InputLocationMessageContentType>>
+     */
     public function provideData(): array
     {
         return [
             'default case' => [
                 InputLocationMessageContentType::class,
-                static::getResource('InputLocationContentType/default'),
-                static::getType(),
+                self::getResource(filename: 'InputLocationContentType/default'),
+                (array)$this->getType(),
             ],
             'with redundant variables' => [
                 InputLocationMessageContentType::class,
-                static::getResource('InputLocationContentType/default_with_extended_keys'),
-                static::getType(),
+                self::getResource(filename: 'InputLocationContentType/default_with_extended_keys'),
+                (array)$this->getType(),
             ],
         ];
     }
 
-    private static function getType(): InputLocationMessageContentType
+    private function getType(): InputLocationMessageContentType
     {
-        $type = new InputLocationMessageContentType();
+        $inputLocationMessageContentType = new InputLocationMessageContentType();
 
-        $type->latitude = 1.3;
-        $type->longitude = 1.3;
-        $type->horizontalAccuracy = 200.5;
-        $type->livePeriod = 20;
-        $type->heading = 30;
-        $type->proximityAlertRadius = 40;
+        $inputLocationMessageContentType->latitude = 1.3;
+        $inputLocationMessageContentType->longitude = 1.3;
+        $inputLocationMessageContentType->horizontalAccuracy = 200.5;
+        $inputLocationMessageContentType->livePeriod = 20;
+        $inputLocationMessageContentType->heading = 30;
+        $inputLocationMessageContentType->proximityAlertRadius = 40;
 
-        return $type;
+        return $inputLocationMessageContentType;
     }
 }

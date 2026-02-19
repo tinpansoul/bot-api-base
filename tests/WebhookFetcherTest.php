@@ -12,47 +12,47 @@ use TgBotApi\BotApiBase\Exception\BadRequestException;
 use TgBotApi\BotApiBase\Type\UpdateType;
 use TgBotApi\BotApiBase\WebhookFetcher;
 
-class WebhookFetcherTest extends TestCase
+final class WebhookFetcherTest extends TestCase
 {
     use GetNormalizerTrait;
 
     /**
-     * @throws \TgBotApi\BotApiBase\Exception\BadRequestException
+     * @throws BadRequestException
      */
-    public function testHandleWebhook()
+    public function testHandleWebhook(): void
     {
-        $fetcher = new WebhookFetcher($this->getNormalizer());
-        $update = $fetcher->fetch($this->getRequest('{"a":"b"}'));
-        $this->assertInstanceOf(UpdateType::class, $update);
+        $webhookFetcher = new WebhookFetcher(normalizer: $this->getNormalizer());
+        $updateType = $webhookFetcher->fetch(request: $this->getRequest(contents: '{"a":"b"}'));
+        $this->assertInstanceOf(expected: UpdateType::class, actual: $updateType);
     }
 
     /**
-     * @throws \TgBotApi\BotApiBase\Exception\BadRequestException
+     * @throws BadRequestException
      */
-    public function testHandleWebhookError()
+    public function testHandleWebhookError(): void
     {
-        $this->expectException(BadRequestException::class);
+        $this->expectException(exception: BadRequestException::class);
 
-        $fetcher = new WebhookFetcher($this->getNormalizer());
-        $fetcher->fetch($this->getRequest('[]'));
+        $webhookFetcher = new WebhookFetcher(normalizer: $this->getNormalizer());
+        $webhookFetcher->fetch(request: $this->getRequest(contents: '[]'));
     }
 
     /**
-     * @throws \TgBotApi\BotApiBase\Exception\BadRequestException
+     * @throws BadRequestException
      */
-    public function testHandleWebhookWithString()
+    public function testHandleWebhookWithString(): void
     {
-        $fetcher = new WebhookFetcher($this->getNormalizer());
-        $update = $fetcher->fetch('{"a":"b"}');
-        $this->assertInstanceOf(UpdateType::class, $update);
+        $webhookFetcher = new WebhookFetcher(normalizer: $this->getNormalizer());
+        $updateType = $webhookFetcher->fetch(request: '{"a":"b"}');
+        $this->assertInstanceOf(expected: UpdateType::class, actual: $updateType);
     }
 
     private function getRequest(string $contents): MockObject
     {
-        $request = $this->getMockBuilder(RequestInterface::class)->getMock();
-        $body = $this->getMockBuilder(StreamInterface::class)->getMock();
-        $body->expects($this->once())->method('getContents')->willReturn($contents);
-        $request->expects($this->once())->method('getBody')->willReturn($body);
+        $request = $this->getMockBuilder(className: RequestInterface::class)->getMock();
+        $body = $this->getMockBuilder(className: StreamInterface::class)->getMock();
+        $body->expects($this->once())->method(constraint: 'getContents')->willReturn(value: $contents);
+        $request->expects($this->once())->method(constraint: 'getBody')->willReturn(value: $body);
 
         return $request;
     }

@@ -6,15 +6,15 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\GetWebhookInfoMethod;
 
-class GetWebhookInfoMethodTest extends MethodTestCase
+final class GetWebhookInfoMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot('getWebhookInfo', []);
+        $botApiComplete = $this->getBot(methodName: 'getWebhookInfo', request: []);
 
-        $botApi->getWebhookInfo(GetWebhookInfoMethod::create());
+        $botApiComplete->getWebhookInfo(getWebhookInfoMethod: GetWebhookInfoMethod::create());
     }
 }

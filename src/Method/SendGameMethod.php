@@ -39,13 +39,13 @@ class SendGameMethod implements SendMethodAliasInterface
      */
     public static function create(int $chatId, string $gameShortName, array $data = null): SendGameMethod
     {
-        $instance = new static();
-        $instance->chatId = $chatId;
-        $instance->gameShortName = $gameShortName;
+        $static = new static();
+        $static->chatId = $chatId;
+        $static->gameShortName = $gameShortName;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

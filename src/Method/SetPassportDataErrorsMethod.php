@@ -41,18 +41,15 @@ class SetPassportDataErrorsMethod implements SetMethodAliasInterface
     /**
      * SetPassportDataErrorsMethod constructor.
      *
-     * @param int $userId
      * @param PassportElementErrorType[]
-     * @param array $errors
      *
-     * @return SetPassportDataErrorsMethod
      */
     public static function create(int $userId, array $errors): SetPassportDataErrorsMethod
     {
-        $instance = new static();
-        $instance->userId = $userId;
-        $instance->errors = $errors;
+        $static = new static();
+        $static->userId = $userId;
+        $static->errors = $errors;
 
-        return $instance;
+        return $static;
     }
 }

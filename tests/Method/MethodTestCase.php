@@ -13,89 +13,78 @@ abstract class MethodTestCase extends \PHPUnit\Framework\TestCase
 {
     use GetNormalizerTrait;
 
-    /**
-     * @param       $methodName
-     * @param       $request
-     * @param array $result
-     * @param array $serialisedFields
-     */
-    protected function getBot($methodName, $request, $result = [], $serialisedFields = []): BotApiComplete
+    protected function getBot($methodName, $request, bool|string|array|int|object $result = [], array $serialisedFields = []): BotApiComplete
     {
-        $stub = $this->getMockBuilder(ApiClientInterface::class)
+        $stub = $this->getMockBuilder(className: ApiClientInterface::class)
             ->getMock();
 
         $stub->expects($this->once())
-            ->method('send')
+            ->method(constraint: 'send')
             ->with(
                 $methodName,
-                $this->callback(function (BotApiRequestInterface $botApiRequest) use ($request, $serialisedFields) {
+                $this->callback(callback: function (BotApiRequestInterface $botApiRequest) use ($request, $serialisedFields): true {
                     $query = $botApiRequest->getData();
-                    foreach ($serialisedFields as $serializedField) {
-                        $query[$serializedField] = \json_decode($query[$serializedField], true);
+                    foreach ($serialisedFields as $serialisedField) {
+                        $query[$serialisedField] = \json_decode(json: (string) $query[$serialisedField], associative: true);
                     }
-                    $this->assertEquals($request, $query);
+
+                    $this->assertEquals(expected: $request, actual: $query);
 
                     return true;
                 })
             )
-            ->willReturn((object) (['ok' => true, 'result' => $result]));
+            ->willReturn(value: (object) (['ok' => true, 'result' => $result]));
 
         /* @var ApiClientInterface $stub */
-        return new BotApiComplete('000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', $stub, $this->getNormalizer());
+        return new BotApiComplete(botKey: '000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', apiClient: $stub, normalizer: $this->getNormalizer());
     }
 
     /**
      * @param       $methodName
      * @param       $request
-     * @param array $result
      */
     protected function getBotWithFiles(
         $methodName,
         $request,
         array $fileMap,
         array $serializableFields = [],
-        $result = []
+        bool|array $result = []
     ): BotApiComplete {
-        $stub = $this->getMockBuilder(ApiClientInterface::class)
+        $stub = $this->getMockBuilder(className: ApiClientInterface::class)
             ->getMock();
 
         $stub->expects($this->once())
-            ->method('send')
+            ->method(constraint: 'send')
             ->with(
                 $methodName,
                 $this->callback(
-                    function (BotApiRequestInterface $botApiRequest) use ($request, $fileMap, $serializableFields) {
-                        $request = $this->buildFileTree($botApiRequest->getFiles(), $request, $fileMap);
+                    callback: function (BotApiRequestInterface $botApiRequest) use ($request, $fileMap, $serializableFields): true {
+                        $request = $this->buildFileTree(files: $botApiRequest->getFiles(), request: $request, map: $fileMap);
                         $data = $botApiRequest->getData();
-                        foreach ($serializableFields as $field) {
-                            $this->assertIsString($data[$field]);
-                            $data[$field] = \json_decode($data[$field], true);
+                        foreach ($serializableFields as $serializableField) {
+                            $this->assertIsString(actual: $data[$serializableField]);
+                            $data[$serializableField] = \json_decode(json: $data[$serializableField], associative: true);
                         }
-                        $this->assertEquals($request, $data);
+
+                        $this->assertEquals(expected: $request, actual: $data);
 
                         return true;
                     }
                 )
             )
-            ->willReturn((object) (['ok' => true, 'result' => $result]));
+            ->willReturn(value: (object) (['ok' => true, 'result' => $result]));
 
         /* @var ApiClientInterface $stub */
-        return new BotApiComplete('000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', $stub, $this->getNormalizer());
+        return new BotApiComplete(botKey: '000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', apiClient: $stub, normalizer: $this->getNormalizer());
     }
 
-    /**
-     * @param array $files
-     * @param array $request
-     * @param array $map
-     * @param int   $pointer
-     */
-    private function buildFileTree($files, &$request, $map, &$pointer = 0): array
+    private function buildFileTree(array $files, array &$request, array $map, int &$pointer = 0): array
     {
         foreach ($map as $key => $field) {
-            if (\is_array($field)) {
-                $request[$key] = $this->buildFileTree($files, $request[$key], $field, $pointer);
+            if (\is_array(value: $field)) {
+                $request[$key] = $this->buildFileTree(files: $files, request: $request[$key], map: $field, pointer: $pointer);
             } else {
-                $request[$key] = 'attach://' . \array_keys($files)[$pointer];
+                $request[$key] = 'attach://' . \array_keys(array: $files)[$pointer];
                 ++$pointer;
             }
         }

@@ -31,27 +31,23 @@ class InlineQueryResultCachedStickerType extends InlineQueryResultType
     public $inputMessageContent;
 
     /**
-     * @param string     $id
-     * @param string     $stickerFileId
      * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
-     * @return InlineQueryResultCachedStickerType
      */
     public static function create(
         string $id,
         string $stickerFileId,
         array $data = null
     ): InlineQueryResultCachedStickerType {
-        $instance = new static();
-        $instance->type = static::TYPE_STICKER;
-        $instance->id = $id;
-        $instance->stickerFileId = $stickerFileId;
+        $static = new static();
+        $static->type = static::TYPE_STICKER;
+        $static->id = $id;
+        $static->stickerFileId = $stickerFileId;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

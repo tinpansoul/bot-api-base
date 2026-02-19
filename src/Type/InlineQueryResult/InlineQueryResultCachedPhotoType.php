@@ -25,6 +25,7 @@ class InlineQueryResultCachedPhotoType extends InlineQueryResultType implements 
      * @var string
      */
     public $photoFileId;
+
     /**
      * Optional. Title for the result.
      *
@@ -66,14 +67,14 @@ class InlineQueryResultCachedPhotoType extends InlineQueryResultType implements 
      */
     public static function create(string $id, string $photoFileId, array $data = null): InlineQueryResultCachedPhotoType
     {
-        $instance = new static();
-        $instance->type = static::TYPE_PHOTO;
-        $instance->id = $id;
-        $instance->photoFileId = $photoFileId;
+        $static = new static();
+        $static->type = static::TYPE_PHOTO;
+        $static->id = $id;
+        $static->photoFileId = $photoFileId;
         if ($data) {
-            $instance->fill($data);
+            $static->fill(data: $data);
         }
 
-        return $instance;
+        return $static;
     }
 }

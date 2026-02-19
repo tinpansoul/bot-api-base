@@ -11,13 +11,8 @@ namespace TgBotApi\BotApiBase\Type;
  */
 class InputFileType extends \SplFileInfo
 {
-    /**
-     * @param string $path
-     *
-     * @return InputFileType
-     */
     public static function create(string $path): InputFileType
     {
-        return new static($path);
+        return new static(filename: $path);
     }
 }

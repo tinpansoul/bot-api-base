@@ -33,43 +33,43 @@ use TgBotApi\BotApiBase\Type\UpdateType;
 use TgBotApi\BotApiBase\Type\UserProfilePhotosType;
 use TgBotApi\BotApiBase\Type\UserType;
 
-class ApiTest extends \PHPUnit\Framework\TestCase
+final class ApiTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testGetUpdates()
+    public function testGetUpdates(): void
     {
-        $method = GetUpdatesMethod::create();
+        $getUpdatesMethod = GetUpdatesMethod::create();
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(UpdateType::class . '[]'))
-            ->willReturn([]);
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $getUpdatesMethod), $this->equalTo(value: UpdateType::class . '[]'))
+            ->willReturn(value: []);
 
         /* @var BotApiComplete $bot */
-        $bot->getUpdates($method);
+        $mockObject->getUpdates($getUpdatesMethod);
     }
 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testGetMe()
+    public function testGetMe(): void
     {
-        $method = GetMeMethod::create();
+        $getMeMethod = GetMeMethod::create();
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(UserType::class))
-            ->willReturn(new UserType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $getMeMethod), $this->equalTo(value: UserType::class))
+            ->willReturn(value: new UserType());
 
         /* @var BotApiComplete $bot */
-        $bot->getMe($method);
+        $mockObject->getMe($getMeMethod);
     }
 
     /**
@@ -77,18 +77,18 @@ class ApiTest extends \PHPUnit\Framework\TestCase
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testSendMessage()
+    public function testSendMessage(): void
     {
-        $method = SendMessageMethod::create('id', 'text');
+        $sendMessageMethod = SendMessageMethod::create(chatId: 'id', text: 'text');
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(MessageType::class))
-            ->willReturn(new MessageType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $sendMessageMethod), $this->equalTo(value: MessageType::class))
+            ->willReturn(value: new MessageType());
 
         /* @var BotApiComplete $bot */
-        $bot->sendMessage($method);
+        $mockObject->sendMessage($sendMessageMethod);
     }
 
     /**
@@ -96,18 +96,18 @@ class ApiTest extends \PHPUnit\Framework\TestCase
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testforwardMessage()
+    public function testforwardMessage(): void
     {
-        $method = ForwardMessageMethod::create('id', 'id', 1);
+        $forwardMessageMethod = ForwardMessageMethod::create(chatId: 'id', fromChatId: 'id', messageId: 1);
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(MessageType::class))
-            ->willReturn(new MessageType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $forwardMessageMethod), $this->equalTo(value: MessageType::class))
+            ->willReturn(value: new MessageType());
 
         /* @var BotApiComplete $bot */
-        $bot->forwardMessage($method);
+        $mockObject->forwardMessage($forwardMessageMethod);
     }
 
     /**
@@ -115,18 +115,18 @@ class ApiTest extends \PHPUnit\Framework\TestCase
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testSendPhoto()
+    public function testSendPhoto(): void
     {
-        $method = SendPhotoMethod::create('id', 'url');
+        $sendPhotoMethod = SendPhotoMethod::create(chatId: 'id', photo: 'url');
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(MessageType::class))
-            ->willReturn(new MessageType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $sendPhotoMethod), $this->equalTo(value: MessageType::class))
+            ->willReturn(value: new MessageType());
 
         /* @var BotApiComplete $bot */
-        $bot->sendPhoto($method);
+        $mockObject->sendPhoto($sendPhotoMethod);
     }
 
     /**
@@ -134,18 +134,18 @@ class ApiTest extends \PHPUnit\Framework\TestCase
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testSendAudio()
+    public function testSendAudio(): void
     {
-        $method = SendAudioMethod::create('id', 'url');
+        $sendAudioMethod = SendAudioMethod::create(chatId: 'id', audio: 'url');
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(MessageType::class))
-            ->willReturn(new MessageType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $sendAudioMethod), $this->equalTo(value: MessageType::class))
+            ->willReturn(value: new MessageType());
 
         /* @var BotApiComplete $bot */
-        $bot->sendAudio($method);
+        $mockObject->sendAudio($sendAudioMethod);
     }
 
     /**
@@ -153,18 +153,18 @@ class ApiTest extends \PHPUnit\Framework\TestCase
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testSendDocument()
+    public function testSendDocument(): void
     {
-        $method = SendDocumentMethod::create('id', 'url');
+        $sendDocumentMethod = SendDocumentMethod::create(chatId: 'id', document: 'url');
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(MessageType::class))
-            ->willReturn(new MessageType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $sendDocumentMethod), $this->equalTo(value: MessageType::class))
+            ->willReturn(value: new MessageType());
 
         /* @var BotApiComplete $bot */
-        $bot->sendDocument($method);
+        $mockObject->sendDocument($sendDocumentMethod);
     }
 
     /**
@@ -172,18 +172,18 @@ class ApiTest extends \PHPUnit\Framework\TestCase
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testSendVideo()
+    public function testSendVideo(): void
     {
-        $method = SendVideoMethod::create('id', 'url');
+        $sendVideoMethod = SendVideoMethod::create(chatId: 'id', video: 'url');
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(MessageType::class))
-            ->willReturn(new MessageType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $sendVideoMethod), $this->equalTo(value: MessageType::class))
+            ->willReturn(value: new MessageType());
 
         /* @var BotApiComplete $bot */
-        $bot->sendVideo($method);
+        $mockObject->sendVideo($sendVideoMethod);
     }
 
     /**
@@ -191,18 +191,18 @@ class ApiTest extends \PHPUnit\Framework\TestCase
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testSendAnimation()
+    public function testSendAnimation(): void
     {
-        $method = SendAnimationMethod::create('id', 'url');
+        $sendAnimationMethod = SendAnimationMethod::create(chatId: 'id', animation: 'url');
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(MessageType::class))
-            ->willReturn(new MessageType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $sendAnimationMethod), $this->equalTo(value: MessageType::class))
+            ->willReturn(value: new MessageType());
 
         /* @var BotApiComplete $bot */
-        $bot->sendAnimation($method);
+        $mockObject->sendAnimation($sendAnimationMethod);
     }
 
     /**
@@ -210,18 +210,18 @@ class ApiTest extends \PHPUnit\Framework\TestCase
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testSendVoice()
+    public function testSendVoice(): void
     {
-        $method = SendVoiceMethod::create('id', 'url');
+        $sendVoiceMethod = SendVoiceMethod::create(chatId: 'id', voice: 'url');
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(MessageType::class))
-            ->willReturn(new MessageType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $sendVoiceMethod), $this->equalTo(value: MessageType::class))
+            ->willReturn(value: new MessageType());
 
         /* @var BotApiComplete $bot */
-        $bot->sendVoice($method);
+        $mockObject->sendVoice($sendVoiceMethod);
     }
 
     /**
@@ -229,18 +229,18 @@ class ApiTest extends \PHPUnit\Framework\TestCase
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testSendVideoNote()
+    public function testSendVideoNote(): void
     {
-        $method = SendVideoNoteMethod::create('id', 'url');
+        $sendVideoNoteMethod = SendVideoNoteMethod::create(chatId: 'id', videoNote: 'url');
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(MessageType::class))
-            ->willReturn(new MessageType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $sendVideoNoteMethod), $this->equalTo(value: MessageType::class))
+            ->willReturn(value: new MessageType());
 
         /* @var BotApiComplete $bot */
-        $bot->sendVideoNote($method);
+        $mockObject->sendVideoNote($sendVideoNoteMethod);
     }
 
     /**
@@ -248,18 +248,18 @@ class ApiTest extends \PHPUnit\Framework\TestCase
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testSendMediaGroup()
+    public function testSendMediaGroup(): void
     {
-        $method = SendMediaGroupMethod::create('id', []);
+        $sendMediaGroupMethod = SendMediaGroupMethod::create(chatId: 'id', media: []);
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(MessageType::class . '[]'))
-            ->willReturn([]);
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $sendMediaGroupMethod), $this->equalTo(value: MessageType::class . '[]'))
+            ->willReturn(value: []);
 
         /* @var BotApiComplete $bot */
-        $bot->sendMediaGroup($method);
+        $mockObject->sendMediaGroup($sendMediaGroupMethod);
     }
 
     /**
@@ -267,18 +267,18 @@ class ApiTest extends \PHPUnit\Framework\TestCase
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testSendLocation()
+    public function testSendLocation(): void
     {
-        $method = SendLocationMethod::create('id', 0.1, 0.1);
+        $sendLocationMethod = SendLocationMethod::create(chatId: 'id', latitude: 0.1, longitude: 0.1);
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(MessageType::class))
-            ->willReturn(new MessageType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $sendLocationMethod), $this->equalTo(value: MessageType::class))
+            ->willReturn(value: new MessageType());
 
         /* @var BotApiComplete $bot */
-        $bot->sendLocation($method);
+        $mockObject->sendLocation($sendLocationMethod);
     }
 
     /**
@@ -286,18 +286,18 @@ class ApiTest extends \PHPUnit\Framework\TestCase
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testSendVenue()
+    public function testSendVenue(): void
     {
-        $method = SendVenueMethod::create('id', 0.1, 0.1, 'title', 'address');
+        $sendVenueMethod = SendVenueMethod::create(chatId: 'id', latitude: 0.1, longitude: 0.1, title: 'title', address: 'address');
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(MessageType::class))
-            ->willReturn(new MessageType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $sendVenueMethod), $this->equalTo(value: MessageType::class))
+            ->willReturn(value: new MessageType());
 
         /* @var BotApiComplete $bot */
-        $bot->sendVenue($method);
+        $mockObject->sendVenue($sendVenueMethod);
     }
 
     /**
@@ -305,18 +305,18 @@ class ApiTest extends \PHPUnit\Framework\TestCase
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testSendContact()
+    public function testSendContact(): void
     {
-        $method = SendContactMethod::create('id', 'phone number', 'first name');
+        $sendContactMethod = SendContactMethod::create(chatId: 'id', phoneNumber: 'phone number', firstName: 'first name');
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(MessageType::class))
-            ->willReturn(new MessageType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $sendContactMethod), $this->equalTo(value: MessageType::class))
+            ->willReturn(value: new MessageType());
 
         /* @var BotApiComplete $bot */
-        $bot->sendContact($method);
+        $mockObject->sendContact($sendContactMethod);
     }
 
     /**
@@ -324,100 +324,97 @@ class ApiTest extends \PHPUnit\Framework\TestCase
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testGetUserProfilePhotos()
+    public function testGetUserProfilePhotos(): void
     {
-        $method = GetUserProfilePhotosMethod::create(1);
+        $getUserProfilePhotosMethod = GetUserProfilePhotosMethod::create(userId: 1);
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(UserProfilePhotosType::class))
-            ->willReturn(new UserProfilePhotosType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $getUserProfilePhotosMethod), $this->equalTo(value: UserProfilePhotosType::class))
+            ->willReturn(value: new UserProfilePhotosType());
 
         /* @var BotApiComplete $bot */
-        $bot->getUserProfilePhotos($method);
+        $mockObject->getUserProfilePhotos($getUserProfilePhotosMethod);
     }
 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testGetFile()
+    public function testGetFile(): void
     {
-        $method = GetFileMethod::create('id');
+        $getFileMethod = GetFileMethod::create(fileId: 'id');
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(FileType::class))
-            ->willReturn(new FileType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $getFileMethod), $this->equalTo(value: FileType::class))
+            ->willReturn(value: new FileType());
 
         /* @var BotApiComplete $bot */
-        $bot->getFile($method);
+        $mockObject->getFile($getFileMethod);
     }
 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testGetChat()
+    public function testGetChat(): void
     {
-        $method = GetChatMethod::create('id');
+        $getChatMethod = GetChatMethod::create(chatId: 'id');
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(ChatType::class))
-            ->willReturn(new ChatType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $getChatMethod), $this->equalTo(value: ChatType::class))
+            ->willReturn(value: new ChatType());
 
         /* @var BotApiComplete $bot */
-        $bot->getChat($method);
+        $mockObject->getChat($getChatMethod);
     }
 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testGetChatAdministrators()
+    public function testGetChatAdministrators(): void
     {
-        $method = GetChatAdministratorsMethod::create('id');
+        $getChatAdministratorsMethod = GetChatAdministratorsMethod::create(chatId: 'id');
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(ChatMemberType::class . '[]'))
-            ->willReturn([]);
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $getChatAdministratorsMethod), $this->equalTo(value: ChatMemberType::class . '[]'))
+            ->willReturn(value: []);
 
         /* @var BotApiComplete $bot */
-        $bot->getChatAdministrators($method);
+        $mockObject->getChatAdministrators($getChatAdministratorsMethod);
     }
 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testGetChatMember()
+    public function testGetChatMember(): void
     {
-        $method = GetChatMemberMethod::create('id', 1);
+        $getChatMemberMethod = GetChatMemberMethod::create(chatId: 'id', userId: 1);
 
-        $bot = $this->getBotMock();
-        $bot->expects($this->once())
-            ->method('call')
-            ->with($this->equalTo($method), $this->equalTo(ChatMemberType::class))
-            ->willReturn(new ChatMemberType());
+        $mockObject = $this->getBotMock();
+        $mockObject->expects($this->once())
+            ->method(constraint: 'call')
+            ->with($this->equalTo(value: $getChatMemberMethod), $this->equalTo(value: ChatMemberType::class))
+            ->willReturn(value: new ChatMemberType());
 
         /* @var BotApiComplete $bot */
-        $bot->getChatMember($method);
+        $mockObject->getChatMember($getChatMemberMethod);
     }
 
-    /**
-     * @return \PHPUnit\Framework\MockObject\MockObject
-     */
     private function getBotMock(): \PHPUnit\Framework\MockObject\MockObject
     {
-        return $this->getMockBuilder(BotApiComplete::class)
+        return $this->getMockBuilder(className: BotApiComplete::class)
             ->disableOriginalConstructor()
-            ->setMethods(['call'])
+            ->setMethods(methods: ['call'])
             ->getMock();
     }
 }

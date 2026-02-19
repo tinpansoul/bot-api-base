@@ -6,19 +6,19 @@ namespace TgBotApi\BotApiBase\Tests\Method;
 
 use TgBotApi\BotApiBase\Method\SetStickerPositionInSetMethod;
 
-class SetStickerPositionInSetMethodTest extends MethodTestCase
+final class SetStickerPositionInSetMethodTest extends MethodTestCase
 {
     /**
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
-        $botApi = $this->getBot(
-            'setStickerPositionInSet',
-            ['sticker' => 'sticker', 'position' => 'position'],
-            true
+        $botApiComplete = $this->getBot(
+            methodName: 'setStickerPositionInSet',
+            request: ['sticker' => 'sticker', 'position' => 'position'],
+            result: true
         );
 
-        $botApi->setStickerPositionInSet(SetStickerPositionInSetMethod::create('sticker', 'position'));
+        $botApiComplete->setStickerPositionInSet(setStickerPositionInSetMethod: SetStickerPositionInSetMethod::create(sticker: 'sticker', position: 'position'));
     }
 }

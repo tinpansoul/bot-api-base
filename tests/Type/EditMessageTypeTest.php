@@ -9,12 +9,12 @@ use TgBotApi\BotApiBase\Type\ChatType;
 use TgBotApi\BotApiBase\Type\MessageType;
 use TgBotApi\BotApiBase\Type\UserType;
 
-class EditMessageTypeTest extends TypeTestCase
+final class EditMessageTypeTest extends TypeTestCase
 {
     /**
      * @throws ResponseException
      */
-    public function testEncode()
+    public function testEncode(): void
     {
         $result = [
             'message_id' => 0,
@@ -35,32 +35,32 @@ class EditMessageTypeTest extends TypeTestCase
             'text' => 'text',
         ];
 
-        $botApi = $this->getBot($result);
+        $botApi = $this->getBot(result: $result);
 
         /** @var MessageType $type */
-        $type = $botApi->call($this->getMethod(), MessageType::class . '|bool');
+        $type = $botApi->call(method: $this->getMethod(), type: MessageType::class . '|bool');
 
-        $this->assertInstanceOf(MessageType::class, $type);
-        $this->assertEquals('text', $type->text);
-        $this->assertEquals(0, $type->messageId);
-        $this->assertInstanceOf(UserType::class, $type->from);
-        $this->assertInstanceOf(ChatType::class, $type->chat);
-        $this->assertInstanceOf(\DateTimeImmutable::class, $type->date);
-        $this->assertInstanceOf(\DateTimeImmutable::class, $type->editDate);
+        $this->assertInstanceOf(expected: MessageType::class, actual: $type);
+        $this->assertEquals(expected: 'text', actual: $type->text);
+        $this->assertEquals(expected: 0, actual: $type->messageId);
+        $this->assertInstanceOf(expected: UserType::class, actual: $type->from);
+        $this->assertInstanceOf(expected: ChatType::class, actual: $type->chat);
+        $this->assertInstanceOf(expected: \DateTimeImmutable::class, actual: $type->date);
+        $this->assertInstanceOf(expected: \DateTimeImmutable::class, actual: $type->editDate);
     }
 
     /**
      * @throws ResponseException
      */
-    public function testEncodeBool()
+    public function testEncodeBool(): void
     {
         $result = true;
 
-        $botApi = $this->getBot($result);
+        $botApi = $this->getBot(result: $result);
 
         /** @var MessageType $type */
-        $type = $botApi->call($this->getMethod(), MessageType::class . '|bool');
+        $type = $botApi->call(method: $this->getMethod(), type: MessageType::class . '|bool');
 
-        $this->assertIsBool($type);
+        $this->assertIsBool(actual: $type);
     }
 }

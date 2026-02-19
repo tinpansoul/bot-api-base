@@ -18,44 +18,43 @@ use TgBotApi\BotApiBase\Type\ReplyKeyboardRemoveType;
  */
 class JsonSerializableNormalizer implements NormalizerInterface
 {
-    /**
-     * @var NormalizerInterface
-     */
-    private $objectNormalizer;
 
     /**
      * JsonSerializableNormalizer constructor.
      */
-    public function __construct(NormalizerInterface $objectNormalizer)
+    public function __construct(private readonly NormalizerInterface $objectNormalizer)
     {
-        $this->objectNormalizer = $objectNormalizer;
     }
 
     /**
-     * @param mixed $topic
-     * @param null  $format
-     *
-     * @throws ExceptionInterface
      *
      * @return string
+     * @throws ExceptionInterface
      */
-    public function normalize($topic, $format = null, array $context = [])
-    {
-        $serializer = new Serializer([$this->objectNormalizer]);
+    public function normalize(
+        mixed $topic,
+        $format = null,
+        array $context = []
+    ): string|int|float|bool|\ArrayObject|array|null {
+        $serializer = new Serializer(normalizers: [$this->objectNormalizer]);
 
-        return \json_encode($serializer->normalize($topic, null, ['skip_null_values' => true]));
+        return \json_encode(value: $serializer->normalize(data: $topic, format: null, context: ['skip_null_values' => true]));
     }
 
-    /**
-     * @param mixed $data
-     * @param null  $format
-     */
-    public function supportsNormalization($data, $format = null): bool
+    public function supportsNormalization(mixed $data, $format = null, array $context = []): bool
     {
         return $data instanceof InlineKeyboardMarkupType ||
             $data instanceof ReplyKeyboardMarkupType ||
             $data instanceof ReplyKeyboardRemoveType ||
             $data instanceof MaskPositionType ||
             $data instanceof ForceReplyType;
+    }
+
+    /**
+     * @return array<string, bool>
+     */
+    public function getSupportedTypes(?string $format): array
+    {
+        return ['*' => false];
     }
 }
