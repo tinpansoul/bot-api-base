@@ -40,7 +40,7 @@ class ApiClient implements ApiClientInterface
 
         $response = $this->client->sendRequest(
             request: $request
-            ->withHeader(name: 'Content-Type', value: 'multipart/form-data; boundary="' . $boundary . '"')
+            ->withHeader('Content-Type', 'multipart/form-data; boundary="' . $boundary . '"')
             ->withBody(body: $stream));
 
         $content = $response->getBody()->getContents();
