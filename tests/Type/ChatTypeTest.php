@@ -22,7 +22,7 @@ final class ChatTypeTest extends TypeBaseTestCase
             'full object case' => [
                 ChatType::class,
                 self::getResource(filename: 'ChatType/full'),
-                (array)$this->getFullObject(),
+                $this->getFullObject(),
             ],
         ];
     }

@@ -36,7 +36,7 @@ abstract class TypeBaseTestCase extends TypeTestCase
      *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
-    public function testType(string $class, string $response, array $excepted): void
+    public function testType(string $class, string $response, mixed $excepted): void
     {
         $this->client
             ->expects(static::once())

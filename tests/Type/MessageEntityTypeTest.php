@@ -34,7 +34,7 @@ final class MessageEntityTypeTest extends TypeBaseTestCase
             'all fields case' => [
                 MessageEntityType::class,
                 self::getResource(filename: 'MessageEntityTypeTest/all-fields'),
-                (array) MessageEntityType::create(type: MessageEntityType::TYPE_PRE, offset: 1, length: 5, data: [
+                MessageEntityType::create(type: MessageEntityType::TYPE_PRE, offset: 1, length: 5, data: [
                     'url' => 'url',
                     'user' => new UserType(),
                     'language' => 'json',

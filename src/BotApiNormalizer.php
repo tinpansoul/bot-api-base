@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace TgBotApi\BotApiBase;
 
-use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
+use Symfony\Component\PropertyInfo\Extractor\PhpStanExtractor;
+use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
+use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
@@ -45,7 +47,12 @@ class BotApiNormalizer implements NormalizerInterface
             classMetadataFactory: null,
             nameConverter: new CamelCaseToSnakeCaseNameConverter(),
             propertyAccessor: null,
-            propertyTypeExtractor: new PhpDocExtractor()
+            propertyTypeExtractor: new PropertyInfoExtractor(
+                typeExtractors: [
+                    new PhpStanExtractor(),
+                    new ReflectionExtractor(),
+                ]
+            ),
         );
         $arrayDenormalizer = new ArrayDenormalizer();
         $dateTimeNormalizer = new DateTimeNormalizer();

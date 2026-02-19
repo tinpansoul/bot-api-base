@@ -34,12 +34,12 @@ final class InputLocationMessageContentTypeTest extends TypeBaseTestCase
             'default case' => [
                 InputLocationMessageContentType::class,
                 self::getResource(filename: 'InputLocationContentType/default'),
-                (array)$this->getType(),
+                $this->getType(),
             ],
             'with redundant variables' => [
                 InputLocationMessageContentType::class,
                 self::getResource(filename: 'InputLocationContentType/default_with_extended_keys'),
-                (array)$this->getType(),
+                $this->getType(),
             ],
         ];
     }
