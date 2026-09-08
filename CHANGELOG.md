@@ -23,6 +23,23 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 2.4.0 - 2026-09-08
+
+### Added
+- `ResponseException` now carries Telegram's `error_code` as the exception code, and exposes
+  the optional `ResponseParameters` object through `getRetryAfter()` and
+  `getMigrateToChatId()`. Previously only `description` survived, so distinguishing a 429
+  from a 403, or honouring flood control, meant parsing the message text.
+- `InvalidResponseException`, thrown when the response body is not a JSON object at all -
+  a proxy error page, a truncated body, a gateway timeout. It extends `ResponseException`,
+  so existing `catch` blocks keep working unchanged.
+
+### Fixed
+- `BotApi::call()` no longer reads `->ok` off a non-object. A non-JSON response previously
+  produced two warnings and then a `ResponseException` with an empty message; it now reports
+  what actually went wrong.
+
+
 ## 2.3.0 - 2026-09-08
 
 ### Added

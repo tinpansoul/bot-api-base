@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TgBotApi\BotApiBase;
 
+use TgBotApi\BotApiBase\Exception\InvalidResponseException;
 use TgBotApi\BotApiBase\Exception\ResponseException;
 use TgBotApi\BotApiBase\Method\CloseMethod;
 use TgBotApi\BotApiBase\Method\CopyMessageMethod;
@@ -49,8 +50,19 @@ class BotApi implements BotApiInterface
     {
         $json = $this->apiClient->send($this->getMethodName(method: $method), $this->normalizer->normalize($method));
 
-        if (true !== $json->ok) {
-            throw new ResponseException(message: $json->description);
+        if (!$json instanceof \stdClass) {
+            throw new InvalidResponseException(
+                message: 'Telegram Bot API returned a body that is not a JSON object.');
+        }
+
+        if (true !== ($json->ok ?? false)) {
+            $parameters = $json->parameters ?? null;
+
+            throw new ResponseException(
+                message: $json->description ?? 'Telegram Bot API returned an unsuccessful response without a description.',
+                code: (int) ($json->error_code ?? 0),
+                retryAfter: isset($parameters->retry_after) ? (int) $parameters->retry_after : null,
+                migrateToChatId: isset($parameters->migrate_to_chat_id) ? (int) $parameters->migrate_to_chat_id : null);
         }
 
         return $type ? $this->normalizer->denormalize($json->result, $type) : $json->result;
