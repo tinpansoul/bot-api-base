@@ -81,4 +81,18 @@ class VideoType
      * @var int|null
      */
     public $startTimestamp;
+
+    /**
+     * Optional. Thumbnail of the file, as defined by the sender.
+     *
+     * @var PhotoSizeType|null
+     */
+    public $thumbnail;
+
+    /**
+     * Optional. Available sizes of the cover of the video in the message.
+     *
+     * @var PhotoSizeType[]|null
+     */
+    public $cover;
 }

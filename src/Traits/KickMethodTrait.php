@@ -6,6 +6,7 @@ namespace TgBotApi\BotApiBase\Traits;
 
 use TgBotApi\BotApiBase\Exception\ResponseException;
 use TgBotApi\BotApiBase\Method\BanChatMemberMethod;
+use TgBotApi\BotApiBase\Method\BanChatSenderChatMethod;
 use TgBotApi\BotApiBase\Method\Interfaces\KickMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\KickChatMemberMethod;
 
@@ -33,5 +34,13 @@ trait KickMethodTrait
     public function kickChatMember(KickChatMemberMethod $kickChatMemberMethod): bool
     {
         return $this->kick(kickMethodAlias: $kickChatMemberMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function banChatSenderChat(BanChatSenderChatMethod $banChatSenderChatMethod): bool
+    {
+        return $this->kick(kickMethodAlias: $banChatSenderChatMethod);
     }
 }

@@ -103,4 +103,50 @@ class UpdateType
      * @var PollAnswerType|null
      */
     public $pollAnswer;
+
+    /**
+     * Optional. The bot's chat member status was updated in a chat. For private chats, this update is received
+     * only when the bot is blocked or unblocked by the user.
+     *
+     * @var ChatMemberUpdatedType|null
+     */
+    public $myChatMember;
+
+    /**
+     * Optional. A chat member's status was updated in a chat. The bot must be an administrator in the chat and
+     * must explicitly specify "chat_member" in the list of allowedUpdates to receive these updates.
+     *
+     * @var ChatMemberUpdatedType|null
+     */
+    public $chatMember;
+
+    /**
+     * Optional. A request to join the chat has been sent. The bot must have the can_invite_users administrator
+     * right in the chat to receive these updates.
+     *
+     * @var ChatJoinRequestType|null
+     */
+    public $chatJoinRequest;
+
+    /**
+     * Optional. New message from a connected business account.
+     *
+     * @var MessageType|null
+     */
+    public $businessMessage;
+
+    /**
+     * Optional. New version of a message from a connected business account.
+     *
+     * @var MessageType|null
+     */
+    public $editedBusinessMessage;
+
+    /**
+     * Optional. New guest message. The bot can use Message::$guestQueryId and answerGuestQuery to send a message
+     * in response.
+     *
+     * @var MessageType|null
+     */
+    public $guestMessage;
 }

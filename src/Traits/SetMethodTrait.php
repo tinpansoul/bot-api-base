@@ -13,6 +13,7 @@ use TgBotApi\BotApiBase\Method\SetChatPhotoMethod;
 use TgBotApi\BotApiBase\Method\SetChatStickerSetMethod;
 use TgBotApi\BotApiBase\Method\SetChatTitleMethod;
 use TgBotApi\BotApiBase\Method\SetGameScoreMethod;
+use TgBotApi\BotApiBase\Method\SetMessageReactionMethod;
 use TgBotApi\BotApiBase\Method\SetMyCommandsMethod;
 use TgBotApi\BotApiBase\Method\SetMyDefaultAdministratorRightsMethod;
 use TgBotApi\BotApiBase\Method\SetMyDescriptionMethod;
@@ -180,5 +181,13 @@ trait SetMethodTrait
     public function setMyDefaultAdministratorRights(SetMyDefaultAdministratorRightsMethod $setMyDefaultAdministratorRightsMethod): bool
     {
         return $this->set(setMethodAlias: $setMyDefaultAdministratorRightsMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function setMessageReaction(SetMessageReactionMethod $setMessageReactionMethod): bool
+    {
+        return $this->set(setMethodAlias: $setMessageReactionMethod);
     }
 }

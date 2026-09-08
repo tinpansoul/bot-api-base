@@ -40,4 +40,25 @@ class PollOptionType
      * @var \DateTimeImmutable|null
      */
     public $additionDate;
+
+    /**
+     * Optional. Special entities that appear in the option text.
+     *
+     * @var MessageEntityType[]|null
+     */
+    public $textEntities;
+
+    /**
+     * Optional. The user that added the option to the poll.
+     *
+     * @var UserType|null
+     */
+    public $addedByUser;
+
+    /**
+     * Optional. The chat that added the option to the poll on behalf of its owner.
+     *
+     * @var ChatType|null
+     */
+    public $addedByChat;
 }

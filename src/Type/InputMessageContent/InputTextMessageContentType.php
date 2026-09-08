@@ -6,6 +6,8 @@ namespace TgBotApi\BotApiBase\Type\InputMessageContent;
 
 use TgBotApi\BotApiBase\Method\Interfaces\HasParseModeVariableInterface;
 use TgBotApi\BotApiBase\Method\Traits\FillFromArrayTrait;
+use TgBotApi\BotApiBase\Type\LinkPreviewOptionsType;
+use TgBotApi\BotApiBase\Type\MessageEntityType;
 use TgBotApi\BotApiBase\Type\Traits\CaptionEntitiesFieldTrait;
 
 /**
@@ -39,6 +41,21 @@ class InputTextMessageContentType extends InputMessageContentType implements Has
      * @var bool|null
      */
     public $disableWebPagePreview;
+
+    /**
+     * Optional. List of special entities that appear in the message text, which can be specified instead of
+     * parseMode.
+     *
+     * @var MessageEntityType[]|null
+     */
+    public $entities;
+
+    /**
+     * Optional. Link preview generation options for the message.
+     *
+     * @var LinkPreviewOptionsType|null
+     */
+    public $linkPreviewOptions;
 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException

@@ -111,4 +111,18 @@ class StickerType
      * @var bool|null
      */
     public $needsRepainting;
+
+    /**
+     * Optional. Sticker thumbnail in the .WEBP or .JPG format.
+     *
+     * @var PhotoSizeType|null
+     */
+    public $thumbnail;
+
+    /**
+     * Optional. For premium regular stickers, premium animation for the sticker.
+     *
+     * @var FileType|null
+     */
+    public $premiumAnimation;
 }

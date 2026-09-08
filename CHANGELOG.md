@@ -23,6 +23,33 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 3.4.0 - 2026-09-08
+
+### Added
+- `ChatMemberUpdatedType` and `ChatJoinRequestType`, wired onto `UpdateType` as
+  `$myChatMember`, `$chatMember` and `$chatJoinRequest`. Until now a bot using this library
+  could not see membership changes or join requests at all - the updates arrived and were
+  silently discarded. Both denormalize fully, including the `ChatInviteLinkType` that came
+  with 3.2.0 and the old/new `ChatMemberType` pair.
+- `$businessMessage`, `$editedBusinessMessage` and `$guestMessage` on `UpdateType`.
+- `MessageType::$replyMarkup` and `$linkPreviewOptions`, plus `$senderBusinessBot` and
+  `$receiverUser`. The attached inline keyboard was previously not readable off a message.
+- `InputTextMessageContentType::$entities` and `$linkPreviewOptions`.
+- `$thumbnail` on `AnimationType`, `AudioType`, `DocumentType`, `StickerType`,
+  `StickerSetType`, `VideoType` and `VideoNoteType`, and `VideoType::$cover`.
+- `StickerType::$premiumAnimation`, `PollAnswerType::$voterChat`,
+  `PollType::$questionEntities`/`$descriptionEntities`, and `PollOptionType::$textEntities`,
+  `$addedByUser` and `$addedByChat`.
+- `BanChatSenderChatMethod`, the counterpart to the `unbanChatSenderChat` added in 3.2.0.
+- `SetMessageReactionMethod` with the `Reaction\ReactionTypeType` union
+  (`ReactionTypeEmojiType`, `ReactionTypeCustomEmojiType`, `ReactionTypePaidType`).
+- `CopyMessagesMethod` and `ForwardMessagesMethod`, the bulk forms of the existing single
+  message methods, returning `MessageIdType[]`.
+
+Method coverage is now 103 of the 185 methods in Bot API 10.2. Every field the Bot API
+defines as a scalar or array of scalars on a type this library models is now present.
+
+
 ## 3.3.1 - 2026-09-08
 
 ### Fixed

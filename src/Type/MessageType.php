@@ -551,4 +551,34 @@ class MessageType implements HasParseModeVariableInterface
      * @var int|null
      */
     public $migrateFromChatId;
+
+    /**
+     * Optional. Inline keyboard attached to the message. login_url buttons are represented as ordinary url
+     * buttons.
+     *
+     * @var InlineKeyboardMarkupType|null
+     */
+    public $replyMarkup;
+
+    /**
+     * Optional. Options used for link preview generation for the message, if it is a text message and link preview
+     * options were changed.
+     *
+     * @var LinkPreviewOptionsType|null
+     */
+    public $linkPreviewOptions;
+
+    /**
+     * Optional. The bot that actually sent the message on behalf of the business account.
+     *
+     * @var UserType|null
+     */
+    public $senderBusinessBot;
+
+    /**
+     * Optional. The user that received the message.
+     *
+     * @var UserType|null
+     */
+    public $receiverUser;
 }

@@ -146,4 +146,18 @@ class PollType implements PollTypeInterface
      * @var string|null
      */
     public $description;
+
+    /**
+     * Optional. Special entities that appear in the poll question.
+     *
+     * @var MessageEntityType[]|null
+     */
+    public $questionEntities;
+
+    /**
+     * Optional. Special entities that appear in the poll description.
+     *
+     * @var MessageEntityType[]|null
+     */
+    public $descriptionEntities;
 }

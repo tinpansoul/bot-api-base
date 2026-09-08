@@ -38,4 +38,11 @@ class PollAnswerType
      * @var string[]|null
      */
     public $optionPersistentIds;
+
+    /**
+     * Optional. The chat that changed the answer to the poll, if the voter is anonymous.
+     *
+     * @var ChatType|null
+     */
+    public $voterChat;
 }

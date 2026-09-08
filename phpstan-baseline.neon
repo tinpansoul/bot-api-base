@@ -52,6 +52,12 @@ parameters:
 			message: '#^Unsafe usage of new static\(\)\.$#'
 			identifier: new.static
 			count: 1
+			path: src/Method/BanChatSenderChatMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
 			path: src/Method/CloseMethod.php
 
 		-
@@ -59,6 +65,12 @@ parameters:
 			identifier: new.static
 			count: 1
 			path: src/Method/CopyMessageMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/CopyMessagesMethod.php
 
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'
@@ -155,6 +167,12 @@ parameters:
 			identifier: new.static
 			count: 1
 			path: src/Method/ForwardMessageMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/ForwardMessagesMethod.php
 
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'
@@ -473,6 +491,12 @@ parameters:
 			identifier: new.static
 			count: 2
 			path: src/Method/SetGameScoreMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetMessageReactionMethod.php
 
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'
@@ -1109,6 +1133,24 @@ parameters:
 			identifier: new.static
 			count: 1
 			path: src/Type/Poll/KeyboardButtonPollType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/Reaction/ReactionTypeCustomEmojiType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/Reaction/ReactionTypeEmojiType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/Reaction/ReactionTypePaidType.php
 
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'

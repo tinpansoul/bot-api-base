@@ -53,4 +53,11 @@ class DocumentType
      * @var int|null
      */
     public $fileSize;
+
+    /**
+     * Optional. Thumbnail of the file, as defined by the sender.
+     *
+     * @var PhotoSizeType|null
+     */
+    public $thumbnail;
 }
