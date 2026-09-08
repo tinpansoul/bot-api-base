@@ -23,6 +23,16 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 2.0.1 - 2026-09-08
+
+### Changed
+- Widened the Symfony requirement to `^6.4 || ^7.4` for `property-access`, `property-info`
+  and `serializer`, so the library can be installed alongside a Symfony 6.4 LTS application.
+- Widened `phpdocumentor/type-resolver` to `^1.7 || ^2.0`.
+- Dropped the explicit `symfony/type-info` requirement; it is pulled in transitively by
+  `symfony/property-info` where it is needed.
+
+
 ## 2.0.0 - 2026-02-20
 
 First release of the `tinpansoul/bot-api-base` fork. Modernises the library for PHP 8 and
