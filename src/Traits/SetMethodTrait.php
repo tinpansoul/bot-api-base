@@ -17,6 +17,7 @@ use TgBotApi\BotApiBase\Method\SetMyCommandsMethod;
 use TgBotApi\BotApiBase\Method\SetPassportDataErrorsMethod;
 use TgBotApi\BotApiBase\Method\SetStickerPositionInSetMethod;
 use TgBotApi\BotApiBase\Method\SetStickerSetThumbMethod;
+use TgBotApi\BotApiBase\Method\SetStickerSetThumbnailMethod;
 use TgBotApi\BotApiBase\Method\SetWebhookMethod;
 
 /**
@@ -95,6 +96,17 @@ trait SetMethodTrait
 
     /**
      * @throws ResponseException
+     */
+    public function setStickerSetThumbnail(SetStickerSetThumbnailMethod $setStickerSetThumbnailMethod): bool
+    {
+        return $this->set(setMethodAlias: $setStickerSetThumbnailMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     *
+     * @deprecated Telegram renamed this method to "setStickerSetThumbnail" in the Bot API; it is absent from the
+     *             current documentation. Use setStickerSetThumbnail() instead.
      */
     public function setStickerSetThumb(SetStickerSetThumbMethod $setStickerSetThumbMethod): bool
     {

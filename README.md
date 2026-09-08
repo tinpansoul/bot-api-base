@@ -11,7 +11,7 @@
 > and is released independently - see [CHANGELOG.md](CHANGELOG.md).
 > Versions `2.0.0` and later come from this fork and require PHP 8.2+.
 
-#### Supported Telegram Bot API 5.0 (November 4, 2020), with types and fields updated through Bot API 10.2
+#### Supported Telegram Bot API 5.0 (November 4, 2020), with types, fields and method names updated through Bot API 10.2
 
 ## Installation
 

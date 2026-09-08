@@ -6,6 +6,7 @@ namespace TgBotApi\BotApiBase\Traits;
 
 use TgBotApi\BotApiBase\Exception\ResponseException;
 use TgBotApi\BotApiBase\Method\Interfaces\KickMethodAliasInterface;
+use TgBotApi\BotApiBase\Method\BanChatMemberMethod;
 use TgBotApi\BotApiBase\Method\KickChatMemberMethod;
 
 trait KickMethodTrait
@@ -21,6 +22,18 @@ trait KickMethodTrait
      *
      * @throws ResponseException
      *
+     */
+    public function banChatMember(BanChatMemberMethod $banChatMemberMethod): bool
+    {
+        return $this->kick(kickMethodAlias: $banChatMemberMethod);
+    }
+
+    /**
+     *
+     * @throws ResponseException
+     *
+     * @deprecated Telegram renamed this method to "banChatMember" in the Bot API; it is absent from the
+     *             current documentation. Use banChatMember() instead.
      */
     public function kickChatMember(KickChatMemberMethod $kickChatMemberMethod): bool
     {

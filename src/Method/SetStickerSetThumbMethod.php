@@ -15,6 +15,8 @@ use TgBotApi\BotApiBase\Type\InputFileType;
  * Returns True on success.
  *
  * @see https://core.telegram.org/bots/api#setstickersetthumb
+ *
+ * @deprecated Absent from the current Bot API documentation. Use SetStickerSetThumbnailMethod instead.
  */
 class SetStickerSetThumbMethod implements SetMethodAliasInterface
 {

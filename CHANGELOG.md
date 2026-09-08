@@ -23,6 +23,27 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 3.0.0 - 2026-09-08
+
+See [UPGRADE-3.0.md](UPGRADE-3.0.md).
+
+### Added
+- `BanChatMemberMethod` (with `$revokeMessages`), `GetChatMemberCountMethod` and
+  `SetStickerSetThumbnailMethod` (with the required `$format` and a `$thumbnail` field),
+  plus `banChatMember()`, `getChatMemberCount()` and `setStickerSetThumbnail()` on the API.
+
+### Changed
+- **BC** `BotApiInterface` now declares `getChatMemberCount()`. Classes implementing the
+  interface directly must add it. Classes extending `BotApi` or `BotApiComplete` inherit it
+  and need no change, and mocks of the interface are unaffected.
+
+### Deprecated
+- `KickChatMemberMethod`, `GetChatMembersCountMethod` and `SetStickerSetThumbMethod`, and
+  the matching `kickChatMember()`, `getChatMembersCount()` and `setStickerSetThumb()`
+  methods. Telegram renamed all three and the old names are absent from the Bot API 10.2
+  documentation. They still send the old method name, so switch deliberately.
+
+
 ## 2.5.0 - 2026-09-08
 
 ### Added

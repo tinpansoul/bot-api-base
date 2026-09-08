@@ -8,6 +8,7 @@ use TgBotApi\BotApiBase\Exception\ResponseException;
 use TgBotApi\BotApiBase\Method\ExportChatInviteLinkMethod;
 use TgBotApi\BotApiBase\Method\GetChatAdministratorsMethod;
 use TgBotApi\BotApiBase\Method\GetChatMemberMethod;
+use TgBotApi\BotApiBase\Method\GetChatMemberCountMethod;
 use TgBotApi\BotApiBase\Method\GetChatMembersCountMethod;
 use TgBotApi\BotApiBase\Method\GetChatMethod;
 use TgBotApi\BotApiBase\Method\GetFileMethod;
@@ -87,9 +88,17 @@ interface BotApiInterface extends BotApiAliasInterface
     public function getWebhookInfo(GetWebhookInfoMethod $getWebhookInfoMethod): WebhookInfoType;
 
     /**
+     * @throws ResponseException
+     */
+    public function getChatMemberCount(GetChatMemberCountMethod $getChatMemberCountMethod): int;
+
+    /**
      *
      * @throws ResponseException
      *
+     *
+     * @deprecated Telegram renamed this method to "getChatMemberCount" in the Bot API; it is absent
+     *             from the current documentation. Use getChatMemberCount() instead.
      */
     public function getChatMembersCount(GetChatMembersCountMethod $getChatMembersCountMethod): int;
 
