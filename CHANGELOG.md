@@ -23,6 +23,26 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 2.1.0 - 2026-09-08
+
+### Fixed
+- Request fields are now encoded according to the type the Bot API documents for them.
+  `ApiClient::createStreamBody()` cast every value with `(string)`, which produced the
+  literal string `Array` for any array field and an empty string for `false`:
+    - Arrays and objects are JSON-encoded, as the Bot API requires for every
+      "Array of ..." parameter. This fixes `sendMessage`/`editMessageText` `entities`,
+      `sendPoll` `explanationEntities`, `setWebhook`/`getUpdates` `allowedUpdates`,
+      `setChatPermissions`/`restrictChatMember` `permissions`,
+      `answerShippingQuery` `shippingOptions` and `setPassportDataErrors` `errors`.
+    - Booleans are sent as `true`/`false`. An empty string is not a valid Boolean in any
+      encoding the Bot API documents, so passing `false` was silently lost. This matters
+      for `answerPreCheckoutQuery` and `answerShippingQuery` (rejecting a query with
+      `createFail()`) and for `promoteChatMember` (passing `false` to demote a user).
+- `PollNormalizer` and `SetMyCommandsNormalizer` ran `json_encode()` over the raw objects
+  instead of normalizing them first, which leaked every unset property into the request
+  as `null`. They now normalize with `skip_null_values` like the other normalizers.
+
+
 ## 2.0.2 - 2026-09-08
 
 ### Fixed

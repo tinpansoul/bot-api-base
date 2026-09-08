@@ -35,7 +35,8 @@ class SetMyCommandsNormalizer implements NormalizerInterface
             $this->objectNormalizer,
         ]);
 
-        $topic->commands = \json_encode(value: $topic->commands);
+        $topic->commands = \json_encode(
+            value: $serializer->normalize(data: $topic->commands, context: ['skip_null_values' => true]));
 
         return $serializer->normalize(data: $topic, context: ['skip_null_values' => true]);
     }

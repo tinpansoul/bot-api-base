@@ -73,8 +73,7 @@ class ApiClient implements ApiClientInterface
     {
         $stream = '';
         foreach ($botApiRequest->getData() as $name => $value) {
-            // todo [GreenPlugin] fix type cast and replace it to normalizer
-            $stream .= $this->createDataStream(boundary: $boundary, name: $name, value: (string) $value);
+            $stream .= $this->createDataStream(boundary: $boundary, name: $name, value: $this->encodeValue(value: $value));
         }
 
         foreach ($botApiRequest->getFiles() as $name => $file) {
@@ -82,6 +81,29 @@ class ApiClient implements ApiClientInterface
         }
 
         return '' !== $stream ? $stream . "--{$boundary}--\r\n" : '';
+    }
+
+    /**
+     * Encodes a normalized value for a multipart/form-data field.
+     *
+     * Telegram types every parameter as String, Integer, Boolean, an object, or an array.
+     * Booleans must go out as "true"/"false" - an empty string is not a valid Boolean in any
+     * of the encodings the Bot API documents, and methods such as promoteChatMember and
+     * answerPreCheckoutQuery rely on False being transmitted.
+     * Arrays and objects must be JSON-serialized, which is what the Bot API asks for on every
+     * "Array of ..." parameter.
+     */
+    protected function encodeValue(mixed $value): string
+    {
+        if (\is_bool(value: $value)) {
+            return $value ? 'true' : 'false';
+        }
+
+        if (\is_array(value: $value) || \is_object(value: $value)) {
+            return \json_encode(value: $value, flags: \JSON_THROW_ON_ERROR);
+        }
+
+        return (string) $value;
     }
 
     /**

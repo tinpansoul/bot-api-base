@@ -35,7 +35,8 @@ class PollNormalizer implements NormalizerInterface
             $this->objectNormalizer,
         ]);
 
-        $topic->options = \json_encode(value: $topic->options);
+        $topic->options = \json_encode(
+            value: $serializer->normalize(data: $topic->options, context: ['skip_null_values' => true]));
 
         return $serializer->normalize(data: $topic, context: ['skip_null_values' => true]);
     }
