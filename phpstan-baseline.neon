@@ -3,7 +3,7 @@ parameters:
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'
 			identifier: new.static
-			count: 1
+			count: 2
 			path: src/Method/AddStickerToSetMethod.php
 
 		-
@@ -51,7 +51,7 @@ parameters:
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'
 			identifier: new.static
-			count: 1
+			count: 2
 			path: src/Method/CreateNewStickerSetMethod.php
 
 		-
@@ -453,7 +453,7 @@ parameters:
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'
 			identifier: new.static
-			count: 1
+			count: 2
 			path: src/Method/UploadStickerFileMethod.php
 
 		-
@@ -743,6 +743,12 @@ parameters:
 			identifier: new.static
 			count: 1
 			path: src/Type/InputMessageContent/InputVenueMessageContent.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InputStickerType.php
 
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'

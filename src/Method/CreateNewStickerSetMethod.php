@@ -8,6 +8,7 @@ use TgBotApi\BotApiBase\Method\Interfaces\CreateMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Traits\EmojisVariableTrait;
 use TgBotApi\BotApiBase\Method\Traits\FillFromArrayTrait;
 use TgBotApi\BotApiBase\Type\InputFileType;
+use TgBotApi\BotApiBase\Type\InputStickerType;
 use TgBotApi\BotApiBase\Type\MaskPositionType;
 
 /**
@@ -45,6 +46,22 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
     public $title;
 
     /**
+     * A JSON-serialized list of 1-50 initial stickers to be added to the sticker set.
+     *
+     * @var InputStickerType[]
+     */
+    public $stickers;
+
+    /**
+     * Optional. Pass True if stickers in the sticker set must be repainted to the colour of text
+     * when used in messages, the accent colour if used as emoji status, white on chat photos, or
+     * another appropriate colour based on context. For "custom_emoji" stickers only.
+     *
+     * @var bool|null
+     */
+    public $needsRepainting;
+
+    /**
      * Optional. Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px,
      * and either width or height must be exactly 512px.
      * Pass a file_id as a String to send a file that already exists on the Telegram servers,
@@ -52,6 +69,8 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
      * or upload a new one using multipart/form-data.
      *
      * @var InputFileType|string|null
+     *
+     * @deprecated superseded by $stickers; pass InputStickerType objects with format "static"
      */
     public $pngSticker;
 
@@ -60,6 +79,8 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
      * See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements.
      *
      * @var InputFileType|null
+     *
+     * @deprecated superseded by $stickers; pass InputStickerType objects with format "animated"
      */
     public $tgsSticker;
 
@@ -84,6 +105,8 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
      * Optional. A JSON-serialized object for position where the mask should be placed on faces.
      *
      * @var MaskPositionType|null
+     *
+     * @deprecated superseded by $stickers; set InputStickerType::$maskPosition on each sticker
      */
     public $maskPosition;
 
@@ -142,6 +165,32 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
         $createNewStickerSetMethod->tgsSticker = $inputFileType;
 
         return $createNewStickerSetMethod;
+    }
+
+    /**
+     * Creates a set from InputStickerType objects, as the current Bot API expects.
+     *
+     * @param InputStickerType[] $stickers
+     *
+     * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
+     */
+    public static function createWithStickers(
+        int $userId,
+        string $name,
+        string $title,
+        array $stickers,
+        ?array $data = null,
+    ): CreateNewStickerSetMethod {
+        $static = new static();
+        $static->userId = $userId;
+        $static->name = $name;
+        $static->title = $title;
+        $static->stickers = $stickers;
+        if ($data) {
+            $static->fill(data: $data);
+        }
+
+        return $static;
     }
 
     /**

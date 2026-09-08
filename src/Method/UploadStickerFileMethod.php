@@ -32,10 +32,19 @@ class UploadStickerFileMethod implements UploadMethodAliasInterface
     public $stickerFormat;
 
     /**
+     * A file with the sticker in .WEBP, .PNG, .TGS or .WEBM format.
+     *
+     * @var InputFileType
+     */
+    public $sticker;
+
+    /**
      * Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px,
      * and either width or height must be exactly 512px.
      *
      * @var InputFileType
+     *
+     * @deprecated superseded by $sticker together with $stickerFormat
      */
     public $pngSticker;
 
@@ -44,6 +53,22 @@ class UploadStickerFileMethod implements UploadMethodAliasInterface
         $static = new static();
         $static->userId = $userId;
         $static->pngSticker = $inputFileType;
+
+        return $static;
+    }
+
+    /**
+     * Uploads a sticker file with its format, as the current Bot API expects.
+     */
+    public static function createWithFormat(
+        int $userId,
+        InputFileType $sticker,
+        string $stickerFormat,
+    ): UploadStickerFileMethod {
+        $static = new static();
+        $static->userId = $userId;
+        $static->sticker = $sticker;
+        $static->stickerFormat = $stickerFormat;
 
         return $static;
     }

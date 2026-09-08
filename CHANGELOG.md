@@ -23,6 +23,31 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 3.1.0 - 2026-09-08
+
+### Added
+- `InputStickerType`, the object the Bot API has expected since 6.6 for describing a sticker:
+  `$sticker`, `$format`, `$emojiList`, `$maskPosition` and `$keywords`, with `FORMAT_STATIC`,
+  `FORMAT_ANIMATED` and `FORMAT_VIDEO` constants.
+- `$sticker` on `AddStickerToSetMethod` and `$stickers` on `CreateNewStickerSetMethod`,
+  plus `$needsRepainting` on the latter.
+- `$sticker` on `UploadStickerFileMethod`, which pairs with the `$stickerFormat` added in 2.5.0.
+- Factories for the current shape of these methods, since the existing ones require the
+  deprecated fields: `AddStickerToSetMethod::createWithSticker()`,
+  `CreateNewStickerSetMethod::createWithStickers()` and
+  `UploadStickerFileMethod::createWithFormat()`.
+
+  Uploading works through the existing file handling: an `InputFileType` placed on
+  `InputStickerType::$sticker` is replaced with an `attach://` reference and the file is
+  added to the request, nested inside the JSON-serialized sticker.
+
+### Deprecated
+- `$pngSticker` and `$tgsSticker` on `AddStickerToSetMethod`, `CreateNewStickerSetMethod` and
+  `UploadStickerFileMethod`, `$maskPosition` on the first two, and `$emojis` on
+  `EmojisVariableTrait`. The Bot API replaced all of them with `InputSticker`. They are still
+  sent unchanged; nothing is folded into the new fields automatically.
+
+
 ## 3.0.2 - 2026-09-08
 
 Style only - no behavioural change. PHP-CS-Fixer had been unable to run since the PHP 8

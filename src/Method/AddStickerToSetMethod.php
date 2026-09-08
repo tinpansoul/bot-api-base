@@ -8,6 +8,7 @@ use TgBotApi\BotApiBase\Method\Interfaces\AddMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Traits\EmojisVariableTrait;
 use TgBotApi\BotApiBase\Method\Traits\FillFromArrayTrait;
 use TgBotApi\BotApiBase\Type\InputFileType;
+use TgBotApi\BotApiBase\Type\InputStickerType;
 use TgBotApi\BotApiBase\Type\MaskPositionType;
 
 /**
@@ -35,6 +36,13 @@ class AddStickerToSetMethod implements AddMethodAliasInterface
     public $name;
 
     /**
+     * A JSON-serialized object with information about the added sticker.
+     *
+     * @var InputStickerType
+     */
+    public $sticker;
+
+    /**
      * Optional. Png image with the sticker, must be up to 512 kilobytes in size,
      * dimensions must not exceed 512px, and either width or height must be exactly 512px.
      * Pass a file_id as a String to send a file that already exists on the Telegram servers,
@@ -42,6 +50,8 @@ class AddStickerToSetMethod implements AddMethodAliasInterface
      * or upload a new one using multipart/form-data.
      *
      * @var InputFileType|string|null
+     *
+     * @deprecated superseded by $sticker; set InputStickerType::$sticker with format "static"
      */
     public $pngSticker;
 
@@ -50,6 +60,8 @@ class AddStickerToSetMethod implements AddMethodAliasInterface
      * See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements.
      *
      * @var InputFileType|null
+     *
+     * @deprecated superseded by $sticker; set InputStickerType::$sticker with format "animated"
      */
     public $tgsSticker;
 
@@ -57,6 +69,8 @@ class AddStickerToSetMethod implements AddMethodAliasInterface
      * Optional. A JSON-serialized object for position where the mask should be placed on faces.
      *
      * @var MaskPositionType|null
+     *
+     * @deprecated superseded by $sticker; set InputStickerType::$maskPosition instead
      */
     public $maskPosition;
 
@@ -106,6 +120,28 @@ class AddStickerToSetMethod implements AddMethodAliasInterface
         $addStickerToSetMethod->tgsSticker = $inputFileType;
 
         return $addStickerToSetMethod;
+    }
+
+    /**
+     * Adds a sticker described by an InputStickerType, as the current Bot API expects.
+     *
+     * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
+     */
+    public static function createWithSticker(
+        int $userId,
+        string $name,
+        InputStickerType $sticker,
+        ?array $data = null,
+    ): AddStickerToSetMethod {
+        $static = new static();
+        $static->userId = $userId;
+        $static->name = $name;
+        $static->sticker = $sticker;
+        if ($data) {
+            $static->fill(data: $data);
+        }
+
+        return $static;
     }
 
     /**
