@@ -59,6 +59,18 @@ grumphp:
             testsuite: ~
             group: []
             always_execute: false
+        git_commit_message:
+            allow_empty_message: false
+            enforce_capitalized_subject: false
+            enforce_no_subject_trailing_period: true
+            enforce_single_lined_subject: true
+            max_subject_width: 72
+            max_body_width: 100
+            case_insensitive: false
+            multiline: false
+            matchers:
+                'Subject must follow Conventional Commits, e.g. "fix(client): encode arrays as JSON"':
+                    '/^(?:(?:fixup|squash)! )?(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-z0-9._\/-]+\))?!?: .+/'
         git_blacklist:
             keywords:
             - "die()"
