@@ -5,6 +5,10 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -28,7 +32,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           tools: composer:v2
-          coverage: xdebug
+          coverage: none
 
       - name: Validate composer.json
         run: composer validate --no-check-lock
@@ -37,10 +41,4 @@ jobs:
         run: composer update ${{ matrix.composerFlags }} --no-interaction --prefer-dist
 
       - name: Tests
-        run: vendor/bin/phpunit --coverage-clover=coverage.clover
-
-      - name: Scrutinizer code coverage upload
-        if: matrix.php == '8.2' && matrix.composerFlags == ''
-        run: |
-          wget https://scrutinizer-ci.com/ocular.phar
-          php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+        run: vendor/bin/phpunit
