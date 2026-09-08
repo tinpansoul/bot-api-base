@@ -23,6 +23,21 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 2.2.0 - 2026-09-08
+
+### Fixed
+- Normalizers no longer mutate the method object they are given. `MediaGroupNormalizer`,
+  `EditMessageMediaNormalizer`, `PollNormalizer`, `InvoiceNormalizer`,
+  `SetMyCommandsNormalizer`, `AnswerInlineQueryNormalizer`, `SetChatMenuButtonNormalizer`
+  and `InputMediaNormalizer` wrote their JSON-serialized output back onto the method, so
+  normalizing the same object twice double-encoded the payload. For media methods the
+  second pass re-sent a stale `attach://` reference with no file attached, which meant a
+  retried upload silently sent nothing. They now work on a copy.
+
+  If you read a field back off a method object after sending it (for example
+  `$method->media` expecting the `attach://` string), it now holds the value you set.
+
+
 ## 2.1.0 - 2026-09-08
 
 ### Fixed

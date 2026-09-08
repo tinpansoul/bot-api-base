@@ -30,6 +30,10 @@ class InvoiceNormalizer implements NormalizerInterface
         $format = null,
         array $context = []
     ): string|int|float|bool|\ArrayObject|array|null {
+        // Normalizers below rewrite fields into their JSON-serialized form. Work on a copy so the
+        // caller's method object is left untouched and can be normalized again (e.g. on retry).
+        $topic = clone $topic;
+
         $serializer = new Serializer(normalizers: [
             new JsonSerializableNormalizer(objectNormalizer: $this->objectNormalizer),
             $this->objectNormalizer,

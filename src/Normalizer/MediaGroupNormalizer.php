@@ -35,6 +35,10 @@ class MediaGroupNormalizer implements NormalizerInterface
         $format = null,
         array $context = []
     ): string|int|float|bool|\ArrayObject|array|null {
+        // Normalizers below rewrite fields into their JSON-serialized form. Work on a copy so the
+        // caller's method object is left untouched and can be normalized again (e.g. on retry).
+        $topic = clone $topic;
+
         $serializer = new Serializer(normalizers: [$this->inputMediaNormalizer, $this->objectNormalizer]);
         $topic->media = \json_encode(value: $serializer->normalize(data: $topic->media, context: ['skip_null_values' => true]));
 
