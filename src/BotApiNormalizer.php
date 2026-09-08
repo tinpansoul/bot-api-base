@@ -77,6 +77,8 @@ class BotApiNormalizer implements NormalizerInterface
      */
     public function normalize($method): BotApiRequestInterface
     {
+        $method = $this->withRenamedFields(method: $method);
+
         $isLegacy = !\defined(constant_name: AbstractObjectNormalizer::class . '::SKIP_NULL_VALUES');
 
         $files = [];
@@ -113,5 +115,39 @@ class BotApiNormalizer implements NormalizerInterface
         );
 
         return new BotApiRequest(data: $data, files: $files);
+    }
+
+    /**
+     * Fields this library still exposes under a name the Bot API no longer uses (or never used).
+     * Deprecated name => current Bot API name.
+     */
+    private const RENAMED_FIELDS = [
+        'thumb' => 'thumbnail',
+        'supportStreaming' => 'supportsStreaming',
+    ];
+
+    /**
+     * Folds deprecated field aliases into their current counterparts on a copy of the method, so
+     * anything still setting the old property keeps working while the request goes out under the
+     * name the Bot API documents. skip_null_values then drops the stale key.
+     */
+    private function withRenamedFields(object $method): object
+    {
+        foreach (self::RENAMED_FIELDS as $old => $current) {
+            if (!\property_exists(object_or_class: $method, property: $old)
+                || !\property_exists(object_or_class: $method, property: $current)) {
+                continue;
+            }
+
+            $method = clone $method;
+
+            if (null !== $method->{$old} && null === $method->{$current}) {
+                $method->{$current} = $method->{$old};
+            }
+
+            $method->{$old} = null;
+        }
+
+        return $method;
     }
 }

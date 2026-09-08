@@ -51,10 +51,21 @@ class InputMediaNormalizer implements NormalizerInterface
             $topic->media = 'attach://' . $uniqid;
         }
 
-        if (\property_exists(object_or_class: $topic, property: 'thumb') && $topic->thumb instanceof InputFileType) {
+        // Bot API 6.6 renamed "thumb" to "thumbnail". Fold the deprecated field into the current
+        // one so anything still setting $thumb keeps working; skip_null_values drops the old key.
+        if (\property_exists(object_or_class: $topic, property: 'thumb')
+            && \property_exists(object_or_class: $topic, property: 'thumbnail')) {
+            if (null !== $topic->thumb && null === $topic->thumbnail) {
+                $topic->thumbnail = $topic->thumb;
+            }
+
+            $topic->thumb = null;
+        }
+
+        if (\property_exists(object_or_class: $topic, property: 'thumbnail') && $topic->thumbnail instanceof InputFileType) {
             $uniqid = \uniqid(more_entropy: true);
-            $this->files[$uniqid] = $topic->thumb;
-            $topic->thumb = 'attach://' . $uniqid;
+            $this->files[$uniqid] = $topic->thumbnail;
+            $topic->thumbnail = 'attach://' . $uniqid;
         }
 
         $serializer = new Serializer(normalizers: [$this->objectNormalizer]);

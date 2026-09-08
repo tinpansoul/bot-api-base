@@ -35,8 +35,8 @@ final class SendVideoMethodTest extends MethodTestCase
                 'duration' => 100,
                 'width' => 100,
                 'height' => 100,
-                'thumb' => '',
-                'support_streaming' => true,
+                'thumbnail' => '',
+                'supports_streaming' => true,
                 'caption' => 'caption',
                 'caption_entities' => [['type' => 'pre', 'offset' => 0, 'length' => 1]],
                 'parse_mode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
@@ -45,7 +45,7 @@ final class SendVideoMethodTest extends MethodTestCase
                 'allow_sending_without_reply' => true,
                 'reply_markup' => self::buildInlineMarkupArray(),
             ],
-            fileMap: ['video' => true, 'thumb' => true],
+            fileMap: ['video' => true, 'thumbnail' => true],
             serializableFields: ['reply_markup']
         );
     }

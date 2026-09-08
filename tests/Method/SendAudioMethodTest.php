@@ -35,7 +35,7 @@ final class SendAudioMethodTest extends MethodTestCase
                 'duration' => 100,
                 'performer' => 'performer',
                 'title' => 'title',
-                'thumb' => '',
+                'thumbnail' => '',
                 'caption' => 'caption',
                 'caption_entities' => [['type' => 'pre', 'offset' => 0, 'length' => 1]],
                 'parse_mode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
@@ -44,7 +44,7 @@ final class SendAudioMethodTest extends MethodTestCase
                 'allow_sending_without_reply' => true,
                 'reply_markup' => self::buildInlineMarkupArray(),
             ],
-            fileMap: ['audio' => true, 'thumb' => true],
+            fileMap: ['audio' => true, 'thumbnail' => true],
             serializableFields: ['reply_markup']
         );
     }

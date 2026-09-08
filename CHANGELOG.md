@@ -23,6 +23,28 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 2.3.0 - 2026-09-08
+
+### Added
+- `$thumbnail` on `SendVideoMethod`, `SendAudioMethod`, `SendDocumentMethod`,
+  `SendAnimationMethod`, `SendVideoNoteMethod`, `InputMediaVideoType`, `InputMediaAudioType`,
+  `InputMediaDocumentType` and `InputMediaAnimationType`.
+- `$supportsStreaming` on `SendVideoMethod`.
+
+### Deprecated
+- `$thumb` on the nine classes above. Bot API 6.6 renamed the field to `thumbnail` and the
+  old name no longer exists in the API, so everything sent as `thumb` was silently ignored
+  by Telegram. Setting `$thumb` still works and is now sent as `thumbnail`; use
+  `$thumbnail` instead.
+- `SendVideoMethod::$supportStreaming`. The Bot API field is `supports_streaming`, so the
+  misspelled name was never recognised. Setting it still works and is now sent under the
+  correct name; use `$supportsStreaming` instead.
+
+### Fixed
+- `InputMediaNormalizer` wires the `attach://` file reference for `thumbnail` as well, so
+  uploading a thumbnail with a media group or `editMessageMedia` now actually attaches it.
+
+
 ## 2.2.0 - 2026-09-08
 
 ### Fixed

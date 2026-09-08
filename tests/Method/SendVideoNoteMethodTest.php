@@ -31,13 +31,13 @@ final class SendVideoNoteMethodTest extends MethodTestCase
                 'chat_id' => 'chat_id',
                 'video_note' => '',
                 'duration' => 100,
-                'thumb' => '',
+                'thumbnail' => '',
                 'disable_notification' => true,
                 'reply_to_message_id' => 1,
                 'reply_markup' => self::buildInlineMarkupArray(),
                 'allow_sending_without_reply' => true,
             ],
-            fileMap: ['video_note' => true, 'thumb' => true],
+            fileMap: ['video_note' => true, 'thumbnail' => true],
             serializableFields: ['reply_markup']
         );
     }

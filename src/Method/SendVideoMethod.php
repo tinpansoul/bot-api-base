@@ -61,12 +61,36 @@ class SendVideoMethod implements HasParseModeVariableInterface, SendMethodAliasI
      *
      * @var InputFileType|string|null
      */
+    public $thumbnail;
+
+    /**
+     * Optional. Thumbnail of the file sent. The thumbnail should be in JPEG format and less than 200 kB in size.
+     * A thumbnail‘s width and height should not exceed 90.
+     * Ignored if the file is not uploaded using multipart/form-data.
+     * Thumbnails can’t be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>”
+     * if the thumbnail was uploaded using multipart/form-data under <file_attach_name>.
+     *
+     * @var InputFileType|string|null
+     *
+     * @deprecated since Bot API 6.6 Telegram renamed this field to "thumbnail";
+     *             it is still accepted here and sent as "thumbnail". Use $thumbnail instead.
+     */
     public $thumb;
 
     /**
      * Optional. Pass True, if the uploaded video is suitable for streaming.
      *
      * @var bool|null
+     */
+    public $supportsStreaming;
+
+    /**
+     * Optional. Pass True, if the uploaded video is suitable for streaming.
+     *
+     * @var bool|null
+     *
+     * @deprecated Misspelled; the Bot API field is "supports_streaming". Still accepted here and
+     *             sent under the correct name. Use $supportsStreaming instead.
      */
     public $supportStreaming;
 

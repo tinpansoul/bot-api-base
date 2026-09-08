@@ -44,7 +44,7 @@ final class SendMediaGroupMethodTest extends MethodTestCase
                         'parse_mode' => 'Markdown',
                         'type' => 'video',
 
-                        'thumb' => '',
+                        'thumbnail' => '',
                         'width' => 100,
                         'height' => 100,
                         'duration' => 100,
@@ -57,7 +57,7 @@ final class SendMediaGroupMethodTest extends MethodTestCase
             ],
             fileMap: ['media' => [
                 ['media' => true],
-                ['media' => true, 'thumb' => true],
+                ['media' => true, 'thumbnail' => true],
             ]],
             serializableFields: ['media']
         );

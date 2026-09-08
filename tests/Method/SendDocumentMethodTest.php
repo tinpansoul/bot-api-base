@@ -79,7 +79,7 @@ final class SendDocumentMethodTest extends MethodTestCase
                 [
                     'chat_id' => 'chat_id',
                     'document' => '',
-                    'thumb' => '',
+                    'thumbnail' => '',
                     'caption' => 'caption',
                     'caption_entities' => [['type' => 'pre', 'offset' => 0, 'length' => 1]],
                     'parse_mode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
@@ -108,7 +108,7 @@ final class SendDocumentMethodTest extends MethodTestCase
                 [
                     'chat_id' => 'chat_id',
                     'document' => '',
-                    'thumb' => '',
+                    'thumbnail' => '',
 
                     'caption' => 'caption',
                     'parse_mode' => HasParseModeVariableInterface::PARSE_MODE_MARKDOWN,
@@ -130,7 +130,7 @@ final class SendDocumentMethodTest extends MethodTestCase
         return $this->getBotWithFiles(
             methodName: 'sendDocument',
             request: $request,
-            fileMap: ['document' => true, 'thumb' => true],
+            fileMap: ['document' => true, 'thumbnail' => true],
             serializableFields: ['reply_markup']
         );
     }
