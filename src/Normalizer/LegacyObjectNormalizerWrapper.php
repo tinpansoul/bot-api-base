@@ -11,35 +11,25 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class LegacyObjectNormalizerWrapper implements NormalizerInterface, SerializerAwareInterface
 {
-
     public function __construct(private readonly AbstractNormalizer $normalizer)
     {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function normalize(
         $object,
         $format = null,
-        array $context = []
+        array $context = [],
     ): string|int|float|bool|\ArrayObject|array|null {
         $data = $this->normalizer->normalize($object, $format, $context);
 
-        return \array_filter(array: $data, callback: static fn($value): bool => null !== $value);
+        return array_filter(array: $data, callback: static fn ($value): bool => null !== $value);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
         return $this->normalizer->supportsNormalization($data, $format);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setSerializer(SerializerInterface $serializer): void
     {
         $this->normalizer->setSerializer($serializer);

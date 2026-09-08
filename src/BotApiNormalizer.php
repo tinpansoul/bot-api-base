@@ -24,9 +24,9 @@ use TgBotApi\BotApiBase\Normalizer\JsonSerializableNormalizer;
 use TgBotApi\BotApiBase\Normalizer\LegacyObjectNormalizerWrapper;
 use TgBotApi\BotApiBase\Normalizer\MediaGroupNormalizer;
 use TgBotApi\BotApiBase\Normalizer\PollNormalizer;
+use TgBotApi\BotApiBase\Normalizer\SetChatMenuButtonNormalizer;
 use TgBotApi\BotApiBase\Normalizer\SetMyCommandsNormalizer;
 use TgBotApi\BotApiBase\Normalizer\UserProfilePhotosNormalizer;
-use TgBotApi\BotApiBase\Normalizer\SetChatMenuButtonNormalizer;
 
 /**
  * Class BotApiNormalizer.
@@ -34,9 +34,15 @@ use TgBotApi\BotApiBase\Normalizer\SetChatMenuButtonNormalizer;
 class BotApiNormalizer implements NormalizerInterface
 {
     /**
-     * @param $data
-     * @param $type
-     *
+     * Fields this library still exposes under a name the Bot API no longer uses (or never used).
+     * Deprecated name => current Bot API name.
+     */
+    private const RENAMED_FIELDS = [
+        'thumb' => 'thumbnail',
+        'supportStreaming' => 'supportsStreaming',
+    ];
+
+    /**
      * @throws ExceptionInterface
      *
      * @return object|array|bool
@@ -59,8 +65,10 @@ class BotApiNormalizer implements NormalizerInterface
         $serializer = new Serializer(normalizers: [
             new UserProfilePhotosNormalizer(objectNormalizer: $objectNormalizer, arrayDenormalizer: $arrayDenormalizer),
             new EditMessageResponseNormalizer(
-                objectNormalizer: $objectNormalizer, arrayDenormalizer: $arrayDenormalizer,
-                dateTimeNormalizer: $dateTimeNormalizer),
+                objectNormalizer: $objectNormalizer,
+                arrayDenormalizer: $arrayDenormalizer,
+                dateTimeNormalizer: $dateTimeNormalizer
+            ),
             new DateTimeNormalizer(),
             $dateTimeNormalizer,
             $objectNormalizer,
@@ -71,8 +79,6 @@ class BotApiNormalizer implements NormalizerInterface
     }
 
     /**
-     * @param $method
-     *
      * @throws ExceptionInterface
      */
     public function normalize($method): BotApiRequestInterface
@@ -95,10 +101,12 @@ class BotApiNormalizer implements NormalizerInterface
             new InputFileNormalizer(files: $files),
             new MediaGroupNormalizer(
                 inputMediaNormalizer: new InputMediaNormalizer(objectNormalizer: $objectNormalizer, files: $files),
-                objectNormalizer: $objectNormalizer),
+                objectNormalizer: $objectNormalizer
+            ),
             new EditMessageMediaNormalizer(
                 inputMediaNormalizer: new InputMediaNormalizer(objectNormalizer: $objectNormalizer, files: $files),
-                objectNormalizer: $objectNormalizer),
+                objectNormalizer: $objectNormalizer
+            ),
             new JsonSerializableNormalizer(objectNormalizer: $objectNormalizer),
             new AnswerInlineQueryNormalizer(objectNormalizer: $objectNormalizer),
             new SetChatMenuButtonNormalizer(objectNormalizer: $objectNormalizer),
@@ -118,15 +126,6 @@ class BotApiNormalizer implements NormalizerInterface
     }
 
     /**
-     * Fields this library still exposes under a name the Bot API no longer uses (or never used).
-     * Deprecated name => current Bot API name.
-     */
-    private const RENAMED_FIELDS = [
-        'thumb' => 'thumbnail',
-        'supportStreaming' => 'supportsStreaming',
-    ];
-
-    /**
      * Folds deprecated field aliases into their current counterparts on a copy of the method, so
      * anything still setting the old property keeps working while the request goes out under the
      * name the Bot API documents. skip_null_values then drops the stale key.
@@ -134,8 +133,10 @@ class BotApiNormalizer implements NormalizerInterface
     private function withRenamedFields(object $method): object
     {
         foreach (self::RENAMED_FIELDS as $old => $current) {
-            if (!\property_exists(object_or_class: $method, property: $old)
-                || !\property_exists(object_or_class: $method, property: $current)) {
+            if (
+                !property_exists(object_or_class: $method, property: $old)
+                || !property_exists(object_or_class: $method, property: $current)
+            ) {
                 continue;
             }
 

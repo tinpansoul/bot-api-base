@@ -18,7 +18,6 @@ use TgBotApi\BotApiBase\Type\ReplyKeyboardRemoveType;
  */
 class JsonSerializableNormalizer implements NormalizerInterface
 {
-
     /**
      * JsonSerializableNormalizer constructor.
      */
@@ -27,27 +26,27 @@ class JsonSerializableNormalizer implements NormalizerInterface
     }
 
     /**
+     * @throws ExceptionInterface
      *
      * @return string
-     * @throws ExceptionInterface
      */
     public function normalize(
         mixed $topic,
         $format = null,
-        array $context = []
+        array $context = [],
     ): string|int|float|bool|\ArrayObject|array|null {
         $serializer = new Serializer(normalizers: [$this->objectNormalizer]);
 
-        return \json_encode(value: $serializer->normalize(data: $topic, context: ['skip_null_values' => true]));
+        return json_encode(value: $serializer->normalize(data: $topic, context: ['skip_null_values' => true]));
     }
 
     public function supportsNormalization(mixed $data, $format = null, array $context = []): bool
     {
-        return $data instanceof InlineKeyboardMarkupType ||
-            $data instanceof ReplyKeyboardMarkupType ||
-            $data instanceof ReplyKeyboardRemoveType ||
-            $data instanceof MaskPositionType ||
-            $data instanceof ForceReplyType;
+        return $data instanceof InlineKeyboardMarkupType
+            || $data instanceof ReplyKeyboardMarkupType
+            || $data instanceof ReplyKeyboardRemoveType
+            || $data instanceof MaskPositionType
+            || $data instanceof ForceReplyType;
     }
 
     /**

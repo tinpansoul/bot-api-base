@@ -14,16 +14,12 @@ use TgBotApi\BotApiBase\Method\LeaveChatMethod;
 trait LeaveMethodTrait
 {
     /**
-     *
      * @throws ResponseException
-     *
      */
     abstract public function leave(LeaveMethodAliasInterface $leaveMethodAlias): bool;
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function leaveChat(LeaveChatMethod $leaveChatMethod): bool
     {

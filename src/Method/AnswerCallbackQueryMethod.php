@@ -63,10 +63,7 @@ class AnswerCallbackQueryMethod implements AnswerMethodAliasInterface
     public $cacheTime;
 
     /**
-     * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(string $callbackQueryId, ?array $data = null): AnswerCallbackQueryMethod
     {

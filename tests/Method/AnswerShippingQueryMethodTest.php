@@ -50,9 +50,10 @@ final class AnswerShippingQueryMethodTest extends MethodTestCase
 
         $answerShippingQueryMethod->addShippingOption(
             shippingOption: ShippingOption::create(id: 'id', title: 'title', prices: [
-            LabeledPriceType::create(label: 'label', amount: 200),
-            LabeledPriceType::create(label: 'label_2', amount: 300),
-        ]));
+                LabeledPriceType::create(label: 'label', amount: 200),
+                LabeledPriceType::create(label: 'label_2', amount: 300),
+            ])
+        );
 
         $botApiComplete->answerShippingQuery(answerShippingQueryMethod: $answerShippingQueryMethod);
     }
@@ -70,8 +71,9 @@ final class AnswerShippingQueryMethodTest extends MethodTestCase
 
         $botApiComplete->answerShippingQuery(
             answerShippingQueryMethod: AnswerShippingQueryMethod::createFail(
-            shippingQueryId: 'id',
-            errorMessage: 'message'
-        ));
+                shippingQueryId: 'id',
+                errorMessage: 'message'
+            )
+        );
     }
 }

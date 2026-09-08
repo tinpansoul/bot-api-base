@@ -19,10 +19,7 @@ class StopMessageLiveLocationMethod implements StopMethodAliasInterface
     use EditMessageVariablesTrait;
 
     /**
-     * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(int|string $chatId, int $messageId, ?array $data = null): StopMessageLiveLocationMethod
     {
@@ -37,10 +34,7 @@ class StopMessageLiveLocationMethod implements StopMethodAliasInterface
     }
 
     /**
-     * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function createInline(string $inlineMessageId, ?array $data = null): StopMessageLiveLocationMethod
     {

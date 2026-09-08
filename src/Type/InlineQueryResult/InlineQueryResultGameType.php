@@ -23,9 +23,7 @@ class InlineQueryResultGameType extends InlineQueryResultType
     public $gameShortName;
 
     /**
-     * @param array|null $data
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(string $id, string $gameShortName, ?array $data = null): InlineQueryResultGameType
     {

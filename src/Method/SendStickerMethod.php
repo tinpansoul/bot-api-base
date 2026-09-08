@@ -30,8 +30,6 @@ class SendStickerMethod implements SendMethodAliasInterface
     public $sticker;
 
     /**
-     * @param array|null           $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(int|string $chatId, string|InputFileType $sticker, ?array $data = null): SendStickerMethod

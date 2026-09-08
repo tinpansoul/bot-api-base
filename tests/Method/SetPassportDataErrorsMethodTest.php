@@ -228,9 +228,10 @@ final class SetPassportDataErrorsMethodTest extends MethodTestCase
     }
 
     /**
+     * @param array<string, string>|array<string, string[]> $excepted
+     *
      * @throws \TgBotApi\BotApiBase\Exception\NormalizationException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
-     * @param array<string, string>|array<string, string[]> $excepted
      */
     public function runWithArguments(array $excepted, PassportElementErrorType $passportElementErrorType): void
     {
@@ -247,10 +248,11 @@ final class SetPassportDataErrorsMethodTest extends MethodTestCase
 
         $botApiComplete->setPassportDataErrors(
             setPassportDataErrorsMethod: SetPassportDataErrorsMethod::create(
-            userId: 1,
-            errors: [
-                $passportElementErrorType,
-            ]
-        ));
+                userId: 1,
+                errors: [
+                    $passportElementErrorType,
+                ]
+            )
+        );
     }
 }

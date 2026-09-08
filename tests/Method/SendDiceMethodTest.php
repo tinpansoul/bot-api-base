@@ -23,8 +23,9 @@ final class SendDiceMethodTest extends MethodTestCase
     }
 
     /**
-     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<string, mixed[]|bool|int|string> $data
+     *
+     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
     #[DataProvider('dataProvider')]
     public function testEncode(SendDiceMethod $sendDiceMethod, array $data): void

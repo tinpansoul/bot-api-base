@@ -15,16 +15,12 @@ use TgBotApi\BotApiBase\Type\FileType;
 trait UploadMethodTrait
 {
     /**
-     *
      * @throws ResponseException
-     *
      */
     abstract public function upload(UploadMethodAliasInterface $uploadMethodAlias): FileType;
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function uploadStickerFile(UploadStickerFileMethod $uploadStickerFileMethod): FileType
     {

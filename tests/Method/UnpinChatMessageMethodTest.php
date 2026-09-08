@@ -18,8 +18,9 @@ final class UnpinChatMessageMethodTest extends MethodTestCase
     }
 
     /**
-     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<string, string|int> $exceptedRequest
+     *
+     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
     #[DataProvider('provideData')]
     public function testEncode(UnpinChatMessageMethod $unpinChatMessageMethod, array $exceptedRequest): void

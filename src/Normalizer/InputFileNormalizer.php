@@ -17,8 +17,6 @@ class InputFileNormalizer implements NormalizerInterface
 
     /**
      * InputFileNormalizer constructor.
-     *
-     * @param $files
      */
     public function __construct(&$files)
     {
@@ -31,9 +29,9 @@ class InputFileNormalizer implements NormalizerInterface
     public function normalize(
         mixed $topic,
         $format = null,
-        array $context = []
+        array $context = [],
     ): string|int|float|bool|\ArrayObject|array|null {
-        $uniqid = \uniqid(more_entropy: true);
+        $uniqid = uniqid(more_entropy: true);
 
         $this->files[$uniqid] = $topic;
 

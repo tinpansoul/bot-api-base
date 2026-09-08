@@ -93,21 +93,21 @@ class InlineQueryResultVenueType extends InlineQueryResultType
     public $thumbHeight;
 
     /**
-     * Optional. Url of the thumbnail for the result
+     * Optional. Url of the thumbnail for the result.
      *
      * @var string|null
      */
     public $thumbnailUrl;
 
     /**
-     * Optional. Thumbnail width
+     * Optional. Thumbnail width.
      *
      * @var int|null
      */
     public $thumbnailWidth;
 
     /**
-     * Optional. Thumbnail height
+     * Optional. Thumbnail height.
      *
      * @var int|null
      */
@@ -122,7 +122,7 @@ class InlineQueryResultVenueType extends InlineQueryResultType
         float $longitude,
         string $title,
         string $address,
-        ?array $data = null
+        ?array $data = null,
     ): InlineQueryResultVenueType {
         $static = new static();
         $static->type = static::TYPE_VENUE;

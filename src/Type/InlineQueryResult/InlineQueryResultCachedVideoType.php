@@ -65,7 +65,7 @@ class InlineQueryResultCachedVideoType extends InlineQueryResultType implements 
     public $inputMessageContent;
 
     /**
-     * Optional. Pass True if the caption must be shown above the message media
+     * Optional. Pass True if the caption must be shown above the message media.
      *
      * @var bool|null
      */
@@ -78,7 +78,7 @@ class InlineQueryResultCachedVideoType extends InlineQueryResultType implements 
         string $id,
         string $videoFileId,
         string $title,
-        ?array $data = null
+        ?array $data = null,
     ): InlineQueryResultCachedVideoType {
         $static = new static();
         $static->type = static::TYPE_VIDEO;

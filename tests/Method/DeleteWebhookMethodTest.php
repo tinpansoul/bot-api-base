@@ -16,8 +16,9 @@ final class DeleteWebhookMethodTest extends MethodTestCase
     }
 
     /**
-     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<string, bool> $exceptedBody
+     *
+     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
     #[DataProvider('provideData')]
     public function testEncode(DeleteWebhookMethod $deleteWebhookMethod, array $exceptedBody): void

@@ -75,14 +75,14 @@ class UserType
     public $supportsInlineQueries;
 
     /**
-     * Optional. True, if this user is a Telegram Premium user
+     * Optional. True, if this user is a Telegram Premium user.
      *
      * @var bool|null
      */
     public $isPremium;
 
     /**
-     * Optional. True, if this user added the bot to the attachment menu
+     * Optional. True, if this user added the bot to the attachment menu.
      *
      * @var bool|null
      */

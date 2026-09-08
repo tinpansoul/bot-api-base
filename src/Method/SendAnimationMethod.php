@@ -79,8 +79,6 @@ class SendAnimationMethod implements HasParseModeVariableInterface, SendMethodAl
     public $thumb;
 
     /**
-     * @param array|null           $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(int|string $chatId, string|InputFileType $animation, ?array $data = null): SendAnimationMethod

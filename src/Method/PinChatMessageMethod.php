@@ -29,10 +29,7 @@ class PinChatMessageMethod implements PinMethodAliasInterface
     public $disableNotification;
 
     /**
-     * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(int|string $chatId, int $messageId, ?array $data = null): PinChatMessageMethod
     {

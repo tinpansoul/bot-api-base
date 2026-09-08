@@ -23,8 +23,10 @@ class ApiClient implements ApiClientInterface
      * ApiApiClient constructor.
      */
     public function __construct(
-        private readonly RequestFactoryInterface $requestFactory, private readonly StreamFactoryInterface $streamFactory, private readonly ClientInterface $client)
-    {
+        private readonly RequestFactoryInterface $requestFactory,
+        private readonly StreamFactoryInterface $streamFactory,
+        private readonly ClientInterface $client,
+    ) {
     }
 
     /**
@@ -34,7 +36,7 @@ class ApiClient implements ApiClientInterface
     {
         $request = $this->requestFactory->createRequest('POST', $this->generateUri(method: $method));
 
-        $boundary = \uniqid(more_entropy: true);
+        $boundary = uniqid(more_entropy: true);
 
         $stream = $this->streamFactory->createStream($this->createStreamBody(boundary: $boundary, botApiRequest: $botApiRequest));
 
@@ -46,7 +48,7 @@ class ApiClient implements ApiClientInterface
 
         $content = $response->getBody()->getContents();
 
-        return \json_decode(json: $content, associative: false);
+        return json_decode(json: $content, associative: false);
     }
 
     public function setBotKey(string $botKey): void
@@ -100,16 +102,12 @@ class ApiClient implements ApiClientInterface
         }
 
         if (\is_array(value: $value) || \is_object(value: $value)) {
-            return \json_encode(value: $value, flags: \JSON_THROW_ON_ERROR);
+            return json_encode(value: $value, flags: \JSON_THROW_ON_ERROR);
         }
 
         return (string) $value;
     }
 
-    /**
-     * @param $boundary
-     * @param $name
-     */
     protected function createFileStream($boundary, $name, InputFileType $inputFileType): string
     {
         $headers = \sprintf(
@@ -118,19 +116,14 @@ class ApiClient implements ApiClientInterface
             $inputFileType->getBasename()
         );
         $headers .= \sprintf("Content-Length: %s\r\n", (string) $inputFileType->getSize());
-        $headers .= \sprintf("Content-Type: %s\r\n", \mime_content_type(filename: $inputFileType->getRealPath()));
+        $headers .= \sprintf("Content-Type: %s\r\n", mime_content_type(filename: $inputFileType->getRealPath()));
 
         $streams = "--{$boundary}\r\n{$headers}\r\n";
-        $streams .= \file_get_contents(filename: $inputFileType->getRealPath());
+        $streams .= file_get_contents(filename: $inputFileType->getRealPath());
 
         return $streams . "\r\n";
     }
 
-    /**
-     * @param $boundary
-     * @param $name
-     * @param $value
-     */
     protected function createDataStream(string $boundary, string $name, string $value): string
     {
         $headers = \sprintf("Content-Disposition: form-data; name=\"%s\"\r\n", $name);

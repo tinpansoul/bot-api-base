@@ -67,17 +67,14 @@ class SetGameScoreMethod implements SetMethodAliasInterface
     public $inlineMessageId;
 
     /**
-     * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(
         int $userId,
         int $score,
         int $chatId,
         int $messageId,
-        ?array $data = null
+        ?array $data = null,
     ): SetGameScoreMethod {
         $static = new static();
         $static->userId = $userId;
@@ -92,16 +89,13 @@ class SetGameScoreMethod implements SetMethodAliasInterface
     }
 
     /**
-     * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function createInline(
         int $userId,
         int $score,
         string $inlineMessageId,
-        ?array $data = null
+        ?array $data = null,
     ): SetGameScoreMethod {
         $static = new static();
         $static->userId = $userId;

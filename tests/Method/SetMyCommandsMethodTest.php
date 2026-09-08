@@ -18,10 +18,10 @@ final class SetMyCommandsMethodTest extends MethodTestCase
             methodName: 'setMyCommands',
             request: [
                 'commands' => [
-                   [
-                       'command' => '$command',
-                       'description' => '$description',
-                   ],
+                    [
+                        'command' => '$command',
+                        'description' => '$description',
+                    ],
                     [
                         'command' => 'start',
                         'description' => 'start command description',
@@ -34,8 +34,9 @@ final class SetMyCommandsMethodTest extends MethodTestCase
 
         $botApiComplete->setMyCommands(
             setMyCommandsMethod: SetMyCommandsMethod::create(commands: [
-            BotCommandType::create(command: '$command', description: '$description'),
-            BotCommandType::create(command: 'start', description: 'start command description'),
-        ]));
+                BotCommandType::create(command: '$command', description: '$description'),
+                BotCommandType::create(command: 'start', description: 'start command description'),
+            ])
+        );
     }
 }

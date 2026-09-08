@@ -11,13 +11,13 @@ namespace TgBotApi\BotApiBase\Type;
  */
 class MaskPositionType
 {
-    const MASK_POINT_FOREHEAD = 'forehead';
+    public const MASK_POINT_FOREHEAD = 'forehead';
 
-    const MASK_POINT_EYES = 'eyes';
+    public const MASK_POINT_EYES = 'eyes';
 
-    const MASK_POINT_MOUTH = 'mouth';
+    public const MASK_POINT_MOUTH = 'mouth';
 
-    const MASK_POINT_CHIN = 'chin';
+    public const MASK_POINT_CHIN = 'chin';
 
     /**
      * The part of the face relative to which the mask should be placed. One of “forehead”, “eyes”, “mouth”, or “chin”.

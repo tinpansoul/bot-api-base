@@ -31,10 +31,11 @@ final class ForwardMessageMethodTest extends MethodTestCase
 
         $botApiComplete->forwardMessage(
             forwardMessageMethod: ForwardMessageMethod::create(
-            chatId: 'chat_id',
-            fromChatId: 'chat_id',
-            messageId: 1,
-            data: ['disableNotification' => true]
-        ));
+                chatId: 'chat_id',
+                fromChatId: 'chat_id',
+                messageId: 1,
+                data: ['disableNotification' => true]
+            )
+        );
     }
 }

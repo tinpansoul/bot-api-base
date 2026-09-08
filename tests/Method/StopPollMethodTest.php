@@ -27,9 +27,10 @@ final class StopPollMethodTest extends MethodTestCase
 
         $botApiComplete->stopPoll(
             stopPollMethod: StopPollMethod::create(
-            chatId: 'chat_id',
-            messageId: 1,
-            data: ['replyMarkup' => $this->buildInlineMarkupObject()]
-        ));
+                chatId: 'chat_id',
+                messageId: 1,
+                data: ['replyMarkup' => $this->buildInlineMarkupObject()]
+            )
+        );
     }
 }

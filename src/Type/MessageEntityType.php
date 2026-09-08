@@ -100,7 +100,7 @@ class MessageEntityType
     public $customEmojiId;
 
     /**
-     * Optional. For “date_time” only, the Unix time associated with the entity
+     * Optional. For “date_time” only, the Unix time associated with the entity.
      *
      * @var int|null
      */
@@ -121,7 +121,7 @@ class MessageEntityType
         $static->offset = $offset;
         $static->length = $length;
 
-        if ($data !== null && $data !== []) {
+        if (null !== $data && [] !== $data) {
             $static->fill(data: $data);
         }
 

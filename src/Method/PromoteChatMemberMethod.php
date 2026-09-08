@@ -86,9 +86,6 @@ class PromoteChatMemberMethod implements PromoteMethodAliasInterface
     public $canPromoteMembers;
 
     /**
-     * @param $chatId
-     * @param $userId
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create($chatId, $userId, ?array $data = null): PromoteChatMemberMethod

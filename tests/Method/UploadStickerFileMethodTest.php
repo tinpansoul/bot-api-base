@@ -24,8 +24,9 @@ final class UploadStickerFileMethodTest extends MethodTestCase
 
         $botApiComplete->uploadStickerFile(
             uploadStickerFileMethod: UploadStickerFileMethod::create(
-            userId: 1,
-            inputFileType: InputFileType::create(path: '/dev/null')
-        ));
+                userId: 1,
+                inputFileType: InputFileType::create(path: '/dev/null')
+            )
+        );
     }
 }

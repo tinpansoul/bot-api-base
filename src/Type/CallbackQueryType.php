@@ -68,7 +68,7 @@ class CallbackQueryType
     public $gameShortGame;
 
     /**
-     * Optional. Short name of a Game to be returned, serves as the unique identifier for the game
+     * Optional. Short name of a Game to be returned, serves as the unique identifier for the game.
      *
      * @var string|null
      */

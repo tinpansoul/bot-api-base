@@ -15,7 +15,6 @@ use TgBotApi\BotApiBase\Type\InputFileType;
  * Returns True on success.
  *
  * @see https://core.telegram.org/bots/api#setstickersetthumb
- *
  * @deprecated Absent from the current Bot API documentation. Use SetStickerSetThumbnailMethod instead.
  */
 class SetStickerSetThumbMethod implements SetMethodAliasInterface
@@ -48,9 +47,6 @@ class SetStickerSetThumbMethod implements SetMethodAliasInterface
      */
     public $thumb;
 
-    /**
-     * @param string|InputFileType|null $thumb
-     */
     public static function create(string $name, int $userId, string|InputFileType|null $thumb = null): SetStickerSetThumbMethod
     {
         $static = new static();

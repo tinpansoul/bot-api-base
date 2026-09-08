@@ -29,7 +29,7 @@ class BotCommandType
 
     /**
      * Optional. True, if the command sends an ephemeral message, which can be seen only by the sender of the message
-     * and the bot
+     * and the bot.
      *
      * @var bool|null
      */

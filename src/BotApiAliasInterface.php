@@ -44,7 +44,7 @@ interface BotApiAliasInterface
     public function delete(DeleteMethodAliasInterface $deleteMethodAlias): bool;
 
     /**
-     * @return MessageType | bool
+     * @return MessageType|bool
      */
     public function edit(EditMethodAliasInterface $editMethodAlias);
 

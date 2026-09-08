@@ -13,7 +13,7 @@ use TgBotApi\BotApiBase\Method\Interfaces\EncryptedPassportElementTypes;
  */
 class PassportElementErrorUnspecifiedType extends PassportElementErrorType implements EncryptedPassportElementTypes
 {
-    const ALLOWED_TYPES = [
+    public const ALLOWED_TYPES = [
         self::TYPE_PERSONAL_DETAILS,
         self::TYPE_PASSPORT,
         self::TYPE_DRIVER_LICENSE,
@@ -37,14 +37,12 @@ class PassportElementErrorUnspecifiedType extends PassportElementErrorType imple
     public $elementHash;
 
     /**
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(
         string $type,
         string $message,
-        string $elementHash
+        string $elementHash,
     ): PassportElementErrorUnspecifiedType {
         $instance = parent::createBase(source: 'unspecified', type: $type, message: $message);
         $instance->elementHash = $elementHash;

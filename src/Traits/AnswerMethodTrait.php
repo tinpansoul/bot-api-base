@@ -17,16 +17,12 @@ use TgBotApi\BotApiBase\Method\Interfaces\AnswerMethodAliasInterface;
 trait AnswerMethodTrait
 {
     /**
-     *
      * @throws ResponseException
-     *
      */
     abstract public function answer(AnswerMethodAliasInterface $answerMethodAlias): bool;
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function answerCallbackQuery(AnswerCallbackQueryMethod $answerCallbackQueryMethod): bool
     {
@@ -34,9 +30,7 @@ trait AnswerMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function answerInlineQuery(AnswerInlineQueryMethod $answerInlineQueryMethod): bool
     {
@@ -44,9 +38,7 @@ trait AnswerMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function answerPreCheckoutQuery(AnswerPreCheckoutQueryMethod $answerPreCheckoutQueryMethod): bool
     {
@@ -54,9 +46,7 @@ trait AnswerMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function answerShippingQuery(AnswerShippingQueryMethod $answerShippingQueryMethod): bool
     {

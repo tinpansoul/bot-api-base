@@ -14,16 +14,12 @@ use TgBotApi\BotApiBase\Method\UnbanChatMemberMethod;
 trait UnbanMethodTrait
 {
     /**
-     *
      * @throws ResponseException
-     *
      */
     abstract public function unban(UnbanMethodAliasInterface $unbanMethodAlias): bool;
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function unbanChatMember(UnbanChatMemberMethod $unbanChatMemberMethod): bool
     {

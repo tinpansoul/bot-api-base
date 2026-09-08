@@ -73,7 +73,7 @@ class AnswerInlineQueryMethod implements AnswerMethodAliasInterface
      *
      * @var string|null
      *
-     * @deprecated Superseded by $button; set InlineQueryResultsButtonType::$text instead.
+     * @deprecated superseded by $button; set InlineQueryResultsButtonType::$text instead
      */
     public $switchPmText;
 
@@ -90,16 +90,14 @@ class AnswerInlineQueryMethod implements AnswerMethodAliasInterface
      *
      * @var string|null
      *
-     * @deprecated Superseded by $button; set InlineQueryResultsButtonType::$startParameter instead.
+     * @deprecated superseded by $button; set InlineQueryResultsButtonType::$startParameter instead
      */
     public $switchPmParameter;
 
     /**
      * @param InlineQueryResultType[] $results
-     * @param array|null              $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(string $inlineQueryId, array $results, ?array $data = null): AnswerInlineQueryMethod
     {

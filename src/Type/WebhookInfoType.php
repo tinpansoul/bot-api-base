@@ -70,7 +70,7 @@ class WebhookInfoType
 
     /**
      * Optional. Unix time of the most recent error that happened when trying to synchronize available updates with
-     * Telegram datacenters
+     * Telegram datacenters.
      *
      * @var \DateTimeImmutable|null
      */

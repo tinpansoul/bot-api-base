@@ -15,16 +15,12 @@ use TgBotApi\BotApiBase\Type\MessageType;
 trait ForwardMethodTrait
 {
     /**
-     *
      * @throws ResponseException
-     *
      */
     abstract public function forward(ForwardMethodAliasInterface $forwardMethodAlias): MessageType;
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function forwardMessage(ForwardMessageMethod $forwardMessageMethod): MessageType
     {

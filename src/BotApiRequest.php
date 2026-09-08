@@ -9,7 +9,6 @@ namespace TgBotApi\BotApiBase;
  */
 class BotApiRequest implements BotApiRequestInterface
 {
-
     /**
      * BotApiRequest constructor.
      */

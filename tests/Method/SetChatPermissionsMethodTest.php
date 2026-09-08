@@ -37,7 +37,9 @@ final class SetChatPermissionsMethodTest extends MethodTestCase
 
         $botApiComplete->setChatPermissions(
             setChatPermissionsMethod: SetChatPermissionsMethod::create(
-            chatId: 'chat_id',
-            chatPermissionsType: $chatPermissionsType));
+                chatId: 'chat_id',
+                chatPermissionsType: $chatPermissionsType
+            )
+        );
     }
 }

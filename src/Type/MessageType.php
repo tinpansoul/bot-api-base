@@ -399,21 +399,21 @@ class MessageType implements HasParseModeVariableInterface
 
     /**
      * Optional. Unique identifier of a message thread or forum topic to which the message belongs; for supergroups and
-     * private chats only
+     * private chats only.
      *
      * @var int|null
      */
     public $messageThreadId;
 
     /**
-     * Optional. If the sender of the message boosted the chat, the number of boosts added by the user
+     * Optional. If the sender of the message boosted the chat, the number of boosts added by the user.
      *
      * @var int|null
      */
     public $senderBoostCount;
 
     /**
-     * Optional. Tag or custom title of the sender of the message; for supergroups only
+     * Optional. Tag or custom title of the sender of the message; for supergroups only.
      *
      * @var string|null
      */
@@ -446,7 +446,7 @@ class MessageType implements HasParseModeVariableInterface
     public $businessConnectionId;
 
     /**
-     * Optional. True, if the message is sent to a topic in a forum supergroup or a private chat with the bot
+     * Optional. True, if the message is sent to a topic in a forum supergroup or a private chat with the bot.
      *
      * @var bool|null
      */
@@ -454,28 +454,28 @@ class MessageType implements HasParseModeVariableInterface
 
     /**
      * Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion
-     * group
+     * group.
      *
      * @var bool|null
      */
     public $isAutomaticForward;
 
     /**
-     * Optional. Identifier of the specific checklist task that is being replied to
+     * Optional. Identifier of the specific checklist task that is being replied to.
      *
      * @var int|null
      */
     public $replyToChecklistTaskId;
 
     /**
-     * Optional. Persistent identifier of the specific poll option that is being replied to
+     * Optional. Persistent identifier of the specific poll option that is being replied to.
      *
      * @var string|null
      */
     public $replyToPollOptionId;
 
     /**
-     * Optional. True, if the message can't be forwarded
+     * Optional. True, if the message can't be forwarded.
      *
      * @var bool|null
      */
@@ -483,7 +483,7 @@ class MessageType implements HasParseModeVariableInterface
 
     /**
      * Optional. True, if the message was sent by an implicit action, for example, as an away or a greeting business
-     * message, or as a scheduled message
+     * message, or as a scheduled message.
      *
      * @var bool|null
      */
@@ -498,35 +498,35 @@ class MessageType implements HasParseModeVariableInterface
     public $isPaidPost;
 
     /**
-     * Optional. The number of Telegram Stars that were paid by the sender of the message to send it
+     * Optional. The number of Telegram Stars that were paid by the sender of the message to send it.
      *
      * @var int|null
      */
     public $paidStarCount;
 
     /**
-     * Optional. Unique identifier of the message effect added to the message
+     * Optional. Unique identifier of the message effect added to the message.
      *
      * @var string|null
      */
     public $effectId;
 
     /**
-     * Optional. True, if the caption must be shown above the message media
+     * Optional. True, if the caption must be shown above the message media.
      *
      * @var bool|null
      */
     public $showCaptionAboveMedia;
 
     /**
-     * Optional. True, if the message media is covered by a spoiler animation
+     * Optional. True, if the message media is covered by a spoiler animation.
      *
      * @var bool|null
      */
     public $hasMediaSpoiler;
 
     /**
-     * Optional. Service message: the group has been created
+     * Optional. Service message: the group has been created.
      *
      * @var bool|null
      */

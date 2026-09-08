@@ -14,7 +14,6 @@ use TgBotApi\BotApiBase\Method\AnswerInlineQueryMethod;
  */
 class AnswerInlineQueryNormalizer implements NormalizerInterface
 {
-
     /**
      * AnswerInlineQueryNormalizer constructor.
      */
@@ -33,11 +32,12 @@ class AnswerInlineQueryNormalizer implements NormalizerInterface
 
         $serializer = new Serializer(normalizers: [new DateTimeNormalizer(), $this->objectNormalizer]);
 
-        $topic->results = \json_encode(
+        $topic->results = json_encode(
             value: $serializer->normalize(
-            data: $topic->results,
-            context: ['skip_null_values' => true, DateTimeNormalizer::FORMAT_KEY => 'U']
-        ));
+                data: $topic->results,
+                context: ['skip_null_values' => true, DateTimeNormalizer::FORMAT_KEY => 'U']
+            )
+        );
 
         return $serializer->normalize(
             data: $topic,

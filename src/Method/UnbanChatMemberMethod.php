@@ -36,7 +36,7 @@ class UnbanChatMemberMethod implements UnbanMethodAliasInterface
         $static->chatId = $chatId;
         $static->userId = $userId;
 
-        if ($data !== null && $data !== []) {
+        if (null !== $data && [] !== $data) {
             $static->fill(data: $data, forbidden: ['chatId', 'userId']);
         }
 

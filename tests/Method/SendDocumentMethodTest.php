@@ -44,8 +44,9 @@ final class SendDocumentMethodTest extends MethodTestCase
     }
 
     /**
-     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<string, mixed[]|string|bool|int> $request
+     *
+     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
     #[DataProvider('provideData')]
     public function testEncode(SendDocumentMethod $sendDocumentMethod, array $request): void
@@ -56,6 +57,7 @@ final class SendDocumentMethodTest extends MethodTestCase
 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
+     *
      * @return array<string, array<SendDocumentMethod|array<string, mixed[]|bool|int|string>>>
      */
     public static function provideData(): array

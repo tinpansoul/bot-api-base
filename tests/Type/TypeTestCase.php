@@ -26,7 +26,7 @@ abstract class TypeTestCase extends \PHPUnit\Framework\TestCase
 
         $stub->expects($this->once())
             ->method(constraint: 'send')
-            ->willReturn(value: \json_decode(json: $json, associative: false));
+            ->willReturn(value: json_decode(json: $json, associative: false));
 
         return new BotApi(botKey: '000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', apiClient: $stub, normalizer: $this->getNormalizer());
     }
@@ -39,9 +39,6 @@ abstract class TypeTestCase extends \PHPUnit\Framework\TestCase
         return (new WebhookFetcher(normalizer: $this->getNormalizer()))->fetch(request: $json);
     }
 
-    /**
-     * @param $result
-     */
     protected function getBot($result): BotApi
     {
         $stub = $this->getMockBuilder(className: ApiClientInterface::class)
@@ -65,6 +62,6 @@ abstract class TypeTestCase extends \PHPUnit\Framework\TestCase
 
     protected static function getResource($filename): string
     {
-        return \file_get_contents(filename: \sprintf('%s/resources/%s.json', __DIR__, $filename));
+        return file_get_contents(filename: \sprintf('%s/resources/%s.json', __DIR__, $filename));
     }
 }

@@ -55,7 +55,7 @@ class SendMessageMethod implements HasParseModeVariableInterface, SendMethodAlia
      *
      * @var bool|null
      *
-     * @deprecated Superseded by $linkPreviewOptions; set LinkPreviewOptionsType::$isDisabled instead.
+     * @deprecated superseded by $linkPreviewOptions; set LinkPreviewOptionsType::$isDisabled instead
      */
     public $disableWebPagePreview;
 

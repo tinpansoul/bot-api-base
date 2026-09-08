@@ -34,7 +34,6 @@ class SendPhotoMethod implements HasParseModeVariableInterface, SendMethodAliasI
     public $photo;
 
     /**
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(int|string $chatId, string|InputFileType $photo, ?array $data = null): SendPhotoMethod

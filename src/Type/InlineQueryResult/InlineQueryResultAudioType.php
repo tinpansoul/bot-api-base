@@ -76,7 +76,7 @@ class InlineQueryResultAudioType extends InlineQueryResultType implements HasPar
         string $id,
         string $audioUrl,
         string $title,
-        ?array $data = null
+        ?array $data = null,
     ): InlineQueryResultAudioType {
         $static = new static();
         $static->type = self::TYPE_AUDIO;

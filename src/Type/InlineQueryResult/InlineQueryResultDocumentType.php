@@ -101,21 +101,21 @@ class InlineQueryResultDocumentType extends InlineQueryResultType implements Has
     public $thumbHeight;
 
     /**
-     * Optional. URL of the thumbnail (JPEG only) for the file
+     * Optional. URL of the thumbnail (JPEG only) for the file.
      *
      * @var string|null
      */
     public $thumbnailUrl;
 
     /**
-     * Optional. Thumbnail width
+     * Optional. Thumbnail width.
      *
      * @var int|null
      */
     public $thumbnailWidth;
 
     /**
-     * Optional. Thumbnail height
+     * Optional. Thumbnail height.
      *
      * @var int|null
      */
@@ -129,7 +129,7 @@ class InlineQueryResultDocumentType extends InlineQueryResultType implements Has
         string $title,
         string $documentUrl,
         string $mimeType,
-        ?array $data = null
+        ?array $data = null,
     ): InlineQueryResultDocumentType {
         $static = new static();
         $static->type = static::TYPE_DOCUMENT;

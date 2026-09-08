@@ -76,11 +76,7 @@ class RestrictChatMemberMethod implements RestrictMethodAliasInterface
     public $permissions;
 
     /**
-     * @param            $chatId
-     * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      *
      * @deprecated
      * @see https://core.telegram.org/bots/api#july-29-2019
@@ -98,16 +94,13 @@ class RestrictChatMemberMethod implements RestrictMethodAliasInterface
     }
 
     /**
-     * @param                     $chatId
-     * @param array|null          $data
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(
         $chatId,
         int $userId,
         ChatPermissionsType $chatPermissionsType,
-        ?array $data = null
+        ?array $data = null,
     ): RestrictChatMemberMethod {
         $static = new static();
         $static->chatId = $chatId;

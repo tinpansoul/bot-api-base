@@ -22,7 +22,7 @@ class ResponseException extends \Exception
         int $code = 0,
         ?\Throwable $previous = null,
         private readonly ?int $retryAfter = null,
-        private readonly ?int $migrateToChatId = null
+        private readonly ?int $migrateToChatId = null,
     ) {
         parent::__construct($message, $code, $previous);
     }

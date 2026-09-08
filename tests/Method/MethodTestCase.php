@@ -25,7 +25,7 @@ abstract class MethodTestCase extends \PHPUnit\Framework\TestCase
                 $this->callback(callback: function (BotApiRequestInterface $botApiRequest) use ($request, $serialisedFields): true {
                     $query = $botApiRequest->getData();
                     foreach ($serialisedFields as $serialisedField) {
-                        $query[$serialisedField] = \json_decode(json: (string) $query[$serialisedField], associative: true);
+                        $query[$serialisedField] = json_decode(json: (string) $query[$serialisedField], associative: true);
                     }
 
                     $this->assertEquals(expected: $request, actual: $query);
@@ -39,16 +39,12 @@ abstract class MethodTestCase extends \PHPUnit\Framework\TestCase
         return new BotApiComplete(botKey: '000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', apiClient: $stub, normalizer: $this->getNormalizer());
     }
 
-    /**
-     * @param       $methodName
-     * @param       $request
-     */
     protected function getBotWithFiles(
         $methodName,
         $request,
         array $fileMap,
         array $serializableFields = [],
-        bool|array $result = []
+        bool|array $result = [],
     ): BotApiComplete {
         $stub = $this->getMockBuilder(className: ApiClientInterface::class)
             ->getMock();
@@ -63,7 +59,7 @@ abstract class MethodTestCase extends \PHPUnit\Framework\TestCase
                         $data = $botApiRequest->getData();
                         foreach ($serializableFields as $serializableField) {
                             $this->assertIsString(actual: $data[$serializableField]);
-                            $data[$serializableField] = \json_decode(json: $data[$serializableField], associative: true);
+                            $data[$serializableField] = json_decode(json: $data[$serializableField], associative: true);
                         }
 
                         $this->assertEquals(expected: $request, actual: $data);
@@ -84,7 +80,7 @@ abstract class MethodTestCase extends \PHPUnit\Framework\TestCase
             if (\is_array(value: $field)) {
                 $request[$key] = $this->buildFileTree(files: $files, request: $request[$key], map: $field, pointer: $pointer);
             } else {
-                $request[$key] = 'attach://' . \array_keys(array: $files)[$pointer];
+                $request[$key] = 'attach://' . array_keys(array: $files)[$pointer];
                 ++$pointer;
             }
         }

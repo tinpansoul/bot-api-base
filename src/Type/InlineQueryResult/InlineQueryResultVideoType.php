@@ -110,21 +110,21 @@ class InlineQueryResultVideoType extends InlineQueryResultType implements HasPar
     public $inputMessageContent;
 
     /**
-     * A valid URL for the embedded video player or video file
+     * A valid URL for the embedded video player or video file.
      *
      * @var string|null
      */
     public $videoUrl;
 
     /**
-     * URL of the thumbnail (JPEG only) for the video
+     * URL of the thumbnail (JPEG only) for the video.
      *
      * @var string|null
      */
     public $thumbnailUrl;
 
     /**
-     * Optional. Pass True if the caption must be shown above the message media
+     * Optional. Pass True if the caption must be shown above the message media.
      *
      * @var bool|null
      */
@@ -139,7 +139,7 @@ class InlineQueryResultVideoType extends InlineQueryResultType implements HasPar
         string $mimeType,
         string $thumbUrl,
         string $title,
-        ?array $data = null
+        ?array $data = null,
     ): InlineQueryResultVideoType {
         $static = new static();
         $static->type = static::TYPE_VIDEO;

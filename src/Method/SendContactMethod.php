@@ -47,15 +47,13 @@ class SendContactMethod implements SendMethodAliasInterface
     public $vcard;
 
     /**
-     * @param array|null $data
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(
         int|string $chatId,
         string $phoneNumber,
         string $firstName,
-        ?array $data = null
+        ?array $data = null,
     ): SendContactMethod {
         $static = new static();
         $static->chatId = $chatId;

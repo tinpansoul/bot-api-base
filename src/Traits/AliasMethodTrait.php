@@ -32,17 +32,12 @@ use TgBotApi\BotApiBase\Type\MessageType;
 trait AliasMethodTrait
 {
     /**
-     * @param string|null     $type
-     *
      * @throws ResponseException
-     * @return mixed
      */
     abstract public function call(MethodInterface $method, ?string $type = null);
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function add(AddMethodAliasInterface $addMethodAlias): bool
     {
@@ -50,9 +45,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function answer(AnswerMethodAliasInterface $answerMethodAlias): bool
     {
@@ -60,9 +53,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function create(CreateMethodAliasInterface $createMethodAlias): bool
     {
@@ -70,9 +61,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function delete(DeleteMethodAliasInterface $deleteMethodAlias): bool
     {
@@ -80,9 +69,9 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     * @return MessageType | bool
+     *
+     * @return MessageType|bool
      */
     public function edit(EditMethodAliasInterface $editMethodAlias)
     {
@@ -90,9 +79,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function forward(ForwardMethodAliasInterface $forwardMethodAlias): MessageType
     {
@@ -100,9 +87,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function kick(KickMethodAliasInterface $kickMethodAlias): bool
     {
@@ -110,9 +95,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function leave(LeaveMethodAliasInterface $leaveMethodAlias): bool
     {
@@ -120,9 +103,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function pin(PinMethodAliasInterface $pinMethodAlias): bool
     {
@@ -130,9 +111,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function promote(PromoteMethodAliasInterface $promoteMethodAlias): bool
     {
@@ -140,9 +119,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function restrict(RestrictMethodAliasInterface $restrictMethodAlias): bool
     {
@@ -150,9 +127,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function send(SendMethodAliasInterface $sendMethodAlias): MessageType
     {
@@ -160,9 +135,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function set(SetMethodAliasInterface $setMethodAlias): bool
     {
@@ -170,9 +143,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function stop(StopMethodAliasInterface $stopMethodAlias): bool
     {
@@ -180,9 +151,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function unban(UnbanMethodAliasInterface $unbanMethodAlias): bool
     {
@@ -190,9 +159,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function unpin(UnpinMethodAliasInterface $unpinMethodAlias): bool
     {
@@ -200,9 +167,7 @@ trait AliasMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function upload(UploadMethodAliasInterface $uploadMethodAlias): FileType
     {

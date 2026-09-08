@@ -73,37 +73,34 @@ class InlineQueryResultArticleType extends InlineQueryResultType
     public $thumbHeight;
 
     /**
-     * Optional. Url of the thumbnail for the result
+     * Optional. Url of the thumbnail for the result.
      *
      * @var string|null
      */
     public $thumbnailUrl;
 
     /**
-     * Optional. Thumbnail width
+     * Optional. Thumbnail width.
      *
      * @var int|null
      */
     public $thumbnailWidth;
 
     /**
-     * Optional. Thumbnail height
+     * Optional. Thumbnail height.
      *
      * @var int|null
      */
     public $thumbnailHeight;
 
     /**
-     * @param array|null              $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(
         string $id,
         string $title,
         InputMessageContentType $inputMessageContentType,
-        ?array $data = null
+        ?array $data = null,
     ): InlineQueryResultArticleType {
         $static = new static();
         $static->type = self::TYPE_ARTICLE;

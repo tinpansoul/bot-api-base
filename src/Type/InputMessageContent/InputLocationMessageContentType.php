@@ -66,7 +66,7 @@ class InputLocationMessageContentType extends InputMessageContentType
     public static function create(
         float $latitude,
         float $longitude,
-        ?array $data = null
+        ?array $data = null,
     ): InputLocationMessageContentType {
         $static = new static();
         $static->latitude = $latitude;

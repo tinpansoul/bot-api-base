@@ -54,7 +54,7 @@ class StickerSetType
     public $thumb;
 
     /**
-     * Type of stickers in the set, currently one of “regular”, “mask”, “custom_emoji”
+     * Type of stickers in the set, currently one of “regular”, “mask”, “custom_emoji”.
      *
      * @var string|null
      */

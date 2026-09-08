@@ -11,7 +11,6 @@ use TgBotApi\BotApiBase\Method\SetMyCommandsMethod;
 
 class SetMyCommandsNormalizer implements NormalizerInterface
 {
-
     /**
      * JsonSerializableNormalizer constructor.
      */
@@ -22,13 +21,14 @@ class SetMyCommandsNormalizer implements NormalizerInterface
     /**
      * @param SetMyCommandsMethod $topic
      *
-     * @return array|bool|false|float|int|string
      * @throws ExceptionInterface
+     *
+     * @return array|bool|false|float|int|string
      */
     public function normalize(
         $topic,
         $format = null,
-        array $context = []
+        array $context = [],
     ): string|int|float|bool|\ArrayObject|array|null {
         // Normalizers below rewrite fields into their JSON-serialized form. Work on a copy so the
         // caller's method object is left untouched and can be normalized again (e.g. on retry).
@@ -39,8 +39,9 @@ class SetMyCommandsNormalizer implements NormalizerInterface
             $this->objectNormalizer,
         ]);
 
-        $topic->commands = \json_encode(
-            value: $serializer->normalize(data: $topic->commands, context: ['skip_null_values' => true]));
+        $topic->commands = json_encode(
+            value: $serializer->normalize(data: $topic->commands, context: ['skip_null_values' => true])
+        );
 
         return $serializer->normalize(data: $topic, context: ['skip_null_values' => true]);
     }

@@ -76,7 +76,7 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
      *
      * @var bool|null
      *
-     * @deprecated Superseded by $stickerType; pass "mask" instead of true.
+     * @deprecated superseded by $stickerType; pass "mask" instead of true
      */
     public $containsMasks;
 
@@ -90,7 +90,6 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
     /**
      * CreateNewStickerSetMethod constructor.
      *
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
      * @deprecated
@@ -102,14 +101,13 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
         string $title,
         string|InputFileType $pngSticker,
         string $emojis,
-        ?array $data = null
+        ?array $data = null,
     ): CreateNewStickerSetMethod {
         return static::createStatic(userId: $userId, name: $name, title: $title, pngSticker: $pngSticker, emojis: $emojis, data: $data);
     }
 
     /**
      * CreateNewStickerSetMethod constructor.
-     *
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
@@ -119,7 +117,7 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
         string $title,
         string|InputFileType $pngSticker,
         string $emojis,
-        ?array $data = null
+        ?array $data = null,
     ): CreateNewStickerSetMethod {
         $createNewStickerSetMethod = self::createBase(userId: $userId, name: $name, title: $title, emojis: $emojis, data: $data);
         $createNewStickerSetMethod->pngSticker = $pngSticker;
@@ -138,7 +136,7 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
         string $title,
         InputFileType $inputFileType,
         string $emojis,
-        ?array $data = null
+        ?array $data = null,
     ): CreateNewStickerSetMethod {
         $createNewStickerSetMethod = self::createBase(userId: $userId, name: $name, title: $title, emojis: $emojis, data: $data);
         $createNewStickerSetMethod->tgsSticker = $inputFileType;
@@ -154,7 +152,7 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
         string $name,
         string $title,
         string $emojis,
-        ?array $data = null
+        ?array $data = null,
     ): CreateNewStickerSetMethod {
         $static = new static();
         $static->userId = $userId;

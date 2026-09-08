@@ -29,7 +29,9 @@ final class BotApiCompleteTest extends TestCase
         /* @var ApiClientInterface $stub */
         $botApiComplete = new BotApiComplete(
             botKey: '000000000:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-            apiClient: $stub, normalizer: $this->getNormalizer());
+            apiClient: $stub,
+            normalizer: $this->getNormalizer()
+        );
 
         $this->expectException(exception: ResponseException::class);
 

@@ -11,7 +11,6 @@ use TgBotApi\BotApiBase\Method\SendPollMethod;
 
 class PollNormalizer implements NormalizerInterface
 {
-
     /**
      * JsonSerializableNormalizer constructor.
      */
@@ -22,13 +21,14 @@ class PollNormalizer implements NormalizerInterface
     /**
      * @param SendPollMethod $topic
      *
-     * @return array|bool|false|float|int|string
      * @throws ExceptionInterface
+     *
+     * @return array|bool|false|float|int|string
      */
     public function normalize(
         $topic,
         $format = null,
-        array $context = []
+        array $context = [],
     ): string|int|float|bool|\ArrayObject|array|null {
         // Normalizers below rewrite fields into their JSON-serialized form. Work on a copy so the
         // caller's method object is left untouched and can be normalized again (e.g. on retry).
@@ -39,8 +39,9 @@ class PollNormalizer implements NormalizerInterface
             $this->objectNormalizer,
         ]);
 
-        $topic->options = \json_encode(
-            value: $serializer->normalize(data: $topic->options, context: ['skip_null_values' => true]));
+        $topic->options = json_encode(
+            value: $serializer->normalize(data: $topic->options, context: ['skip_null_values' => true])
+        );
 
         return $serializer->normalize(data: $topic, context: ['skip_null_values' => true]);
     }

@@ -11,7 +11,7 @@ trait InlineButtonTrait
 {
     protected static function buildInlineKeyboardButtonArray($newKeys = []): array
     {
-        return \array_merge(
+        return array_merge(
             [
                 'text' => 'text',
                 'url' => 'url',
@@ -37,6 +37,7 @@ trait InlineButtonTrait
                 'switchInlineQuery' => 'switch_inline_query',
                 'switchInlineQueryCurrentChat' => 'switch_inline_query_current_chat',
                 'callbackGame' => CallbackGameType::create(),
-            ]);
+            ]
+        );
     }
 }

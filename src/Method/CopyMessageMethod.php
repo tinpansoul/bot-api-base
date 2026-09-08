@@ -37,10 +37,6 @@ class CopyMessageMethod implements HasParseModeVariableInterface, MethodInterfac
      */
     public $messageId;
 
-    /**
-     * @param $chatId
-     * @param $fromChatId
-     */
     public static function create($chatId, $fromChatId, int $messageId, ?array $data = null): CopyMessageMethod
     {
         $static = new static();
@@ -48,7 +44,7 @@ class CopyMessageMethod implements HasParseModeVariableInterface, MethodInterfac
         $static->fromChatId = $fromChatId;
         $static->messageId = $messageId;
 
-        if ($data !== null && $data !== []) {
+        if (null !== $data && [] !== $data) {
             $static->fill(data: $data);
         }
 

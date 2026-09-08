@@ -55,7 +55,7 @@ class EditMessageTextMethod implements HasParseModeVariableInterface, EditMethod
      *
      * @var bool|null
      *
-     * @deprecated Superseded by $linkPreviewOptions; set LinkPreviewOptionsType::$isDisabled instead.
+     * @deprecated superseded by $linkPreviewOptions; set LinkPreviewOptionsType::$isDisabled instead
      */
     public $disableWebPagePreview;
 
@@ -81,7 +81,7 @@ class EditMessageTextMethod implements HasParseModeVariableInterface, EditMethod
     public static function createInline(
         string $inlineMessageId,
         string $text,
-        ?array $data = null
+        ?array $data = null,
     ): EditMessageTextMethod {
         $instance = new self();
         $instance->inlineMessageId = $inlineMessageId;

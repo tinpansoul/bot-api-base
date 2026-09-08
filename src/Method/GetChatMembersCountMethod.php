@@ -11,7 +11,6 @@ use TgBotApi\BotApiBase\Method\Traits\ChatIdVariableTrait;
  * Class GetChatMembersCountMethod.
  *
  * @see https://core.telegram.org/bots/api#getchatmemberscount
- *
  * @deprecated Absent from the current Bot API documentation. Use GetChatMemberCountMethod instead.
  */
 class GetChatMembersCountMethod implements MethodInterface

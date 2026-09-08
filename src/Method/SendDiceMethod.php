@@ -61,8 +61,6 @@ class SendDiceMethod implements SendMethodAliasInterface
     }
 
     /**
-     * @param $chatId
-     *
      * @throws BadArgumentException
      */
     public static function createWithDice(int|string $chatId, ?array $data = null): SendDiceMethod
@@ -74,8 +72,6 @@ class SendDiceMethod implements SendMethodAliasInterface
     }
 
     /**
-     * @param $chatId
-     *
      * @throws BadArgumentException
      */
     public static function createWithDarts(int|string $chatId, ?array $data = null): SendDiceMethod
@@ -87,8 +83,6 @@ class SendDiceMethod implements SendMethodAliasInterface
     }
 
     /**
-     * @param $chatId
-     *
      * @throws BadArgumentException
      */
     public static function createWithBasketball(int|string $chatId, ?array $data = null): SendDiceMethod
@@ -100,8 +94,6 @@ class SendDiceMethod implements SendMethodAliasInterface
     }
 
     /**
-     * @param $chatId
-     *
      * @throws BadArgumentException
      */
     public static function createWithFootBall(int|string $chatId, ?array $data = null): SendDiceMethod
@@ -113,8 +105,6 @@ class SendDiceMethod implements SendMethodAliasInterface
     }
 
     /**
-     * @param $chatId
-     *
      * @throws BadArgumentException
      */
     public static function createWithSlotMachine(int|string $chatId, ?array $data = null): SendDiceMethod

@@ -28,7 +28,7 @@ class ForceReplyType
     public $selective;
 
     /**
-     * Optional. The placeholder to be shown in the input field when the reply is active; 1-64 characters
+     * Optional. The placeholder to be shown in the input field when the reply is active; 1-64 characters.
      *
      * @var string|null
      */

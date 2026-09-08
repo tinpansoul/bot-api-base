@@ -27,15 +27,13 @@ class EditMessageMediaMethod implements EditMethodAliasInterface
     public $media;
 
     /**
-     * @param array|null     $data
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(
         int|string $chatId,
         int $messageId,
         InputMediaType $inputMediaType,
-        ?array $data = null
+        ?array $data = null,
     ): EditMessageMediaMethod {
         $static = new static();
         $static->chatId = $chatId;
@@ -49,14 +47,12 @@ class EditMessageMediaMethod implements EditMethodAliasInterface
     }
 
     /**
-     * @param array|null     $data
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function createInline(
         string $inlineMessageId,
         InputMediaType $inputMediaType,
-        ?array $data = null
+        ?array $data = null,
     ): EditMessageMediaMethod {
         $static = new static();
         $static->inlineMessageId = $inlineMessageId;

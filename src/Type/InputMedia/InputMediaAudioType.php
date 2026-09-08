@@ -65,7 +65,6 @@ class InputMediaAudioType extends InputMediaType
     public $title;
 
     /**
-     * @param array|null           $data
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(string|InputFileType $media, ?array $data = null): InputMediaAudioType

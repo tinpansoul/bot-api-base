@@ -13,9 +13,5 @@ interface ApiClientInterface
 
     public function setEndpoint(string $endPoint): void;
 
-    /**
-     *
-     * @return mixed
-     */
     public function send(string $method, BotApiRequestInterface $botApiRequest);
 }

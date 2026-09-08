@@ -19,16 +19,16 @@ use TgBotApi\BotApiBase\Type\MessageType;
 trait EditMethodTrait
 {
     /**
-     *
      * @throws ResponseException
-     * @return MessageType | bool
+     *
+     * @return MessageType|bool
      */
     abstract public function edit(EditMethodAliasInterface $editMethodAlias);
 
     /**
-     *
      * @throws ResponseException
-     * @return MessageType | bool
+     *
+     * @return MessageType|bool
      */
     public function editMessageCaption(EditMessageCaptionMethod $editMessageCaptionMethod)
     {
@@ -36,9 +36,9 @@ trait EditMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     * @return MessageType | bool
+     *
+     * @return MessageType|bool
      */
     public function editMessageLiveLocation(EditMessageLiveLocationMethod $editMessageLiveLocationMethod)
     {
@@ -46,9 +46,9 @@ trait EditMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     * @return MessageType | bool
+     *
+     * @return MessageType|bool
      */
     public function editMessageMedia(EditMessageMediaMethod $editMessageMediaMethod)
     {
@@ -56,9 +56,9 @@ trait EditMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     * @return MessageType | bool
+     *
+     * @return MessageType|bool
      */
     public function editMessageReplyMarkup(EditMessageReplyMarkupMethod $editMessageReplyMarkupMethod)
     {
@@ -66,9 +66,9 @@ trait EditMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     * @return MessageType | bool
+     *
+     * @return MessageType|bool
      */
     public function editMessageText(EditMessageTextMethod $editMessageTextMethod)
     {

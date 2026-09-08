@@ -17,22 +17,20 @@ use TgBotApi\BotApiBase\Type\MessageType;
  */
 class EditMessageResponseNormalizer implements DenormalizerInterface
 {
-
     /**
      * UserProfilePhotosNormalizer constructor.
      */
     public function __construct(
         private readonly NormalizerInterface $objectNormalizer,
         private readonly ArrayDenormalizer $arrayDenormalizer,
-        private readonly DateTimeNormalizer $dateTimeNormalizer
+        private readonly DateTimeNormalizer $dateTimeNormalizer,
     ) {
     }
 
     /**
-     *
-     * @return MessageType | bool
      * @throws ExceptionInterface
      *
+     * @return MessageType|bool
      */
     public function denormalize(mixed $data, string $class, $format = null, array $context = []): mixed
     {

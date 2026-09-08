@@ -34,18 +34,22 @@ final class CreateNewStickerSetMethodTest extends MethodTestCase
 
         $botApiComplete->createNewStickerSet(
             createNewStickerSetMethod: CreateNewStickerSetMethod::create(
-            userId: 1,
-            name: 'sticker_set_name',
-            title: 'title',
-            pngSticker: InputFileType::create(path: '/dev/null'),
-            emojis: '😀',
-            data: [
-                'containsMasks' => true,
-                'maskPosition' => MaskPositionType::create(
-                    point: MaskPositionType::MASK_POINT_FOREHEAD,
-                    xShift: 1, yShift: 1, scale: 1),
-            ]
-        ));
+                userId: 1,
+                name: 'sticker_set_name',
+                title: 'title',
+                pngSticker: InputFileType::create(path: '/dev/null'),
+                emojis: '😀',
+                data: [
+                    'containsMasks' => true,
+                    'maskPosition' => MaskPositionType::create(
+                        point: MaskPositionType::MASK_POINT_FOREHEAD,
+                        xShift: 1,
+                        yShift: 1,
+                        scale: 1
+                    ),
+                ]
+            )
+        );
     }
 
     /**
@@ -72,17 +76,21 @@ final class CreateNewStickerSetMethodTest extends MethodTestCase
 
         $botApiComplete->createNewStickerSet(
             createNewStickerSetMethod: CreateNewStickerSetMethod::createAnimated(
-            userId: 1,
-            name: 'sticker_set_name',
-            title: 'title',
-            inputFileType: InputFileType::create(path: '/dev/null'),
-            emojis: '😀',
-            data: [
-                'containsMasks' => true,
-                'maskPosition' => MaskPositionType::create(
-                    point: MaskPositionType::MASK_POINT_FOREHEAD,
-                    xShift: 1, yShift: 1, scale: 1),
-            ]
-        ));
+                userId: 1,
+                name: 'sticker_set_name',
+                title: 'title',
+                inputFileType: InputFileType::create(path: '/dev/null'),
+                emojis: '😀',
+                data: [
+                    'containsMasks' => true,
+                    'maskPosition' => MaskPositionType::create(
+                        point: MaskPositionType::MASK_POINT_FOREHEAD,
+                        xShift: 1,
+                        yShift: 1,
+                        scale: 1
+                    ),
+                ]
+            )
+        );
     }
 }

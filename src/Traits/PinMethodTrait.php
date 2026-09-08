@@ -14,16 +14,12 @@ use TgBotApi\BotApiBase\Method\PinChatMessageMethod;
 trait PinMethodTrait
 {
     /**
-     *
      * @throws ResponseException
-     *
      */
     abstract public function pin(PinMethodAliasInterface $pinMethodAlias): bool;
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function pinChatMessage(PinChatMessageMethod $pinChatMessageMethod): bool
     {

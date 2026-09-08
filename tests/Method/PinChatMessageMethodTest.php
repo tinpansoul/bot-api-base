@@ -22,9 +22,10 @@ final class PinChatMessageMethodTest extends MethodTestCase
 
         $botApiComplete->pinChatMessage(
             pinChatMessageMethod: PinChatMessageMethod::create(
-            chatId: 'chat_id',
-            messageId: 1,
-            data: ['disableNotification' => true]
-        ));
+                chatId: 'chat_id',
+                messageId: 1,
+                data: ['disableNotification' => true]
+            )
+        );
     }
 }

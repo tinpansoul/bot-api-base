@@ -27,10 +27,6 @@ class SetStickerPositionInSetMethod implements SetMethodAliasInterface
      */
     public $position;
 
-    /**
-     * @param $sticker
-     * @param $position
-     */
     public static function create($sticker, $position): SetStickerPositionInSetMethod
     {
         $static = new static();

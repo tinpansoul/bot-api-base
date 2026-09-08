@@ -32,16 +32,20 @@ final class AddStickerToSetMethodTest extends MethodTestCase
 
         $botApiComplete->addStickerToSet(
             addStickerToSetMethod: AddStickerToSetMethod::create(
-            userId: 1,
-            name: 'name',
-            pngSticker: InputFileType::create(path: '/dev/null'),
-            emojis: '😀',
-            data: [
-                'maskPosition' => MaskPositionType::create(
-                    point: MaskPositionType::MASK_POINT_FOREHEAD,
-                    xShift: 1, yShift: 1, scale: 1),
-            ]
-        ));
+                userId: 1,
+                name: 'name',
+                pngSticker: InputFileType::create(path: '/dev/null'),
+                emojis: '😀',
+                data: [
+                    'maskPosition' => MaskPositionType::create(
+                        point: MaskPositionType::MASK_POINT_FOREHEAD,
+                        xShift: 1,
+                        yShift: 1,
+                        scale: 1
+                    ),
+                ]
+            )
+        );
     }
 
     /**
@@ -66,15 +70,19 @@ final class AddStickerToSetMethodTest extends MethodTestCase
 
         $botApiComplete->addStickerToSet(
             addStickerToSetMethod: AddStickerToSetMethod::createAnimated(
-            userId: 1,
-            name: 'name',
-            inputFileType: InputFileType::create(path: '/dev/null'),
-            emojis: '😀',
-            data: [
-                'maskPosition' => MaskPositionType::create(
-                    point: MaskPositionType::MASK_POINT_FOREHEAD,
-                    xShift: 1, yShift: 1, scale: 1),
-            ]
-        ));
+                userId: 1,
+                name: 'name',
+                inputFileType: InputFileType::create(path: '/dev/null'),
+                emojis: '😀',
+                data: [
+                    'maskPosition' => MaskPositionType::create(
+                        point: MaskPositionType::MASK_POINT_FOREHEAD,
+                        xShift: 1,
+                        yShift: 1,
+                        scale: 1
+                    ),
+                ]
+            )
+        );
     }
 }

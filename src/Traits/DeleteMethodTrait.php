@@ -18,16 +18,12 @@ use TgBotApi\BotApiBase\Method\Interfaces\DeleteMethodAliasInterface;
 trait DeleteMethodTrait
 {
     /**
-     *
      * @throws ResponseException
-     *
      */
     abstract public function delete(DeleteMethodAliasInterface $deleteMethodAlias): bool;
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function deleteChatPhoto(DeleteChatPhotoMethod $deleteChatPhotoMethod): bool
     {
@@ -35,9 +31,7 @@ trait DeleteMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function deleteChatStickerSet(DeleteChatStickerSetMethod $deleteChatStickerSetMethod): bool
     {
@@ -45,9 +39,7 @@ trait DeleteMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function deleteMessage(DeleteMessageMethod $deleteMessageMethod): bool
     {
@@ -55,9 +47,7 @@ trait DeleteMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function deleteStickerFromSet(DeleteStickerFromSetMethod $deleteStickerFromSetMethod): bool
     {
@@ -65,9 +55,7 @@ trait DeleteMethodTrait
     }
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function deleteWebhook(DeleteWebhookMethod $deleteWebhookMethod): bool
     {

@@ -15,7 +15,7 @@ final class UserProfilePhotosTypeTest extends TypeTestCase
 
         $userProfilePhotosType = $this->getType(result: $result);
 
-        $result = \json_decode(json: $result, associative: true)['result'];
+        $result = json_decode(json: $result, associative: true)['result'];
 
         $this->assertEquals(expected: $userProfilePhotosType->totalCount, actual: $result['total_count']);
         $this->assertEquals(expected: \count($userProfilePhotosType->photos), actual: 1);

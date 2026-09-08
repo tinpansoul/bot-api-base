@@ -23,8 +23,9 @@ final class SetChatPhotoMethodTest extends MethodTestCase
 
         $botApiComplete->setChatPhoto(
             setChatPhotoMethod: SetChatPhotoMethod::create(
-            chatId: 'chat_id',
-            inputFileType: InputFileType::create(path: '/dev/null')
-        ));
+                chatId: 'chat_id',
+                inputFileType: InputFileType::create(path: '/dev/null')
+            )
+        );
     }
 }

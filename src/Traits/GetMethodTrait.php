@@ -6,11 +6,11 @@ namespace TgBotApi\BotApiBase\Traits;
 
 use TgBotApi\BotApiBase\Exception\ResponseException;
 use TgBotApi\BotApiBase\Method\GetChatAdministratorsMethod;
-use TgBotApi\BotApiBase\Method\GetChatMemberMethod;
 use TgBotApi\BotApiBase\Method\GetChatMemberCountMethod;
+use TgBotApi\BotApiBase\Method\GetChatMemberMethod;
 use TgBotApi\BotApiBase\Method\GetChatMembersCountMethod;
-use TgBotApi\BotApiBase\Method\GetChatMethod;
 use TgBotApi\BotApiBase\Method\GetChatMenuButtonMethod;
+use TgBotApi\BotApiBase\Method\GetChatMethod;
 use TgBotApi\BotApiBase\Method\GetFileMethod;
 use TgBotApi\BotApiBase\Method\GetGameHighScoresMethod;
 use TgBotApi\BotApiBase\Method\GetMeMethod;
@@ -35,11 +35,7 @@ use TgBotApi\BotApiBase\Type\WebhookInfoType;
 trait GetMethodTrait
 {
     /**
-     * @param $type
-     *
      * @throws ResponseException
-     *
-     * @return mixed
      */
     abstract public function call(MethodInterface $method, ?string $type = null);
 

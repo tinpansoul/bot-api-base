@@ -53,7 +53,7 @@ class SetStickerSetThumbnailMethod implements SetMethodAliasInterface
         string $name,
         int $userId,
         string $format,
-        string|InputFileType|null $thumbnail = null
+        string|InputFileType|null $thumbnail = null,
     ): SetStickerSetThumbnailMethod {
         $static = new static();
         $static->name = $name;

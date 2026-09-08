@@ -37,29 +37,26 @@ class LoginUrlType
      * The url's domain must be the same as the domain linked with the bot.
      * See Linking your domain to the bot for more details.
      *
-     * @var string | null
+     * @var string|null
      */
     public $forwardText;
 
     /**
      * Optional. New text of the button in forwarded messages.
      *
-     * @var string | null
+     * @var string|null
      */
     public $botUsername;
 
     /**
      * Optional. Pass True to request the permission for your bot to send messages to the user.
      *
-     * @var bool | null
+     * @var bool|null
      */
     public $requestWriteAccess;
 
     /**
-     * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(string $url, ?array $data = null): LoginUrlType
     {

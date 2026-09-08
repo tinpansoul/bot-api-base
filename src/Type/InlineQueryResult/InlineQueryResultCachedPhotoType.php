@@ -63,7 +63,7 @@ class InlineQueryResultCachedPhotoType extends InlineQueryResultType implements 
     public $inputMessageContent;
 
     /**
-     * Optional. Pass True if the caption must be shown above the message media
+     * Optional. Pass True if the caption must be shown above the message media.
      *
      * @var bool|null
      */

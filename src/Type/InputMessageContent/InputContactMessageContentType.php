@@ -44,14 +44,12 @@ class InputContactMessageContentType extends InputMessageContentType
     public $vcard;
 
     /**
-     * @param array|null $data
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(
         string $phoneNumber,
         string $firstName,
-        ?array $data = null
+        ?array $data = null,
     ): InputContactMessageContentType {
         $static = new static();
         $static->phoneNumber = $phoneNumber;

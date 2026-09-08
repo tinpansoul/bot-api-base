@@ -33,7 +33,7 @@ class InlineKeyboardButtonType
      * Optional. An HTTP URL used to automatically authorize the user.
      * Can be used as a replacement for the Telegram Login Widget.
      *
-     * @var LoginUrlType | null
+     * @var LoginUrlType|null
      */
     public $loginUrl;
 
@@ -113,10 +113,7 @@ class InlineKeyboardButtonType
     public $style;
 
     /**
-     * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(string $text, ?array $data = null): InlineKeyboardButtonType
     {

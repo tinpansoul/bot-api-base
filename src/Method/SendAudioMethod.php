@@ -78,8 +78,6 @@ class SendAudioMethod implements SendMethodAliasInterface
     public $thumb;
 
     /**
-     * @param array|null           $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(int|string $chatId, string|InputFileType $audio, ?array $data = null): SendAudioMethod

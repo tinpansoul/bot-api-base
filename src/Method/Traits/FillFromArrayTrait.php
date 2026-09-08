@@ -12,7 +12,6 @@ use TgBotApi\BotApiBase\Exception\BadArgumentException;
 trait FillFromArrayTrait
 {
     /**
-     *
      * @throws BadArgumentException
      */
     public function fill(array $data, array $forbidden = []): void
@@ -26,7 +25,7 @@ trait FillFromArrayTrait
         }
 
         foreach ($data as $key => $value) {
-            if (!\property_exists(object_or_class: $this, property: $key)) {
+            if (!property_exists(object_or_class: $this, property: $key)) {
                 throw new BadArgumentException(message: \sprintf('Argument %s not found in %s', $key, static::class));
             }
 

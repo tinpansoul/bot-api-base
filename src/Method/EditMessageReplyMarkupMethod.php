@@ -19,10 +19,7 @@ class EditMessageReplyMarkupMethod implements EditMethodAliasInterface
     use EditMessageVariablesTrait;
 
     /**
-     * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(int|string $chatId, int $messageId, ?array $data = null): EditMessageReplyMarkupMethod
     {
@@ -37,14 +34,11 @@ class EditMessageReplyMarkupMethod implements EditMethodAliasInterface
     }
 
     /**
-     * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function createInline(
         string $inlineMessageId,
-        ?array $data = null
+        ?array $data = null,
     ): EditMessageReplyMarkupMethod {
         $instance = new self();
         $instance->inlineMessageId = $inlineMessageId;

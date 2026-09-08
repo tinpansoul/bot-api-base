@@ -166,14 +166,14 @@ class ChatType
     public $location;
 
     /**
-     * Optional. True, if the supergroup chat is a forum (has topics enabled)
+     * Optional. True, if the supergroup chat is a forum (has topics enabled).
      *
      * @var bool|null
      */
     public $isForum;
 
     /**
-     * Optional. True, if the chat is the direct messages chat of a channel
+     * Optional. True, if the chat is the direct messages chat of a channel.
      *
      * @var bool|null
      */

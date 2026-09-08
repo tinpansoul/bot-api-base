@@ -43,9 +43,7 @@ class ForwardMessageMethod implements SendMethodAliasInterface, ForwardMethodAli
     public $messageId;
 
     /**
-     * @param array|null $data
      * @throws BadArgumentException
-     *
      */
     public static function create(int|string $chatId, int|string $fromChatId, int $messageId, ?array $data = null): self
     {

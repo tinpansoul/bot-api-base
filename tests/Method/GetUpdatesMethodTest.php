@@ -33,20 +33,21 @@ final class GetUpdatesMethodTest extends MethodTestCase
 
         $botApiComplete->getUpdates(
             getUpdatesMethod: GetUpdatesMethod::create(data: [
-            'offset' => 1,
-            'limit' => 10,
-            'timeout' => 60,
-            'allowedUpdates' => [
-                GetUpdatesMethod::TYPE_CALLBACK_QUERY,
-                GetUpdatesMethod::TYPE_CHANNEL_POST,
-                GetUpdatesMethod::TYPE_CHOSEN_INLINE_RESULT,
-                GetUpdatesMethod::TYPE_EDITED_CHANNEL_POST,
-                GetUpdatesMethod::TYPE_EDITED_MESSAGE,
-                GetUpdatesMethod::TYPE_INLINE_QUERY,
-                GetUpdatesMethod::TYPE_MESSAGE,
-                GetUpdatesMethod::TYPE_PRE_CHECKOUT_QUERY,
-                GetUpdatesMethod::TYPE_SHIPPING_QUERY,
-            ],
-        ]));
+                'offset' => 1,
+                'limit' => 10,
+                'timeout' => 60,
+                'allowedUpdates' => [
+                    GetUpdatesMethod::TYPE_CALLBACK_QUERY,
+                    GetUpdatesMethod::TYPE_CHANNEL_POST,
+                    GetUpdatesMethod::TYPE_CHOSEN_INLINE_RESULT,
+                    GetUpdatesMethod::TYPE_EDITED_CHANNEL_POST,
+                    GetUpdatesMethod::TYPE_EDITED_MESSAGE,
+                    GetUpdatesMethod::TYPE_INLINE_QUERY,
+                    GetUpdatesMethod::TYPE_MESSAGE,
+                    GetUpdatesMethod::TYPE_PRE_CHECKOUT_QUERY,
+                    GetUpdatesMethod::TYPE_SHIPPING_QUERY,
+                ],
+            ])
+        );
     }
 }

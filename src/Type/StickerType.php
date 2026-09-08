@@ -91,14 +91,14 @@ class StickerType
     public $type;
 
     /**
-     * True, if the sticker is a video sticker
+     * True, if the sticker is a video sticker.
      *
      * @var bool|null
      */
     public $isVideo;
 
     /**
-     * Optional. For custom emoji stickers, unique identifier of the custom emoji
+     * Optional. For custom emoji stickers, unique identifier of the custom emoji.
      *
      * @var string|null
      */
@@ -106,7 +106,7 @@ class StickerType
 
     /**
      * Optional. True, if the sticker must be repainted to a text color in messages, the color of the Telegram Premium
-     * badge in emoji status, white color on chat photos, or another appropriate color in other places
+     * badge in emoji status, white color on chat photos, or another appropriate color in other places.
      *
      * @var bool|null
      */

@@ -23,6 +23,22 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 3.0.2 - 2026-09-08
+
+Style only - no behavioural change. PHP-CS-Fixer had been unable to run since the PHP 8
+requirement was introduced, so its rule set had not been applied in years.
+
+### Changed
+- Applied PHP-CS-Fixer and PHPCBF across the codebase: docblock trimming and ordering,
+  removal of superfluous `@param`/`@return` tags, trailing commas in multi-line calls,
+  `native_function_invocation`, and PSR-12 indentation fixes.
+- Disabled the `single_line_throw` rule from the `@Symfony` set. It collapses multi-argument
+  `throw` statements onto one line, which produced lines of over 200 characters.
+- `phpcs.xml.dist` had its exit configuration inverted: errors were ignored and warnings
+  failed the build. Errors now fail; the 120-character line length, which PSR-12 reports as
+  a warning, does not.
+
+
 ## 3.0.1 - 2026-09-08
 
 ### Fixed

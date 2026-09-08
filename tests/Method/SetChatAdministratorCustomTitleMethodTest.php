@@ -22,9 +22,10 @@ final class SetChatAdministratorCustomTitleMethodTest extends MethodTestCase
 
         $botApiComplete->setChatAdministratorCustomTitle(
             setChatAdministratorCustomTitleMethod: SetChatAdministratorCustomTitleMethod::create(
-            chatId: 'chat_id',
-            userId: 1,
-            title: 'Custom title'
-        ));
+                chatId: 'chat_id',
+                userId: 1,
+                title: 'Custom title'
+            )
+        );
     }
 }

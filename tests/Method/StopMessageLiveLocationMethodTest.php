@@ -25,8 +25,9 @@ final class StopMessageLiveLocationMethodTest extends MethodTestCase
 
         $botApiComplete->stopMessageLiveLocation(
             stopMessageLiveLocationMethod: StopMessageLiveLocationMethod::create(chatId: 'chat_id', messageId: 1, data: [
-            'replyMarkup' => $this->buildInlineMarkupObject(),
-        ]));
+                'replyMarkup' => $this->buildInlineMarkupObject(),
+            ])
+        );
     }
 
     /**
@@ -42,8 +43,11 @@ final class StopMessageLiveLocationMethodTest extends MethodTestCase
 
         $botApiComplete->stopMessageLiveLocation(
             stopMessageLiveLocationMethod: StopMessageLiveLocationMethod::createInline(
-            inlineMessageId: 'message_id', data: [
-            'replyMarkup' => $this->buildInlineMarkupObject(),
-        ]));
+                inlineMessageId: 'message_id',
+                data: [
+                    'replyMarkup' => $this->buildInlineMarkupObject(),
+                ]
+            )
+        );
     }
 }

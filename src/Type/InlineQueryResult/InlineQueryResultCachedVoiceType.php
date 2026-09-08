@@ -62,7 +62,7 @@ class InlineQueryResultCachedVoiceType extends InlineQueryResultType implements 
         string $id,
         string $voiceFileId,
         string $title,
-        ?array $data = null
+        ?array $data = null,
     ): InlineQueryResultCachedVoiceType {
         $static = new static();
         $static->type = static::TYPE_VOICE;

@@ -14,16 +14,12 @@ use TgBotApi\BotApiBase\Method\RestrictChatMemberMethod;
 trait RestrictMethodTrait
 {
     /**
-     *
      * @throws ResponseException
-     *
      */
     abstract public function restrict(RestrictMethodAliasInterface $restrictMethodAlias): bool;
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function restrictChatMember(RestrictChatMemberMethod $restrictChatMemberMethod): bool
     {

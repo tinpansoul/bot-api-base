@@ -52,10 +52,9 @@ final class SetWebhookMethodTest extends MethodTestCase
     }
 
     /**
-     * @param $expectedBody
+     * @param array<string, string[]|string|int|bool> $expectedBody
      *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
-     * @param array<string, string[]|string|int|bool> $expectedBody
      */
     #[DataProvider('provideData')]
     public function testEncode(SetWebhookMethod $setWebhookMethod, array $expectedBody): void

@@ -33,26 +33,21 @@ class BotApi implements BotApiInterface
         private string $botKey,
         private ApiClientInterface $apiClient,
         private NormalizerInterface $normalizer,
-        private string $endPoint = 'https://api.telegram.org'
+        private string $endPoint = 'https://api.telegram.org',
     ) {
         $this->apiClient->setBotKey($this->botKey);
         $this->apiClient->setEndpoint($this->endPoint);
     }
 
     /**
-     * @param $method
-     *
      * @throws ResponseException
-     *
-     * @return mixed
      */
     public function call(MethodInterface $method, ?string $type = null)
     {
         $json = $this->apiClient->send($this->getMethodName(method: $method), $this->normalizer->normalize($method));
 
         if (!$json instanceof \stdClass) {
-            throw new InvalidResponseException(
-                message: 'Telegram Bot API returned a body that is not a JSON object.');
+            throw new InvalidResponseException(message: 'Telegram Bot API returned a body that is not a JSON object.');
         }
 
         if (true !== ($json->ok ?? false)) {
@@ -62,7 +57,8 @@ class BotApi implements BotApiInterface
                 message: $json->description ?? 'Telegram Bot API returned an unsuccessful response without a description.',
                 code: (int) ($json->error_code ?? 0),
                 retryAfter: isset($parameters->retry_after) ? (int) $parameters->retry_after : null,
-                migrateToChatId: isset($parameters->migrate_to_chat_id) ? (int) $parameters->migrate_to_chat_id : null);
+                migrateToChatId: isset($parameters->migrate_to_chat_id) ? (int) $parameters->migrate_to_chat_id : null
+            );
         }
 
         return $type ? $this->normalizer->denormalize($json->result, $type) : $json->result;
@@ -136,16 +132,14 @@ class BotApi implements BotApiInterface
         );
     }
 
-    /**
-     * @param $method
-     */
     private function getMethodName(MethodInterface $method): string
     {
-        return \lcfirst(
-            string: \substr(
-            string: $method::class,
-            offset: \strrpos(haystack: $method::class, needle: '\\') + 1,
-            length: -6
-        ));
+        return lcfirst(
+            string: substr(
+                string: $method::class,
+                offset: strrpos(haystack: $method::class, needle: '\\') + 1,
+                length: -6
+            )
+        );
     }
 }

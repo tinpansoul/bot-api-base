@@ -19,8 +19,9 @@ final class UnbanChatMemberMethodTest extends MethodTestCase
     }
 
     /**
-     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<string, string|int|bool> $expectedRequest
+     *
+     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
     #[DataProvider('provideData')]
     public function testEncode(UnbanChatMemberMethod $unbanChatMemberMethod, array $expectedRequest): void

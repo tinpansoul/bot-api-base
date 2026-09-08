@@ -52,6 +52,7 @@ class SendMediaGroupMethod implements MethodInterface
 
     /**
      * @param InputMediaPhotoType[]|InputMediaVideoType[]|InputMediaAudioType[]|InputMediaDocumentType[] $media
+     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(int|string $chatId, array $media, ?array $data = null): SendMediaGroupMethod

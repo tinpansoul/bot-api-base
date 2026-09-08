@@ -109,7 +109,7 @@ class PollType implements PollTypeInterface
     public $closeDate;
 
     /**
-     * True, if the poll allows to change the chosen answer options
+     * True, if the poll allows to change the chosen answer options.
      *
      * @var bool|null
      */
@@ -117,7 +117,7 @@ class PollType implements PollTypeInterface
 
     /**
      * True if voting is limited to users who have been members of the chat where the poll was originally sent for more
-     * than 24 hours
+     * than 24 hours.
      *
      * @var bool|null
      */
@@ -141,7 +141,7 @@ class PollType implements PollTypeInterface
     public $correctOptionIds;
 
     /**
-     * Optional. Description of the poll; for polls inside the Message object only
+     * Optional. Description of the poll; for polls inside the Message object only.
      *
      * @var string|null
      */

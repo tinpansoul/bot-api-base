@@ -62,7 +62,7 @@ class ReplyKeyboardMarkupType
     public $isPersistent;
 
     /**
-     * Optional. The placeholder to be shown in the input field when the keyboard is active; 1-64 characters
+     * Optional. The placeholder to be shown in the input field when the keyboard is active; 1-64 characters.
      *
      * @var string|null
      */
@@ -70,7 +70,6 @@ class ReplyKeyboardMarkupType
 
     /**
      * @param KeyboardButtonType[][] $keyboard
-     * @param array|null             $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */

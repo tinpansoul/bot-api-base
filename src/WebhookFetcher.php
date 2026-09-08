@@ -13,7 +13,6 @@ use TgBotApi\BotApiBase\Type\UpdateType;
  */
 class WebhookFetcher implements WebhookFetcherInterface
 {
-
     /**
      * WebhookFetcher constructor.
      */
@@ -26,8 +25,8 @@ class WebhookFetcher implements WebhookFetcherInterface
      */
     public function fetch(mixed $request): UpdateType
     {
-        $input = \json_decode(json: $this->getContents(request: $request));
-        if (!($input instanceof \stdClass)) {
+        $input = json_decode(json: $this->getContents(request: $request));
+        if (!$input instanceof \stdClass) {
             throw new BadRequestException(message: 'Request content must be valid JSON object.');
         }
 
@@ -35,8 +34,6 @@ class WebhookFetcher implements WebhookFetcherInterface
     }
 
     /**
-     * @param $request
-     *
      * @throws BadRequestException
      */
     private function getContents($request): string
@@ -50,6 +47,7 @@ class WebhookFetcher implements WebhookFetcherInterface
         }
 
         throw new BadRequestException(
-            message: 'Request must be instance of Psr\Http\Message\RequestInterface or string.');
+            message: 'Request must be instance of Psr\Http\Message\RequestInterface or string.'
+        );
     }
 }

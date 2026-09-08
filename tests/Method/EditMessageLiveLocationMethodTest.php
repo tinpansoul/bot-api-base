@@ -74,8 +74,9 @@ final class EditMessageLiveLocationMethodTest extends MethodTestCase
     }
 
     /**
-     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<array<string, mixed>, mixed> $excepted
+     *
+     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
     private function queryApi(array $excepted, EditMessageLiveLocationMethod $editMessageLiveLocationMethod): void
     {

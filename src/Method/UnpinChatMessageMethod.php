@@ -34,7 +34,7 @@ class UnpinChatMessageMethod implements UnpinMethodAliasInterface
         $static = new static();
         $static->chatId = $chatId;
 
-        if ($data !== null && $data !== []) {
+        if (null !== $data && [] !== $data) {
             $static->fill(data: $data);
         }
 

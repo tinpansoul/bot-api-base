@@ -23,31 +23,28 @@ class MenuButtonType
     public const TYPE_DEFAULT = 'default';
 
     /**
-     * Type of the button must be one of the list: commands, web_app, default
+     * Type of the button must be one of the list: commands, web_app, default.
      *
      * @var string
      */
     public $type;
 
     /**
-     * Text on the button. Required for type 'web_app'
+     * Text on the button. Required for type 'web_app'.
      *
      * @var string|null
      */
     public $text;
 
     /**
-     * Description of the Web App that will be launched when the user presses the button. Required for type 'web_app'
+     * Description of the Web App that will be launched when the user presses the button. Required for type 'web_app'.
      *
      * @var WebAppInfoType|null
      */
     public $webApp;
 
     /**
-     * @param array|null $data
-     *
      * @throws BadArgumentException
-     *
      */
     public static function create(string $type, ?array $data = null): MenuButtonType
     {

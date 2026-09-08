@@ -26,11 +26,12 @@ final class AnswerCallbackQueryMethodTest extends MethodTestCase
 
         $botApiComplete->answerCallbackQuery(
             answerCallbackQueryMethod: AnswerCallbackQueryMethod::create(callbackQueryId: 'id', data: [
-            'text' => 'text of answer',
-            'showAlert' => true,
-            'url' => 'url',
-            'cacheTime' => $dateTime,
-        ]));
+                'text' => 'text of answer',
+                'showAlert' => true,
+                'url' => 'url',
+                'cacheTime' => $dateTime,
+            ])
+        );
     }
 
     /**
@@ -64,10 +65,11 @@ final class AnswerCallbackQueryMethodTest extends MethodTestCase
 
         $botApiComplete->answerCallbackQuery(
             answerCallbackQueryMethod: AnswerCallbackQueryMethod::create(callbackQueryId: 'id', data: [
-            'text' => 'text of answer',
-            'showAlert' => false,
-            'url' => 'url',
-            'cacheTime' => $dateTime,
-        ]));
+                'text' => 'text of answer',
+                'showAlert' => false,
+                'url' => 'url',
+                'cacheTime' => $dateTime,
+            ])
+        );
     }
 }

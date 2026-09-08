@@ -66,8 +66,9 @@ final class EditMessageCaptionMethodTest extends MethodTestCase
     }
 
     /**
-     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<string, mixed[]>|array<string, string>|array<string, int> $excepted
+     *
+     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
     private function queryApi(array $excepted, EditMessageCaptionMethod $editMessageCaptionMethod): void
     {

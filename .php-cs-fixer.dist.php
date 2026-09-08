@@ -29,5 +29,7 @@ return (new PhpCsFixer\Config())
         'native_function_invocation' => true,
         'no_useless_return' => true,
         'concat_space' => false,
+        // Collapsing multi-argument throws onto one line produces unreadable 200+ char lines.
+        'single_line_throw' => false,
     ])
     ->setFinder($finder);

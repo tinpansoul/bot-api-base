@@ -14,16 +14,12 @@ use TgBotApi\BotApiBase\Method\Interfaces\CreateMethodAliasInterface;
 trait CreateMethodTrait
 {
     /**
-     *
      * @throws ResponseException
-     *
      */
     abstract public function create(CreateMethodAliasInterface $createMethodAlias): bool;
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function createNewStickerSet(CreateNewStickerSetMethod $createNewStickerSetMethod): bool
     {

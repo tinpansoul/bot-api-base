@@ -20,8 +20,9 @@ final class SendChatActionMethodTest extends MethodTestCase
 
         $botApiComplete->sendChatAction(
             sendChatActionMethod: SendChatActionMethod::create(
-            chatId: 'chat_id',
-            action: SendChatActionMethod::ACTION_FIND_LOCATION
-        ));
+                chatId: 'chat_id',
+                action: SendChatActionMethod::ACTION_FIND_LOCATION
+            )
+        );
     }
 }

@@ -31,8 +31,6 @@ abstract class TypeBaseTestCase extends TypeTestCase
     }
 
     /**
-     * @param mixed $excepted
-     *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
     #[DataProvider('provideData')]
@@ -41,14 +39,14 @@ abstract class TypeBaseTestCase extends TypeTestCase
         $this->client
             ->expects(static::once())
             ->method(constraint: 'send')
-            ->willReturn(value: \json_decode(json: $response));
+            ->willReturn(value: json_decode(json: $response));
 
         $type = $this->botApi->call(method: $this->getMethod(), type: $class);
 
         if ($excepted instanceof $class) {
             static::assertEquals(expected: $excepted, actual: $type);
         } else {
-            foreach (\get_object_vars(object: $type) as $var => $value) {
+            foreach (get_object_vars(object: $type) as $var => $value) {
                 static::assertEquals(expected: $excepted[$var], actual: $value);
             }
         }

@@ -22,25 +22,22 @@ class SetChatMenuButtonMethod implements SetMethodAliasInterface
 
     /**
      * Unique identifier for the target private chat. If not specified, default bot's menu
-     * button will be changed
+     * button will be changed.
      *
-     * @var integer|null
+     * @var int|null
      */
     public $chatId;
 
     /**
      * Optional. A JSON-serialized object for the bot's new menu button.
-     * Defaults to 'default' type
+     * Defaults to 'default' type.
      *
      * @var MenuButtonType|null
      */
     public $menuButton;
 
-
     /**
      * SetChatMenuButtonMethod constructor.
-     *
-     * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */

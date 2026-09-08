@@ -14,16 +14,14 @@ use TgBotApi\BotApiBase\Exception\BadArgumentException;
 class WebAppInfoType
 {
     /**
-     * An HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web Apps
+     * An HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web Apps.
      *
      * @var string
      */
     public $url;
 
     /**
-     *
      * @throws BadArgumentException
-     *
      */
     public static function create(string $url): WebAppInfoType
     {

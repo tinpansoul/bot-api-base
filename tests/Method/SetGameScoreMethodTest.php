@@ -29,15 +29,16 @@ final class SetGameScoreMethodTest extends MethodTestCase
 
         $botApiComplete->setGameScore(
             setGameScoreMethod: SetGameScoreMethod::create(
-            userId: 1,
-            score: 100,
-            chatId: 1,
-            messageId: 1,
-            data: [
-                'force' => true,
-                'disableEditMessage' => true,
-            ]
-        ));
+                userId: 1,
+                score: 100,
+                chatId: 1,
+                messageId: 1,
+                data: [
+                    'force' => true,
+                    'disableEditMessage' => true,
+                ]
+            )
+        );
     }
 
     /**
@@ -60,13 +61,14 @@ final class SetGameScoreMethodTest extends MethodTestCase
 
         $botApiComplete->setGameScore(
             setGameScoreMethod: SetGameScoreMethod::createInline(
-            userId: 1,
-            score: 100,
-            inlineMessageId: 'id',
-            data: [
-                'force' => true,
-                'disableEditMessage' => true,
-            ]
-        ));
+                userId: 1,
+                score: 100,
+                inlineMessageId: 'id',
+                data: [
+                    'force' => true,
+                    'disableEditMessage' => true,
+                ]
+            )
+        );
     }
 }

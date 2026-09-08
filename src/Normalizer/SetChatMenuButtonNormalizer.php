@@ -14,7 +14,6 @@ use TgBotApi\BotApiBase\Method\SetChatMenuButtonMethod;
  */
 class SetChatMenuButtonNormalizer implements NormalizerInterface
 {
-
     /**
      * JsonSerializableNormalizer constructor.
      */
@@ -25,13 +24,14 @@ class SetChatMenuButtonNormalizer implements NormalizerInterface
     /**
      * @param SetChatMenuButtonMethod $topic
      *
-     * @return array|bool|false|float|int|string
      * @throws ExceptionInterface
+     *
+     * @return array|bool|false|float|int|string
      */
     public function normalize(
         $topic,
         $format = null,
-        array $context = []
+        array $context = [],
     ): string|int|float|bool|\ArrayObject|array|null {
         // Normalizers below rewrite fields into their JSON-serialized form. Work on a copy so the
         // caller's method object is left untouched and can be normalized again (e.g. on retry).
@@ -42,7 +42,7 @@ class SetChatMenuButtonNormalizer implements NormalizerInterface
             $this->objectNormalizer,
         ]);
 
-        $topic->menuButton = \json_encode(
+        $topic->menuButton = json_encode(
             value: $serializer->normalize(data: $topic->menuButton, context: ['skip_null_values' => true])
         );
 

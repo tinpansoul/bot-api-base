@@ -96,6 +96,7 @@ final class AnswerInlineQueryMethodTest extends MethodTestCase
 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
+     *
      * @return array<int, InputTextMessageContentType|array<string, bool|string>>
      */
     private function buildInputTextMessageContent(): array
@@ -117,13 +118,11 @@ final class AnswerInlineQueryMethodTest extends MethodTestCase
     }
 
     /**
-     * @param $excepted
-     * @param $verifiable
+     * @param array<string, mixed> $excepted
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @throws \Exception
-     * @param array<string, mixed> $excepted
      */
     private function runWithArguments(array $excepted, InlineQueryResultArticleType|InlineQueryResultAudioType $verifiable): void
     {

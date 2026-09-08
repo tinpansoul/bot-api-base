@@ -24,8 +24,6 @@ class EditMessageCaptionMethod implements HasParseModeVariableInterface, EditMet
     use CaptionVariablesTrait;
 
     /**
-     * @param $chatId
-     *
      * @throws BadArgumentException
      */
     public static function create($chatId, int $messageId, ?array $data = null): EditMessageCaptionMethod

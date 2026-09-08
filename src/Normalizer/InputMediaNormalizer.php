@@ -20,8 +20,6 @@ class InputMediaNormalizer implements NormalizerInterface
 
     /**
      * InputMediaNormalizer constructor.
-     *
-     * @param $files
      */
     public function __construct(private readonly NormalizerInterface $objectNormalizer, &$files)
     {
@@ -31,28 +29,31 @@ class InputMediaNormalizer implements NormalizerInterface
     /**
      * @param InputMediaType $topic
      *
-     * @return array|bool|float|int|mixed|string
      * @throws ExceptionInterface
+     *
+     * @return array|bool|float|int|mixed|string
      */
     public function normalize(
         $topic,
         $format = null,
-        array $context = []
+        array $context = [],
     ): string|int|float|bool|\ArrayObject|array|null {
         // Normalizers below rewrite fields into their JSON-serialized form. Work on a copy so the
         // caller's method object is left untouched and can be normalized again (e.g. on retry).
         $topic = clone $topic;
 
         if ($topic->media instanceof InputFileType) {
-            $uniqid = \uniqid(more_entropy: true);
+            $uniqid = uniqid(more_entropy: true);
             $this->files[$uniqid] = $topic->media;
             $topic->media = 'attach://' . $uniqid;
         }
 
         // Bot API 6.6 renamed "thumb" to "thumbnail". Fold the deprecated field into the current
         // one so anything still setting $thumb keeps working; skip_null_values drops the old key.
-        if (\property_exists(object_or_class: $topic, property: 'thumb')
-            && \property_exists(object_or_class: $topic, property: 'thumbnail')) {
+        if (
+            property_exists(object_or_class: $topic, property: 'thumb')
+            && property_exists(object_or_class: $topic, property: 'thumbnail')
+        ) {
             if (null !== $topic->thumb && null === $topic->thumbnail) {
                 $topic->thumbnail = $topic->thumb;
             }
@@ -60,8 +61,8 @@ class InputMediaNormalizer implements NormalizerInterface
             $topic->thumb = null;
         }
 
-        if (\property_exists(object_or_class: $topic, property: 'thumbnail') && $topic->thumbnail instanceof InputFileType) {
-            $uniqid = \uniqid(more_entropy: true);
+        if (property_exists(object_or_class: $topic, property: 'thumbnail') && $topic->thumbnail instanceof InputFileType) {
+            $uniqid = uniqid(more_entropy: true);
             $this->files[$uniqid] = $topic->thumbnail;
             $topic->thumbnail = 'attach://' . $uniqid;
         }

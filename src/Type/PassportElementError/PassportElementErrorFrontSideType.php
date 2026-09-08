@@ -11,15 +11,15 @@ namespace TgBotApi\BotApiBase\Type\PassportElementError;
  */
 class PassportElementErrorFrontSideType extends PassportElementErrorType
 {
-    const TYPE_PASSPORT = 'passport';
+    public const TYPE_PASSPORT = 'passport';
 
-    const TYPE_DRIVER_LICENSE = 'driver_license';
+    public const TYPE_DRIVER_LICENSE = 'driver_license';
 
-    const TYPE_IDENTITY_CARD = 'identity_card';
+    public const TYPE_IDENTITY_CARD = 'identity_card';
 
-    const TYPE_INTERNAL_PASSPORT = 'internal_passport';
+    public const TYPE_INTERNAL_PASSPORT = 'internal_passport';
 
-    const ALLOWED_TYPES = [
+    public const ALLOWED_TYPES = [
         self::TYPE_PASSPORT,
         self::TYPE_DRIVER_LICENSE,
         self::TYPE_IDENTITY_CARD,
@@ -34,14 +34,12 @@ class PassportElementErrorFrontSideType extends PassportElementErrorType
     public $fileHash;
 
     /**
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(
         string $type,
         string $message,
-        string $fileHash
+        string $fileHash,
     ): PassportElementErrorFrontSideType {
         $instance = parent::createBase(source: 'front_side', type: $type, message: $message);
         $instance->fileHash = $fileHash;

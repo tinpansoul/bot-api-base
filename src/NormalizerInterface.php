@@ -10,15 +10,9 @@ namespace TgBotApi\BotApiBase;
 interface NormalizerInterface
 {
     /**
-     * @param $data
-     * @param $type
-     *
      * @return object|array
      */
     public function denormalize($data, string $type);
 
-    /**
-     * @param $method
-     */
     public function normalize($method): BotApiRequestInterface;
 }

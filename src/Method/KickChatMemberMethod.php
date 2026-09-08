@@ -13,7 +13,6 @@ use TgBotApi\BotApiBase\Method\Traits\UserIdVariableTrait;
  * Class KickChatMemberMethod.
  *
  * @see https://core.telegram.org/bots/api#kickchatmember
- *
  * @deprecated Absent from the current Bot API documentation. Use BanChatMemberMethod instead.
  */
 class KickChatMemberMethod implements KickMethodAliasInterface
@@ -34,10 +33,7 @@ class KickChatMemberMethod implements KickMethodAliasInterface
     /**
      * KickChatMemberMethod constructor.
      *
-     * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(int|string $chatId, int $userId, ?array $data = null): KickChatMemberMethod
     {

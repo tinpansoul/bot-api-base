@@ -84,7 +84,7 @@ class InlineQueryResultMpeg4GifType extends InlineQueryResultType implements Has
     public $inputMessageContent;
 
     /**
-     * URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
+     * URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result.
      *
      * @var string|null
      */
@@ -99,7 +99,7 @@ class InlineQueryResultMpeg4GifType extends InlineQueryResultType implements Has
     public $thumbnailMimeType;
 
     /**
-     * Optional. Pass True if the caption must be shown above the message media
+     * Optional. Pass True if the caption must be shown above the message media.
      *
      * @var bool|null
      */
@@ -112,7 +112,7 @@ class InlineQueryResultMpeg4GifType extends InlineQueryResultType implements Has
         string $id,
         string $mpeg4Url,
         string $thumbUrl,
-        ?array $data = null
+        ?array $data = null,
     ): InlineQueryResultMpeg4GifType {
         $static = new static();
         $static->type = static::TYPE_MPEG4GIF;

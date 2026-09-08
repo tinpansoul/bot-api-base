@@ -77,42 +77,42 @@ class ChatPermissionsType
     public $canPinMessages;
 
     /**
-     * Optional. True, if the user is allowed to send audios
+     * Optional. True, if the user is allowed to send audios.
      *
      * @var bool|null
      */
     public $canSendAudios;
 
     /**
-     * Optional. True, if the user is allowed to send documents
+     * Optional. True, if the user is allowed to send documents.
      *
      * @var bool|null
      */
     public $canSendDocuments;
 
     /**
-     * Optional. True, if the user is allowed to send photos
+     * Optional. True, if the user is allowed to send photos.
      *
      * @var bool|null
      */
     public $canSendPhotos;
 
     /**
-     * Optional. True, if the user is allowed to send videos
+     * Optional. True, if the user is allowed to send videos.
      *
      * @var bool|null
      */
     public $canSendVideos;
 
     /**
-     * Optional. True, if the user is allowed to send video notes
+     * Optional. True, if the user is allowed to send video notes.
      *
      * @var bool|null
      */
     public $canSendVideoNotes;
 
     /**
-     * Optional. True, if the user is allowed to send voice notes
+     * Optional. True, if the user is allowed to send voice notes.
      *
      * @var bool|null
      */
@@ -142,9 +142,6 @@ class ChatPermissionsType
      */
     public $canManageTopics;
 
-    /**
-     * @param array|null $data
-     */
     public static function create(?array $data = null): ChatPermissionsType
     {
         $static = new static();

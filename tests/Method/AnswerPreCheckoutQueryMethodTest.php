@@ -34,8 +34,9 @@ final class AnswerPreCheckoutQueryMethodTest extends MethodTestCase
 
         $botApiComplete->answerPreCheckoutQuery(
             answerPreCheckoutQueryMethod: AnswerPreCheckoutQueryMethod::createFail(
-            preCheckoutQueryId: 'id',
-            errorMessage: 'message'
-        ));
+                preCheckoutQueryId: 'id',
+                errorMessage: 'message'
+            )
+        );
     }
 }

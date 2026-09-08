@@ -29,8 +29,6 @@ class GetChatMenuButtonMethod implements MethodInterface
     /**
      * GetChatMenuButtonMethod constructor.
      *
-     * @param array|null $data
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(?array $data = null): GetChatMenuButtonMethod

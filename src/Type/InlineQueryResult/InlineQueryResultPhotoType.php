@@ -84,14 +84,14 @@ class InlineQueryResultPhotoType extends InlineQueryResultType implements HasPar
     public $inputMessageContent;
 
     /**
-     * URL of the thumbnail for the photo
+     * URL of the thumbnail for the photo.
      *
      * @var string|null
      */
     public $thumbnailUrl;
 
     /**
-     * Optional. Pass True if the caption must be shown above the message media
+     * Optional. Pass True if the caption must be shown above the message media.
      *
      * @var bool|null
      */
@@ -104,7 +104,7 @@ class InlineQueryResultPhotoType extends InlineQueryResultType implements HasPar
         string $id,
         string $photoUrl,
         string $thumbUrl,
-        ?array $data = null
+        ?array $data = null,
     ): InlineQueryResultPhotoType {
         $static = new static();
         $static->type = static::TYPE_PHOTO;

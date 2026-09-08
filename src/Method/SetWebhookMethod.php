@@ -38,7 +38,7 @@ class SetWebhookMethod implements HasUpdateTypeVariableInterface, SetMethodAlias
     /**
      * The fixed IP address which will be used to send webhook requests instead of the IP address resolved through DNS.
      *
-     * @var string | null
+     * @var string|null
      */
     public $ipAddress;
 

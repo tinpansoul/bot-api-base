@@ -67,21 +67,21 @@ class SuccessfulPaymentType
     public $orderInfo;
 
     /**
-     * Optional. Expiration date of the subscription, in Unix time; for recurring payments only
+     * Optional. Expiration date of the subscription, in Unix time; for recurring payments only.
      *
      * @var \DateTimeImmutable|null
      */
     public $subscriptionExpirationDate;
 
     /**
-     * Optional. True, if the payment is a recurring payment for a subscription
+     * Optional. True, if the payment is a recurring payment for a subscription.
      *
      * @var bool|null
      */
     public $isRecurring;
 
     /**
-     * Optional. True, if the payment is the first payment for a subscription
+     * Optional. True, if the payment is the first payment for a subscription.
      *
      * @var bool|null
      */

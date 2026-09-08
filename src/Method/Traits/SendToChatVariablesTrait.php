@@ -51,7 +51,7 @@ trait SendToChatVariablesTrait
      *
      * @var bool|null
      *
-     * @deprecated Superseded by $replyParameters; set ReplyParametersType::$allowSendingWithoutReply instead.
+     * @deprecated superseded by $replyParameters; set ReplyParametersType::$allowSendingWithoutReply instead
      */
     public $allowSendingWithoutReply;
 
@@ -60,7 +60,7 @@ trait SendToChatVariablesTrait
      *
      * @var int|null
      *
-     * @deprecated Superseded by $replyParameters; set ReplyParametersType::$messageId instead.
+     * @deprecated superseded by $replyParameters; set ReplyParametersType::$messageId instead
      */
     public $replyToMessageId;
 

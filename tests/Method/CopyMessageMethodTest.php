@@ -36,9 +36,10 @@ final class CopyMessageMethodTest extends MethodTestCase
     }
 
     /**
-     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<string, mixed> $exceptedRequest
-     * @param string[] $serializedFields
+     * @param string[]             $serializedFields
+     *
+     * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
     #[DataProvider('provideData')]
     public function testEncode(CopyMessageMethod $copyMessageMethod, array $exceptedRequest, array $serializedFields): void

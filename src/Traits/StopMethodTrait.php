@@ -14,16 +14,12 @@ use TgBotApi\BotApiBase\Method\StopMessageLiveLocationMethod;
 trait StopMethodTrait
 {
     /**
-     *
      * @throws ResponseException
-     *
      */
     abstract public function stop(StopMethodAliasInterface $stopMethodAlias): bool;
 
     /**
-     *
      * @throws ResponseException
-     *
      */
     public function stopMessageLiveLocation(StopMessageLiveLocationMethod $stopMessageLiveLocationMethod): bool
     {

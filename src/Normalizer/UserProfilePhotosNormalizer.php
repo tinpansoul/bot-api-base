@@ -17,18 +17,16 @@ use TgBotApi\BotApiBase\Type\UserProfilePhotosType;
  */
 class UserProfilePhotosNormalizer implements DenormalizerInterface
 {
-
     /**
      * UserProfilePhotosNormalizer constructor.
      */
     public function __construct(
         private readonly NormalizerInterface $objectNormalizer,
-        private readonly ArrayDenormalizer $arrayDenormalizer
+        private readonly ArrayDenormalizer $arrayDenormalizer,
     ) {
     }
 
     /**
-     *
      * @throws ExceptionInterface
      */
     public function denormalize(mixed $data, string $class, $format = null, array $context = []): UserProfilePhotosType

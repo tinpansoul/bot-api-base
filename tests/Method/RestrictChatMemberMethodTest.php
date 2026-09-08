@@ -29,12 +29,13 @@ final class RestrictChatMemberMethodTest extends MethodTestCase
 
         $botApiComplete->restrictChatMember(
             restrictChatMemberMethod: RestrictChatMemberMethod::createOld(chatId: 'chat_id', userId: 1, data: [
-            'untilDate' => $dateTime,
-            'canSendMessages' => true,
-            'canSendMediaMessages' => true,
-            'canSendOtherMessages' => true,
-            'canAddWebPagePreviews' => true,
-        ]));
+                'untilDate' => $dateTime,
+                'canSendMessages' => true,
+                'canSendMediaMessages' => true,
+                'canSendOtherMessages' => true,
+                'canAddWebPagePreviews' => true,
+            ])
+        );
     }
 
     public function testEncode(): void
@@ -68,10 +69,13 @@ final class RestrictChatMemberMethodTest extends MethodTestCase
 
         $botApiComplete->restrictChatMember(
             restrictChatMemberMethod: RestrictChatMemberMethod::create(
-            chatId: 'chat_id',
-            userId: 1,
-            chatPermissionsType: $chatPermissionsType, data: [
-            'untilDate' => $dateTime,
-        ]));
+                chatId: 'chat_id',
+                userId: 1,
+                chatPermissionsType: $chatPermissionsType,
+                data: [
+                    'untilDate' => $dateTime,
+                ]
+            )
+        );
     }
 }

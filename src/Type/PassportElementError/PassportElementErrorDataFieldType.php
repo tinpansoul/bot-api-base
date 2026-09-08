@@ -11,19 +11,19 @@ namespace TgBotApi\BotApiBase\Type\PassportElementError;
  */
 class PassportElementErrorDataFieldType extends PassportElementErrorType
 {
-    const TYPE_PERSONAL_DETAILS = 'personal_details';
+    public const TYPE_PERSONAL_DETAILS = 'personal_details';
 
-    const TYPE_PASSPORT = 'passport';
+    public const TYPE_PASSPORT = 'passport';
 
-    const TYPE_DRIVER_LICENSE = 'driver_license';
+    public const TYPE_DRIVER_LICENSE = 'driver_license';
 
-    const TYPE_IDENTITY_CARD = 'identity_card';
+    public const TYPE_IDENTITY_CARD = 'identity_card';
 
-    const TYPE_INTERNAL_PASSPORT = 'internal_passport';
+    public const TYPE_INTERNAL_PASSPORT = 'internal_passport';
 
-    const TYPE_ADDRESS = 'address';
+    public const TYPE_ADDRESS = 'address';
 
-    const ALLOWED_TYPES = [
+    public const ALLOWED_TYPES = [
         self::TYPE_PERSONAL_DETAILS,
         self::TYPE_PASSPORT,
         self::TYPE_DRIVER_LICENSE,
@@ -47,15 +47,13 @@ class PassportElementErrorDataFieldType extends PassportElementErrorType
     public $dataHash;
 
     /**
-     *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
-     *
      */
     public static function create(
         string $type,
         string $message,
         string $fieldName,
-        string $dataHash
+        string $dataHash,
     ): PassportElementErrorDataFieldType {
         $instance = parent::createBase(source: 'data', type: $type, message: $message);
         $instance->fieldName = $fieldName;
