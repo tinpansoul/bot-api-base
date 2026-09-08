@@ -1,27 +1,36 @@
 # Telegram Bot Api Base
 
 [![Telegram bot api][ico-bot-api]][link-bot-api]
-[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Latest Version][ico-version]][link-releases]
 [![Software License][ico-license]](LICENSE.md)
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![build][ico-ci]][link-ci]
-[![Quality Score][ico-code-quality]][link-code-quality]
-[![PHP Version >= 7.2][ico-php-v]][link-php-7-2]
-[![Symfony Recipe][ico-symfony-recipe]][link-symfony-recipe]
+[![PHP Version >= 8.2][ico-php-v]][link-php-8-2]
 
-[![Quality Gate Status][sonar-gate-status-icon]][sonar-path]
-[![Bugs][sonar-bugs-icon]][sonar-path]
-[![Duplicated Lines (%)][sonar-duplicated-lines-icon]][sonar-path]
-[![Security Rating][sonar-security-rating-icon]][sonar-path]
+> **This is a fork of [tg-bot-api/bot-api-base][link-upstream].**
+> It keeps the original package name so it can be used as a drop-in replacement,
+> and is released independently - see [CHANGELOG.md](CHANGELOG.md).
+> Versions `2.0.0` and later come from this fork and require PHP 8.2+.
 
 #### Supported Telegram Bot API 5.0 (November 4, 2020)
 
 ## Installation
 
-Via Composer
+This fork is not published on Packagist. Add it as a VCS repository and require a tagged
+version; the package name is unchanged, so it transparently replaces the upstream package.
+
+``` json
+{
+    "repositories": [
+        { "type": "vcs", "url": "https://github.com/tinpansoul/bot-api-base.git" }
+    ],
+    "require": {
+        "tg-bot-api/bot-api-base": "2.0.0"
+    }
+}
+```
 
 ``` bash
-composer require tg-bot-api/bot-api-base --prefer-dist
+composer update tg-bot-api/bot-api-base
 ```
 
 ## Usage
@@ -155,33 +164,17 @@ If you discover any security related issues, please email wformps@gmail.com inst
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-php-v]: https://img.shields.io/travis/php-v/tg-bot-api/bot-api-base.svg?style=flat-square
+[ico-php-v]: https://img.shields.io/badge/php-%3E%3D%208.2-8892BF.svg?style=flat-square
 [ico-bot-api]: https://img.shields.io/badge/Bot%20API-5.0-blue.svg?style=flat-square
-[ico-version]: https://img.shields.io/packagist/v/tg-bot-api/bot-api-base.svg?style=flat-square
+[ico-version]: https://img.shields.io/github/v/tag/tinpansoul/bot-api-base.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-ci]: https://github.com/tg-bot-api/bot-api-base/workflows/Build/badge.svg
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/tg-bot-api/bot-api-base.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/tg-bot-api/bot-api-base.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/tg-bot-api/bot-api-base.svg?style=flat-square
-[ico-last-commit]: https://img.shields.io/github/last-commit/tg-bot-api/bot-api-base.svg?style=flat-square
-[ico-symfony-recipe]: https://img.shields.io/badge/Symfony%20Recipe-available-brightgreen
-
-[sonar-gate-status-icon]: https://sonarcloud.io/api/project_badges/measure?project=tg-bot-api_bot-api-base&metric=alert_status
-[sonar-bugs-icon]: https://sonarcloud.io/api/project_badges/measure?project=tg-bot-api_bot-api-base&metric=bugs
-[sonar-duplicated-lines-icon]: https://sonarcloud.io/api/project_badges/measure?project=tg-bot-api_bot-api-base&metric=duplicated_lines_density
-[sonar-security-rating-icon]: https://sonarcloud.io/api/project_badges/measure?project=tg-bot-api_bot-api-base&metric=security_rating
-[sonar-bugs-icon]: https://sonarcloud.io/api/project_badges/measure?project=tg-bot-api_bot-api-base&metric=bugs
-
+[ico-ci]: https://github.com/tinpansoul/bot-api-base/workflows/Build/badge.svg
 
 [link-bot-api]: https://core.telegram.org/bots/api
-[link-packagist]: https://packagist.org/packages/tg-bot-api/bot-api-base
-[link-scrutinizer]: https://scrutinizer-ci.com/g/tg-bot-api/bot-api-base/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/tg-bot-api/bot-api-base
-[link-downloads]: https://packagist.org/packages/tg-bot-api/bot-api-base
 [link-author-1]: https://github.com/greenplugin
 [link-author-2]: https://github.com/Big-Shark
 [link-contributors]: ../../contributors
-[link-symfony-recipe]: https://github.com/symfony/recipes-contrib/tree/master/tg-bot-api/bot-api-base/1.0
-[link-php-7-2]: https://www.php.net/releases/7_2_0.php
-[sonar-path]: https://sonarcloud.io/dashboard?id=tg-bot-api_bot-api-base
-[link-ci]: https://github.com/tg-bot-api/bot-api-base/actions
+[link-php-8-2]: https://www.php.net/releases/8_2_0.php
+[link-releases]: https://github.com/tinpansoul/bot-api-base/releases
+[link-upstream]: https://github.com/tg-bot-api/bot-api-base
+[link-ci]: https://github.com/tinpansoul/bot-api-base/actions

@@ -23,6 +23,40 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 2.0.0 - 2026-02-20
+
+First release of the `tinpansoul/bot-api-base` fork. Modernises the library for PHP 8 and
+current Symfony; the package name is unchanged so it stays a drop-in replacement.
+
+### Changed
+- **BC** Raised the PHP requirement from `>7.3` to `^8.2`.
+- **BC** Raised the Symfony component requirements to `^7.4` (`property-access`, `property-info`,
+  `serializer`) and added `symfony/type-info`. Support for Symfony 3.4-6.x was dropped.
+- **BC** Replaced `phpdocumentor/reflection-docblock` with `phpdocumentor/type-resolver ^2.0`
+  and `phpstan/phpdoc-parser ^2.3`.
+- **BC** Modernised the codebase to PHP 8.2 with Rector: constructor property promotion,
+  readonly properties, typed properties and return types, and named arguments at call sites.
+- **BC** Rector renamed a number of method parameters. Because internal calls now pass named
+  arguments, any subclass overriding a `protected` method must use the same parameter names.
+  In particular `ApiClient::createFileStream()`'s third parameter was renamed from `$file`
+  to `$inputFileType`; an override declaring `$file` fails with
+  `Error: Unknown named parameter $inputFileType` on every file upload.
+
+### Fixed
+- Property types are resolved with `PhpStanExtractor` and `ReflectionExtractor` through
+  `PropertyInfoExtractor`, replacing the `PhpDocExtractor` that current `symfony/property-info`
+  no longer ships.
+- `ApiClient::send()` no longer passes named arguments to the PSR-7 `withHeader()` call.
+  Parameter names are not part of the PSR contract, so this failed on implementations that
+  name them differently.
+
+### Added
+- `rector/rector ^2.0` dev dependency and a `rector.php` configuration.
+
+### Removed
+- `sebastian/phpcpd` dev dependency (abandoned upstream).
+
+
 ## 1.8.0 - 2022-05-18  
 
 ### Added

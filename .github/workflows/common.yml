@@ -10,16 +10,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         include:
-          - php: 7.4
-          - php: 7.3
+          - php: '8.2'
+          - php: '8.2'
             composerFlags: '--prefer-stable --prefer-lowest'
-          - php: 8.0
-            composerFlags: '--ignore-platform-reqs'
+          - php: '8.3'
+          - php: '8.4'
+          - php: '8.5'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup PHP with composer v2
         uses: shivammathur/setup-php@v2
@@ -28,8 +30,8 @@ jobs:
           tools: composer:v2
           coverage: xdebug
 
-      - name: Validate composer.json and composer.lock
-        run: composer validate
+      - name: Validate composer.json
+        run: composer validate --no-check-lock
 
       - name: Install dependencies
         run: composer update ${{ matrix.composerFlags }} --no-interaction --prefer-dist
@@ -38,7 +40,7 @@ jobs:
         run: vendor/bin/phpunit --coverage-clover=coverage.clover
 
       - name: Scrutinizer code coverage upload
-        if: matrix.php == '7.3'
+        if: matrix.php == '8.2' && matrix.composerFlags == ''
         run: |
           wget https://scrutinizer-ci.com/ocular.phar
           php ocular.phar code-coverage:upload --format=php-clover coverage.clover
