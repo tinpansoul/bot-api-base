@@ -6,5 +6,7 @@ phpunit.xml
 /.idea
 .php_cs.cache
 /docs/cache
-/docs/log.phpunit.cache
+/docs/log
+.phpunit.cache
 .phpunit.result.cache
+.php-cs-fixer.cache

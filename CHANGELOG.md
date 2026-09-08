@@ -23,6 +23,15 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 3.3.1 - 2026-09-08
+
+### Fixed
+- `.gitignore` had `/docs/log` and `.phpunit.cache` merged onto one line, so neither was
+  ignored. Introduced in 3.0.1.
+- Ignore `.php-cs-fixer.cache`, which PHP-CS-Fixer 3 writes under a different name than the
+  `.php_cs.cache` the old entry covered.
+
+
 ## 3.3.0 - 2026-09-08
 
 Models the rich message tree properly. 3.2.0 left `InputRichMessageType::$blocks` as a plain
