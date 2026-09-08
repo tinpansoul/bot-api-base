@@ -43,7 +43,7 @@ class InputTextMessageContentType extends InputMessageContentType implements Has
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(string $messageText, array $data = null): InputTextMessageContentType
+    public static function create(string $messageText, ?array $data = null): InputTextMessageContentType
     {
         $static = new static();
         $static->messageText = $messageText;

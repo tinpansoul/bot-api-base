@@ -1,0 +1,823 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/AddStickerToSetMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/AnswerCallbackQueryMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/AnswerInlineQueryMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 2
+			path: src/Method/AnswerPreCheckoutQueryMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 2
+			path: src/Method/AnswerShippingQueryMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/BanChatMemberMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/CloseMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/CopyMessageMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/CreateNewStickerSetMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/DeleteChatPhotoMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/DeleteChatStickerSetMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/DeleteMessageMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/DeleteStickerFromSetMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/DeleteWebhookMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 2
+			path: src/Method/EditMessageCaptionMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 2
+			path: src/Method/EditMessageLiveLocationMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 2
+			path: src/Method/EditMessageMediaMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/ExportChatInviteLinkMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/ForwardMessageMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetChatAdministratorsMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetChatMemberCountMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetChatMembersCountMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetChatMenuButtonMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetChatMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetFileMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 2
+			path: src/Method/GetGameHighScoresMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetMeMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetMyCommandsMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetStickerSetMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetUpdatesMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetUserProfilePhotosMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetWebhookInfoMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/KickChatMemberMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/LeaveChatMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/LogOutMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/PinChatMessageMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/PromoteChatMemberMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 2
+			path: src/Method/RestrictChatMemberMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendAnimationMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendAudioMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendChatActionMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendContactMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendDiceMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendDocumentMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendGameMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendInvoiceMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendLocationMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendMediaGroupMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendMessageMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendPhotoMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendPollMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendStickerMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendVenueMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendVideoMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendVideoNoteMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendVoiceMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetChatAdministratorCustomTitleMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetChatDescriptionMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetChatMenuButtonMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetChatPermissionsMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetChatPhotoMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetChatStickerSetMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetChatTitleMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 2
+			path: src/Method/SetGameScoreMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetMyCommandsMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetPassportDataErrorsMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetStickerPositionInSetMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetStickerSetThumbMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetStickerSetThumbnailMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetWebhookMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 2
+			path: src/Method/StopMessageLiveLocationMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/StopPollMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/UnbanChatMemberMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/UnpinAllChatMessagesMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/UnpinChatMessageMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/UploadStickerFileMethod.php
+
+		-
+			message: '#^PHPDoc tag @return with type mixed is not subtype of native type array\|ArrayObject\|bool\|float\|int\|string\|null\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: src/Normalizer/AnswerInlineQueryNormalizer.php
+
+		-
+			message: '#^PHPDoc tag @return with type mixed is not subtype of native type array\|ArrayObject\|bool\|float\|int\|string\|null\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: src/Normalizer/EditMessageMediaNormalizer.php
+
+		-
+			message: '#^Property TgBotApi\\BotApiBase\\Method\\EditMessageMediaMethod\:\:\$media \(TgBotApi\\BotApiBase\\Type\\InputMedia\\InputMediaType\) does not accept string\|false\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Normalizer/EditMessageMediaNormalizer.php
+
+		-
+			message: '#^Property TgBotApi\\BotApiBase\\Method\\EditMessageMediaMethod\:\:\$replyMarkup \(TgBotApi\\BotApiBase\\Type\\ForceReplyType\|TgBotApi\\BotApiBase\\Type\\InlineKeyboardMarkupType\|TgBotApi\\BotApiBase\\Type\\ReplyKeyboardMarkupType\|TgBotApi\\BotApiBase\\Type\\ReplyKeyboardRemoveType\|null\) does not accept array\|ArrayObject\|bool\|float\|int\|string\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Normalizer/EditMessageMediaNormalizer.php
+
+		-
+			message: '#^Property TgBotApi\\BotApiBase\\Normalizer\\InputFileNormalizer\:\:\$files is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: src/Normalizer/InputFileNormalizer.php
+
+		-
+			message: '#^PHPDoc tag @return with type mixed is not subtype of native type array\|ArrayObject\|bool\|float\|int\|string\|null\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: src/Normalizer/InputMediaNormalizer.php
+
+		-
+			message: '#^Property TgBotApi\\BotApiBase\\Normalizer\\InputMediaNormalizer\:\:\$files is never read, only written\.$#'
+			identifier: property.onlyWritten
+			count: 1
+			path: src/Normalizer/InputMediaNormalizer.php
+
+		-
+			message: '#^Property TgBotApi\\BotApiBase\\Method\\SendInvoiceMethod\:\:\$prices \(array\<TgBotApi\\BotApiBase\\Type\\LabeledPriceType\>\) does not accept string\|false\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Normalizer/InvoiceNormalizer.php
+
+		-
+			message: '#^PHPDoc tag @return with type mixed is not subtype of native type array\|ArrayObject\|bool\|float\|int\|string\|null\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: src/Normalizer/MediaGroupNormalizer.php
+
+		-
+			message: '#^Property TgBotApi\\BotApiBase\\Method\\SendPollMethod\:\:\$options \(array\<string\>\) does not accept string\|false\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Normalizer/PollNormalizer.php
+
+		-
+			message: '#^Property TgBotApi\\BotApiBase\\Method\\SetChatMenuButtonMethod\:\:\$menuButton \(TgBotApi\\BotApiBase\\Type\\MenuButtonType\|null\) does not accept string\|false\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Normalizer/SetChatMenuButtonNormalizer.php
+
+		-
+			message: '#^Property TgBotApi\\BotApiBase\\Method\\SetMyCommandsMethod\:\:\$commands \(array\<TgBotApi\\BotApiBase\\Type\\BotCommandType\>\) does not accept string\|false\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Normalizer/SetMyCommandsNormalizer.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/BotCommandType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/CallbackGameType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/ChatPermissionsType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineKeyboardButtonType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineKeyboardMarkupType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultArticleType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultAudioType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultCachedAudioType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultCachedDocumentType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultCachedGifType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultCachedMpeg4GifType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultCachedPhotoType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultCachedStickerType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultCachedVideoType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultCachedVoiceType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultContactType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultDocumentType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultGameType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultGifType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultLocationType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultMpeg4GifType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultPhotoType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultVenueType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultVideoType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResult/InlineQueryResultVoiceType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InlineQueryResultsButtonType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InputFileType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InputMedia/InputMediaAnimationType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InputMedia/InputMediaAudioType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InputMedia/InputMediaDocumentType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InputMedia/InputMediaPhotoType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InputMedia/InputMediaVideoType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InputMessageContent/InputContactMessageContentType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InputMessageContent/InputLocationMessageContentType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InputMessageContent/InputTextMessageContentType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InputMessageContent/InputVenueMessageContent.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/KeyboardButtonType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/LabeledPriceType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/LinkPreviewOptionsType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/LoginUrlType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/MaskPositionType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/MenuButtonType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/MessageEntityType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/PassportElementError/PassportElementErrorType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/Poll/KeyboardButtonPollType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/ReplyKeyboardMarkupType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/ReplyParametersType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/ShippingOption.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/WebAppInfoType.php

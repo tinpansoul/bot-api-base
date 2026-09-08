@@ -72,7 +72,7 @@ class InlineQueryResultCachedPhotoType extends InlineQueryResultType implements 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(string $id, string $photoFileId, array $data = null): InlineQueryResultCachedPhotoType
+    public static function create(string $id, string $photoFileId, ?array $data = null): InlineQueryResultCachedPhotoType
     {
         $static = new static();
         $static->type = static::TYPE_PHOTO;

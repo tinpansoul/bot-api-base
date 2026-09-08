@@ -112,7 +112,7 @@ class InlineQueryResultMpeg4GifType extends InlineQueryResultType implements Has
         string $id,
         string $mpeg4Url,
         string $thumbUrl,
-        array $data = null
+        ?array $data = null
     ): InlineQueryResultMpeg4GifType {
         $static = new static();
         $static->type = static::TYPE_MPEG4GIF;

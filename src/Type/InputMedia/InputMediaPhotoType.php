@@ -34,7 +34,7 @@ class InputMediaPhotoType extends InputMediaType
      * @param array|null           $data
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(string|InputFileType $media, array $data = null): InputMediaPhotoType
+    public static function create(string|InputFileType $media, ?array $data = null): InputMediaPhotoType
     {
         $static = new static();
         $static->media = $media;

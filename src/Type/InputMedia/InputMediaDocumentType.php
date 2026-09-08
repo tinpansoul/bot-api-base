@@ -54,7 +54,7 @@ class InputMediaDocumentType extends InputMediaType
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(string|InputFileType $media, array $data = null): InputMediaDocumentType
+    public static function create(string|InputFileType $media, ?array $data = null): InputMediaDocumentType
     {
         $static = new static();
         $static->media = $media;

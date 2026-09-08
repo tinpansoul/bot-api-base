@@ -72,7 +72,7 @@ class AddStickerToSetMethod implements AddMethodAliasInterface
         string $name,
         string|InputFileType $pngSticker,
         string $emojis,
-        array $data = null
+        ?array $data = null
     ): AddStickerToSetMethod {
         return static::createStatic(userId: $userId, name: $name, pngSticker: $pngSticker, emojis: $emojis, data: $data);
     }
@@ -85,7 +85,7 @@ class AddStickerToSetMethod implements AddMethodAliasInterface
         string $name,
         string|InputFileType $pngSticker,
         string $emojis,
-        array $data = null
+        ?array $data = null
     ): AddStickerToSetMethod {
         $addStickerToSetMethod = self::createBase(userId: $userId, name: $name, emojis: $emojis, data: $data);
         $addStickerToSetMethod->pngSticker = $pngSticker;
@@ -101,7 +101,7 @@ class AddStickerToSetMethod implements AddMethodAliasInterface
         string $name,
         InputFileType $inputFileType,
         string $emojis,
-        array $data = null
+        ?array $data = null
     ): AddStickerToSetMethod {
         $addStickerToSetMethod = self::createBase(userId: $userId, name: $name, emojis: $emojis, data: $data);
         $addStickerToSetMethod->tgsSticker = $inputFileType;
@@ -116,7 +116,7 @@ class AddStickerToSetMethod implements AddMethodAliasInterface
         int $userId,
         string $name,
         string $emojis,
-        array $data = null
+        ?array $data = null
     ): AddStickerToSetMethod {
         $static = new static();
         $static->userId = $userId;

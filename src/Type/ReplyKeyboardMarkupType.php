@@ -74,7 +74,7 @@ class ReplyKeyboardMarkupType
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(array $keyboard, array $data = null): ReplyKeyboardMarkupType
+    public static function create(array $keyboard, ?array $data = null): ReplyKeyboardMarkupType
     {
         $static = new static();
         $static->keyboard = $keyboard;

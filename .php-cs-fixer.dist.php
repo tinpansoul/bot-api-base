@@ -1,20 +1,22 @@
 <?php
 
+declare(strict_types=1);
+
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
-;
+    ->exclude(['vendor', 'build', 'docs']);
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
+    ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
         'declare_strict_types' => true,
-        'phpdoc_add_missing_param_annotation' => ['only_untyped' => false],
         'array_syntax' => ['syntax' => 'short'],
         'date_time_immutable' => true,
         'ordered_class_elements' => true,
         'ordered_imports' => true,
         'phpdoc_order' => true,
-        'psr4' => true,
+        'psr_autoloading' => true,
         'heredoc_to_nowdoc' => true,
         'logical_operators' => true,
         'random_api_migration' => true,
@@ -28,5 +30,4 @@ return PhpCsFixer\Config::create()
         'no_useless_return' => true,
         'concat_space' => false,
     ])
-    ->setFinder($finder)
-;
+    ->setFinder($finder);

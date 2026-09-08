@@ -49,7 +49,7 @@ class MenuButtonType
      * @throws BadArgumentException
      *
      */
-    public static function create(string $type, array $data = null): MenuButtonType
+    public static function create(string $type, ?array $data = null): MenuButtonType
     {
         $static = new static();
         $static->type = $type;

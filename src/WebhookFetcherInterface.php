@@ -14,7 +14,7 @@ use TgBotApi\BotApiBase\Type\UpdateType;
 interface WebhookFetcherInterface
 {
     /**
-     * @param RequestInterface|string
+     * @param RequestInterface|string $request
      *
      * @throws BadRequestException
      */

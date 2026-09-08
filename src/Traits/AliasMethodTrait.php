@@ -37,7 +37,7 @@ trait AliasMethodTrait
      * @throws ResponseException
      * @return mixed
      */
-    abstract public function call(MethodInterface $method, string $type = null);
+    abstract public function call(MethodInterface $method, ?string $type = null);
 
     /**
      *

@@ -28,23 +28,23 @@ final class InputLocationMessageContentTypeTest extends TypeBaseTestCase
     /**
      * @return array<string, array<int, string|InputLocationMessageContentType>>
      */
-    public function provideData(): array
+    public static function provideData(): array
     {
         return [
             'default case' => [
                 InputLocationMessageContentType::class,
                 self::getResource(filename: 'InputLocationContentType/default'),
-                $this->getType(),
+                self::getType(),
             ],
             'with redundant variables' => [
                 InputLocationMessageContentType::class,
                 self::getResource(filename: 'InputLocationContentType/default_with_extended_keys'),
-                $this->getType(),
+                self::getType(),
             ],
         ];
     }
 
-    private function getType(): InputLocationMessageContentType
+    private static function getType(): InputLocationMessageContentType
     {
         $inputLocationMessageContentType = new InputLocationMessageContentType();
 

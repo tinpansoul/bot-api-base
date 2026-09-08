@@ -38,7 +38,7 @@ class InlineQueryResultCachedStickerType extends InlineQueryResultType
     public static function create(
         string $id,
         string $stickerFileId,
-        array $data = null
+        ?array $data = null
     ): InlineQueryResultCachedStickerType {
         $static = new static();
         $static->type = static::TYPE_STICKER;

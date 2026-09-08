@@ -82,7 +82,7 @@ class InputMediaAnimationType extends InputMediaType
      * @param array|null           $data
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(string|InputFileType $media, array $data = null): InputMediaAnimationType
+    public static function create(string|InputFileType $media, ?array $data = null): InputMediaAnimationType
     {
         $static = new static();
         $static->media = $media;

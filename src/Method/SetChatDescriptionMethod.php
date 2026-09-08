@@ -29,7 +29,7 @@ class SetChatDescriptionMethod implements SetMethodAliasInterface
      * @param array|null $data
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(int|string $chatId, array $data = null): SetChatDescriptionMethod
+    public static function create(int|string $chatId, ?array $data = null): SetChatDescriptionMethod
     {
         $static = new static();
         $static->chatId = $chatId;

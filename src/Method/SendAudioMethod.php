@@ -82,7 +82,7 @@ class SendAudioMethod implements SendMethodAliasInterface
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(int|string $chatId, string|InputFileType $audio, array $data = null): SendAudioMethod
+    public static function create(int|string $chatId, string|InputFileType $audio, ?array $data = null): SendAudioMethod
     {
         $static = new static();
         $static->chatId = $chatId;

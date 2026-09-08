@@ -37,7 +37,7 @@ class SendGameMethod implements SendMethodAliasInterface
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(int $chatId, string $gameShortName, array $data = null): SendGameMethod
+    public static function create(int $chatId, string $gameShortName, ?array $data = null): SendGameMethod
     {
         $static = new static();
         $static->chatId = $chatId;

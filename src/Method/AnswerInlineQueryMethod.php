@@ -7,6 +7,7 @@ namespace TgBotApi\BotApiBase\Method;
 use TgBotApi\BotApiBase\Method\Interfaces\AnswerMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Traits\FillFromArrayTrait;
 use TgBotApi\BotApiBase\Type\InlineQueryResult\InlineQueryResultType;
+use TgBotApi\BotApiBase\Type\InlineQueryResultsButtonType;
 
 /**
  * Class AnswerInlineQueryMethod.
@@ -100,7 +101,7 @@ class AnswerInlineQueryMethod implements AnswerMethodAliasInterface
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
      */
-    public static function create(string $inlineQueryId, array $results, array $data = null): AnswerInlineQueryMethod
+    public static function create(string $inlineQueryId, array $results, ?array $data = null): AnswerInlineQueryMethod
     {
         $static = new static();
         $static->inlineQueryId = $inlineQueryId;

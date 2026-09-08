@@ -30,7 +30,7 @@ class UnbanChatMemberMethod implements UnbanMethodAliasInterface
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(int|string $chatId, int $userId, array $data = null): UnbanChatMemberMethod
+    public static function create(int|string $chatId, int $userId, ?array $data = null): UnbanChatMemberMethod
     {
         $static = new static();
         $static->chatId = $chatId;

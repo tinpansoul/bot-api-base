@@ -12,9 +12,7 @@ use TgBotApi\BotApiBase\Type\InputFileType;
  */
 class InputFileNormalizer implements NormalizerInterface
 {
-    /**
-     * @var
-     */
+    /** @var array<string, InputFileType> */
     private ?array $files = null;
 
     /**

@@ -68,7 +68,7 @@ class InputVenueMessageContent extends InputMessageContentType
         float $longitude,
         string $title,
         string $address,
-        array $data = null
+        ?array $data = null
     ): InputVenueMessageContent {
         $static = new static();
         $static->latitude = $latitude;

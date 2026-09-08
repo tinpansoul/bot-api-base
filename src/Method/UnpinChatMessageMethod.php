@@ -29,7 +29,7 @@ class UnpinChatMessageMethod implements UnpinMethodAliasInterface
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(int|string $chatId, array $data = null): UnpinChatMessageMethod
+    public static function create(int|string $chatId, ?array $data = null): UnpinChatMessageMethod
     {
         $static = new static();
         $static->chatId = $chatId;

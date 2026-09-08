@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TgBotApi\BotApiBase\Tests\Method;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use TgBotApi\BotApiBase\Method\UnbanChatMemberMethod;
 
 final class UnbanChatMemberMethodTest extends MethodTestCase
@@ -18,11 +19,10 @@ final class UnbanChatMemberMethodTest extends MethodTestCase
     }
 
     /**
-     * @dataProvider provideData
-     *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<string, string|int|bool> $expectedRequest
      */
+    #[DataProvider('provideData')]
     public function testEncode(UnbanChatMemberMethod $unbanChatMemberMethod, array $expectedRequest): void
     {
         $botApiComplete = $this->getBot(methodName: 'unbanChatMember', request: $expectedRequest, result: true);
@@ -33,7 +33,7 @@ final class UnbanChatMemberMethodTest extends MethodTestCase
     /**
      * @return array<string, array<UnbanChatMemberMethod|array<string, string|int|bool>>>
      */
-    public function provideData(): array
+    public static function provideData(): array
     {
         return [
             'default case' => [

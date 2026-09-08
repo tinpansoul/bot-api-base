@@ -6,6 +6,7 @@ namespace TgBotApi\BotApiBase\Tests\Type;
 
 use TgBotApi\BotApiBase\ApiClientInterface;
 use TgBotApi\BotApiBase\BotApi;
+use TgBotApi\BotApiBase\Method\GetMeMethod;
 use TgBotApi\BotApiBase\Method\Interfaces\MethodInterface;
 use TgBotApi\BotApiBase\Tests\GetNormalizerTrait;
 use TgBotApi\BotApiBase\Type\UpdateType;
@@ -56,7 +57,10 @@ abstract class TypeTestCase extends \PHPUnit\Framework\TestCase
 
     protected function getMethod(): MethodInterface
     {
-        return $this->getMockBuilder(className: MethodInterface::class)->getMock();
+        // A real method with no properties. A mock cannot be used here: the normalizer walks
+        // the object's properties, and PHPUnit's generated mocks carry internal state of
+        // their own that the property accessor cannot read.
+        return GetMeMethod::create();
     }
 
     protected static function getResource($filename): string

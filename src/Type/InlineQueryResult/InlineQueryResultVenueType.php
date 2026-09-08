@@ -122,7 +122,7 @@ class InlineQueryResultVenueType extends InlineQueryResultType
         float $longitude,
         string $title,
         string $address,
-        array $data = null
+        ?array $data = null
     ): InlineQueryResultVenueType {
         $static = new static();
         $static->type = static::TYPE_VENUE;

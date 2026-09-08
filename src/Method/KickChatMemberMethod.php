@@ -39,7 +39,7 @@ class KickChatMemberMethod implements KickMethodAliasInterface
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
      */
-    public static function create(int|string $chatId, int $userId, array $data = null): KickChatMemberMethod
+    public static function create(int|string $chatId, int $userId, ?array $data = null): KickChatMemberMethod
     {
         $static = new static();
         $static->chatId = $chatId;

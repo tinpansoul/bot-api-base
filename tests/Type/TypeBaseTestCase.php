@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TgBotApi\BotApiBase\Tests\Type;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use TgBotApi\BotApiBase\ApiClientInterface;
 use TgBotApi\BotApiBase\BotApi;
@@ -30,12 +31,11 @@ abstract class TypeBaseTestCase extends TypeTestCase
     }
 
     /**
-     * @dataProvider provideData
-     *
      * @param mixed $excepted
      *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      */
+    #[DataProvider('provideData')]
     public function testType(string $class, string $response, mixed $excepted): void
     {
         $this->client
@@ -54,5 +54,5 @@ abstract class TypeBaseTestCase extends TypeTestCase
         }
     }
 
-    abstract public function provideData(): array;
+    abstract public static function provideData(): array;
 }

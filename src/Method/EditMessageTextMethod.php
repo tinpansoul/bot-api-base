@@ -62,7 +62,7 @@ class EditMessageTextMethod implements HasParseModeVariableInterface, EditMethod
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(int|string $chatId, int $messageId, string $text, array $data = null): EditMessageTextMethod
+    public static function create(int|string $chatId, int $messageId, string $text, ?array $data = null): EditMessageTextMethod
     {
         $instance = new self();
         $instance->chatId = $chatId;
@@ -81,7 +81,7 @@ class EditMessageTextMethod implements HasParseModeVariableInterface, EditMethod
     public static function createInline(
         string $inlineMessageId,
         string $text,
-        array $data = null
+        ?array $data = null
     ): EditMessageTextMethod {
         $instance = new self();
         $instance->inlineMessageId = $inlineMessageId;

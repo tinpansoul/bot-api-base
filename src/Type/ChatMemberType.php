@@ -33,7 +33,7 @@ class ChatMemberType
     /**
      * The member's status in the chat. Can be “creator”, “administrator”, “member”, “restricted”, “left” or “kicked”.
      *
-     * @var string;
+     * @var string
      */
     public $status;
 

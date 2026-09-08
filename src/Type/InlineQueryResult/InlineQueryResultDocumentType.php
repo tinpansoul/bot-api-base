@@ -129,7 +129,7 @@ class InlineQueryResultDocumentType extends InlineQueryResultType implements Has
         string $title,
         string $documentUrl,
         string $mimeType,
-        array $data = null
+        ?array $data = null
     ): InlineQueryResultDocumentType {
         $static = new static();
         $static->type = static::TYPE_DOCUMENT;

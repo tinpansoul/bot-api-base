@@ -48,7 +48,7 @@ class SendDiceMethod implements SendMethodAliasInterface
     /**
      * @throws BadArgumentException
      */
-    public static function create(int|string $chatId, array $data = null): SendDiceMethod
+    public static function create(int|string $chatId, ?array $data = null): SendDiceMethod
     {
         $static = new static();
         $static->chatId = $chatId;
@@ -65,7 +65,7 @@ class SendDiceMethod implements SendMethodAliasInterface
      *
      * @throws BadArgumentException
      */
-    public static function createWithDice(int|string $chatId, array $data = null): SendDiceMethod
+    public static function createWithDice(int|string $chatId, ?array $data = null): SendDiceMethod
     {
         $sendDiceMethod = static::create(chatId: $chatId, data: $data);
         $sendDiceMethod->emoji = static::EMOJI_DICE;
@@ -78,7 +78,7 @@ class SendDiceMethod implements SendMethodAliasInterface
      *
      * @throws BadArgumentException
      */
-    public static function createWithDarts(int|string $chatId, array $data = null): SendDiceMethod
+    public static function createWithDarts(int|string $chatId, ?array $data = null): SendDiceMethod
     {
         $sendDiceMethod = static::create(chatId: $chatId, data: $data);
         $sendDiceMethod->emoji = self::EMOJI_DARTS;
@@ -91,7 +91,7 @@ class SendDiceMethod implements SendMethodAliasInterface
      *
      * @throws BadArgumentException
      */
-    public static function createWithBasketball(int|string $chatId, array $data = null): SendDiceMethod
+    public static function createWithBasketball(int|string $chatId, ?array $data = null): SendDiceMethod
     {
         $sendDiceMethod = static::create(chatId: $chatId, data: $data);
         $sendDiceMethod->emoji = self::EMOJI_BASKETBALL;
@@ -104,7 +104,7 @@ class SendDiceMethod implements SendMethodAliasInterface
      *
      * @throws BadArgumentException
      */
-    public static function createWithFootBall(int|string $chatId, array $data = null): SendDiceMethod
+    public static function createWithFootBall(int|string $chatId, ?array $data = null): SendDiceMethod
     {
         $sendDiceMethod = static::create(chatId: $chatId, data: $data);
         $sendDiceMethod->emoji = self::EMOJI_FOOTBALL;
@@ -117,7 +117,7 @@ class SendDiceMethod implements SendMethodAliasInterface
      *
      * @throws BadArgumentException
      */
-    public static function createWithSlotMachine(int|string $chatId, array $data = null): SendDiceMethod
+    public static function createWithSlotMachine(int|string $chatId, ?array $data = null): SendDiceMethod
     {
         $sendDiceMethod = static::create(chatId: $chatId, data: $data);
         $sendDiceMethod->emoji = self::EMOJI_SLOT_MACHINE;

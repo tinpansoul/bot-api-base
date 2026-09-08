@@ -112,7 +112,7 @@ class InlineQueryResultGifType extends InlineQueryResultType implements HasParse
         string $id,
         string $gifUrl,
         string $thumbUrl,
-        array $data = null
+        ?array $data = null
     ): InlineQueryResultGifType {
         $static = new static();
         $static->type = static::TYPE_GIF;

@@ -128,7 +128,7 @@ class InlineQueryResultLocationType extends InlineQueryResultType
         float $latitude,
         float $longitude,
         string $title,
-        array $data = null
+        ?array $data = null
     ): InlineQueryResultLocationType {
         $static = new static();
         $static->type = static::TYPE_LOCATION;

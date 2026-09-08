@@ -24,7 +24,7 @@ class StopMessageLiveLocationMethod implements StopMethodAliasInterface
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
      */
-    public static function create(int|string $chatId, int $messageId, array $data = null): StopMessageLiveLocationMethod
+    public static function create(int|string $chatId, int $messageId, ?array $data = null): StopMessageLiveLocationMethod
     {
         $static = new static();
         $static->chatId = $chatId;
@@ -42,7 +42,7 @@ class StopMessageLiveLocationMethod implements StopMethodAliasInterface
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
      */
-    public static function createInline(string $inlineMessageId, array $data = null): StopMessageLiveLocationMethod
+    public static function createInline(string $inlineMessageId, ?array $data = null): StopMessageLiveLocationMethod
     {
         $static = new static();
         $static->inlineMessageId = $inlineMessageId;

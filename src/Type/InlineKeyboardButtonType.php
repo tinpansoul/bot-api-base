@@ -118,7 +118,7 @@ class InlineKeyboardButtonType
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
      */
-    public static function create(string $text, array $data = null): InlineKeyboardButtonType
+    public static function create(string $text, ?array $data = null): InlineKeyboardButtonType
     {
         $static = new static();
         $static->text = $text;

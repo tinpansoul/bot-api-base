@@ -79,7 +79,7 @@ class KeyboardButtonType
     /**
      * @throws BadArgumentException
      */
-    public static function create(string $text, array $data = null): KeyboardButtonType
+    public static function create(string $text, ?array $data = null): KeyboardButtonType
     {
         $static = new static();
         $static->text = $text;

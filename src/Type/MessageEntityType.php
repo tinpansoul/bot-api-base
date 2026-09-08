@@ -114,7 +114,7 @@ class MessageEntityType
      */
     public $dateTimeFormat;
 
-    public static function create(string $type, int $offset, int $length, array $data = null): MessageEntityType
+    public static function create(string $type, int $offset, int $length, ?array $data = null): MessageEntityType
     {
         $static = new static();
         $static->type = $type;

@@ -68,7 +68,7 @@ class AnswerCallbackQueryMethod implements AnswerMethodAliasInterface
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
      */
-    public static function create(string $callbackQueryId, array $data = null): AnswerCallbackQueryMethod
+    public static function create(string $callbackQueryId, ?array $data = null): AnswerCallbackQueryMethod
     {
         $static = new static();
         $static->callbackQueryId = $callbackQueryId;

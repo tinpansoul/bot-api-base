@@ -76,7 +76,7 @@ class SendVenueMethod implements SendMethodAliasInterface
         float $longitude,
         string $title,
         string $address,
-        array $data = null
+        ?array $data = null
     ): SendVenueMethod {
         $static = new static();
         $static->chatId = $chatId;

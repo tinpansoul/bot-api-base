@@ -43,7 +43,7 @@ interface BotApiInterface extends BotApiAliasInterface
      * @throws ResponseException
      * @return mixed
      */
-    public function call(MethodInterface $method, string $type = null);
+    public function call(MethodInterface $method, ?string $type = null);
 
     /**
      *

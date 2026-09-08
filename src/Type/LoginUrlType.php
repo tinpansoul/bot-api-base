@@ -61,7 +61,7 @@ class LoginUrlType
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
      */
-    public static function create(string $url, array $data = null): LoginUrlType
+    public static function create(string $url, ?array $data = null): LoginUrlType
     {
         $static = new static();
         $static->url = $url;

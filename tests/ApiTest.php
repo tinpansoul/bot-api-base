@@ -414,7 +414,7 @@ final class ApiTest extends \PHPUnit\Framework\TestCase
     {
         return $this->getMockBuilder(className: BotApiComplete::class)
             ->disableOriginalConstructor()
-            ->setMethods(methods: ['call'])
+            ->onlyMethods(['call'])
             ->getMock();
     }
 }

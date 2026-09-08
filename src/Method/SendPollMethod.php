@@ -27,7 +27,7 @@ class SendPollMethod implements SendMethodAliasInterface, PollTypeInterface, Has
     /**
      * Poll question, 1-300 characters.
      *
-     * @var string;
+     * @var string
      */
     public $question;
 
@@ -116,7 +116,7 @@ class SendPollMethod implements SendMethodAliasInterface, PollTypeInterface, Has
      *
      * @throws BadArgumentException
      */
-    public static function create(string $chatId, string $question, array $options, array $data = null): self
+    public static function create(string $chatId, string $question, array $options, ?array $data = null): self
     {
         $static = new static();
         $static->chatId = $chatId;

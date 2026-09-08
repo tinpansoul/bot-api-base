@@ -68,7 +68,7 @@ class InlineQueryResultCachedDocumentType extends InlineQueryResultType
         string $id,
         string $title,
         string $documentFileId,
-        array $data = null
+        ?array $data = null
     ): InlineQueryResultCachedDocumentType {
         $static = new static();
         $static->type = static::TYPE_DOCUMENT;

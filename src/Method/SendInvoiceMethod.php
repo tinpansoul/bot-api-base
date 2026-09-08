@@ -179,7 +179,7 @@ class SendInvoiceMethod implements SendMethodAliasInterface
         string $startParameter,
         string $currency,
         array $prices,
-        array $data = null
+        ?array $data = null
     ): SendInvoiceMethod {
         $static = new static();
         $static->chatId = $chatId;

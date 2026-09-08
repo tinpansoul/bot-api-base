@@ -16,19 +16,17 @@ grumphp:
             ignore_patterns: []
             sniffs: []
             triggered_by: [php]
-        phpcsfixer2:
+        phpcsfixer:
             allow_risky: true
-            cache_file: ~
-            config: .php_cs
+            config: .php-cs-fixer.dist.php
             using_cache: true
-            config_contains_finder: true
             verbose: true
             diff: false
             triggered_by: ['php']
         phpstan:
-            autoload_file: ~
             configuration: phpstan.neon
-            level: 0
+            memory_limit: "-1"
+            use_grumphp_paths: false
             triggered_by: ['php']
         composer:
             file: ./composer.json

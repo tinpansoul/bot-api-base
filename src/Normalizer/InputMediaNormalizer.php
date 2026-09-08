@@ -15,9 +15,7 @@ use TgBotApi\BotApiBase\Type\InputMedia\InputMediaType;
  */
 class InputMediaNormalizer implements NormalizerInterface
 {
-    /**
-     * @var
-     */
+    /** @var array<string, InputFileType> */
     private ?array $files = null;
 
     /**

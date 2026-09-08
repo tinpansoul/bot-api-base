@@ -40,7 +40,7 @@ class GetUserProfilePhotosMethod implements MethodInterface
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
      */
-    public static function create(int $userId, array $data = null): GetUserProfilePhotosMethod
+    public static function create(int $userId, ?array $data = null): GetUserProfilePhotosMethod
     {
         $static = new static();
         $static->userId = $userId;

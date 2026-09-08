@@ -139,7 +139,7 @@ class InlineQueryResultVideoType extends InlineQueryResultType implements HasPar
         string $mimeType,
         string $thumbUrl,
         string $title,
-        array $data = null
+        ?array $data = null
     ): InlineQueryResultVideoType {
         $static = new static();
         $static->type = static::TYPE_VIDEO;

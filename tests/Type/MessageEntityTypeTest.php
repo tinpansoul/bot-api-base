@@ -28,7 +28,7 @@ final class MessageEntityTypeTest extends TypeBaseTestCase
     /**
      * @return array<string, array<int, string|MessageEntityType>>
      */
-    public function provideData(): array
+    public static function provideData(): array
     {
         return [
             'all fields case' => [

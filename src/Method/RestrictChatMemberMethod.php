@@ -85,7 +85,7 @@ class RestrictChatMemberMethod implements RestrictMethodAliasInterface
      * @deprecated
      * @see https://core.telegram.org/bots/api#july-29-2019
      */
-    public static function createOld($chatId, int $userId, array $data = null): RestrictChatMemberMethod
+    public static function createOld($chatId, int $userId, ?array $data = null): RestrictChatMemberMethod
     {
         $static = new static();
         $static->chatId = $chatId;
@@ -107,7 +107,7 @@ class RestrictChatMemberMethod implements RestrictMethodAliasInterface
         $chatId,
         int $userId,
         ChatPermissionsType $chatPermissionsType,
-        array $data = null
+        ?array $data = null
     ): RestrictChatMemberMethod {
         $static = new static();
         $static->chatId = $chatId;

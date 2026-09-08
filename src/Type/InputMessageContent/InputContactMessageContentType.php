@@ -51,7 +51,7 @@ class InputContactMessageContentType extends InputMessageContentType
     public static function create(
         string $phoneNumber,
         string $firstName,
-        array $data = null
+        ?array $data = null
     ): InputContactMessageContentType {
         $static = new static();
         $static->phoneNumber = $phoneNumber;

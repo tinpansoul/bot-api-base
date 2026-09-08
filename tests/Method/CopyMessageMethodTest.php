@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TgBotApi\BotApiBase\Tests\Method;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use TgBotApi\BotApiBase\Method\CopyMessageMethod;
 use TgBotApi\BotApiBase\Method\Interfaces\HasParseModeVariableInterface;
 use TgBotApi\BotApiBase\Tests\Method\Traits\ReplyKeyboardMarkupTrait;
@@ -35,12 +36,11 @@ final class CopyMessageMethodTest extends MethodTestCase
     }
 
     /**
-     * @dataProvider provideData
-     *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<string, mixed> $exceptedRequest
      * @param string[] $serializedFields
      */
+    #[DataProvider('provideData')]
     public function testEncode(CopyMessageMethod $copyMessageMethod, array $exceptedRequest, array $serializedFields): void
     {
         $botApiComplete = $this->getBot(methodName: 'copyMessage', request: $exceptedRequest, serialisedFields: $serializedFields);
@@ -51,7 +51,7 @@ final class CopyMessageMethodTest extends MethodTestCase
     /**
      * @return array<string, array<CopyMessageMethod|array<array<string, mixed>|int|string, mixed>>>
      */
-    public function provideData(): array
+    public static function provideData(): array
     {
         return [
             'minimal case case' => [

@@ -66,7 +66,7 @@ class SendLocationMethod implements SendMethodAliasInterface
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(int|string $chatId, float $latitude, float $longitude, array $data = null): SendLocationMethod
+    public static function create(int|string $chatId, float $latitude, float $longitude, ?array $data = null): SendLocationMethod
     {
         $static = new static();
         $static->chatId = $chatId;

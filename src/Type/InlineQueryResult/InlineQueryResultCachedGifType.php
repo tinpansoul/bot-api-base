@@ -69,7 +69,7 @@ class InlineQueryResultCachedGifType extends InlineQueryResultType implements Ha
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(string $id, string $gifFileId, array $data = null): InlineQueryResultCachedGifType
+    public static function create(string $id, string $gifFileId, ?array $data = null): InlineQueryResultCachedGifType
     {
         $static = new static();
         $static->type = static::TYPE_GIF;

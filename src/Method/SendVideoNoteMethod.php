@@ -75,7 +75,7 @@ class SendVideoNoteMethod implements SendMethodAliasInterface
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(int|string $chatId, string|InputFileType $videoNote, array $data = null): SendVideoNoteMethod
+    public static function create(int|string $chatId, string|InputFileType $videoNote, ?array $data = null): SendVideoNoteMethod
     {
         $static = new static();
         $static->chatId = $chatId;

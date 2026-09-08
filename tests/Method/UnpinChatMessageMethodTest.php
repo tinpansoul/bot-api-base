@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TgBotApi\BotApiBase\Tests\Method;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use TgBotApi\BotApiBase\Method\UnpinChatMessageMethod;
 
 final class UnpinChatMessageMethodTest extends MethodTestCase
@@ -17,11 +18,10 @@ final class UnpinChatMessageMethodTest extends MethodTestCase
     }
 
     /**
-     * @dataProvider provideData
-     *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<string, string|int> $exceptedRequest
      */
+    #[DataProvider('provideData')]
     public function testEncode(UnpinChatMessageMethod $unpinChatMessageMethod, array $exceptedRequest): void
     {
         $botApiComplete = $this->getBot(methodName: 'unpinChatMessage', request: $exceptedRequest, result: true);
@@ -32,7 +32,7 @@ final class UnpinChatMessageMethodTest extends MethodTestCase
     /**
      * @return array<string, array<UnpinChatMessageMethod|array<string, string|int>>>
      */
-    public function provideData(): array
+    public static function provideData(): array
     {
         return [
             'default case' => [

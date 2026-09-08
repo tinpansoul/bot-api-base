@@ -75,7 +75,7 @@ class SetWebhookMethod implements HasUpdateTypeVariableInterface, SetMethodAlias
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(string $url, array $data = null): SetWebhookMethod
+    public static function create(string $url, ?array $data = null): SetWebhookMethod
     {
         $static = new static();
         $static->url = $url;

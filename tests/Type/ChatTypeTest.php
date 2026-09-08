@@ -16,18 +16,18 @@ final class ChatTypeTest extends TypeBaseTestCase
     /**
      * @return array<string, array<int, string|ChatType>>
      */
-    public function provideData(): array
+    public static function provideData(): array
     {
         return [
             'full object case' => [
                 ChatType::class,
                 self::getResource(filename: 'ChatType/full'),
-                $this->getFullObject(),
+                self::getFullObject(),
             ],
         ];
     }
 
-    private function getFullObject(): ChatType
+    private static function getFullObject(): ChatType
     {
         $pinnedMessage = new MessageType();
         $pinnedMessage->messageId = 1;

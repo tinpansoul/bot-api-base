@@ -27,7 +27,7 @@ class InlineQueryResultGameType extends InlineQueryResultType
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
      */
-    public static function create(string $id, string $gameShortName, array $data = null): InlineQueryResultGameType
+    public static function create(string $id, string $gameShortName, ?array $data = null): InlineQueryResultGameType
     {
         $static = new static();
         $static->type = static::TYPE_GAME;

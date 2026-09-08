@@ -34,7 +34,7 @@ class PinChatMessageMethod implements PinMethodAliasInterface
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
      */
-    public static function create(int|string $chatId, int $messageId, array $data = null): PinChatMessageMethod
+    public static function create(int|string $chatId, int $messageId, ?array $data = null): PinChatMessageMethod
     {
         $static = new static();
         $static->chatId = $chatId;

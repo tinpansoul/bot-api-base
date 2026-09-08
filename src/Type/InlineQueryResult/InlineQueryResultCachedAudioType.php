@@ -51,7 +51,7 @@ class InlineQueryResultCachedAudioType extends InlineQueryResultType implements 
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(string $id, string $audioFileId, array $data = null): InlineQueryResultCachedAudioType
+    public static function create(string $id, string $audioFileId, ?array $data = null): InlineQueryResultCachedAudioType
     {
         $static = new static();
         $static->type = self::TYPE_AUDIO;

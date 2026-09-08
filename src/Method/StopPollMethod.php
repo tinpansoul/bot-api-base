@@ -35,7 +35,7 @@ class StopPollMethod implements MethodInterface
      * @param array|null $data
      *
      */
-    public static function create(string $chatId, int $messageId, array $data = null): self
+    public static function create(string $chatId, int $messageId, ?array $data = null): self
     {
         $static = new static();
         $static->chatId = $chatId;

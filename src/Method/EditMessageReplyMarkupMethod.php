@@ -24,7 +24,7 @@ class EditMessageReplyMarkupMethod implements EditMethodAliasInterface
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      *
      */
-    public static function create(int|string $chatId, int $messageId, array $data = null): EditMessageReplyMarkupMethod
+    public static function create(int|string $chatId, int $messageId, ?array $data = null): EditMessageReplyMarkupMethod
     {
         $instance = new self();
         $instance->chatId = $chatId;
@@ -44,7 +44,7 @@ class EditMessageReplyMarkupMethod implements EditMethodAliasInterface
      */
     public static function createInline(
         string $inlineMessageId,
-        array $data = null
+        ?array $data = null
     ): EditMessageReplyMarkupMethod {
         $instance = new self();
         $instance->inlineMessageId = $inlineMessageId;

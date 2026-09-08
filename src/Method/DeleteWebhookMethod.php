@@ -26,7 +26,7 @@ class DeleteWebhookMethod implements DeleteMethodAliasInterface
     /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(array $data = null): DeleteWebhookMethod
+    public static function create(?array $data = null): DeleteWebhookMethod
     {
         $static = new static();
 

@@ -106,7 +106,7 @@ class InlineQueryResultContactType extends InlineQueryResultType
         string $id,
         string $phoneNumber,
         string $firstName,
-        array $data = null
+        ?array $data = null
     ): InlineQueryResultContactType {
         $static = new static();
         $static->type = static::TYPE_CONTACT;

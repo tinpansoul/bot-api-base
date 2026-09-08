@@ -14,7 +14,7 @@ class WebhookInfoType
     /**
      * Webhook URL, may be empty if webhook is not set up.
      *
-     * @var string;
+     * @var string
      */
     public $url;
 

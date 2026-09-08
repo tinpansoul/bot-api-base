@@ -33,7 +33,7 @@ class GetChatMenuButtonMethod implements MethodInterface
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(array $data = null): GetChatMenuButtonMethod
+    public static function create(?array $data = null): GetChatMenuButtonMethod
     {
         $static = new static();
         if ($data) {

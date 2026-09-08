@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TgBotApi\BotApiBase\Tests\Method;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use TgBotApi\BotApiBase\BotApiComplete;
 use TgBotApi\BotApiBase\Method\Interfaces\HasParseModeVariableInterface;
 use TgBotApi\BotApiBase\Method\SendDocumentMethod;
@@ -43,11 +44,10 @@ final class SendDocumentMethodTest extends MethodTestCase
     }
 
     /**
-     * @dataProvider provideData
-     *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<string, mixed[]|string|bool|int> $request
      */
+    #[DataProvider('provideData')]
     public function testEncode(SendDocumentMethod $sendDocumentMethod, array $request): void
     {
         $this->getApi(request: $request)->sendDocument(sendDocumentMethod: $sendDocumentMethod);
@@ -58,7 +58,7 @@ final class SendDocumentMethodTest extends MethodTestCase
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      * @return array<string, array<SendDocumentMethod|array<string, mixed[]|bool|int|string>>>
      */
-    public function provideData(): array
+    public static function provideData(): array
     {
         return [
             'default case' => [

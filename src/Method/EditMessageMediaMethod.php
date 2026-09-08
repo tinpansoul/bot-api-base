@@ -35,7 +35,7 @@ class EditMessageMediaMethod implements EditMethodAliasInterface
         int|string $chatId,
         int $messageId,
         InputMediaType $inputMediaType,
-        array $data = null
+        ?array $data = null
     ): EditMessageMediaMethod {
         $static = new static();
         $static->chatId = $chatId;
@@ -56,7 +56,7 @@ class EditMessageMediaMethod implements EditMethodAliasInterface
     public static function createInline(
         string $inlineMessageId,
         InputMediaType $inputMediaType,
-        array $data = null
+        ?array $data = null
     ): EditMessageMediaMethod {
         $static = new static();
         $static->inlineMessageId = $inlineMessageId;

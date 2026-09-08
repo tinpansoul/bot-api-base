@@ -145,7 +145,7 @@ class ChatPermissionsType
     /**
      * @param array|null $data
      */
-    public static function create(array $data = null): ChatPermissionsType
+    public static function create(?array $data = null): ChatPermissionsType
     {
         $static = new static();
         if ($data) {

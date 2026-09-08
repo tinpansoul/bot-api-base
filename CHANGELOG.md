@@ -23,6 +23,29 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 3.0.1 - 2026-09-08
+
+### Fixed
+- `AnswerInlineQueryMethod::$button` was missing the import for `InlineQueryResultsButtonType`,
+  so its `@var` annotation resolved to a non-existent class in the `Method` namespace.
+- Seven malformed docblocks (`@var string;`, `@param` without a variable, empty `@var`) in
+  `SendPollMethod`, `SetPassportDataErrorsMethod`, `ChatMemberType`, `WebhookInfoType`,
+  `WebhookFetcherInterface`, `InputFileNormalizer` and `InputMediaNormalizer`.
+- 105 implicitly nullable parameters are now declared `?T`. PHP 8.4 deprecates the implicit
+  form, so these emitted a deprecation notice on every call under 8.4 and 8.5. Widening a
+  parameter to explicitly nullable is backward compatible.
+
+### Changed
+- Development dependencies: PHPUnit 8.5 -> 11.5, PHP-CS-Fixer 2.19 -> 3.95, phpmnd 2.5 -> 3.6.
+  PHP-CS-Fixer 2 refused to run on PHP above 8.0, and it could only be upgraded once PHPUnit
+  moved off its old `sebastian/diff` and `phpunit/php-timer` constraints.
+- PHPUnit configuration migrated to the 11 schema; data providers are static and use
+  `#[DataProvider]` attributes rather than annotations, which PHPUnit 12 will require.
+- `.php_cs` replaced by `.php-cs-fixer.dist.php` with the same rule set.
+- PHPStan runs at level 5 with a baseline covering the 146 pre-existing findings, so new
+  code is checked. Its configuration used a PHPStan 1 key and had never run at all.
+
+
 ## 3.0.0 - 2026-09-08
 
 See [UPGRADE-3.0.md](UPGRADE-3.0.md).

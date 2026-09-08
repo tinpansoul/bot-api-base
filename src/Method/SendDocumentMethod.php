@@ -67,7 +67,7 @@ class SendDocumentMethod implements HasParseModeVariableInterface, SendMethodAli
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
-    public static function create(int|string $chatId, string|InputFileType $document, array $data = null): SendDocumentMethod
+    public static function create(int|string $chatId, string|InputFileType $document, ?array $data = null): SendDocumentMethod
     {
         $static = new static();
         $static->chatId = $chatId;

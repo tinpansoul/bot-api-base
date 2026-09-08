@@ -103,7 +103,7 @@ class InlineQueryResultArticleType extends InlineQueryResultType
         string $id,
         string $title,
         InputMessageContentType $inputMessageContentType,
-        array $data = null
+        ?array $data = null
     ): InlineQueryResultArticleType {
         $static = new static();
         $static->type = self::TYPE_ARTICLE;

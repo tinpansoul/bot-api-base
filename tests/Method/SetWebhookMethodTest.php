@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TgBotApi\BotApiBase\Tests\Method;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use TgBotApi\BotApiBase\Method\SetWebhookMethod;
 use TgBotApi\BotApiBase\Type\InputFileType;
 
@@ -51,13 +52,12 @@ final class SetWebhookMethodTest extends MethodTestCase
     }
 
     /**
-     * @dataProvider provideData
-     *
      * @param $expectedBody
      *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<string, string[]|string|int|bool> $expectedBody
      */
+    #[DataProvider('provideData')]
     public function testEncode(SetWebhookMethod $setWebhookMethod, array $expectedBody): void
     {
         $botApiComplete = $this->getBotWithFiles(
@@ -75,7 +75,7 @@ final class SetWebhookMethodTest extends MethodTestCase
      *
      * @return array[]
      */
-    public function provideData(): array
+    public static function provideData(): array
     {
         return [
             'default case' => [

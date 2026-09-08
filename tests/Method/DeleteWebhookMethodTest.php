@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TgBotApi\BotApiBase\Tests\Method;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use TgBotApi\BotApiBase\Method\DeleteWebhookMethod;
 
 final class DeleteWebhookMethodTest extends MethodTestCase
@@ -15,11 +16,10 @@ final class DeleteWebhookMethodTest extends MethodTestCase
     }
 
     /**
-     * @dataProvider provideData
-     *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<string, bool> $exceptedBody
      */
+    #[DataProvider('provideData')]
     public function testEncode(DeleteWebhookMethod $deleteWebhookMethod, array $exceptedBody): void
     {
         $botApiComplete = $this->getBot(methodName: 'deleteWebhook', request: $exceptedBody, result: true);
@@ -32,7 +32,7 @@ final class DeleteWebhookMethodTest extends MethodTestCase
      *
      * @return array[]
      */
-    public function provideData(): array
+    public static function provideData(): array
     {
         return [
             'default case' => [

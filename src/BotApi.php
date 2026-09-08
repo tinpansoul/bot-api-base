@@ -46,7 +46,7 @@ class BotApi implements BotApiInterface
      *
      * @return mixed
      */
-    public function call(MethodInterface $method, string $type = null)
+    public function call(MethodInterface $method, ?string $type = null)
     {
         $json = $this->apiClient->send($this->getMethodName(method: $method), $this->normalizer->normalize($method));
 

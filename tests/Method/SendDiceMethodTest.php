@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TgBotApi\BotApiBase\Tests\Method;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use TgBotApi\BotApiBase\Method\SendDiceMethod;
 use TgBotApi\BotApiBase\Tests\Method\Traits\InlineKeyboardMarkupTrait;
 use TgBotApi\BotApiBase\Type\InlineKeyboardMarkupType;
@@ -14,7 +15,7 @@ final class SendDiceMethodTest extends MethodTestCase
 
     public function testCreate(): void
     {
-        $datasets = $this->dataProvider();
+        $datasets = self::dataProvider();
 
         foreach ($datasets as $dataset) {
             $this->assertMethod(...$dataset);
@@ -22,11 +23,10 @@ final class SendDiceMethodTest extends MethodTestCase
     }
 
     /**
-     * @dataProvider dataProvider
-     *
      * @throws \TgBotApi\BotApiBase\Exception\ResponseException
      * @param array<string, mixed[]|bool|int|string> $data
      */
+    #[DataProvider('dataProvider')]
     public function testEncode(SendDiceMethod $sendDiceMethod, array $data): void
     {
         $botApiComplete = $this->getBot(methodName: 'sendDice', request: $data, serialisedFields: ['reply_markup']);
@@ -39,7 +39,7 @@ final class SendDiceMethodTest extends MethodTestCase
      *
      * @return array[]
      */
-    public function dataProvider(): array
+    public static function dataProvider(): array
     {
         return [
             [
@@ -52,7 +52,7 @@ final class SendDiceMethodTest extends MethodTestCase
                         'allowSendingWithoutReply' => true,
                     ]
                 ),
-                $this->getApiRequest(emoji: SendDiceMethod::EMOJI_DICE),
+                self::getApiRequest(emoji: SendDiceMethod::EMOJI_DICE),
             ],
             [
                 SendDiceMethod::createWithDarts(
@@ -64,7 +64,7 @@ final class SendDiceMethodTest extends MethodTestCase
                         'allowSendingWithoutReply' => true,
                     ]
                 ),
-                $this->getApiRequest(emoji: SendDiceMethod::EMOJI_DARTS),
+                self::getApiRequest(emoji: SendDiceMethod::EMOJI_DARTS),
             ],
             [
                 SendDiceMethod::createWithBasketball(
@@ -76,7 +76,7 @@ final class SendDiceMethodTest extends MethodTestCase
                         'allowSendingWithoutReply' => true,
                     ]
                 ),
-                $this->getApiRequest(emoji: SendDiceMethod::EMOJI_BASKETBALL),
+                self::getApiRequest(emoji: SendDiceMethod::EMOJI_BASKETBALL),
             ],
             [
                 SendDiceMethod::createWithFootBall(
@@ -88,7 +88,7 @@ final class SendDiceMethodTest extends MethodTestCase
                         'allowSendingWithoutReply' => true,
                     ]
                 ),
-                $this->getApiRequest(emoji: SendDiceMethod::EMOJI_FOOTBALL),
+                self::getApiRequest(emoji: SendDiceMethod::EMOJI_FOOTBALL),
             ],
             [
                 SendDiceMethod::createWithSlotMachine(
@@ -100,7 +100,7 @@ final class SendDiceMethodTest extends MethodTestCase
                         'allowSendingWithoutReply' => true,
                     ]
                 ),
-                $this->getApiRequest(emoji: SendDiceMethod::EMOJI_SLOT_MACHINE),
+                self::getApiRequest(emoji: SendDiceMethod::EMOJI_SLOT_MACHINE),
             ],
         ];
     }
@@ -108,7 +108,7 @@ final class SendDiceMethodTest extends MethodTestCase
     /**
      * @return array<string, string|mixed[]|bool|int>
      */
-    private function getApiRequest(string $emoji): array
+    private static function getApiRequest(string $emoji): array
     {
         return [
             'chat_id' => 'chat_id',
