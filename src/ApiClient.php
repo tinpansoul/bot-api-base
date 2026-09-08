@@ -32,16 +32,17 @@ class ApiClient implements ApiClientInterface
      */
     public function send(string $method, BotApiRequestInterface $botApiRequest): mixed
     {
-        $request = $this->requestFactory->createRequest(method: 'POST', uri: $this->generateUri(method: $method));
+        $request = $this->requestFactory->createRequest('POST', $this->generateUri(method: $method));
 
         $boundary = \uniqid(more_entropy: true);
 
-        $stream = $this->streamFactory->createStream(content: $this->createStreamBody(boundary: $boundary, botApiRequest: $botApiRequest));
+        $stream = $this->streamFactory->createStream($this->createStreamBody(boundary: $boundary, botApiRequest: $botApiRequest));
 
         $response = $this->client->sendRequest(
-            request: $request
-            ->withHeader('Content-Type', 'multipart/form-data; boundary="' . $boundary . '"')
-            ->withBody(body: $stream));
+            $request
+                ->withHeader('Content-Type', 'multipart/form-data; boundary="' . $boundary . '"')
+                ->withBody($stream)
+        );
 
         $content = $response->getBody()->getContents();
 

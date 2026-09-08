@@ -24,7 +24,7 @@ class LegacyObjectNormalizerWrapper implements NormalizerInterface, SerializerAw
         $format = null,
         array $context = []
     ): string|int|float|bool|\ArrayObject|array|null {
-        $data = $this->normalizer->normalize(data: $object, format: $format, context: $context);
+        $data = $this->normalizer->normalize($object, $format, $context);
 
         return \array_filter(array: $data, callback: static fn($value): bool => null !== $value);
     }
@@ -34,7 +34,7 @@ class LegacyObjectNormalizerWrapper implements NormalizerInterface, SerializerAw
      */
     public function supportsNormalization($data, $format = null, array $context = []): bool
     {
-        return $this->normalizer->supportsNormalization(data: $data, format: $format);
+        return $this->normalizer->supportsNormalization($data, $format);
     }
 
     /**
@@ -42,7 +42,7 @@ class LegacyObjectNormalizerWrapper implements NormalizerInterface, SerializerAw
      */
     public function setSerializer(SerializerInterface $serializer): void
     {
-        $this->normalizer->setSerializer(serializer: $serializer);
+        $this->normalizer->setSerializer($serializer);
     }
 
     /**

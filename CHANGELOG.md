@@ -23,6 +23,19 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 2.0.2 - 2026-09-08
+
+### Fixed
+- Calls made through an interface no longer pass named arguments. Parameter names are not
+  part of an interface contract, so an implementation that names its parameters differently
+  previously failed with `Error: Unknown named parameter ...`. This affected the PSR-17
+  factories, the PSR-18 client, PSR-7 `withBody()`, and this library's own
+  `ApiClientInterface` and `NormalizerInterface`.
+
+  Calls to concrete classes keep their named arguments; subclasses overriding a `protected`
+  method must still declare the parent's parameter names (see [UPGRADE-2.0.md](UPGRADE-2.0.md)).
+
+
 ## 2.0.1 - 2026-09-08
 
 ### Changed

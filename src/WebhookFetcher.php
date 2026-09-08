@@ -31,7 +31,7 @@ class WebhookFetcher implements WebhookFetcherInterface
             throw new BadRequestException(message: 'Request content must be valid JSON object.');
         }
 
-        return $this->normalizer->denormalize(data: $input, type: UpdateType::class);
+        return $this->normalizer->denormalize($input, UpdateType::class);
     }
 
     /**

@@ -34,8 +34,8 @@ class BotApi implements BotApiInterface
         private NormalizerInterface $normalizer,
         private string $endPoint = 'https://api.telegram.org'
     ) {
-        $this->apiClient->setBotKey(botKey: $this->botKey);
-        $this->apiClient->setEndpoint(endPoint: $this->endPoint);
+        $this->apiClient->setBotKey($this->botKey);
+        $this->apiClient->setEndpoint($this->endPoint);
     }
 
     /**
@@ -47,13 +47,13 @@ class BotApi implements BotApiInterface
      */
     public function call(MethodInterface $method, string $type = null)
     {
-        $json = $this->apiClient->send(method: $this->getMethodName(method: $method), botApiRequest: $this->normalizer->normalize(method: $method));
+        $json = $this->apiClient->send($this->getMethodName(method: $method), $this->normalizer->normalize($method));
 
         if (true !== $json->ok) {
             throw new ResponseException(message: $json->description);
         }
 
-        return $type ? $this->normalizer->denormalize(data: $json->result, type: $type) : $json->result;
+        return $type ? $this->normalizer->denormalize($json->result, $type) : $json->result;
     }
 
     /**
