@@ -26,6 +26,8 @@ abstract class InputMediaType
 
     public const TYPE_DOCUMENT = 'document';
 
+    public const TYPE_VOICE_NOTE = 'voice_note';
+
     /**
      * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended),
      * pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>”

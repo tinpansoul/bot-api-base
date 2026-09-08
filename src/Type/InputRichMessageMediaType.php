@@ -4,7 +4,12 @@ declare(strict_types=1);
 
 namespace TgBotApi\BotApiBase\Type;
 
+use TgBotApi\BotApiBase\Type\InputMedia\InputMediaAnimationType;
+use TgBotApi\BotApiBase\Type\InputMedia\InputMediaAudioType;
 use TgBotApi\BotApiBase\Type\InputMedia\InputMediaPhotoType;
+use TgBotApi\BotApiBase\Type\InputMedia\InputMediaType;
+use TgBotApi\BotApiBase\Type\InputMedia\InputMediaVideoType;
+use TgBotApi\BotApiBase\Type\InputMedia\InputMediaVoiceNoteType;
 
 /**
  * Class InputRichMessageMediaType.
@@ -25,15 +30,21 @@ class InputRichMessageMediaType
     /**
      * The media itself.
      *
-     * @var InputMediaPhotoType
+     * @var InputMediaType one of InputMediaAnimationType, InputMediaAudioType, InputMediaPhotoType,
+     *                     InputMediaVideoType or InputMediaVoiceNoteType
      */
     public $media;
 
     public static function createPhoto(string $id, InputFileType|string $photo): InputRichMessageMediaType
     {
+        return self::create(id: $id, media: InputMediaPhotoType::create(media: $photo));
+    }
+
+    public static function create(string $id, InputMediaType $media): InputRichMessageMediaType
+    {
         $static = new static();
         $static->id = $id;
-        $static->media = InputMediaPhotoType::create(media: $photo);
+        $static->media = $media;
 
         return $static;
     }

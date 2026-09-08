@@ -23,6 +23,35 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 3.3.0 - 2026-09-08
+
+Models the rich message tree properly. 3.2.0 left `InputRichMessageType::$blocks` as a plain
+array; it is now a typed tree following the same abstract-base-plus-subclasses convention the
+library already uses for `InputMedia`, `InlineQueryResult` and `PassportElementError`.
+
+### Added
+- `RichText\RichTextType` (abstract) and its 25 subclasses: bold, italic, underline,
+  strikethrough, spoiler, code, marked, subscript, superscript, url, mention, text mention,
+  hashtag, cashtag, bot command, email address, phone number, bank card number, custom emoji,
+  date and time, mathematical expression, anchor, anchor link, reference and reference link.
+  A rich text value may be a plain string, an array of these, or one of the objects.
+- `InputRichBlock\InputRichBlockType` (abstract) and its 21 subclasses: paragraph, section
+  heading, preformatted, block quotation, pull quotation, list, collage, slideshow, details,
+  table, map, divider, footer, anchor, thinking, mathematical expression, photo, video,
+  animation, audio and voice note. Plus `InputRichBlockListItemType`.
+- `RichBlockCaptionType` and `RichBlockTableCellType`.
+- `InputMediaVoiceNoteType`, with `InputMediaType::TYPE_VOICE_NOTE`, required by the voice
+  note block.
+
+### Changed
+- `InputRichMessageType::$blocks` is typed `InputRichBlockType[]` instead of a plain array.
+- `InputRichMessageMediaType::$media` accepts any `InputMediaType`, matching the API, rather
+  than only a photo. `createPhoto()` still works; `create()` takes any media object.
+
+Media nested inside a block is uploaded through the existing file handling - an `InputFileType`
+on a block's media becomes an `attach://` reference with the file added to the request.
+
+
 ## 3.2.0 - 2026-09-08
 
 Brings method coverage from 76 to 99 of the 185 methods in Bot API 10.2.

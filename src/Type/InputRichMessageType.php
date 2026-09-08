@@ -4,22 +4,21 @@ declare(strict_types=1);
 
 namespace TgBotApi\BotApiBase\Type;
 
+use TgBotApi\BotApiBase\Type\InputRichBlock\InputRichBlockType;
+
 /**
  * Class InputRichMessageType.
  *
  * Describes the content of a rich message. Exactly one of blocks, html or markdown must be set.
- *
- * The Bot API also models the blocks form as a tree of InputRichBlock objects, which this
- * library does not map; pass an already-shaped array if you need it.
  *
  * @see https://core.telegram.org/bots/api#inputrichmessage
  */
 class InputRichMessageType
 {
     /**
-     * Optional. The content as a list of blocks. Not modelled as objects by this library.
+     * Optional. The content as a list of blocks.
      *
-     * @var array|null
+     * @var InputRichBlockType[]|null
      */
     public $blocks;
 
