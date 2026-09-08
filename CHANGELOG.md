@@ -23,6 +23,26 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 3.4.1 - 2026-09-08
+
+### Fixed
+- Raised the `symfony/property-info` floor to `^6.4.16`. Versions 6.4.0 to 6.4.15 call
+  `new ConstExprParser()` with no arguments, which `phpstan/phpdoc-parser ^2.3` - required
+  since 2.0.0 - does not accept, so every denormalization died with
+  `ArgumentCountError: Too few arguments to ConstExprParser::__construct()`.
+  Composer could not catch this because property-info declares phpdoc-parser only
+  optionally, so the broken combination resolved cleanly and failed at runtime.
+  Introduced by the constraint widening in 2.0.1 and found by the `--prefer-lowest` CI job.
+
+### Changed
+- CI no longer downloads and executes `ocular.phar` from scrutinizer-ci.com, which was
+  unpinned and unverified and had no project to upload to for this fork. Xdebug is no longer
+  installed since nothing consumes coverage, and the workflow gained `workflow_dispatch` and
+  an explicit `contents: read` token scope.
+- `phpunit.xml.dist` no longer configures coverage reports; with no driver installed PHPUnit
+  warned and exited non-zero.
+
+
 ## 3.4.0 - 2026-09-08
 
 ### Added
