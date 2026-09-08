@@ -6,7 +6,9 @@ namespace TgBotApi\BotApiBase;
 
 use TgBotApi\BotApiBase\Traits\AddMethodTrait;
 use TgBotApi\BotApiBase\Traits\AnswerMethodTrait;
+use TgBotApi\BotApiBase\Traits\ApproveMethodTrait;
 use TgBotApi\BotApiBase\Traits\CreateMethodTrait;
+use TgBotApi\BotApiBase\Traits\DeclineMethodTrait;
 use TgBotApi\BotApiBase\Traits\DeleteMethodTrait;
 use TgBotApi\BotApiBase\Traits\EditMethodTrait;
 use TgBotApi\BotApiBase\Traits\ForwardMethodTrait;
@@ -15,18 +17,24 @@ use TgBotApi\BotApiBase\Traits\LeaveMethodTrait;
 use TgBotApi\BotApiBase\Traits\PinMethodTrait;
 use TgBotApi\BotApiBase\Traits\PromoteMethodTrait;
 use TgBotApi\BotApiBase\Traits\RestrictMethodTrait;
+use TgBotApi\BotApiBase\Traits\RevokeMethodTrait;
 use TgBotApi\BotApiBase\Traits\SendMethodTrait;
 use TgBotApi\BotApiBase\Traits\SetMethodTrait;
 use TgBotApi\BotApiBase\Traits\StopMethodTrait;
 use TgBotApi\BotApiBase\Traits\UnbanMethodTrait;
 use TgBotApi\BotApiBase\Traits\UnpinMethodTrait;
 use TgBotApi\BotApiBase\Traits\UploadMethodTrait;
+use TgBotApi\BotApiBase\Traits\VerifyMethodTrait;
 
 /**
  * Class BotApiComplete.
  */
 class BotApiComplete extends BotApi
 {
+    use VerifyMethodTrait;
+    use RevokeMethodTrait;
+    use DeclineMethodTrait;
+    use ApproveMethodTrait;
     use AddMethodTrait;
     use AnswerMethodTrait;
     use CreateMethodTrait;

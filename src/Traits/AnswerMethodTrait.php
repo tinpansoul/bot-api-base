@@ -6,6 +6,7 @@ namespace TgBotApi\BotApiBase\Traits;
 
 use TgBotApi\BotApiBase\Exception\ResponseException;
 use TgBotApi\BotApiBase\Method\AnswerCallbackQueryMethod;
+use TgBotApi\BotApiBase\Method\AnswerChatJoinRequestQueryMethod;
 use TgBotApi\BotApiBase\Method\AnswerInlineQueryMethod;
 use TgBotApi\BotApiBase\Method\AnswerPreCheckoutQueryMethod;
 use TgBotApi\BotApiBase\Method\AnswerShippingQueryMethod;
@@ -51,5 +52,13 @@ trait AnswerMethodTrait
     public function answerShippingQuery(AnswerShippingQueryMethod $answerShippingQueryMethod): bool
     {
         return $this->answer(answerMethodAlias: $answerShippingQueryMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function answerChatJoinRequestQuery(AnswerChatJoinRequestQueryMethod $answerChatJoinRequestQueryMethod): bool
+    {
+        return $this->answer(answerMethodAlias: $answerChatJoinRequestQueryMethod);
     }
 }

@@ -23,6 +23,38 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 3.2.0 - 2026-09-08
+
+Brings method coverage from 76 to 99 of the 185 methods in Bot API 10.2.
+
+### Added
+- Chat join requests: `ApproveChatJoinRequestMethod`, `DeclineChatJoinRequestMethod`,
+  `AnswerChatJoinRequestQueryMethod` and `SendChatJoinRequestWebAppMethod`.
+- Invite links: `CreateChatInviteLinkMethod`, `EditChatInviteLinkMethod` and
+  `RevokeChatInviteLinkMethod`, returning the new `ChatInviteLinkType`.
+- Bot profile: `SetMyNameMethod`/`GetMyNameMethod`, `SetMyDescriptionMethod`/
+  `GetMyDescriptionMethod`, `SetMyShortDescriptionMethod`/`GetMyShortDescriptionMethod`
+  and `SetMyProfilePhotoMethod`, with `BotNameType`, `BotDescriptionType`,
+  `BotShortDescriptionType` and `InputProfilePhotoType`.
+- Default administrator rights: `SetMyDefaultAdministratorRightsMethod` and
+  `GetMyDefaultAdministratorRightsMethod`, with `ChatAdministratorRightsType`.
+- `DeleteMyCommandsMethod` with `BotCommandScopeType`, which models all seven scope
+  variants as one class discriminated by its `type` constant.
+- `DeleteMessagesMethod`, `UnbanChatSenderChatMethod`, `VerifyChatMethod` and
+  `VerifyUserMethod`.
+- `SendRichMessageMethod` with `InputRichMessageType` and `InputRichMessageMediaType`, and
+  `SendLivePhotoMethod`.
+- `ApproveMethodTrait`, `DeclineMethodTrait`, `RevokeMethodTrait` and `VerifyMethodTrait`
+  with their alias interfaces, following the existing per-verb trait convention.
+
+### Known limitations
+- `InputRichMessageType::$blocks` is a plain array. The Bot API models the block form as a
+  tree of `InputRichBlock` objects, which is not mapped here; pass a shaped array if needed.
+- The optional `suggestedPostParameters` parameter is not exposed on `SendRichMessageMethod`
+  or `SendLivePhotoMethod`, because `SuggestedPostParameters` and `SuggestedPostPrice` are
+  not modelled yet.
+
+
 ## 3.1.0 - 2026-09-08
 
 ### Added

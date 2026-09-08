@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace TgBotApi\BotApiBase\Traits;
 
 use TgBotApi\BotApiBase\Exception\ResponseException;
+use TgBotApi\BotApiBase\Method\EditChatInviteLinkMethod;
 use TgBotApi\BotApiBase\Method\EditMessageCaptionMethod;
 use TgBotApi\BotApiBase\Method\EditMessageLiveLocationMethod;
 use TgBotApi\BotApiBase\Method\EditMessageMediaMethod;
 use TgBotApi\BotApiBase\Method\EditMessageReplyMarkupMethod;
 use TgBotApi\BotApiBase\Method\EditMessageTextMethod;
 use TgBotApi\BotApiBase\Method\Interfaces\EditMethodAliasInterface;
+use TgBotApi\BotApiBase\Type\ChatInviteLinkType;
 use TgBotApi\BotApiBase\Type\MessageType;
 
 /**
@@ -73,5 +75,13 @@ trait EditMethodTrait
     public function editMessageText(EditMessageTextMethod $editMessageTextMethod)
     {
         return $this->edit(editMethodAlias: $editMessageTextMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function editChatInviteLink(EditChatInviteLinkMethod $editChatInviteLinkMethod): ChatInviteLinkType
+    {
+        return $this->call(method: $editChatInviteLinkMethod, type: ChatInviteLinkType::class);
     }
 }

@@ -9,16 +9,19 @@ use TgBotApi\BotApiBase\Method\Interfaces\SendMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\SendAnimationMethod;
 use TgBotApi\BotApiBase\Method\SendAudioMethod;
 use TgBotApi\BotApiBase\Method\SendChatActionMethod;
+use TgBotApi\BotApiBase\Method\SendChatJoinRequestWebAppMethod;
 use TgBotApi\BotApiBase\Method\SendContactMethod;
 use TgBotApi\BotApiBase\Method\SendDiceMethod;
 use TgBotApi\BotApiBase\Method\SendDocumentMethod;
 use TgBotApi\BotApiBase\Method\SendGameMethod;
 use TgBotApi\BotApiBase\Method\SendInvoiceMethod;
+use TgBotApi\BotApiBase\Method\SendLivePhotoMethod;
 use TgBotApi\BotApiBase\Method\SendLocationMethod;
 use TgBotApi\BotApiBase\Method\SendMediaGroupMethod;
 use TgBotApi\BotApiBase\Method\SendMessageMethod;
 use TgBotApi\BotApiBase\Method\SendPhotoMethod;
 use TgBotApi\BotApiBase\Method\SendPollMethod;
+use TgBotApi\BotApiBase\Method\SendRichMessageMethod;
 use TgBotApi\BotApiBase\Method\SendStickerMethod;
 use TgBotApi\BotApiBase\Method\SendVenueMethod;
 use TgBotApi\BotApiBase\Method\SendVideoMethod;
@@ -174,5 +177,29 @@ trait SendMethodTrait
     public function sendPoll(SendPollMethod $sendPollMethod): MessageType
     {
         return $this->send(sendMethodAlias: $sendPollMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function sendRichMessage(SendRichMessageMethod $sendRichMessageMethod): MessageType
+    {
+        return $this->send(sendMethodAlias: $sendRichMessageMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function sendLivePhoto(SendLivePhotoMethod $sendLivePhotoMethod): MessageType
+    {
+        return $this->send(sendMethodAlias: $sendLivePhotoMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function sendChatJoinRequestWebApp(SendChatJoinRequestWebAppMethod $sendChatJoinRequestWebAppMethod): bool
+    {
+        return $this->call(method: $sendChatJoinRequestWebAppMethod);
     }
 }

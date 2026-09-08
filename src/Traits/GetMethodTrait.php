@@ -15,12 +15,20 @@ use TgBotApi\BotApiBase\Method\GetFileMethod;
 use TgBotApi\BotApiBase\Method\GetGameHighScoresMethod;
 use TgBotApi\BotApiBase\Method\GetMeMethod;
 use TgBotApi\BotApiBase\Method\GetMyCommandsMethod;
+use TgBotApi\BotApiBase\Method\GetMyDefaultAdministratorRightsMethod;
+use TgBotApi\BotApiBase\Method\GetMyDescriptionMethod;
+use TgBotApi\BotApiBase\Method\GetMyNameMethod;
+use TgBotApi\BotApiBase\Method\GetMyShortDescriptionMethod;
 use TgBotApi\BotApiBase\Method\GetStickerSetMethod;
 use TgBotApi\BotApiBase\Method\GetUpdatesMethod;
 use TgBotApi\BotApiBase\Method\GetUserProfilePhotosMethod;
 use TgBotApi\BotApiBase\Method\GetWebhookInfoMethod;
 use TgBotApi\BotApiBase\Method\Interfaces\MethodInterface;
 use TgBotApi\BotApiBase\Type\BotCommandType;
+use TgBotApi\BotApiBase\Type\BotDescriptionType;
+use TgBotApi\BotApiBase\Type\BotNameType;
+use TgBotApi\BotApiBase\Type\BotShortDescriptionType;
+use TgBotApi\BotApiBase\Type\ChatAdministratorRightsType;
 use TgBotApi\BotApiBase\Type\ChatMemberType;
 use TgBotApi\BotApiBase\Type\ChatType;
 use TgBotApi\BotApiBase\Type\FileType;
@@ -160,5 +168,37 @@ trait GetMethodTrait
     public function getFile(GetFileMethod $getFileMethod): FileType
     {
         return $this->call(method: $getFileMethod, type: FileType::class);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function getMyName(GetMyNameMethod $getMyNameMethod): BotNameType
+    {
+        return $this->call(method: $getMyNameMethod, type: BotNameType::class);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function getMyDescription(GetMyDescriptionMethod $getMyDescriptionMethod): BotDescriptionType
+    {
+        return $this->call(method: $getMyDescriptionMethod, type: BotDescriptionType::class);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function getMyShortDescription(GetMyShortDescriptionMethod $getMyShortDescriptionMethod): BotShortDescriptionType
+    {
+        return $this->call(method: $getMyShortDescriptionMethod, type: BotShortDescriptionType::class);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function getMyDefaultAdministratorRights(GetMyDefaultAdministratorRightsMethod $getMyDefaultAdministratorRightsMethod): ChatAdministratorRightsType
+    {
+        return $this->call(method: $getMyDefaultAdministratorRightsMethod, type: ChatAdministratorRightsType::class);
     }
 }

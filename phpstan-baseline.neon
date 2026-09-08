@@ -16,6 +16,12 @@ parameters:
 			message: '#^Unsafe usage of new static\(\)\.$#'
 			identifier: new.static
 			count: 1
+			path: src/Method/AnswerChatJoinRequestQueryMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
 			path: src/Method/AnswerInlineQueryMethod.php
 
 		-
@@ -29,6 +35,12 @@ parameters:
 			identifier: new.static
 			count: 2
 			path: src/Method/AnswerShippingQueryMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/ApproveChatJoinRequestMethod.php
 
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'
@@ -51,8 +63,20 @@ parameters:
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'
 			identifier: new.static
+			count: 1
+			path: src/Method/CreateChatInviteLinkMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
 			count: 2
 			path: src/Method/CreateNewStickerSetMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/DeclineChatJoinRequestMethod.php
 
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'
@@ -76,6 +100,18 @@ parameters:
 			message: '#^Unsafe usage of new static\(\)\.$#'
 			identifier: new.static
 			count: 1
+			path: src/Method/DeleteMessagesMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/DeleteMyCommandsMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
 			path: src/Method/DeleteStickerFromSetMethod.php
 
 		-
@@ -83,6 +119,12 @@ parameters:
 			identifier: new.static
 			count: 1
 			path: src/Method/DeleteWebhookMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/EditChatInviteLinkMethod.php
 
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'
@@ -172,6 +214,30 @@ parameters:
 			message: '#^Unsafe usage of new static\(\)\.$#'
 			identifier: new.static
 			count: 1
+			path: src/Method/GetMyDefaultAdministratorRightsMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetMyDescriptionMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetMyNameMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/GetMyShortDescriptionMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
 			path: src/Method/GetStickerSetMethod.php
 
 		-
@@ -232,6 +298,12 @@ parameters:
 			message: '#^Unsafe usage of new static\(\)\.$#'
 			identifier: new.static
 			count: 1
+			path: src/Method/RevokeChatInviteLinkMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
 			path: src/Method/SendAnimationMethod.php
 
 		-
@@ -245,6 +317,12 @@ parameters:
 			identifier: new.static
 			count: 1
 			path: src/Method/SendChatActionMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendChatJoinRequestWebAppMethod.php
 
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'
@@ -280,6 +358,12 @@ parameters:
 			message: '#^Unsafe usage of new static\(\)\.$#'
 			identifier: new.static
 			count: 1
+			path: src/Method/SendLivePhotoMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
 			path: src/Method/SendLocationMethod.php
 
 		-
@@ -305,6 +389,12 @@ parameters:
 			identifier: new.static
 			count: 1
 			path: src/Method/SendPollMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SendRichMessageMethod.php
 
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'
@@ -394,6 +484,36 @@ parameters:
 			message: '#^Unsafe usage of new static\(\)\.$#'
 			identifier: new.static
 			count: 1
+			path: src/Method/SetMyDefaultAdministratorRightsMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetMyDescriptionMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetMyNameMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetMyProfilePhotoMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/SetMyShortDescriptionMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
 			path: src/Method/SetPassportDataErrorsMethod.php
 
 		-
@@ -442,6 +562,12 @@ parameters:
 			message: '#^Unsafe usage of new static\(\)\.$#'
 			identifier: new.static
 			count: 1
+			path: src/Method/UnbanChatSenderChatMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
 			path: src/Method/UnpinAllChatMessagesMethod.php
 
 		-
@@ -455,6 +581,18 @@ parameters:
 			identifier: new.static
 			count: 2
 			path: src/Method/UploadStickerFileMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/VerifyChatMethod.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Method/VerifyUserMethod.php
 
 		-
 			message: '#^PHPDoc tag @return with type mixed is not subtype of native type array\|ArrayObject\|bool\|float\|int\|string\|null\.$#'
@@ -531,6 +669,12 @@ parameters:
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'
 			identifier: new.static
+			count: 3
+			path: src/Type/BotCommandScopeType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
 			count: 1
 			path: src/Type/BotCommandType.php
 
@@ -539,6 +683,12 @@ parameters:
 			identifier: new.static
 			count: 1
 			path: src/Type/CallbackGameType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/ChatAdministratorRightsType.php
 
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'
@@ -743,6 +893,24 @@ parameters:
 			identifier: new.static
 			count: 1
 			path: src/Type/InputMessageContent/InputVenueMessageContent.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 2
+			path: src/Type/InputProfilePhotoType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/Type/InputRichMessageMediaType.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 3
+			path: src/Type/InputRichMessageType.php
 
 		-
 			message: '#^Unsafe usage of new static\(\)\.$#'

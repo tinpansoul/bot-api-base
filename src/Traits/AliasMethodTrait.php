@@ -7,7 +7,9 @@ namespace TgBotApi\BotApiBase\Traits;
 use TgBotApi\BotApiBase\Exception\ResponseException;
 use TgBotApi\BotApiBase\Method\Interfaces\AddMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\AnswerMethodAliasInterface;
+use TgBotApi\BotApiBase\Method\Interfaces\ApproveMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\CreateMethodAliasInterface;
+use TgBotApi\BotApiBase\Method\Interfaces\DeclineMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\DeleteMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\EditMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\ForwardMethodAliasInterface;
@@ -17,12 +19,15 @@ use TgBotApi\BotApiBase\Method\Interfaces\MethodInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\PinMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\PromoteMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\RestrictMethodAliasInterface;
+use TgBotApi\BotApiBase\Method\Interfaces\RevokeMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\SendMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\SetMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\StopMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\UnbanMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\UnpinMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\UploadMethodAliasInterface;
+use TgBotApi\BotApiBase\Method\Interfaces\VerifyMethodAliasInterface;
+use TgBotApi\BotApiBase\Type\ChatInviteLinkType;
 use TgBotApi\BotApiBase\Type\FileType;
 use TgBotApi\BotApiBase\Type\MessageType;
 
@@ -172,5 +177,37 @@ trait AliasMethodTrait
     public function upload(UploadMethodAliasInterface $uploadMethodAlias): FileType
     {
         return $this->call(method: $uploadMethodAlias, type: FileType::class);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function approve(ApproveMethodAliasInterface $approveMethodAlias): bool
+    {
+        return $this->call(method: $approveMethodAlias);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function decline(DeclineMethodAliasInterface $declineMethodAlias): bool
+    {
+        return $this->call(method: $declineMethodAlias);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function verify(VerifyMethodAliasInterface $verifyMethodAlias): bool
+    {
+        return $this->call(method: $verifyMethodAlias);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function revoke(RevokeMethodAliasInterface $revokeMethodAlias): ChatInviteLinkType
+    {
+        return $this->call(method: $revokeMethodAlias, type: ChatInviteLinkType::class);
     }
 }

@@ -8,6 +8,8 @@ use TgBotApi\BotApiBase\Exception\ResponseException;
 use TgBotApi\BotApiBase\Method\DeleteChatPhotoMethod;
 use TgBotApi\BotApiBase\Method\DeleteChatStickerSetMethod;
 use TgBotApi\BotApiBase\Method\DeleteMessageMethod;
+use TgBotApi\BotApiBase\Method\DeleteMessagesMethod;
+use TgBotApi\BotApiBase\Method\DeleteMyCommandsMethod;
 use TgBotApi\BotApiBase\Method\DeleteStickerFromSetMethod;
 use TgBotApi\BotApiBase\Method\DeleteWebhookMethod;
 use TgBotApi\BotApiBase\Method\Interfaces\DeleteMethodAliasInterface;
@@ -60,5 +62,21 @@ trait DeleteMethodTrait
     public function deleteWebhook(DeleteWebhookMethod $deleteWebhookMethod): bool
     {
         return $this->delete(deleteMethodAlias: $deleteWebhookMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function deleteMyCommands(DeleteMyCommandsMethod $deleteMyCommandsMethod): bool
+    {
+        return $this->delete(deleteMethodAlias: $deleteMyCommandsMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function deleteMessages(DeleteMessagesMethod $deleteMessagesMethod): bool
+    {
+        return $this->delete(deleteMethodAlias: $deleteMessagesMethod);
     }
 }

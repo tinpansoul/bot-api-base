@@ -14,6 +14,11 @@ use TgBotApi\BotApiBase\Method\SetChatStickerSetMethod;
 use TgBotApi\BotApiBase\Method\SetChatTitleMethod;
 use TgBotApi\BotApiBase\Method\SetGameScoreMethod;
 use TgBotApi\BotApiBase\Method\SetMyCommandsMethod;
+use TgBotApi\BotApiBase\Method\SetMyDefaultAdministratorRightsMethod;
+use TgBotApi\BotApiBase\Method\SetMyDescriptionMethod;
+use TgBotApi\BotApiBase\Method\SetMyNameMethod;
+use TgBotApi\BotApiBase\Method\SetMyProfilePhotoMethod;
+use TgBotApi\BotApiBase\Method\SetMyShortDescriptionMethod;
 use TgBotApi\BotApiBase\Method\SetPassportDataErrorsMethod;
 use TgBotApi\BotApiBase\Method\SetStickerPositionInSetMethod;
 use TgBotApi\BotApiBase\Method\SetStickerSetThumbMethod;
@@ -135,5 +140,45 @@ trait SetMethodTrait
     public function setChatPermissions(SetChatPermissionsMethod $setChatPermissionsMethod): bool
     {
         return $this->set(setMethodAlias: $setChatPermissionsMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function setMyName(SetMyNameMethod $setMyNameMethod): bool
+    {
+        return $this->set(setMethodAlias: $setMyNameMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function setMyDescription(SetMyDescriptionMethod $setMyDescriptionMethod): bool
+    {
+        return $this->set(setMethodAlias: $setMyDescriptionMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function setMyShortDescription(SetMyShortDescriptionMethod $setMyShortDescriptionMethod): bool
+    {
+        return $this->set(setMethodAlias: $setMyShortDescriptionMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function setMyProfilePhoto(SetMyProfilePhotoMethod $setMyProfilePhotoMethod): bool
+    {
+        return $this->set(setMethodAlias: $setMyProfilePhotoMethod);
+    }
+
+    /**
+     * @throws ResponseException
+     */
+    public function setMyDefaultAdministratorRights(SetMyDefaultAdministratorRightsMethod $setMyDefaultAdministratorRightsMethod): bool
+    {
+        return $this->set(setMethodAlias: $setMyDefaultAdministratorRightsMethod);
     }
 }
