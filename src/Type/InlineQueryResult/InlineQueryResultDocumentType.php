@@ -101,6 +101,27 @@ class InlineQueryResultDocumentType extends InlineQueryResultType implements Has
     public $thumbHeight;
 
     /**
+     * Optional. URL of the thumbnail (JPEG only) for the file
+     *
+     * @var string|null
+     */
+    public $thumbnailUrl;
+
+    /**
+     * Optional. Thumbnail width
+     *
+     * @var int|null
+     */
+    public $thumbnailWidth;
+
+    /**
+     * Optional. Thumbnail height
+     *
+     * @var int|null
+     */
+    public $thumbnailHeight;
+
+    /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(

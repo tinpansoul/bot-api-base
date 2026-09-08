@@ -107,4 +107,43 @@ class PollType implements PollTypeInterface
      * @var \DateTimeInterface|null
      */
     public $closeDate;
+
+    /**
+     * True, if the poll allows to change the chosen answer options
+     *
+     * @var bool|null
+     */
+    public $allowsRevoting;
+
+    /**
+     * True if voting is limited to users who have been members of the chat where the poll was originally sent for more
+     * than 24 hours
+     *
+     * @var bool|null
+     */
+    public $membersOnly;
+
+    /**
+     * Optional. A list of two-letter ISO 3166-1 alpha-2 country codes indicating the countries from which users can
+     * vote in the poll. The country code “FT” is used for users with anonymous numbers. If omitted, then users
+     * from any country can participate in the poll.
+     *
+     * @var string[]|null
+     */
+    public $countryCodes;
+
+    /**
+     * Optional. Array of 0-based identifiers of the correct answer options. Available only for polls in quiz mode
+     * which are closed or were sent (not forwarded) by the bot or to the private chat with the bot.
+     *
+     * @var int[]|null
+     */
+    public $correctOptionIds;
+
+    /**
+     * Optional. Description of the poll; for polls inside the Message object only
+     *
+     * @var string|null
+     */
+    public $description;
 }

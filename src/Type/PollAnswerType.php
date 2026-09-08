@@ -31,4 +31,11 @@ class PollAnswerType
      * @var int[]
      */
     public $optionIds;
+
+    /**
+     * Persistent identifiers of the chosen answer options. May be empty if the vote was retracted.
+     *
+     * @var string[]|null
+     */
+    public $optionPersistentIds;
 }

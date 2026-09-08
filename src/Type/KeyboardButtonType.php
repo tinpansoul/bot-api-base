@@ -60,6 +60,23 @@ class KeyboardButtonType
     public $webApp;
 
     /**
+     * Optional. Unique identifier of the custom emoji shown before the text of the button. Can only be used by bots
+     * that purchased additional usernames on Fragment or in the messages directly sent by the bot to private, group
+     * and supergroup chats if the owner of the bot has a Telegram Premium subscription.
+     *
+     * @var string|null
+     */
+    public $iconCustomEmojiId;
+
+    /**
+     * Optional. Style of the button. Must be one of “danger” (red), “success” (green) or “primary” (blue).
+     * If omitted, then an app-specific style is used.
+     *
+     * @var string|null
+     */
+    public $style;
+
+    /**
      * @throws BadArgumentException
      */
     public static function create(string $text, array $data = null): KeyboardButtonType

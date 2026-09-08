@@ -67,4 +67,12 @@ class WebhookInfoType
      * @var string[]|null
      */
     public $allowedUpdates;
+
+    /**
+     * Optional. Unix time of the most recent error that happened when trying to synchronize available updates with
+     * Telegram datacenters
+     *
+     * @var \DateTimeImmutable|null
+     */
+    public $lastSynchronizationErrorDate;
 }

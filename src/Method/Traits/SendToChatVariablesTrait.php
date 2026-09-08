@@ -8,6 +8,7 @@ use TgBotApi\BotApiBase\Type\ForceReplyType;
 use TgBotApi\BotApiBase\Type\InlineKeyboardMarkupType;
 use TgBotApi\BotApiBase\Type\ReplyKeyboardMarkupType;
 use TgBotApi\BotApiBase\Type\ReplyKeyboardRemoveType;
+use TgBotApi\BotApiBase\Type\ReplyParametersType;
 
 // + sendMessage, 1
 // + sendPhoto, 2 -
@@ -39,9 +40,18 @@ trait SendToChatVariablesTrait
     public $disableNotification;
 
     /**
+     * Optional. Description of the message to reply to.
+     *
+     * @var ReplyParametersType|null
+     */
+    public $replyParameters;
+
+    /**
      * Optional. Pass True, if the message should be sent even if the specified replied-to message is not found.
      *
      * @var bool|null
+     *
+     * @deprecated Superseded by $replyParameters; set ReplyParametersType::$allowSendingWithoutReply instead.
      */
     public $allowSendingWithoutReply;
 
@@ -49,6 +59,8 @@ trait SendToChatVariablesTrait
      * Optional. If the message is a reply, ID of the original message.
      *
      * @var int|null
+     *
+     * @deprecated Superseded by $replyParameters; set ReplyParametersType::$messageId instead.
      */
     public $replyToMessageId;
 

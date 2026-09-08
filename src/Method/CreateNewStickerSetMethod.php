@@ -64,9 +64,19 @@ class CreateNewStickerSetMethod implements CreateMethodAliasInterface
     public $tgsSticker;
 
     /**
+     * Optional. Type of stickers in the set, pass "regular", "mask", or "custom_emoji".
+     * By default, a regular sticker set is created.
+     *
+     * @var string|null
+     */
+    public $stickerType;
+
+    /**
      * Optional. Pass True, if a set of mask stickers should be created.
      *
      * @var bool|null
+     *
+     * @deprecated Superseded by $stickerType; pass "mask" instead of true.
      */
     public $containsMasks;
 

@@ -8,6 +8,7 @@ use TgBotApi\BotApiBase\Method\Interfaces\HasParseModeVariableInterface;
 use TgBotApi\BotApiBase\Method\Interfaces\SendMethodAliasInterface;
 use TgBotApi\BotApiBase\Method\Traits\FillFromArrayTrait;
 use TgBotApi\BotApiBase\Method\Traits\SendToChatVariablesTrait;
+use TgBotApi\BotApiBase\Type\LinkPreviewOptionsType;
 use TgBotApi\BotApiBase\Type\MessageEntityType;
 
 /**
@@ -43,9 +44,18 @@ class SendMessageMethod implements HasParseModeVariableInterface, SendMethodAlia
     public $entities;
 
     /**
+     * Optional. Link preview generation options for the message.
+     *
+     * @var LinkPreviewOptionsType|null
+     */
+    public $linkPreviewOptions;
+
+    /**
      * Optional. Disables link previews for links in this message.
      *
      * @var bool|null
+     *
+     * @deprecated Superseded by $linkPreviewOptions; set LinkPreviewOptionsType::$isDisabled instead.
      */
     public $disableWebPagePreview;
 

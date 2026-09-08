@@ -54,6 +54,21 @@ class ReplyKeyboardMarkupType
     public $selective;
 
     /**
+     * Optional. Requests clients to always show the keyboard when the regular keyboard is hidden. Defaults to False,
+     * in which case the custom keyboard can be hidden and opened with a keyboard icon.
+     *
+     * @var bool|null
+     */
+    public $isPersistent;
+
+    /**
+     * Optional. The placeholder to be shown in the input field when the keyboard is active; 1-64 characters
+     *
+     * @var string|null
+     */
+    public $inputFieldPlaceholder;
+
+    /**
      * @param KeyboardButtonType[][] $keyboard
      * @param array|null             $data
      *

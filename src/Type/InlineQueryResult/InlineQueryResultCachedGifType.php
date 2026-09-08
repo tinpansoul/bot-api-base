@@ -60,6 +60,13 @@ class InlineQueryResultCachedGifType extends InlineQueryResultType implements Ha
     public $inputMessageContent;
 
     /**
+     * Optional. Pass True if the caption must be shown above the message media
+     *
+     * @var bool|null
+     */
+    public $showCaptionAboveMedia;
+
+    /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(string $id, string $gifFileId, array $data = null): InlineQueryResultCachedGifType

@@ -91,6 +91,29 @@ class MessageEntityType
      */
     public $language;
 
+    /**
+     * Optional. For “custom_emoji” only, unique identifier of the custom emoji. Use getCustomEmojiStickers to get
+     * full information about the sticker.
+     *
+     * @var string|null
+     */
+    public $customEmojiId;
+
+    /**
+     * Optional. For “date_time” only, the Unix time associated with the entity
+     *
+     * @var int|null
+     */
+    public $unixTime;
+
+    /**
+     * Optional. For “date_time” only, the string that defines the formatting of the date and time. See date-time
+     * entity formatting for more details.
+     *
+     * @var string|null
+     */
+    public $dateTimeFormat;
+
     public static function create(string $type, int $offset, int $length, array $data = null): MessageEntityType
     {
         $static = new static();

@@ -396,4 +396,159 @@ class MessageType implements HasParseModeVariableInterface
      * @var UserType|null
      */
     public $leftChatParticipant;
+
+    /**
+     * Optional. Unique identifier of a message thread or forum topic to which the message belongs; for supergroups and
+     * private chats only
+     *
+     * @var int|null
+     */
+    public $messageThreadId;
+
+    /**
+     * Optional. If the sender of the message boosted the chat, the number of boosts added by the user
+     *
+     * @var int|null
+     */
+    public $senderBoostCount;
+
+    /**
+     * Optional. Tag or custom title of the sender of the message; for supergroups only
+     *
+     * @var string|null
+     */
+    public $senderTag;
+
+    /**
+     * Optional. For ephemeral messages, identifier of the ephemeral message inside this chat. The identifier may be
+     * reused for another ephemeral message after the message is deleted or expires.
+     *
+     * @var int|null
+     */
+    public $ephemeralMessageId;
+
+    /**
+     * Optional. The unique identifier for the guest query. Use this identifier with the method answerGuestQuery to
+     * send a response message. If non-empty, the message belongs to the chat where the guest bot was summoned, which
+     * may not coincide with other existing bot chats sharing the same identifier.
+     *
+     * @var string|null
+     */
+    public $guestQueryId;
+
+    /**
+     * Optional. Unique identifier of the business connection from which the message was received. If non-empty, the
+     * message belongs to a chat of the corresponding business account that is independent from any potential bot chat
+     * which might share the same identifier.
+     *
+     * @var string|null
+     */
+    public $businessConnectionId;
+
+    /**
+     * Optional. True, if the message is sent to a topic in a forum supergroup or a private chat with the bot
+     *
+     * @var bool|null
+     */
+    public $isTopicMessage;
+
+    /**
+     * Optional. True, if the message is a channel post that was automatically forwarded to the connected discussion
+     * group
+     *
+     * @var bool|null
+     */
+    public $isAutomaticForward;
+
+    /**
+     * Optional. Identifier of the specific checklist task that is being replied to
+     *
+     * @var int|null
+     */
+    public $replyToChecklistTaskId;
+
+    /**
+     * Optional. Persistent identifier of the specific poll option that is being replied to
+     *
+     * @var string|null
+     */
+    public $replyToPollOptionId;
+
+    /**
+     * Optional. True, if the message can't be forwarded
+     *
+     * @var bool|null
+     */
+    public $hasProtectedContent;
+
+    /**
+     * Optional. True, if the message was sent by an implicit action, for example, as an away or a greeting business
+     * message, or as a scheduled message
+     *
+     * @var bool|null
+     */
+    public $isFromOffline;
+
+    /**
+     * Optional. True, if the message is a paid post. Note that such posts must not be deleted for 24 hours to receive
+     * the payment and can't be edited.
+     *
+     * @var bool|null
+     */
+    public $isPaidPost;
+
+    /**
+     * Optional. The number of Telegram Stars that were paid by the sender of the message to send it
+     *
+     * @var int|null
+     */
+    public $paidStarCount;
+
+    /**
+     * Optional. Unique identifier of the message effect added to the message
+     *
+     * @var string|null
+     */
+    public $effectId;
+
+    /**
+     * Optional. True, if the caption must be shown above the message media
+     *
+     * @var bool|null
+     */
+    public $showCaptionAboveMedia;
+
+    /**
+     * Optional. True, if the message media is covered by a spoiler animation
+     *
+     * @var bool|null
+     */
+    public $hasMediaSpoiler;
+
+    /**
+     * Optional. Service message: the group has been created
+     *
+     * @var bool|null
+     */
+    public $groupChatCreated;
+
+    /**
+     * Optional. The group has been migrated to a supergroup with the specified identifier. This number may have more
+     * than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it.
+     * But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for
+     * storing this identifier.
+     *
+     * @var int|null
+     */
+    public $migrateToChatId;
+
+    /**
+     * Optional. The supergroup has been migrated from a group with the specified identifier. This number may have more
+     * than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it.
+     * But it has at most 52 significant bits, so a signed 64-bit integer or double-precision float type are safe for
+     * storing this identifier.
+     *
+     * @var int|null
+     */
+    public $migrateFromChatId;
 }

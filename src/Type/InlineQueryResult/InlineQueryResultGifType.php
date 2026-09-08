@@ -84,6 +84,28 @@ class InlineQueryResultGifType extends InlineQueryResultType implements HasParse
     public $inputMessageContent;
 
     /**
+     * URL of the static (JPEG or GIF) or animated (MPEG4) thumbnail for the result
+     *
+     * @var string|null
+     */
+    public $thumbnailUrl;
+
+    /**
+     * Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”.
+     * Defaults to “image/jpeg”.
+     *
+     * @var string|null
+     */
+    public $thumbnailMimeType;
+
+    /**
+     * Optional. Pass True if the caption must be shown above the message media
+     *
+     * @var bool|null
+     */
+    public $showCaptionAboveMedia;
+
+    /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(

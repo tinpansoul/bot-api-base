@@ -73,4 +73,68 @@ class UserType
      * @var bool|null
      */
     public $supportsInlineQueries;
+
+    /**
+     * Optional. True, if this user is a Telegram Premium user
+     *
+     * @var bool|null
+     */
+    public $isPremium;
+
+    /**
+     * Optional. True, if this user added the bot to the attachment menu
+     *
+     * @var bool|null
+     */
+    public $addedToAttachmentMenu;
+
+    /**
+     * Optional. True, if the bot supports guest queries from chats it is not a member of. Returned only in getMe.
+     *
+     * @var bool|null
+     */
+    public $supportsGuestQueries;
+
+    /**
+     * Optional. True, if the bot can be connected to a user account to manage it. Returned only in getMe.
+     *
+     * @var bool|null
+     */
+    public $canConnectToBusiness;
+
+    /**
+     * Optional. True, if the bot has a main Web App. Returned only in getMe.
+     *
+     * @var bool|null
+     */
+    public $hasMainWebApp;
+
+    /**
+     * Optional. True, if the bot has forum topic mode enabled in private chats. Returned only in getMe.
+     *
+     * @var bool|null
+     */
+    public $hasTopicsEnabled;
+
+    /**
+     * Optional. True, if the bot allows users to create and delete topics in private chats. Returned only in getMe.
+     *
+     * @var bool|null
+     */
+    public $allowsUsersToCreateTopics;
+
+    /**
+     * Optional. True, if other bots can be created to be controlled by the bot. Returned only in getMe.
+     *
+     * @var bool|null
+     */
+    public $canManageBots;
+
+    /**
+     * Optional. True, if the bot supports join request queries and can be assigned to process them. Returned only in
+     * getMe.
+     *
+     * @var bool|null
+     */
+    public $supportsJoinRequestQueries;
 }

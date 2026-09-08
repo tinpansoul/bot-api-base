@@ -23,6 +23,32 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 --->
 
+## 2.5.0 - 2026-09-08
+
+### Added
+- 110 fields from Bot API 6.x-10.2 across 36 existing types, covering `MessageType`,
+  `UserType`, `ChatType`, `ChatPermissionsType`, `PollType`, `StickerType`,
+  `SuccessfulPaymentType`, `MessageEntityType`, the `InlineQueryResult*` types and others.
+  Only scalar and array-of-scalar fields were added; fields whose type is an object the
+  library does not model yet are still ignored on denormalization, as before.
+- `ReplyParametersType`, replacing `replyToMessageId` and `allowSendingWithoutReply`.
+  Available as `$replyParameters` on every method using `SendToChatVariablesTrait`.
+- `LinkPreviewOptionsType`, replacing `disableWebPagePreview`. Available as
+  `$linkPreviewOptions` on `SendMessageMethod` and `EditMessageTextMethod`.
+- `InlineQueryResultsButtonType`, replacing `switchPmText` and `switchPmParameter`.
+  Available as `$button` on `AnswerInlineQueryMethod`.
+- `$stickerType` on `CreateNewStickerSetMethod` and `$stickerFormat` on
+  `UploadStickerFileMethod`.
+
+### Deprecated
+- `$replyToMessageId` and `$allowSendingWithoutReply` on `SendToChatVariablesTrait`,
+  `$disableWebPagePreview` on `SendMessageMethod` and `EditMessageTextMethod`,
+  `$switchPmText` and `$switchPmParameter` on `AnswerInlineQueryMethod`, and
+  `$containsMasks` on `CreateNewStickerSetMethod`. These fields are gone from the current
+  Bot API documentation but are still accepted by the server, so they keep working and are
+  sent unchanged; nothing is folded into the replacements automatically.
+
+
 ## 2.4.0 - 2026-09-08
 
 ### Added

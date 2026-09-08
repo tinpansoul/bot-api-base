@@ -74,4 +74,11 @@ class VideoType
      * @var int|null
      */
     public $fileSize;
+
+    /**
+     * Optional. Timestamp in seconds from which the video will play in the message
+     *
+     * @var int|null
+     */
+    public $startTimestamp;
 }

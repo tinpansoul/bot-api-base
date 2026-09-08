@@ -110,6 +110,27 @@ class InlineQueryResultVideoType extends InlineQueryResultType implements HasPar
     public $inputMessageContent;
 
     /**
+     * A valid URL for the embedded video player or video file
+     *
+     * @var string|null
+     */
+    public $videoUrl;
+
+    /**
+     * URL of the thumbnail (JPEG only) for the video
+     *
+     * @var string|null
+     */
+    public $thumbnailUrl;
+
+    /**
+     * Optional. Pass True if the caption must be shown above the message media
+     *
+     * @var bool|null
+     */
+    public $showCaptionAboveMedia;
+
+    /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(

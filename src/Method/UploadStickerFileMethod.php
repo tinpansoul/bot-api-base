@@ -25,6 +25,13 @@ class UploadStickerFileMethod implements UploadMethodAliasInterface
     public $userId;
 
     /**
+     * Format of the sticker, must be one of "static", "animated", "video".
+     *
+     * @var string|null
+     */
+    public $stickerFormat;
+
+    /**
      * Png image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px,
      * and either width or height must be exactly 512px.
      *

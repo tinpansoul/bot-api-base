@@ -93,6 +93,27 @@ class InlineQueryResultVenueType extends InlineQueryResultType
     public $thumbHeight;
 
     /**
+     * Optional. Url of the thumbnail for the result
+     *
+     * @var string|null
+     */
+    public $thumbnailUrl;
+
+    /**
+     * Optional. Thumbnail width
+     *
+     * @var int|null
+     */
+    public $thumbnailWidth;
+
+    /**
+     * Optional. Thumbnail height
+     *
+     * @var int|null
+     */
+    public $thumbnailHeight;
+
+    /**
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException
      */
     public static function create(

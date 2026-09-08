@@ -77,6 +77,72 @@ class ChatPermissionsType
     public $canPinMessages;
 
     /**
+     * Optional. True, if the user is allowed to send audios
+     *
+     * @var bool|null
+     */
+    public $canSendAudios;
+
+    /**
+     * Optional. True, if the user is allowed to send documents
+     *
+     * @var bool|null
+     */
+    public $canSendDocuments;
+
+    /**
+     * Optional. True, if the user is allowed to send photos
+     *
+     * @var bool|null
+     */
+    public $canSendPhotos;
+
+    /**
+     * Optional. True, if the user is allowed to send videos
+     *
+     * @var bool|null
+     */
+    public $canSendVideos;
+
+    /**
+     * Optional. True, if the user is allowed to send video notes
+     *
+     * @var bool|null
+     */
+    public $canSendVideoNotes;
+
+    /**
+     * Optional. True, if the user is allowed to send voice notes
+     *
+     * @var bool|null
+     */
+    public $canSendVoiceNotes;
+
+    /**
+     * Optional. True, if the user is allowed to react to messages. If omitted, defaults to the value of
+     * can_send_messages.
+     *
+     * @var bool|null
+     */
+    public $canReactToMessages;
+
+    /**
+     * Optional. True, if the user is allowed to edit their own tag. If omitted, defaults to the value of
+     * can_pin_messages.
+     *
+     * @var bool|null
+     */
+    public $canEditTag;
+
+    /**
+     * Optional. True, if the user is allowed to create forum topics. If omitted, defaults to the value of
+     * can_pin_messages.
+     *
+     * @var bool|null
+     */
+    public $canManageTopics;
+
+    /**
      * @param array|null $data
      */
     public static function create(array $data = null): ChatPermissionsType

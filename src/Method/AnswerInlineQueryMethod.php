@@ -60,10 +60,19 @@ class AnswerInlineQueryMethod implements AnswerMethodAliasInterface
     public $nextOffset;
 
     /**
+     * Optional. A JSON-serialized object describing a button to be shown above inline query results.
+     *
+     * @var InlineQueryResultsButtonType|null
+     */
+    public $button;
+
+    /**
      * Optional. If passed, clients will display a button with specified text that switches the user to a private
      * chat with the bot and sends the bot a start message with the parameter switch_pm_parameter.
      *
      * @var string|null
+     *
+     * @deprecated Superseded by $button; set InlineQueryResultsButtonType::$text instead.
      */
     public $switchPmText;
 
@@ -79,6 +88,8 @@ class AnswerInlineQueryMethod implements AnswerMethodAliasInterface
      * they wanted to use the bot's inline capabilities.
      *
      * @var string|null
+     *
+     * @deprecated Superseded by $button; set InlineQueryResultsButtonType::$startParameter instead.
      */
     public $switchPmParameter;
 

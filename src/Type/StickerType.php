@@ -81,4 +81,34 @@ class StickerType
      * @var bool
      */
     public $isAnimated;
+
+    /**
+     * Type of the sticker, currently one of “regular”, “mask”, “custom_emoji”. The type of the sticker is
+     * independent from its format, which is determined by the fields is_animated and is_video.
+     *
+     * @var string|null
+     */
+    public $type;
+
+    /**
+     * True, if the sticker is a video sticker
+     *
+     * @var bool|null
+     */
+    public $isVideo;
+
+    /**
+     * Optional. For custom emoji stickers, unique identifier of the custom emoji
+     *
+     * @var string|null
+     */
+    public $customEmojiId;
+
+    /**
+     * Optional. True, if the sticker must be repainted to a text color in messages, the color of the Telegram Premium
+     * badge in emoji status, white color on chat photos, or another appropriate color in other places
+     *
+     * @var bool|null
+     */
+    public $needsRepainting;
 }

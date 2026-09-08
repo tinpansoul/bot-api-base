@@ -76,6 +76,27 @@ class InlineQueryResultContactType extends InlineQueryResultType
     public $thumbHeight;
 
     /**
+     * Optional. Url of the thumbnail for the result
+     *
+     * @var string|null
+     */
+    public $thumbnailUrl;
+
+    /**
+     * Optional. Thumbnail width
+     *
+     * @var int|null
+     */
+    public $thumbnailWidth;
+
+    /**
+     * Optional. Thumbnail height
+     *
+     * @var int|null
+     */
+    public $thumbnailHeight;
+
+    /**
      * @param array|null $data
      *
      * @throws \TgBotApi\BotApiBase\Exception\BadArgumentException

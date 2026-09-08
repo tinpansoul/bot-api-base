@@ -25,4 +25,19 @@ class PollOptionType
      * @var int
      */
     public $voterCount;
+
+    /**
+     * Unique identifier of the option, persistent on option addition and deletion
+     *
+     * @var string|null
+     */
+    public $persistentId;
+
+    /**
+     * Optional. Point in time (Unix timestamp) when the option was added; omitted if the option existed in the
+     * original poll
+     *
+     * @var \DateTimeImmutable|null
+     */
+    public $additionDate;
 }
